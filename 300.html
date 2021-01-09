@@ -1,0 +1,1220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="./icon.png">
+    <link rel="stylesheet" type="text/css" href="./300.css">
+    <title>300</title>
+</head>
+<body oncontextmenu="return false" onkeydown="return false">
+    
+    <header id="título300">
+       <h1>300</h1>
+    </header>
+
+   <details id="50algoritmosInformales">
+       
+    <summary>
+           <h3>50 algoritmos informales</h3>
+        </summary>
+        <pre>
+            
+        1. Desarrollar un algoritmo que permita adquirir una revista.
+        
+            0. Aprender en qué lugar (físico o virtual) se adquieren revistas
+            1. Tener dinero
+            si no, conseguir dinero, 
+            2. Definir qué revista se desea adquirir 
+                si no hay deseo disponible, terminar algoritmo 
+                3. Consultar en el lugar si existe esa revista
+                si existe, adquirir, terminar algoritmo.
+                si existe, pero no hay, esperar
+                    si mientras espera, la revista deseada cambia, cancelar espera, volver a paso 3
+                si no existe, cambiar deseo, volver a paso 2.
+                
+
+        2. Desarrollar un algoritmo que permita entrar a una casa que está con llave.
+            0. ¿Necesito atravesar una puerta?
+                si, paso 1
+                no, muere algoritmo
+            1. Identificar puerta requerida
+            2. ¿Vivo en esa casa?
+                si, paso 3
+                no, paso 6
+                3. ¿Tengo la llave de esa puerta?
+                si, paso 4
+                no, paso 6
+            4. Sacar llave mientras se dirige a la puerta
+                si realmente no tengo la llave, paso 6
+                5. Intentar abrir puerta
+                ¿abrió? muere algoritmo
+                ¿no abre? Volver a intentar.
+                no abre, paso 6
+            6. Ir a tocar a la puerta
+                si abren, la puerta no tenía llave. Muere algoritmo.
+                si no abren, qué oso xd, volver a intentar.
+                    no abren, paso 7
+            7. ¿Conoces quién podría tener las llaves de la puerta?
+            si, paso 8
+                no, volver a tocar a la puerta
+                    ¿abren? 
+                    no, 
+            8. Llamar a la persona
+            9. Solicitarle ingreso a la casa
+                rechazado, paso 0,
+                si, identificamos la puerta
+                        ¿es la puerta correcta?
+                            si, repetir paso 9 insistir
+                            no, repetir paso 1
+                    no, muere algoritmo.
+            10. Esperar por la llave
+            11. Cruzar puerta con llave           
+         
+            
+        3. Desarrollar un algoritmo que permita dar un beso.
+            0. Mirar a los ojos
+            1. Preguntar con los ojos qué tipo de beso quiere
+            2. ¿Queremos darle el beso que los ojos quieren?
+                si, complacer
+                no, ser egoísta
+                    ser egoísta implica elegir un tipo de beso:
+                        elegir beso: 
+                        beso genérico
+                                se mostrará el beso genérico en el paso 3
+            3. Hacerle saber con la mirada a los ojos que si le besarás pero no como quieren
+            4. Sonreír ligeramente
+            5. Ordenar sin palabras a la mirada a venir hacia ti 
+                viene, paso 6
+                no viene, acercarse lenta y agraciadamente
+                6. Tocar sus brazos con suavidad
+            7. Acercar tu rostro al suyo
+            8. Deslizar los dedos hasta su espalda
+            9. Tomarla ya firmemente con las manos
+            10. Traerla hacia ti 
+            12. Cerrar lentamente los ojos
+            13. Mientras los ojos se cierran, conectar suavemente tu boca a la de ella
+            14. Ojos cerrados, concentrarse en sentir
+            15. Sentir sus labios con los tuyos
+            16. Identificar la forma de sus labios.
+            Identificado labio inferior 
+                    Identificado labio superior
+                    16. Contraer labios en labio inferior para aumentar el sentir.
+            17. Separar labios para permitir sentir.
+            18. Contraer labios en labio superior para aumentar el sentir.
+            19. Separar labios para permitir sentir.
+            20. Repetir
+            21. ¿Se busca aumentar la variable sentir?
+                no, muere beso.
+                si, paso 21
+                21. Pasar de beso genérico a otro tipo de beso.
+        
+                
+        4. Desarrollar un algoritmo que permita empacar un regalo.
+        0. Identificar tamaño y forma del regalo
+            1. Definir cantidad de dinero y posible rango de costos asociado a empacar un regalo
+            2. ¿Tienes dinero suficiente?
+            si
+            llevar regalo a un lugar donde te lo empaquen bien bonitoxd, fin del algoritmo.
+                no  
+                    paso 3
+            3. ¿Tienes bolsas de regalo?
+                si
+                ¿es del tamaño del regalo?
+                        si  
+                        empacar, fin del algoritmo.
+                        no 
+                           paso 1
+                           no, paso 3
+            4. ¿Tienes papel regalo?
+            si
+                    ¿es suficiente para envolver el regalo?
+                        si
+                        envolver, fin del algoritmo.
+                        no 
+                        paso 1
+            
+        
+                        5. Desarrollar un algoritmo que permita encender un vehículo.
+            0. ¿Tienes llaves del auto?
+                si
+                    paso 1
+                    no 
+                    buscar llaves del auto
+                    1. Ir hacia el auto, mantener llaves en la mano
+            2. Abrir seguros de las puertas con el control remoto de las llaves 
+            3. Abrir puerta del conductor
+            3. Incorporarte en el asiento
+            4. Meter las llaves correctamente
+            5. Girar llaves hasta que el carro prenda
+        
+            
+        6. Desarrollar un algoritmo que permita fritar un huevo.
+            0. Definir tipo y cantidad de huevo que se quiere cocinar
+            1. Preparar recipiente requerido en la estufa para ese tipo de huevo
+            2. Sacar la cantidad de huevos requerida de la nevera
+            3. Prender la estufa y poner a calentar recipiente requerido
+            4. Según qué tipo, echar huevos de x forma al recipiente 
+            5. Definir en qué término se quieren los huevos
+            6. En base al término, definir el tiempo de cocción
+            7. Si se requiere batir, batir
+            8. Esperar que los huevos coccionen el tiempo definido
+            9. Una vez cocinados el tiempo definido, apagar estufa
+            10. Servir huevos en plato
+            
+        
+        7. Desarrollar un algoritmo que permita mirar por un telescopio.
+        0. Acomodarse correctamente en el telescopio
+            1. Asomar el ojo por el lente
+            2. Mirar por el telescopio
+            Fin
+        
+            
+        8. Desarrollar un algoritmo que permita botar la basura.
+        0. Preparar una bolsa de basura grande
+            1. Recoger todas las bolsas de basura pequeñas en todos los cuartos
+            2. Depositar en la bolsa de basura grande todas las bolsas de basura pequeñas recogidas 
+            3. Cerrar bolsa de basura grande con un nudo
+            4. Tomar bolsa de basura grande con las manos del nudo realizado
+            5. Sacarla al andén de tu casa
+            Fin
+        
+            9. Desarrollar un algoritmo que permita tomar un baño.
+            0. Entrar al baño 
+            1. Desnudarse
+            2. Entrar a la ducha
+            3. Abrir la llave
+            4. Enjuagarse
+            5. Cerrar llave
+            6. Enjabonarse
+            7. Volver a abrir llave
+            8. Enjuagarse
+            9. Cerrar llave
+            10. Salir de la ducha
+            11. Tomar una toalla
+            12. Secarse
+            Fin
+        
+            10. Desarrollar un algoritmo que permita estudiar para un examen.
+            0. ¿Sabemos qué temas serán evaluados?
+            si
+                    paso 1
+                no 
+                paso 4
+            1. Listar los temas que serán evaluados
+            2. Definir cada uno
+            3. Realizar un ejercicio de cada uno
+            4. Dar un repaso general a todo
+            5. ¿Es complejo el contenido?
+                si 
+                    paso 6
+                no 
+                    paso 7
+            6. Realizar un esquema gráfico que relacione todos los conceptos
+            7. Exponer para ti mismo
+            Fin
+        
+        
+        11. Desarrollar un algoritmo que permita tocar determinada canción con un instrumento musical.
+            
+        0. Definir canción que se quiere tocar
+            1. ¿Te sabes la canción?
+                    no
+                        aprendétela, luego paso 1
+                        si
+                        paso 2
+            2. Definir instrumento en el que se quiere tocar la canción
+            ¿Sabes tocar ese instrumento?
+                    no
+                    aprender ese instrumento, luego paso 2  
+                    si
+                        paso 3
+                        3. ¿Sabes la partitura de esa canción en tu instrumento?
+                no
+                    aprenderla, luego paso 3
+                si 
+                    paso 4
+            4. Tocar canción deseada en el instrumento deseado
+            Fin  
+        
+            
+        12. Desarrollar un algoritmo que permita viajar en avión.
+            0. Comprar pasaje de vuelo
+            1. Estar a tiempo en el aeropuerto
+            2. Realizar proceso de check in
+            3. Esperar para abordar 
+            4. Abordar 
+            5. Viajar en avión 
+            Fin
+            
+        
+        13. Desarrollar un algoritmo que permita encender un bombillo.
+        0. ¿Hay bombillo en el enchufe de bombillos? 
+                si 
+                    paso 5
+                    no 
+                    ¿tienes bombillos?
+                        si 
+                        paso 1
+                        no 
+                        comprar bombillo
+            1. Tomar bombillo
+            2. Montarte sobre lo que te brinde estabilidad y altura para alcanzar el enchufe 
+            3. Poner bombillo en el enchufe
+            4. Bajarte con cuidado
+            5. Activar el interruptor del enchufe para prender bombillo
+            Fin
+                
+        
+        14. Desarrollar un algoritmo que permita encender una vela.
+            0. Adquirir vela 
+            1. Adquirir encendedor 
+                no hay encendedor
+                    paso 3
+                    2. Mantenerla incorporada sobre un plato pequeño
+            3. Brindarle fuego
+            4. Permitir que un poco de cera caiga sobre un plato pequeño
+            5. Aplastar la vela sobre el charco de cera
+            6. Testear que la vela esté firme
+                si 
+                    Fin
+                no
+                paso 4
+            Fin            
+            
+        
+            15. Desarrollar un algoritmo que permita apagar una vela.
+            0. Ubicar vela 
+            1. Caminar hacia la vela 
+            2. Acercar cara a una distancia prudente
+            3. Soplar vela 
+            4. ¿Se apagó la vela? 
+                si  
+                    Fin 
+                    no 
+                    Paso 2 
+            Fin            
+            
+        16. Desarrollar un algoritmo que permita apagar un bombillo.
+        0. Ubicar interruptores y bombillos
+            1. Definir que un bombillo y su interruptor siempre están ubicados en la misma zona
+            2. Aprender qué interruptor prende/apaga cada bombillo
+            3. Determinar qué bombillos están prendidos
+            4. Determinar qué bombillo se desea apagar 
+            5. Apagar bombillo
+            Fin
+        
+        
+        17. Desarrollar un algoritmo que permita parquear un vehículo.
+        0. Hallar un lugar 
+            1. Cruzar lugar perpendicularmente por el largor del vehículo
+            2. Poner reversa
+            3. Con cautela, introducir el vehículo en el lugar hallado
+            4. Calibrar el vehículo para que quede lo más recto posible
+            5. Apagar motor
+            6. ¿Hay coches a los lados?
+                si 
+                    abrir puertas con cuidado
+                        ¿están abiertas las puertas sin causar daños?
+                        si 
+                                paso 6
+                            no 
+                            prender vehículo y salir corriendo xd
+                no 
+                paso 6
+            6. Salir del vehículo
+        Fin
+        
+        
+        18. Desarrollar un algoritmo que permita almorzar.
+            0. ¿Cocinarás almuerzo? 
+                si
+                paso 4
+                no
+                ¿Te cocinarán almuerzo? 
+                        no 
+                            paso 1
+                            si  
+                            paso 2
+                            1. Pide almuerzo a domicilio 
+            2. Esperar almuerzo 
+            3. Recibir almuerzo 
+            4. Servirte almuerzo
+            5. Almorzar
+            Fin
+            
+        
+            19. Desarrollar un algoritmo que permita ir de la casa al trabajo.
+            0. Determinar dónde trabajo
+            1. Determinar rutas de llegada 
+            2. Clasificar rutas por velocidad de llegada y riesgos de ruta
+            3. Correlacionar velocidad/riesgo 
+            4. Enumerar rutas, las más peligrosas pero rápidas: 10
+            5. Valorar necesidad de tiempo de llegada
+            6. Elegir una ruta según el nivel de necesidad
+            7. Utilizar ruta
+        Fin
+        
+        
+        20. Desarrollar un algoritmo que permita colocarse una camisa.
+            0. Abrir tu armario
+            1. Elegir una camisa
+            2. Sacarla de la perchera
+            3. ¿Es especial la ocasión?
+                si 
+                    paso 4
+                no
+                    paso 5
+            4. Plancharla
+            5. Sacudirla un poco 
+            6. Quitarte lo que traigas puesto y ponértela 
+            7. Abrochar cada botón con cada ojal de arriba a abajo
+            8. Verte al espejo 
+                ¿Te gusta cómo te ves? 
+                    no 
+                        volver al paso 0
+                    si 
+                        paso 9
+            9. Decirte lo cool que eres 
+            Fin 
+        
+        
+        21. Desarrollar un algoritmo que permita quitarse la camisa.
+            0. ¿Estás en un lugar donde te quitarías la camisa?
+                si 
+                    paso 1
+                no 
+                    quítatela igual xdddd nah mentira, vete a otro lugar, paso 0
+            1. Desabrocha de arriba a abajo cada botón 
+            2. Toma con la mano izquierda el cuello derecho
+            3. Desliza tu brazo derecho fuera de la manga de la camisa
+            4. ¿Tienes ya una mano libre?
+                si
+                    paso 5
+                no
+                    jueputa no sabe quitarse una camisa xd paso 2
+            5. Con la mano libre, tomar la muñeca de la manga aún puesta
+            6. Deslizar brazo izquierdo fuera de la manga
+            7. Desplegar camiseta
+            8. Echarla a la ropa sucia
+            Fin
+        
+        
+        22. Desarrollar un algoritmo que permita escuchar un determinado disco.
+            0. Determinar nombre del disco 
+            1. Buscarlo en youtube
+                ¿Está?  
+                    si  
+                        escuchar, Fin. 
+                    no  
+                        buscarlo en Spotify
+                            ¿Está?
+                                si
+                                    Escuchar, Fin.
+                                no 
+                                    Buscar en vídeos de google
+                                        ¿Está?
+                                            Si 
+                                                Escuchar, Fin
+                                            No 
+                                                Ah, entonces esa hpta tanción no existe xd paso 2
+            2. Pensar en otro disco 
+                ¿Tienes el nombre? 
+                    si 
+                        Paso 1
+                    no 
+                        Paso 0     
+        Fin                                                 
+        
+        
+        23. Desarrollar un algoritmo que permita abrir una ventana.
+            0. Identificar ventana
+            1. Ir hacia la ventana
+            2. Identificar cómo se abre la ventana
+            3. Abrir
+            Fin
+        
+        
+        24. Desarrollar un algoritmo que permita ir a la tienda a comprar algo.
+            0. Identificar tiendas más cercanas 
+            1. Clasificar tiendas por sus niveles de oferta y niveles de precios
+            2. Definir qué producto se necesita
+            3. Seleccionar la tienda más adecuada para cubrir la necesidad
+            4. Ir a la tienda por el producto requerido 
+            5. Regresar a casa por la misma ruta 
+        
+        
+        25. Desarrollar un algoritmo que permita tomar una fotografía.    
+            0. Identificar ubicación del fotógrafo (la propia)
+            1. Identificar ubicación del objetivo a fotografear.
+            2. Orientar la cámara al objetivo que se desea fotografear.
+            3. Revisar (ángulo, iluminación y contenido) calidad de la posible foto.
+            4. ¿Cumple el control de calidad la posible foto actual? 
+                si 
+                    paso 9
+                no 
+                    paso 5
+            5. Identificar qué atributo del ente calidad no cumple con el control de calidad
+            6. Identificar qué ubicación del objetivo o el fotógrafo hay que modificar para corregir el atributo
+            7. Modificar la ubicación requerida.
+            8. Paso 3 
+            9. Tomar foto 
+            FIN
+            
+        
+        26. Desarrollar un algoritmo que permita hacer deporte.
+            0. Definir el deporte que desas realizar    
+            1. ¿Requieres más personas para ese deporte?
+                si 
+                    invitar personas
+                        ¿conseguiste las personas?
+                            si 
+                                paso 2
+                            no 
+                                paso 0
+                no 
+                    paso 2
+            2. Definir fecha, hora y lugar donde se practicará el deporte
+            3. ¿Ha llegado el momento? 
+                si 
+                    paso 4 
+                no 
+                    paso 3
+            4. Estirar tu cuerpo
+            5. Vestirte adecuadamente para ese deporte
+            6. Desplazarte a la zona indicada para ejecutar ese deporte
+            7. Calentar
+            8. Llevar a cabo el deporte  
+        FIN
+        
+        
+        27. Desarrollar un algoritmo que permita cortarse el cabello. 
+            0. ¿Tienes dinero? 
+                no 
+                    muere algoritmo
+                si 
+                    paso 1 
+            1. Solicitar turno con tu barbero de confianza
+            2. ¿Se logró el turno? 
+                si 
+                    paso 3
+                no
+                    paso 1
+            3. Asisitir al turno
+            4. Salir con corte de cabello
+        FIN
+        
+        
+        28. Desarrollar un algoritmo que permita hacer un avión con una hoja de papel.
+        Aquí si me corchó porque no sé hacer aviones de papel xd así que hice trampa y busqué los pasos en internet
+        
+        1. Dobla el papel a la mitad por el lado más largo.
+        2. Vuelve a estirar. Pliega una tira de unos cinco centímetros en la parte superior del folio.
+        3. Gira la tira sobre sí misma seis veces, ocupando alrededor de una tercera parte del papel.
+        4. Vuelve a doblar a la mitad. Lleva los triángulos hacia dentro para crear el morro del avión.
+        5. Haz un ala en cada lado de tu aeroplano para conseguir la forma final.
+        FIN
+        
+        29. Desarrollar un algoritmo que permita manejar una bicicleta.
+        
+            0. Llevar a fuera la bicicleta.
+            1. Mantenerla firme frente a ti.
+            2. Poner la bici entre tus piernas, pasando tu pierna por encima de la bici
+            3. Tener las dos manos en los mangos, 
+            4. Las piernas en el suelo a cada lado de la bici
+            5. Poner un pie sobre el pedal
+            6. Impulsarte con tu otro pie
+            7. Con la velocidad inicial y tu peso, equilibrar la bicicleta
+            8. Pedalear
+            9. Ajustar la velocidad deseada
+            10. Frenar cuando se desee detener
+            11. Poner piernas en el suelo cuando se haya frenado.
+        FIN 
+        
+        
+        30. Desarrollar un algoritmo que permita manejar una motocicleta.
+            1. Tomar las llaves de la motocicleta.
+            0. Llevar a fuera la motocicleta.
+            1. Mantenerla firme frente a ti.
+            2. Poner la moto entre tus piernas, pasando tu pierna por encima de la moto
+            3. Tener las dos manos en los mangos, 
+            4. Las piernas en el suelo a cada lado de la moto
+            5. Prender batería con las llaves
+            5. Poner un pie sobre el pedal
+            6. Arrancar el motor con el pedal
+            7. Acelerar lentamente
+            8. Conducir
+            9. Ajustar la velocidad deseada
+            10. Frenar cuando se desee detener
+            11. Poner piernas en el suelo cuando se haya frenado.
+            FIN 
+        
+        31. Desarrollar un algoritmo que permita manejar un monociclo.
+            0. ¿Tienes amigo hippie?
+                si 
+                    llámalo y pídele que te enseñe a manejar monociclo, fin.
+                no 
+                    paso 1
+            1. Saca el monociclo a la calle
+            2. Siéntate en el monociclo
+            3. Mantén el equilibrio
+            4. ¿Te caíste?
+                sí 
+                    paso 2
+                no 
+                    fin    
+                
+        
+        
+        32. Desarrollar un algoritmo que permita maquillarse.
+            0. Traer el maquillaje que quieres a un espacio con espejo
+            1. Limpiar tu cara
+            2. Tomar 1 maquillaje deseado y prepararlo para su uso
+            3. Aplicar delicadamente sobre el rostro 
+            4. Chequear resultado en el espejo. 
+            5. ¿Te gusta como quedaste?
+                si 
+                    ¿Quieres echarte algo más?
+                        si 
+                            paso 1
+                        no 
+                            paso 5
+                no 
+                    ¿Mucho maquillaje? 
+                        no 
+                            paso 2
+                        si  
+                            paso 1
+            5. Guardar maquillaje usado
+            6. Verte al espejo
+            7. ¡ALV SI QUE ERES COOL!
+        
+        
+        33. Desarrollar un algoritmo que permita hacer un pastel.
+            0. Consultar receta de lo que quieres preparar
+            1. Comprar ingredientes de lo que quieres preparar
+            2. Asear tu área de trabajo
+            3. Seguir la receta 
+            4. Limpiar el área de trabajo
+            5. Servir 
+        FIN
+        
+        
+        34. Desarrollar un algoritmo que permita hacer un almuerzo.
+            0. Consultar receta de lo que quieres preparar
+            1. Comprar ingredientes de lo que quieres preparar
+            2. Asear tu área de trabajo
+            3. Seguir la receta 
+            4. Limpiar el área de trabajo
+            5. Servir 
+            FIN
+        
+        
+        35. Desarrollar un algoritmo que permita adquirir un pantalón.
+            0. Clasificar comercios por productos y gammas de presupuesto
+            0. Definir qué producto se quiere comprar
+            1. Definir cuánto dinero se tiene
+            2. Realizar un presupuesto
+            3. Identificar el lugar correcto para nuestro presupuesto y necesidad
+            4. Desplazarse al lugar en un momento posible
+            5. Realizar las compras
+        Fin
+        
+        
+        36. Desarrollar un algoritmo que permita hacer un mercado pequeño.
+        0. Clasificar comercios por productos y gammas de presupuesto
+        0. Definir qué productos se quiere comprar
+        1. Definir cuánto dinero se tiene
+        2. Realizar un presupuesto
+        3. Identificar el lugar correcto para nuestro presupuesto y necesidad
+        4. Desplazarse al lugar en un momento posible
+        5. Realizar las compras
+        Fin
+        
+        
+        37. Desarrollar un algoritmo que permita leer el periódico.
+            0. Posicionar cualquier objeto leíble frente a los ojos
+            1. Orientar mirada y atención a los signos
+            2. Decodificar los signos 
+            3. Dar sentido a lo leído 
+            4. Comprender lo leído
+            5. ¿Es de valor lo leído?
+                si 
+                    adquirir conocimiento
+                no  
+                    leer sin importancia
+        FIN
+        
+        
+        38. Desarrollar un algoritmo que permita saludar a un amigo.
+            0. Sonreír con la mirada 
+            1. Lenguaje corporal accesible
+            2. Esperar acuerdo tácito 
+            3. Definir nivel de intensidad bajo el acuerdo táctio
+            4. Saludar con x nivel de intensidad
+        Fin
+        
+        
+        39. Desarrollar un algoritmo que permita arrullar a un bebé hasta que se duerma.
+            0. Asentar bebé en los brazos 
+            1. Percibir la atención del bebé con la mirada
+            2. Realizar movimientos y sonidos suaves
+            3. ¿Se durmió?
+                no
+                    paso 1 
+                si 
+                    fin
+        
+        
+        40. Desarrollar un algoritmo que permita hacer un gol en fútbol.
+            0. Posicionar el balón bajo nuestro control cerca de la cancha enemiga
+            1. Hacer tiro certero 
+            2. ¿Realizaste gol?
+                no 
+                    ¿el partido acabó? 
+                        si 
+                            F de fin 
+                        no 
+                            paso 0 
+                si
+                    fin 
+        
+        
+        41. Desarrollar un algoritmo que permita jugar ping-pong.
+            0. Tomar paleta de ping-pong 
+            1. Pararte de uno de los lados de la mesa de ping-pong
+            2. Saludar a tu rival
+            3. Golpear la pelota hacia la dirección de tu rival con tu paleta 
+            4. ¿La golpeaste? 
+                si 
+                    ¿terminó el partido?
+                        si 
+                            Fin.
+                        no 
+                            paso 3
+                    paso 3
+                no 
+                    ¿terminó el partido? 
+                        si 
+                            Fin. 
+                        no  
+                            paso 3 
+            Fin.                        
+             
+        
+        42. Desarrollar un algoritmo que permita nadar.
+            0. Vestirte adecuadamente 
+            1. Estirar 
+            2. Testear agua 
+            3. Zambullirte 
+            4. Fijar límite de la piscina que se quiere alcanzar
+            5. Inclinarse hasta quedar horizontal
+            6. Sacar del agua pie izquierdo y mano derecha 
+            7. Remar 
+            8. Sacar del agua pie derecho y mano izquierda
+            9. Remar 
+            10. 1, 2 con piernas 
+            11. Círculos con los brazos 
+            12. ¿Llegaste al punto deseado? 
+                no 
+                    5 
+                si 
+                    fin 
+        
+        
+        43. Desarrollar un algoritmo que permita tirarse desde un avión con un paracaídas.
+            0. Tirarse del avión
+            1. Disfrutar de la caída 
+            2. Suficiente disfrute.
+            3. ¿Tienes paracaídas? 
+                si 
+                    paso 4
+                no 
+                    paso 5
+            4. Activar paracaídas
+            5. Aterrizar
+            Fin 
+        
+        
+        44. Desarrollar un algoritmo que permita tirarse desde un avión sin un paracaídas.
+            0. Tirarse del avión
+            1. Disfrutar de la caída 
+            2. Suficiente disfrute.
+            3. ¿Tienes paracaídas? 
+                si 
+                    paso 4
+                no 
+                    paso 5
+            4. Activar paracaídas
+            5. Aterrizar
+            Fin 
+        
+        45. Desarrollar un algoritmo que permita descifrar un jeroglífico.
+            0. Posicionar cualquier objeto leíble frente a los ojos
+            1. Orientar mirada y atención a los signos
+            2. Decodificar los signos 
+            3. Dar sentido a lo leído 
+            4. Comprender lo leído (hallar intención o lógica)
+            5. ¿Reconoces algún patrón?
+                si 
+                    paso 6 
+                no 
+                    paso 1
+            6. Alfabetizar 
+            7. Formar ideas coherentes uniendo letras o signos identificados
+            FIN
+        
+        
+        46. Desarrollar un algoritmo que permita amarrase un zapato.
+            0. Tomar una agujeta con cada mano
+            1. Realizar un nudo simple
+            2. Doblar un cordón en forma de pétalo
+            3. Rodear el pétalo en su inicio con el otro cordón
+            4. Pasar pétalo por debajo, en el espacio entre el cordón y el nudo
+            5. Jalar según qué tan apretado se quiera 
+            6. ¿Se amarró el zapato? 
+                no 
+                    paso 0
+                si 
+                    ¿es el primer zapato?
+                        si 
+                            paso 0 
+                        no 
+                            Fin 
+        
+        
+        47. Desarrollar un algoritmo que permita quitarse los zapatos.
+            0. Jalar las puntas de los cordones
+            1. ¿Se deshizo el nudo? 
+                no 
+                    paso 2
+                si 
+                    paso 3 
+            2. Deshacer nudo
+            3. Tomar parte del talón 
+            4. Sacar el pie del zapato
+            5. Repetir proceso con el otro pie-zapato
+            FIN
+        
+        48. Desarrollar un algoritmo que permita silbar.
+            0. Inhala suavemente
+            1. Forma una pequeña O con los labios
+            2. Apoya en el diafragma 
+            3. Empuja el aire a través de la O 
+            4. Filtra la presión del aire para cambiar sonidos 
+            5. Forma melodías
+            FIN
+        
+        49. Desarrollar un algoritmo que permita elevar una cometa.
+            0. Tener una cometa conectada a un rollo de piola
+            1. Salir corriendo  con con cometa en mano
+            2. Soltarla a poca distancia de la piola sin dejar de correr
+            3. Sigue corriendo
+            4. ¿La cometa está en el aire? 
+                no 
+                    paso 3
+                si 
+                    paso 5
+            5. Sueltale piola para que se eleve más a medida que corres más 
+            6. ¿Esta elevada la cometa? 
+                no 
+                    paso 3 
+                si 
+                    Puedes dejar de correr 
+            7. Modifica la altura de la cometa con la cantidad de piola suelta
+            8. Cuando tengas suficiente, recoge toda la piolas
+            FIN
+        
+        
+        50. Desarrollar un algoritmo que permita desarrollar algoritmos.
+        Inicio
+            0. DETERMINA EL OBJETIVO
+                SABER HACIA DÓNDE VAMOS 
+                    DISEÑAR UN INICIO
+                SABER HASTA DÓNDE PODEMOS LLEGAR
+                    DISEÑAR UN FINAL
+            1. ALGORITMO 
+            CAMINO PARA LLEGAR AL OBJETIVO
+                PASOS SECUENCIALES ORDENADOS
+                    TRANSCRIPCIÓN
+                    DIGITACIÓN
+                    COMPILACIÓN 
+                        DETECCIÓN DE ERRORES:
+                        DE SÍNTAXIS
+                        DE PRECAUCIÓN           
+            2. LA PRUEBA DE ESCRITORIO
+                DETECCIÓN DE ERRORES:
+                    DE LÓGICA
+            3. EJECUCIÓN
+            4. VERIFICACIÓN DE RESULTADOS
+                ¿ERROR DE COMPILACIÓN? 
+                    Si
+                        volver a paso 1 
+                    No 
+                        ¿ERROR LÓGICO? 
+                    Si 
+                        ¿EL PROBLEMA PERSISTE? 
+                            NO 
+                                volver a paso 2 
+                            SI 
+                                volver a paso 0    
+                    NO 
+                        DESARROLLO DE ALGORITMO EXITOSO           
+        FIN FINAL FINAL
+        
+        </pre>
+
+    </details>
+
+    <details id="6variables">
+
+        <summary>
+            <h3>6 ejercicios de variables</h3>
+        </summary>
+
+    <table><!--tr fila / td columna-->
+        <tr> 
+            <td>
+
+                1.
+
+
+                a = 10
+                b = 20
+                c = 5
+                a = a + 3
+                b = b + 4 - a
+                c = a + b + c
+                a = a + c
+                b = 4
+                c = c + 3 - b + 2
+
+
+                ¿Qué valores quedan almacenados en las variables a, b y c?
+            </td>
+            <td>
+                <label>ALGORITMO</label>
+                    <iframe src="./variables/1.html" width="550" height="348"></iframe>
+            </td>
+            <td>
+                <label>RESULTADOS</label>
+                <textarea id="1" cols="30" rows="16"></textarea>
+            </td>
+        </tr> 
+            
+            <td>
+
+                2.
+
+                a = 5
+                b = 18
+                c = 15
+                d = 25
+                a = a + 10
+                b = b + 5 – c
+                c = c + 4 + b
+                d = d + b + a
+                a = a + 1
+                b = b + c
+                c = b + c
+                d = b + b
+
+                ¿Qué valores quedan almacenados en las variables a, b, c y d?
+            </td>
+            <td>
+                <label>ALGORITMO</label>
+                <iframe src="./variables/2.html" width="550" height="348"></iframe>
+            </td>
+            <td>
+                <label>RESULTADOS</label>
+                <textarea id="2" cols="30" rows="16"></textarea>
+            </td>
+        <tr>
+
+            <td>
+
+                3.
+
+
+                a = 9
+                b = 6
+                a = a + 4
+                b = b + 2
+                a = a + 10
+                b = b – 25
+                a = a – 20
+                b = b + 5
+                a = a + 4
+                b = b + 2
+                a = a + 10
+                b = b – 10
+
+                ¿Qué valores quedan almacenados en las variables a y b ? 
+            </td>
+            <td>
+                <label>ALGORITMO</label>
+                <iframe src="./variables/3.html" width="550" height="348"></iframe>
+            </td>
+            <td>
+                <label>RESULTADOS</label>
+                <textarea id="3" cols="30" rows="16"></textarea>
+            </td>
+        <tr>
+            <td>
+
+                4.
+
+
+                a = 18
+                b = 18
+                c = 18
+                d = 18
+                a = a + b
+                b = a - b
+                c = a + b
+                d = a - b
+                a = a - b
+                b = a + b
+                c = a - b
+                d = a + b
+
+                ¿Qué valores quedan almacenados en las variables a, b, c y d ?
+            </td>
+            <td>
+                <label>ALGORITMO</label>
+                <iframe src="./variables/4.html" width="550" height="348"></iframe>
+            </td>
+            <td>
+                <label>RESULTADOS</label>
+                <textarea id="4" cols="30" rows="16"></textarea>
+            </td>
+        </tr>    
+        <tr>
+            <td>
+
+
+                5.
+
+
+                a = 10
+                b = 5
+                a = a - 5
+                b = b + 6
+                a = a + 18
+                b = b – 23
+                a = a – 21
+                b = b - 5
+                a = a - 4
+                b = b - 2
+                a = a + 10
+                b = b + 10
+
+                ¿Qué valores quedan almacenados en las variables a y b ?
+            </td>
+            <td>
+                <label>ALGORITMO</label>
+                <iframe src="./variables/5.html" width="550" height="348"></iframe>
+            </td>
+            <td>
+                <label>RESULTADOS</label>
+                <textarea id="5" cols="30" rows="16"></textarea>
+            </td>
+        </tr>
+            <td>
+
+                6.
+
+
+                a = 8
+                b = 7
+                c = 5
+                d = 8
+                a = a + b – c + d
+                b = a + b – c + d
+                c = a + b – c + d
+                d = a + b – c + d
+                a = a + b – c + d
+                b = a + b – c + d
+                c = a + b – c + d
+                d = a + b – c + d
+
+                ¿Qué valores quedan almacenados en las variables a, b c y d ?
+            </td>
+            <td>
+                <label>ALGORITMO</label>
+                <iframe src="./variables/6.html" width="550" height="348"></iframe>
+            </td>
+            <td>
+                <label>RESULTADOS</label>
+                <textarea id="6" cols="30" rows="16"></textarea>
+            </td>
+        </tr>
+    </table>
+
+    </details>
+
+    <details id="20operadores">
+        <summary>
+            <h3>20 ejercicios de operadores</h3>
+        </summary>
+        <div id="title">
+            <center>Todos los siguientes ejercicios deberán desarrollarse utilizando las reglas de la aritmética entera.</center>
+        </div>
+    
+        <pre>
+            1. 
+            
+            a = 10
+            b = 20
+            c = 10
+            a = a + 15
+            b = b + 12
+            c = a * c
+            
+            ¿ Qué valores quedan en las variables a, b y c?
+            
+            
+            2. 
+            
+            a = 3
+            b = 8
+            c = 1
+            a = 5
+            b = 9
+            c = 7
+            a = a + 1
+            b = b + 2
+            c = c + 3
+            
+            ¿Qué valores quedan en las variables a, b y c?
+            
+            
+            3. 
+            
+            a = 10
+            b = 5
+            c = 10
+            a = a + b - 5
+            b = a + b - 5
+            c = a + b - 5
+            a = a + 5 * b / 2
+            b = a + 5 * b / 2
+            c = a + 5 * b / 2
+            
+            ¿Qué valores quedan en las variables a, b y c?
+            
+            
+            4. 
+            
+            a = 5
+            b = 5
+            c = 5
+            a = a + a
+            b = b + b
+            c = c + c
+            a = a + b + c
+            b = a + b + c
+            c = a + b + c
+            
+            ¿Qué valores quedan en las variables a, b y c?
+            
+            
+            5. 
+            
+            a = 10
+            b = 10
+            c = 10
+            a = a + 5
+            b = a + 3
+            c = a + 2
+            a = b + 4
+            b = b + 5
+            c = c + 8
+            
+            ¿Qué valores quedan en las variables a, b y c?
+            
+            
+            6. 
+            
+            a = 10
+            b = 1
+            c = 4
+            a = a + c
+            b = a + c
+            c = a + c
+            a = c + 5
+            b = c + b
+            c = a + b + c
+            
+            ¿Qué valores quedan en las variables a, b y c?
+            
+            
+            7. 
+            
+            a = 1
+            b = 1
+            c = 1
+            a = a + a
+            b = b + a
+            c = c + a
+            a = a + a
+            b = b + a
+            c = c + a
+            
+            ¿Qué valores quedan en las variables a, b y c?
+            
+            
+            8. 
+            
+            a = 10
+            b = 50
+            c = 30
+            a = a – b
+            b = b – c
+            c = c – a
+            a = a – 1
+            b = b – a
+            c = c + a – b
+            
+            ¿Qué valores quedan en las variables a, b y c?
+            
+            
+            9. 
+            
+            a = 1
+            b = 2
+            c = 3
+            a = a + b
+            b = a – b
+            c = a * b
+            a = a – b
+            b = a + b
+            c = a * b
+            
+            ¿Qué valores quedan en las variables a, b y c?
+            
+            
+            10. 
+            
+            a = 1
+            b = 2
+            c = 3
+            a = a + 2
+            b = a + 2 + b
+            c = a + 2 + c
+            a = a / 2
+            b = b / 2
+            c = c / 2
+            
+            ¿Qué valores quedan en las variables a, b y c?
+            
+            
+            <center>“Linealizar” las siguientes expresiones</center>
+            
+            </pre>
+
+    </details>
+<script src=300.js></script>
+</body>
+</html>
+
