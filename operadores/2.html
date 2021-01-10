@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Swiper demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css">
+  <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+  
+  <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Link Swiper's CSS -->
+  <link rel="stylesheet" href="../package/swiper-bundle.min.css">
+
+  <!-- Demo styles -->
+  <style>
+    html,
+    body {
+      position: relative;
+      height: 100%;
+    }
+
+    body {
+      background: rgb(153, 0, 255);
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color: rgb(238, 255, 81);
+      margin: 0;
+      padding: 0;
+    }
+
+    .swiper-container {
+      width: 100%;
+      height: 100%;
+    }
+
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: rgb(0, 0, 0);
+
+      /* Center slide text vertically */
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+    }
+
+    .swiper-pagination-bullet {
+      width: 20px;
+      height: 20px;
+      text-align: center;
+      line-height: 20px;
+      font-size: 12px;
+      color: rgb(196, 194, 108);
+      opacity: 1;
+      background: rgba(126, 126, 126, 0.479);
+    }
+
+    .swiper-pagination-bullet-active {
+      color: #fff;
+      background: #a58a14a2;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Swiper -->
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide"> <img src="./11.png"> </div>
+      <div class="swiper-slide"> <img src="./12.png"> </div>
+      <div class="swiper-slide"> <img src="./13.png"> </div>
+      <div class="swiper-slide"> <img src="./14.png"> </div>
+      <div class="swiper-slide"> <img src="./15.png"> </div>
+      <div class="swiper-slide"> <img src="./16.png"> </div>
+      <div class="swiper-slide"> <img src="./17.png"> </div>
+      <div class="swiper-slide"> <img src="./18.png"> </div>
+      <div class="swiper-slide"> <img src="./19.png"> </div>
+      <div class="swiper-slide"> <img src="./20.png"> </div>
+    </div>
+    <!-- Add Pagination -->
+    <div class="swiper-pagination"></div>
+  </div>
+
+  <!-- Swiper JS -->
+  <script src="../package/swiper-bundle.min.js"></script>
+
+  <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper('.swiper-container', {
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+        renderBullet: function (index, className) {
+          return '<span class="' + className + '">' + (index + 1) + '</span>';
+        },
+      },
+    });
+  </script>
+</body>
+
+</html>
