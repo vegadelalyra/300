@@ -32,16 +32,21 @@ iframe{
     background-color: rgb(25, 53, 73);
 }
 table{
-    margin-left: 5%;
     font-size: larger;
 }
 #title, #title1 {
     margin-top: 4%;
     margin-bottom: 3%;
 }
-th,td{
-    padding: 40px;
+tr,td{
+    padding: 25px;
 }
-#centrarTabla {
+#centrarTabla  {
     margin-left: 23%;
+}
+#centrarTabla2 {
+    margin-left: 10%;
+}
+#seudoCode {
+    font-size: large;
 }

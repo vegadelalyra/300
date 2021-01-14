@@ -316,3 +316,19 @@ x = a + (a+(a+b/c+d))/(a+a/b)
 "20."
 
 x = a + b + c/d + (a/(b-c)/a/(b+c))
+
+
+/* Estructuras del pensamiento humano
+1
+secuencias de acciones
+
+2
+decisión de acción
+
+3
+ciclos de acciones
+
+Toda acción sólo se ejecuta si se cumpla una condición, sea una secuencia, decisión o ciclo de acciones.
+*/
+
+document.getElementsByClassName("one").innerHTML = "asfasasasf"
