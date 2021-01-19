@@ -50,3 +50,6 @@ tr,td{
 #seudoCode {
     font-size: large;
 }
+input{
+    width: 5em;
+}

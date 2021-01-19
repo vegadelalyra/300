@@ -328,7 +328,61 @@ decisión de acción
 3
 ciclos de acciones
 
-Toda acción sólo se ejecuta si se cumpla una condición, sea una secuencia, decisión o ciclo de acciones.
+Toda acción sólo se ejecuta si se cumple una condición, sea una secuencia, decisión o ciclo de acciones.
 */
 
-document.getElementsByClassName("one").innerHTML = "asfasasasf"
+// 50 algoritmos reales
+
+x = 0
+a = 0
+b = 0
+c = 0
+d = 0
+
+//"1. Leer un número entero y determinar si es un número terminado en 4."
+
+function onlyNum(evt)
+{
+    if(window.event){
+        keynum = evt.keyCode;
+    }
+    else{
+        keynum = evt.which;
+    }
+    if((keynum > 47 && keynum < 58) || keynum == 8 || keynum == 13)
+    {
+        return true;
+    }
+    else{
+        alert("Ingresar sólo números");
+        return false;
+    }
+ }
+ 
+ 
+ function result()
+ {
+    var inputValue = document.getElementById("input").value;
+   
+    if((inputValue == 0)){
+        document.getElementById("r1").innerHTML = "";
+    }else{
+        if((inputValue < 10)){
+            if(inputValue == 4){
+                document.getElementById("r1").innerHTML = `aaaaah, ahora sí nos estamos entendiendo, UwU eso sí es un SEÑOR ${inputValue%10}`;
+            }else{
+                document.getElementById("r1").innerHTML = `eso ni siquiera es un 4, es un ${inputValue%10} >:v`;
+            }
+        }else{
+            if((inputValue%10 == 4)){
+                document.getElementById("r1").innerHTML = `${inputValue} termina en 4, obviamente UwU`;
+            }else{
+                document.getElementById("r1").innerHTML = `${inputValue} no termina en 4, termina en ${inputValue%10} >:v`;
+            }
+        }
+    
+    }
+}
+
+
+
