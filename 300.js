@@ -339,8 +339,7 @@ b = 0
 c = 0
 d = 0
 
-//"1. Leer un número entero y determinar si es un número terminado en 4."
-
+//Función para que sólo entren números en el input, carácteres diferentes arrojarán error
 function onlyNum(evt)
 {
     if(window.event){
@@ -348,24 +347,25 @@ function onlyNum(evt)
     }
     else{
         keynum = evt.which;
-    }
-    if((keynum > 47 && keynum < 58) || keynum == 8 || keynum == 13)
+    } 
+    if((keynum > 47 && keynum < 58) || keynum == 8 || keynum == 13 || keynum == 45)
     {
         return true;
-    }
-    else{
-        alert("Ingresar sólo números");
+    }else{
+        alert("Ingresar sólo números enteros positivos");
         return false;
     }
- }
+}
  
- 
+ //"1. Leer un número entero y determinar si es un número terminado en 4."
  function result()
  {
     var inputValue = document.getElementById("input").value;
    
     if((inputValue == 0)){
-        document.getElementById("r1").innerHTML = "";
+      document.getElementById("r1").innerHTML = ""; 
+    }else if((inputValue == "-")){
+      document.getElementById("r1").innerHTML = "";  
     }else{
         if((inputValue < 10)){
             if(inputValue == 4){
@@ -380,9 +380,121 @@ function onlyNum(evt)
                 document.getElementById("r1").innerHTML = `${inputValue} no termina en 4, termina en ${inputValue%10} >:v`;
             }
         }
-    
     }
 }
 
+/*Esta función me permite contar cuántos dígitos tiene cualquier valor
+TAREA: CONVERTIR ESTA FUNCIÓN EN UNA LLAVE UNIVERSAL, VOLVIENDO numValue UN ARREGLO REUTILIZABLE*/
 
+//2. Leer un número entero y determinar si tiene 3 dígitos.
+function result2(){
 
+  var numValue = document.getElementById("input2").value;
+  var digits = parseInt(numValue.length);
+
+  if((numValue == 0)){
+    document.getElementById("r2").innerHTML = "";
+  }else if((numValue == "-")){
+    document.getElementById("r2").innerHTML = "";  
+  }else{
+      if((digits == 3)) {
+        document.getElementById("r2").innerHTML = `${numValue} si que tiene ${digits} dígitos AWIWIIII uwu`;
+      }else{
+          document.getElementById("r2").innerHTML = `nop, ${numValue} no tiene 3 dígitos sino ${digits} >:c`;
+      }
+  }
+}
+
+// 3. Leer un número entero y determinar si es negativo.
+function result3(){
+
+  var value3 = document.getElementById("input3").value;
+  
+  if((value3 == 0)){
+    document.getElementById("r3").innerHTML = "";
+  }else if((value3 == "-")){
+    document.getElementById("r3").innerHTML = ""; 
+  }else{
+    if ((value3 < 0)) {
+      document.getElementById("r3").innerHTML = `${value3} es negativo, efectivamente ;)`;
+    }else {
+      document.getElementById("r3").innerHTML = `¿Podrías dejar de ser tan positivo, ${value3}? Dios...`;
+    }
+  }
+}
+
+//4. Leer un número entero de dos dígitos y determinar a cuánto es igual la suma de sus dígitos.
+function result4(){
+  var n4 = document.getElementById("input4").value;
+
+  if((n4 == 0)){
+    document.getElementById("r4").innerHTML = "";
+  }else if((n4 == "-")){
+    document.getElementById("r4").innerHTML = ""; 
+  }else{
+    if ((n4 < 100 && n4 > 9)) {
+        left = Number.parseInt(n4/10);
+        right = (n4%10);
+        document.getElementById("r4").innerHTML = `${left} y ${right} andaban juntos haciendo el ${n4}, PERO LUEGO SE SEPARARON D: no más para hacer la FUUUSIÓN y sumar ${left+right} UwU`; 
+    }else {
+      if (n4 < 9) {
+      document.getElementById("r4").innerHTML = `Vamos, dame un número MÁS interesante que ${n4}... Dos cabezas piensan mejor que una -guiño guiño ;)-`;
+    } else {
+        document.getElementById("r4").innerHTML = `¡Oye,${n4}!... ¡NO HAY CAMA PA' TANTA GENTEE!`;
+      }
+    }
+  }
+}  
+
+// 5. Leer un número entero de dos dígitos y determinar si ambos dígitos son pares.
+function result5(){
+  var n5 = document.getElementById("input5").value;
+  left = Number.parseInt(n5/10);
+  right = (n5%10);
+
+  if((n5 == 0)){
+    document.getElementById("r5").innerHTML = "";
+  }else if((n5 == "-")){
+    document.getElementById("r5").innerHTML = ""; 
+  }else{
+    if ((n5 < 100 && n5 > 9)) {
+      if ((left%2 == 0 && right%2 == 0)) {
+        document.getElementById("r5").innerHTML = `Qué BONITO es el ${n5}: de dos dígitos y conformado por el ${left} y el ${right}, ambos números par UwU <3`; 
+      }
+      else if((left%2 == 0)){
+        document.getElementById("r5").innerHTML = `${n5} tiene dos dígitos, ¡qué guapo! Lástima que sólo su ${left} sea par, mientras el cabezón de ${right} es un impar feo ahí >:c`;
+      }
+      else if ((right%2 == 0)) {
+        document.getElementById("r5").innerHTML = `${n5} tiene dos dígitos, bien ahí. Pero el ${left} es impar mientras que el ${right} es par, como obviamente ves... Y eso así no me sirve, o todo o nada, humano D:<`;
+      }
+      else{
+        document.getElementById("r5").innerHTML = `¡Dos dígitos tiene el ${n5}! Lo aceptaría en mis filas...Pero el ${left} y el ${right} son impares y no puedo permitir esto. Perdóname, niñita.`; 
+      }
+    }
+    else {
+      if (n5 < 9) {
+        if ((n5%2 == 0)) {
+          document.getElementById("r5").innerHTML = `Vamos, ${n5}, ¡que eres par! Consíguete una buena pareja para el baile, chiquilín ;)`;
+        }
+        else{
+          document.getElementById("r5").innerHTML = `¡La perfección no existee! Eres hermoso como eres, ${n5}, con to'as tus imperfecciones lograrás lo que quieras... Te lo juro por Dieguito Maradonna :'D`;
+        }
+      }
+      else {
+        if ((n5%2 == 0)) {
+          document.getElementById("r5").innerHTML = `Uuuy, ${n5} ¡casi logras pasar!... ¡No más no cabes por esos kilitos extra, señorit@ par!`;
+        } else {
+          document.getElementById("r5").innerHTML = `Palo que crece torcido, jamás endereza... ${n5} ¡'tas bien grande y aparte bien impar! F por ti.`;
+        }
+      }
+    }
+  }
+}  
+
+//6. Leer un número entero de dos dígitos menor que 20 y determinar si es primo.
+//function result6(){}
+
+//7. Leer un número entero de dos dígitos y determinar si es primo y además si es negativo.
+//8. Leer un número entero de dos dígitos y determinar si sus dos dígitos son primos.
+//9. Leer un número entero de dos dígitos y determinar si un dígito es múltiplo del otro.
+//10. Leer un número entero de dos dígitos y determinar si los dos dígitos son iguales.
