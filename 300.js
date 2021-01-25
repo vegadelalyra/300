@@ -348,11 +348,11 @@ function onlyNum(evt)
     else{
         keynum = evt.which;
     } 
-    if((keynum > 47 && keynum < 58) || keynum == 8 || keynum == 13 || keynum == 45)
+    if((keynum > 47 /*0*/ && keynum < 58 /*9*/) || keynum == 8 /* tecla borrar*/ || keynum == 13 /*enter*/  || keynum == 45 /*signo menos*/)
     {
         return true;
     }else{
-        alert("Ingresar sólo números enteros positivos");
+        alert("Ingresar sólo números enteros");
         return false;
     }
 }
@@ -492,9 +492,115 @@ function result5(){
 }  
 
 //6. Leer un número entero de dos dígitos menor que 20 y determinar si es primo.
-//function result6(){}
 
+//PRIMERA PROPUESTA DE ESTRUCTURA DE CASOS PARA NÚMEROS PRIMOS
+/*function prime(){
+
+  let z;
+  const two = z%2;
+  const three = z%3;
+  const five = z%5;
+  const seven = z%7;
+  
+  
+  if (two != 0 && three != 0 && five!= 0 && seven != 0) {
+      document.getElementById("r6").innerHTML = `El señor ${z} es un número primo divisible sólo por 1 y por ${z} (por si mismo)`;
+  } 
+  else {   
+      if (two == 0) {
+          if (z == 2){
+              document.getElementById("r6").innerHTML = `Eso es un ${z} y por supuesto que es primo, ya que sólo puedes dividirlo por 1 y por ${z} uwu`;
+          }
+          else{
+              document.getElementById("r6").innerHTML = `El señor ${z} es un número par no primo`;
+          } 
+      }
+      else if(three == 0) {
+          if (z == 3) {
+              document.getElementById("r6").innerHTML = `Eso es un ${z} y por supuesto que es primo, ya que sólo puedes dividirlo por 1 y por ${z} uwu`;       
+          } 
+          else {
+              document.getElementById("r6").innerHTML = `El señor ${z} es un número impar no primo, ya que es por lo menos múltiplo de 3`;
+          }
+      }
+      else if(five == 0) {
+          if (z == 5) {
+              document.getElementById("r6").innerHTML = `Eso es un ${z} y por supuesto que es primo, ya que sólo puedes dividirlo por 1 y por ${z} uwu`;       
+          } 
+          else {      
+              document.getElementById("r6").innerHTML = `El señor ${z} es un número no primo ya que es por lo menos múltiplo de 5`;
+          }
+      }
+      else if(seven == 0) {
+          if (z == 7) {
+              document.getElementById("r6").innerHTML = `Eso es un ${z} y por supuesto que es primo, ya que sólo puedes dividirlo por 1 y por ${z} uwu`;
+          } 
+          else {
+              document.getElementById("r6").innerHTML = `El señor ${z} es un número no primo ya que es por lo menos múltiplo de 7`;
+          }
+          }
+  }
+  
+}*/
+
+//EJERCICIO 6
+function result6(){
+
+    let n6 = document.getElementById("input6").value;
+    const two = n6%2;
+    const three = n6%3;
+    const five = n6%5;
+    const seven = n6%7;
+    
+  if ((n6 == 0)) {
+    document.getElementById("r6").innerHTML = "";
+  }else if((n6 == "-")){
+    document.getElementById("r6").innerHTML = ""; 
+  } else {
+     //Aquí se evalúan números primos
+     if (two != 0 && three != 0 && five!= 0 && seven != 0) {
+      if (n6 == 1){
+        document.getElementById("r6").innerHTML = `El ${n6} no tiene dos dígitos, aún así, es menor que 20. El ${n6} no se considera un número primo`;
+      }
+      else { 
+        if (9 < n6 < 100 ) {
+          if (n6 < 20) {
+            document.getElementById("r6").innerHTML = `El ${n6} CUMPLE LAS TRES CONDICIONES: ¡de dos dígitos, menor que 20 y primo! :D`;
+          } 
+          else {
+            document.getElementById("r6").innerHTML = `El ${n6} es un número PRIMO y de dos dígitos :D, pero es mayor que 20 :c ...Casi lo logramos`;
+          }
+        }
+      }
+    } 
+    else {
+      if (n6 == 2 || n6 == 3 || n6 == 5 || n6 == 7) {
+        document.getElementById("r6").innerHTML = `Eso es un ${n6} y por supuesto que es primo y menor que 20 uwu pero no tiene 2 dígitos así que F :C`;
+      }
+//Aquí se evalúan números no primos  
+      else {
+        if (n6 >= 100) {
+          document.getElementById("r6").innerHTML = `Si sabes que el 97 es el último número primo, ¿no? Además... Solo necesito 2 dígitos, borra eso >:c`;
+          }
+        else if (n6 < 20 && n6 > 9){
+            document.getElementById("r6").innerHTML = `Eso es un ${n6} y por supuesto que tiene 2 dígitos y es menor a 20 uwu pero no es primo así que F :C`; 
+          }      
+        else if (n6 <= 9) {
+            document.getElementById("r6").innerHTML = `Aunque ${n6} es menor a 20, no cuenta con dos dígitos...Y de todas maneras no es primo, recontra F`;       
+          }
+        else {
+            document.getElementById("r6").innerHTML = `El ${n6} tiene dos dígitos pero es mayor a 20... Y de todas maneras, no es primo, PA'FUERA >:v`;       
+          }
+      }
+    }
+  }
+}
+   
 //7. Leer un número entero de dos dígitos y determinar si es primo y además si es negativo.
+function result7(){
+  
+}
+
 //8. Leer un número entero de dos dígitos y determinar si sus dos dígitos son primos.
 //9. Leer un número entero de dos dígitos y determinar si un dígito es múltiplo del otro.
 //10. Leer un número entero de dos dígitos y determinar si los dos dígitos son iguales.
