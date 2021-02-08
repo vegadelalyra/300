@@ -1369,59 +1369,59 @@ function result20(){
 }
 
 // 21. Leer tres números enteros de dos dígitos cada uno y determinar en cuál de ellos se encuentra el mayor dígito.
-function result°(){
-  var n° = document.getElementById("input°").value;
-  var n°b = document.getElementById("input°b").value;
-  var n°c = document.getElementById("input°c").value;
-  var length = (n°<0)? (n°.length)-1:n°.length;
+// function result°(){
+//   var n° = document.getElementById("input°").value;
+//   var n°b = document.getElementById("input°b").value;
+//   var n°c = document.getElementById("input°c").value;
+//   var length = (n°<0)? (n°.length)-1:n°.length;
   
   
-  if ((n20 == 0 && n20b == 0 && n20c == 0)) {
-    document.getElementById("r20").innerHTML = ``;
+//   if ((n20 == 0 && n20b == 0 && n20c == 0)) {
+//     document.getElementById("r20").innerHTML = ``;
 
-  }
-  else if((n20 == "-" && n20b == "-" && n20c == "-")){
-    document.getElementById("r20").innerHTML = ``; 
-  }
- //Generamos una estructura de casos aplicable para ejercicios de 3 cifras 
-  else {
-    if (n20c == 0) {
-      if (n20 != 0 && n20b != 0) {
-        document.getElementById("r20").innerHTML = `Okay, un ${n20} y un ${n20b}. Pero ponme un número en el otro cuadro también >:c`;
-      }
-      else{
-        document.getElementById("r20").innerHTML = `Okay, un ${n20}${n20b}. Pero ponme un número en los otros dos cuadros también >:c`;
-      }
-    }
-    else {
-      if (n20 == 0 && n20b == 0) {
-        document.getElementById("r20").innerHTML = `Okay, un ${n20c}. Pero ponme un número en los otros dos cuadros también >:c`;
-      }
-      else if (n20 == 0 || n20b == 0) {
-        document.getElementById("r20").innerHTML = `Okay, un ${n20c} y un ${n20}${n20b}. Pero ponme un número en el otro cuadro también >:c`;
-      }
-      else{
-        switch (length) {
-          case 1:
-            document.getElementById("r°").innerHTML = ``; 
-            break;
+//   }
+//   else if((n20 == "-" && n20b == "-" && n20c == "-")){
+//     document.getElementById("r20").innerHTML = ``; 
+//   }
+//  //Generamos una estructura de casos aplicable para ejercicios de 3 cifras 
+//   else {
+//     if (n20c == 0) {
+//       if (n20 != 0 && n20b != 0) {
+//         document.getElementById("r20").innerHTML = `Okay, un ${n20} y un ${n20b}. Pero ponme un número en el otro cuadro también >:c`;
+//       }
+//       else{
+//         document.getElementById("r20").innerHTML = `Okay, un ${n20}${n20b}. Pero ponme un número en los otros dos cuadros también >:c`;
+//       }
+//     }
+//     else {
+//       if (n20 == 0 && n20b == 0) {
+//         document.getElementById("r20").innerHTML = `Okay, un ${n20c}. Pero ponme un número en los otros dos cuadros también >:c`;
+//       }
+//       else if (n20 == 0 || n20b == 0) {
+//         document.getElementById("r20").innerHTML = `Okay, un ${n20c} y un ${n20}${n20b}. Pero ponme un número en el otro cuadro también >:c`;
+//       }
+//       else{
+//         switch (length) {
+//           case 1:
+//             document.getElementById("r°").innerHTML = ``; 
+//             break;
             
-          case 2:
-            document.getElementById("r°").innerHTML = ``; 
-            break;
+//           case 2:
+//             document.getElementById("r°").innerHTML = ``; 
+//             break;
               
-          case 3:
-            document.getElementById("r°").innerHTML = ``; 
-            break;
+//           case 3:
+//             document.getElementById("r°").innerHTML = ``; 
+//             break;
             
-          default:
-            document.getElementById("r°").innerHTML = ``; 
-            break;
-        }
-      }
-    }  
-  }
-}
+//           default:
+//             document.getElementById("r°").innerHTML = ``; 
+//             break;
+//         }
+//       }
+//     }  
+//   }
+// }
 
 // 22. Leer un número entero de tres dígitos y determinar si el primer dígito es igual al último.
 // 23. Leer un número entero de tres dígitos y determinar cuántos dígitos primos tiene.
