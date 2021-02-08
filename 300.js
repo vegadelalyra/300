@@ -358,8 +358,7 @@ function onlyNum(evt)
 }
  
  //"1. Leer un número entero y determinar si es un número terminado en 4."
- function result()
- {
+ function result(){
     var inputValue = document.getElementById("input").value;
    
     if((inputValue == 0)){
@@ -367,19 +366,22 @@ function onlyNum(evt)
     }else if((inputValue == "-")){
       document.getElementById("r1").innerHTML = "";  
     }else{
-        if((inputValue < 10)){
-            if(inputValue == 4){
-                document.getElementById("r1").innerHTML = `aaaaah, ahora sí nos estamos entendiendo, UwU eso sí es un SEÑOR ${inputValue%10}`;
-            }else{
-                document.getElementById("r1").innerHTML = `eso ni siquiera es un 4, es un ${inputValue%10} >:v`;
-            }
-        }else{
-            if((inputValue%10 == 4)){
-                document.getElementById("r1").innerHTML = `${inputValue} termina en 4, obviamente UwU`;
-            }else{
-                document.getElementById("r1").innerHTML = `${inputValue} no termina en 4, termina en ${inputValue%10} >:v`;
-            }
+      if(inputValue%10 == 4 || inputValue%10 == -4) {
+        if(inputValue < 10 && inputValue >=-4){
+          if(inputValue == 4 || inputValue == -4){
+            document.getElementById("r1").innerHTML = `aaaaah, ahora sí nos estamos entendiendo, UwU eso sí es un SEÑOR ${inputValue%10}`;
+          }
+          else{ 
+          document.getElementById("r1").innerHTML = `eso ni siquiera es un 4, es un ${inputValue%10} >:v`;
+          }
         }
+        else{
+          document.getElementById("r1").innerHTML = `${inputValue} termina en 4, obviamente UwU`;
+        }
+      }
+      else{
+        document.getElementById("r1").innerHTML = `${inputValue} no termina en 4, termina en ${inputValue%10} >:v`;
+      }
     }
 }
 
@@ -390,17 +392,17 @@ TAREA: CONVERTIR ESTA FUNCIÓN EN UNA LLAVE UNIVERSAL, VOLVIENDO numValue UN ARR
 function result2(){
 
   var numValue = document.getElementById("input2").value;
-  var digits = parseInt(numValue.length);
+  var length = (numValue<0)? (numValue.length)-1:numValue.length;
 
   if((numValue == 0)){
     document.getElementById("r2").innerHTML = "";
   }else if((numValue == "-")){
     document.getElementById("r2").innerHTML = "";  
   }else{
-      if((digits == 3)) {
-        document.getElementById("r2").innerHTML = `${numValue} si que tiene ${digits} dígitos AWIWIIII uwu`;
+      if((length == 3)) {
+        document.getElementById("r2").innerHTML = `${numValue} si que tiene ${length} dígitos AWIWIIII uwu`;
       }else{
-          document.getElementById("r2").innerHTML = `nop, ${numValue} no tiene 3 dígitos sino ${digits} >:c`;
+          document.getElementById("r2").innerHTML = `nop, ${numValue} no tiene 3 dígitos sino ${length} >:c`;
       }
   }
 }
@@ -563,24 +565,30 @@ function result6(){
         document.getElementById("r6").innerHTML = `El ${n6} no tiene dos dígitos, aún así, es menor que 20. El ${n6} no se considera un número primo`;
       }
       else { 
-        if (9 < n6 < 100 ) {
-          if (n6 < 20) {
+        if (n6 < 100) {
+          if (n6 < 20 && n6 >= -99) {
             document.getElementById("r6").innerHTML = `El ${n6} CUMPLE LAS TRES CONDICIONES: ¡de dos dígitos, menor que 20 y primo! :D`;
           } 
+          else if ( n6 < -99 ) {
+            document.getElementById("r6").innerHTML = `El ${n6} es primo y menor que 20 pero ya tiene demasiados dígitos :(`;
+          }
           else {
             document.getElementById("r6").innerHTML = `El ${n6} es un número PRIMO y de dos dígitos :D, pero es mayor que 20 :c ...Casi lo logramos`;
           }
         }
+        else {
+          document.getElementById("r6").innerHTML = `${n6} es un número PRIMO, bien ahí... Pero es mayor que 20 y de más de dos dígitos. F`;
+        }
       }
     } 
     else {
-      if (n6 == 2 || n6 == 3 || n6 == 5 || n6 == 7) {
+      if (n6 == 2 || n6 == 3 || n6 == 5 || n6 == 7 || n6 == -2 || n6 == -3 || n6 == -5 || n6 == -7) {
         document.getElementById("r6").innerHTML = `Eso es un ${n6} y por supuesto que es primo y menor que 20 uwu pero no tiene 2 dígitos así que F :C`;
       }
 //Aquí se evalúan números no primos  
       else {
-        if (n6 >= 100) {
-          document.getElementById("r6").innerHTML = `Si sabes que el 97 es el último número primo, ¿no? Además... Solo necesito 2 dígitos, borra eso >:c`;
+        if (n6 >= 100 || n6 <= -100) {
+          document.getElementById("r6").innerHTML = `${n6} no es primo y ya tiene demasiados dígitos...Solo necesito 2 dígitos y ojalá un número menor a 20, borra eso >:c`;
           }
         else if (n6 < 20 && n6 > 9){
             document.getElementById("r6").innerHTML = `Eso es un ${n6} y por supuesto que tiene 2 dígitos y es menor a 20 uwu pero no es primo así que F :C`; 
@@ -595,12 +603,832 @@ function result6(){
     }
   }
 }
-   
+
 //7. Leer un número entero de dos dígitos y determinar si es primo y además si es negativo.
 function result7(){
+
+  let n7 = document.getElementById("input7").value;
+  const two = n7%2;
+  const three = n7%3;
+  const five = n7%5;
+  const seven = n7%7;
   
+  if ((n7 == 0)) {
+    document.getElementById("r7").innerHTML = "";
+  }else if((n7 == "-")){
+    document.getElementById("r7").innerHTML = ""; 
+  } else {
+    //Aquí se evalúan números primos
+    if (two != 0 && three != 0 && five!= 0 && seven != 0) {
+      if (n7 == 1){
+        document.getElementById("r7").innerHTML = `El ${n7} no tiene dos dígitos y es positivo. El ${n7} no se considera un número primo`;
+      }
+      else if (n7 >= 100 || n7 <= -100) {
+        document.getElementById("r7").innerHTML = `${n7} es primo pero ya tiene demasiados dígitos, humano, necesito sólo 2... Y si es negativo, mejor >:c`;
+      }
+      else { 
+        if (n7 < -9) {
+            document.getElementById("r7").innerHTML = `El ${n7} CUMPLE LAS TRES CONDICIONES: ¡DOS DÍGITOS, PRIMO & NEGATIVO! :D`;
+          } 
+          else if (n7 < 0 && n7 >= -9) {
+          document.getElementById("r7").innerHTML = `${n7} es negativo y primo... Pero le falta un dígito T-T`;
+        }
+        else {
+            document.getElementById("r7").innerHTML = `El ${n7} es un número PRIMO y de dos dígitos :D, pero es positivo :c ...Casi lo logramos`;
+          }
+        }
+      } 
+    else {
+      if (n7 == 2 || n7 == 3 || n7 == 5 || n7 == 7) {
+        document.getElementById("r7").innerHTML = `Eso es un ${n7} y por supuesto que es primo uwu pero ni tiene 2 dígitos ni es negativo así que F :C`;
+      }
+      else if(n7 == -2 || n7 == -3 || n7 == -5 || n7 == -7){
+        document.getElementById("r7").innerHTML = `Eso es un ${n7}...¡Y es primo y negativo! pero le falta un dígito :C casi, casi`;
+      }
+  //Aquí se evalúan números no primos  
+      else {
+        if (n7 >= 100 || n7 <= -100) {
+          document.getElementById("r7").innerHTML = `${n7} ya está muy grande y francamente yo solo necesito 2 dígitos y ojalá un número negativo... De todas maneras ${n7} ni siquiera es primo`;
+          }      
+        else if (n7 <= 9 && n7 > 0) {
+            document.getElementById("r7").innerHTML = `${n7} no cuenta con dos dígitos ni es negativo...Y de todas maneras no es primo, recontra F`;       
+          }
+        else if (n7 < 0 && n7 > -10) {
+            document.getElementById("r7").innerHTML = `${n7} es negativo pero no cuenta con dos dígitos ni es primo... Tú sigue bajándole e.e`;       
+          }
+        else {
+            document.getElementById("r7").innerHTML = `El ${n7} es negativo y tiene dos dígitos.. Pero no es primo, TIBIO, TIBIO`;       
+          }
+    }
+  }
 }
+}  
 
 //8. Leer un número entero de dos dígitos y determinar si sus dos dígitos son primos.
+function result8(){
+
+    let n8 = document.getElementById("input8").value;
+    let left = Number.parseInt( n8 / 10 );
+    let right = n8%10;
+
+  if ((n8 == 0)) {
+    document.getElementById("r8").innerHTML = "";
+  }else if((n8 == "-")){
+    document.getElementById("r8").innerHTML = ""; 
+  }else {
+    if ( n8 > 9 && n8 < 100 ) {
+      if (left == 2 || left == 3 || left == 5 || left == 7) {
+        if (right == 2 || right == 3 || right == 5 || right == 7) {
+          if ( right == left ) {
+            document.getElementById("r8").innerHTML = `El ${n8} es el ${left} dos veces seguidas.... Y ADIVINA QUÉ. EL ${right} ES UN NÚMERO PRIMO WOOHOOO :D ${n8} está conformado por un número primoo`;
+          }
+          else { 
+           document.getElementById("r8").innerHTML = `Cuando separas al ${n8} obtienes al ${left} y al ${right}. Lo bonito de esta relación es... QUE AMBOS, ${left} & ${right} SON NÚMEROS PRIMOS :D`;
+          }
+        }   
+        else {
+          document.getElementById("r8").innerHTML = `El ${left} y el ${right} forman el  ${n8}; ¡EL ${left} ES PRIMO, SIN EMBARGO, EL ${right} ÑO!`;
+        }
+      }
+      else{
+        if (right == 2 || right == 3 || right == 5 || right == 7) {
+          document.getElementById("r8").innerHTML = `El ${n8} está formado por el ${left} y el ${right}. ¡${left} NO ES PRIMO, PERO EL ${right} SÍ!`;
+        }
+        else {
+          if ( right == left ) {
+            document.getElementById("r8").innerHTML = `El ${n8} es el ${left} dos veces seguidas y lamentablemente... EL ${right} NO ES UN NÚMERO PRIMO, doble F por ti, ${n8}`; 
+          }
+          else {
+            document.getElementById("r8").innerHTML = `El ${n8} está conformado por dos números NO PRIMOS. NI ${left} NI ${right} SON PRIMOS, dame otro número.`;
+          }
+        }
+      }
+    } 
+    else if ( n8 > -100 && n8 < -9 ) {
+        if (left == -2 || left == -3 || left == -5 || left == -7) {
+          if (right == -2 || right == -3 || right == -5 || right == -7) {
+            if ( right == left ) {
+              document.getElementById("r8").innerHTML = `El ${n8} es el ${left} dos veces seguidas.... Y ADIVINA QUÉ. EL ${right} ES UN NÚMERO PRIMO WOOHOOO :D ${n8} está conformado por un número primoo`;
+            } 
+            else {
+              document.getElementById("r8").innerHTML = `Cuando separas al ${n8} obtienes al ${left} y al ${right}. Lo bonito de esta relación es... QUE AMBOS, ${left} & ${right} SON NÚMEROS PRIMOS :D`;
+            }
+          } 
+          else {
+            document.getElementById("r8").innerHTML = `El ${left} y el ${right} forman el  ${r8}; ¡EL ${left} ES PRIMO, SIN EMBARGO, EL ${right} ÑO`;
+          }
+        }
+        else{
+          if (right == -2 || right == -3 || right == -5 || right == -7) {
+            document.getElementById("r8").innerHTML = `El ${n8} está formado por el ${left} y el ${right}. ¡EL ${left} NO ES PRIMO, EL ${right} SÍ!`;
+          }
+          else {
+            if ( right == left ) {
+              document.getElementById("r8").innerHTML = `El ${n8} es el ${left} dos veces seguidas y lamentablemente... EL ${right} NO ES UN NÚMERO PRIMO, doble F por ti, ${n8}`;
+            } else { 
+              document.getElementById("r8").innerHTML = `El ${n8} está conformado por dos números NO PRIMOS. NI ${left} NI ${right} SON PRIMOS, dame otro número.`;
+            }
+          }
+        }
+    }
+    else {
+      if ( n8 <= 9 || n8 >= 100 ) {
+          document.getElementById("r8").innerHTML = `Por favor ingresa un número de dos dígitos, ${n8} tiene como ${n8.length} >:c`;
+      }
+    }       
+  } 
+}
+
 //9. Leer un número entero de dos dígitos y determinar si un dígito es múltiplo del otro.
+function result9(){
+  
+  var n9 = document.getElementById("input9").value;
+  var left = Number.parseInt( n9 / 10 );
+  var right = ( n9 % 10 );
+
+  if ((n9 == 0)) {
+    document.getElementById("r9").innerHTML = "";
+  }
+  else if((n9 == "-")){
+    document.getElementById("r9").innerHTML = ""; 
+  }
+  else {
+    if ((n9 > 9 && n9 < 100) || (n9 < -9 && n9 > -100) ) {
+      if (left == right) {
+        document.getElementById("r9").innerHTML = `Eso es un ${n9} y es curioso pues son dos ${left} puestos sucesivamente, y claramente, todo número es múltiplo de si mismo, ya que 1 x ${right} pues te dará ${left} UwU`; 
+      } 
+      else if (( left % right == 0 )) {
+        document.getElementById("r9").innerHTML = `El ${n9} es la fusión del ${left} y del ${right}, lo genial es que EL ${right} NO ES MÚLTIPLO DEL ${left} PERO EL ${left} SI ES MÚLTIPLO DEL ${right}, ya que si multiplicas ${right} por ${left/right}, te dará ${left}, cool, ¿no? UwU`; 
+      } 
+      else if (( right % left == 0 )) {
+        document.getElementById("r9").innerHTML = `Ay, con el ${n9}, el resultado de un ${left} llevando un ${right}...Lo curioso es que EL ${right} ES MÚLTIPLO DEL ${left}, ya que si sumas ${right/left} veces el ${left}, te dará ${right} uwu`; 
+      }
+      else {
+        document.getElementById("r9").innerHTML = `Al ${n9} lo obtienes pegando a lado y lado el ${left} y el ${right} pero lamentablemente, ni el ${left} es múltiplo del ${right} ni viceversa :C ¡intenta con números diferentes!`; 
+      }
+    }
+    else {
+      document.getElementById("r9").innerHTML = `${n9} no tiene 2 dígitos, tiene, emm... Espera cuento... ¡TIENE COMO ${n9.length}! ...Necesito un número con dos dígitos, así sea negativo >:c`; 
+    }
+  }
+}
+
 //10. Leer un número entero de dos dígitos y determinar si los dos dígitos son iguales.
+function result10(){
+
+  var n10 = document.getElementById("input10").value;
+  var left = Number.parseInt( n10 / 10 );
+  var right = ( n10 % 10 );
+
+  if ((n10 == 0)) {
+    document.getElementById("r10").innerHTML = "";
+  }
+  else if((n10 == "-")){
+    document.getElementById("r10").innerHTML = ""; 
+  }
+  else {
+    if ((n10 > 9 && n10 < 100) || (n10 < -9 && n10 > -100)) {
+      if ( left == right ) {
+        document.getElementById("r10").innerHTML = `${n10} está conformado por EL MISMO NÚMERO REPETIDO DOS VECES :D el ${left}, venga, esa fue fácil. SIGUIENTE `; 
+      }
+      else {
+        document.getElementById("r10").innerHTML = `${n10} es la fuuusión del ${left} y del ${right}, NÚMEROS QUE SON DIFERENTE, obviamente...¿Qué no ves? >:v`; 
+      }
+    } 
+    else {   
+      document.getElementById("r10").innerHTML = `Oshe, el ejercicio dice un número de DOS dígitos, ¿para qué pones entonces ${n10.length}?`; 
+    }
+  }
+}
+
+// 11. Leer dos números enteros y determinar cuál es el mayor.
+function result11(){
+
+  var n11 = document.getElementById("input11").value;
+  var n11b = document.getElementById("input11b").value;
+  var max = Math.max(n11,n11b);
+
+  if ((n11 == 0 && n11b == 0)) {
+    document.getElementById("r11").innerHTML = "";
+  }
+  else if((n11 == "-" && n11b == "-")){
+    document.getElementById("r11").innerHTML = ""; 
+  }
+  else {
+    if  ((n11 == 0 || n11b == 0)) {
+      document.getElementById("r11").innerHTML = `Okay, un ${n11}${n11b}. Pero ponme un número en el otro cuadro también >:c`; 
+    }
+    else{
+      if (n11 == n11b) {
+        document.getElementById("r11").innerHTML = `¡Los números dados son iguales!`; 
+      }
+      else{
+          document.getElementById("r11").innerHTML = `${max} es mayor uwu`; 
+      }
+    }
+  }
+} 
+
+// 12. Leer dos números enteros de dos dígitos y determinar si tienen dígitos comunes. ESTA SI QUE ME COSTÓ xd PERO FUE FASCI``TE RESOLVERLA
+function result12(){
+
+    var n12 = document.getElementById("input12").value;
+    var n12b= document.getElementById("input12b").value;
+    var arr = Array.from(String(n12), Number);
+    var arrB = Array.from(String(n12b), Number);
+    var length = ( n12 < 0 )? `${(n12.length)-1}`:`${n12.length}`;
+    var lengthB = ( n12b < 0 )? `${(n12b.length)-1}`:`${n12b.length}`;
+    
+    var scanCommon = arr.filter(x=>arrB.includes(x));
+    var deleteRepeated = scanCommon.filter((value, index, array)=>array.indexOf(value) === index);
+    var commonDigits = deleteRepeated.sort();
+    
+
+    if ((n12 == 0 && n12b == 0)) {
+      document.getElementById("r12").innerHTML = "";
+    }
+    else if((n12 == "-" && n12b == "-")){
+      document.getElementById("r12").innerHTML = ""; 
+    }
+    else {
+      if (n12 == 0 || n12b == 0) {
+        document.getElementById("r12").innerHTML = `Okay, un ${n12}${n12b}. Pero ponme un número en el otro cuadro también >:c `;
+      } 
+      else{
+        if(((n12<100&&n12>9)||(n12<-9&&n12>-100)) && ((n12b<100&&n12b>9)||(n12b<-9&&n12b>-100))){
+          if(scanCommon == 0){
+            document.getElementById("r12").innerHTML = `Los números ${n12} y ${n12b} tienen ${length} dígitos :D <br> pero no tienen dígitos en común :(`;
+          }
+          else{
+            document.getElementById("r12").innerHTML = `DÍGITOS EN COMÚN ENTRE EL ${n12} Y EL ${n12b}: ${commonDigits} uwu<br>y ambos tienen dos dígitos :D<br>(si supieran cómo me costó programar esta bobaditaxd)`;
+          }
+        }
+        else{
+          if (scanCommon == 0) {       
+            document.getElementById("r12").innerHTML = `Sería cool que ambos números tuvieran 2 dígitos<br>El ${n12} tiene ${length} mientras que ${n12b} cuenta con ${lengthB}<br>Igual el ${n12} y el ${n12b} no tienen dígitos en común :C`;
+          } else {
+            document.getElementById("r12").innerHTML = `El ejercicio pide números de dos dígitos, pero que igual te lo calculo :D <br>VALORES DE DÍGITOS EN COMÚN: ${commonDigits} uwu<br>(si supieran cómo me costó programar esta bobaditaxd)`;
+          }
+        }
+      }
+    }
+}
+
+// 13. Leer dos números enteros de dos dígitos y determinar si la suma de los dos números origina un número par.
+function result13() {
+  var n13 = document.getElementById("input13").value;
+  var n13b = document.getElementById("input13b").value;
+  var aux = n13;
+  var auxb = n13b;
+  var auxx = Number.parseInt(aux);
+  var auxxb = Number.parseInt(auxb);
+  var summy = auxx + auxxb;
+  var summyPair = summy%2;
+
+  if ((n13 == 0 && n13b == 0)) {
+    document.getElementById("r13").innerHTML = "";
+  }
+  else if((n13 == "-" && n13b == "-")){
+    document.getElementById("r13").innerHTML = ""; 
+  }
+  else {
+    if (n13 == 0 || n13b == 0) {
+      document.getElementById("r13").innerHTML = `Okay, un ${n13}${n13b}. Pero ponme un número en el otro cuadro también >:c`;
+    } 
+    else{
+      if ( (summyPair == 0) && (summy != 0) ) {
+        if ((n13 > 9 && n13 < 100) || (n13 < -9 && n13 > -100)) {
+          if ((n13b > 9 && n13b < 100) || (n13b < -9 && n13b > -100)) {
+            document.getElementById("r13").innerHTML = `LA SUMA DE LOS DOS NÚMEROS TE DA ${summy} Y ES PAR :D<br>Y AMBOS NÚMEROS SON DE DOS DÍGITOS :D`;
+          } 
+          else {
+            document.getElementById("r13").innerHTML = `LA SUMA DE LOS DOS NÚMEROS TE DA ${summy} Y ES PAR :D<br>El número ${n13} tiene dos dígitos, pero el ${n13b} ño`;
+          }
+        }
+        else{
+          if ((n13b > 9 && n13b < 100) || (n13b < -9 && n13b > -100)) {
+            document.getElementById("r13").innerHTML = `LA SUMA DE LOS DOS NÚMEROS TE DA ${summy} Y ES PAR :D<br>Pero el ${n13} no tiene dígitos, mientras que el ${n13b} sí`;
+          } 
+          else {
+            document.getElementById("r13").innerHTML = `LA SUMA DE LOS DOS NÚMEROS TE DA ${summy} Y ES PAR:D <br>Pero ninguno de los dos números, ni el ${n13} ni el ${n13b} tiene dos dígitos`;
+          }
+        }
+      }   
+      else {
+        if ((n13 > 9 && n13 < 100) || (n13 < -9 && n13 > -100)) {
+          if ((n13b > 9 && n13b < 100) || (n13b < -9 && n13b > -100)) {
+            document.getElementById("r13").innerHTML = `LA SUMA DE LOS DOS NÚMEROS TE DA ${summy} PERO NO ES PAR :c<br>Y AMBOS NÚMEROS SON DE DOS DÍGITOS :D`;
+          } 
+          else {
+            document.getElementById("r13").innerHTML = `LA SUMA DE LOS DOS NÚMEROS TE DA ${summy} PERO NO ES PAR :c<br>El número ${n13} tiene dos dígitos, pero el ${n13b} ño`;
+          }
+        }
+        else{
+          if ((n13b > 9 && n13b < 100) || (n13b < -9 && n13b > -100)) {
+            document.getElementById("r13").innerHTML = `LA SUMA DE LOS DOS NÚMEROS TE DA ${summy} PERO NO ES PAR :c<br>Pero el ${n13} no tiene dígitos, mientras que el ${n13b} sí`;
+          } 
+          else {
+            document.getElementById("r13").innerHTML = `LA SUMA DE LOS DOS NÚMEROS TE DA ${summy} PERO NO ES PAR :c<br>Pero ninguno de los dos números, ni el ${n13} ni el ${n13b} tiene dos dígitos`;
+          }
+        }
+      }
+    }
+  }
+}
+
+// 14. Leer dos números enteros de dos dígitos y determinar a cuánto es igual la suma de todos los dígitos.
+function result14() {
+  var n14 = document.getElementById("input14").value;
+  var n14b = document.getElementById("input14b").value;
+  var aux = n14;
+  var auxb = n14b;
+  var auxx = Number.parseInt(aux);
+  var auxxb = Number.parseInt(auxb);
+  var summy = auxx + auxxb;
+  
+  if ((n14 == 0 && n14b == 0)) {
+    document.getElementById("r14").innerHTML = "";
+  }
+  else if((n14 == "-" && n14b == "-")){
+    document.getElementById("r14").innerHTML = ""; 
+  }
+  else {
+    if (n14 == 0 || n14b == 0) {
+      document.getElementById("r14").innerHTML = `Okay, un ${n14}${n14b}. Pero ponme un número en el otro cuadro también >:c`;
+    } 
+    else{
+      if (n14 > 9 && n14 < 100) {
+        if (n14b > 9 && n14b < 100) {
+          document.getElementById("r14").innerHTML = `LA SUMA DE LOS DOS NÚMEROS TE DA ${summy} UwU<br>Y AMBOS NÚMEROS SON DE DOS DÍGITOS :D`;
+        } 
+        else {
+          document.getElementById("r14").innerHTML = `LA SUMA DE LOS DOS NÚMEROS TE DA ${summy} UwU<br>El número ${n14} tiene dos dígitos, pero el ${n14b} ño`;
+        }
+      }
+      else{
+        if (n14b > 9 && n14b < 100) {
+          document.getElementById("r14").innerHTML = `LA SUMA DE LOS DOS NÚMEROS TE DA ${summy} UwU<br>Pero el ${n14} no tiene dígitos, mientras que el ${n14b} sí`;
+        } 
+        else {
+          document.getElementById("r14").innerHTML = `LA SUMA DE LOS DOS NÚMEROS TE DA ${summy} UwU<br>Pero ninguno de los dos números, ni el ${n14} ni el ${n14b} tiene dos dígitos`;
+        }
+      }
+    }
+  }
+}
+
+// 15. Leer un número entero de tres dígitos y determinar a cuánto es igual la suma de sus dígitos.
+function result15() {
+  var n15 = document.getElementById("input15").value;
+  var length = (n15<0)? `${(n15.length)-1}`:`${n15.length}`;
+  var c = 0;
+  n15.split('').forEach(x => (x=="-")? x == 0:c += Number.parseInt(x));
+
+  if ((n15 == 0)) {
+    document.getElementById("r15").innerHTML = "";
+  }
+  else if((n15 == "-")){
+    document.getElementById("r15").innerHTML = ""; 
+  }
+  else {
+    if ( (n15<1000 && n15>99) || (n15<-99 && n15>-1000) ) {
+      document.getElementById("r15").innerHTML=`EL NÚMERO ${n15} TIENE ${length} DÍGITOS :D y la suma de ellos da ${c} UwU`;
+    } 
+    else {
+      if ((n15<10 && n15>0 ) || (n15>-10 && n15<0)) {
+        document.getElementById("r15").innerHTML=`Oshe, ser humano... Eso claramente es un ${n15} y pos tiene sólo ${length} dígito... Ponéme más números que estoy que me sumo >:c`;
+      } 
+      else {
+        document.getElementById("r15").innerHTML=`El número ${n15} no tiene 3 dígitos sino ${length} :c igual su suma da ${c} UwU`;
+      }
+    }
+  }
+}
+
+// 16. Leer un número entero de tres dígitos y determinar si al menos dos de sus tres dígitos son iguales.
+function result16(){
+  var n16 = document.getElementById("input16").value;
+  var length = (n16<0)? (n16.length)-1:n16.length;
+  var arr = Array.from(String(n16), Number); //convertimos el número metido en el input en un array
+  var box = []; //creamos un arreglo vacío donde introduciremos posteriormente los dígitos repetidos
+  var clean = []; //crearemos un arreglo con el que luego filtraremos box para eliminar repeticiones
+  var sort = []; //crearemos el arreglo final que será mostrado al usuario con la información filtrada, limpiada y organizada
+  // Pequeña impresora de UNOs 1111
+  var onesArray = []; 
+  var ones = 0;
+  var xxx = 0;
+
+  for (let i = 0; i < arr.length; i++) { //creamos un bucle dentro de un bucle que introducirá a nuestros array los números que se repitan en arr[i] y arr[j] 
+    for (let j = i+1; j < arr.length; j++){  //(j= 1+i -asi identificamos números repetidos-)
+      if (arr[i] === arr[j]) {
+        box.push(arr[i]);
+        clean = box.filter((value, index, array) => array.indexOf(value) === index);
+        sort = clean.sort();   
+      }
+    }
+  }
+
+  for (let d = 0; d < length; d++) {  // IMPRESORA DE 111111
+    onesArray.push(1);
+    ones = Number.parseInt(onesArray.join(''));
+    xxx = n16%ones;
+  }
+
+  //ESTRUCTURA DE CASOS
+  if ((n16 == 0)) {
+    document.getElementById("r16").innerHTML = "";
+  }
+  else if((n16 == "-")){
+    document.getElementById("r16").innerHTML = ""; 
+  }
+  else {
+    if (n16<10&&n16>-10) {
+      document.getElementById("r16").innerHTML = `Eso es un ${n16}...Un dígito solo... Nada más... ¡Dame más números, human@! D:<`; 
+    } 
+    else if (xxx == 0) {
+      if (n16 == 777) {
+        document.getElementById("r16").innerHTML = `¡MUY BUENAS A TODOS, GUAPÍSIMOS! Aquí el ${n16} siendo un ${sort} repitiéndose ${length} veces :D`; 
+      } 
+      else if(n16 == 666){
+        document.getElementById("r16").innerHTML = `El número ${n16} >:D es un ${sort} repitiéndose ${length} veces MUAHAHAHHAHAA lml_ c:<`; 
+      }
+      else {
+        document.getElementById("r16").innerHTML = `El número ${n16} es un ${sort} repitiéndose ${length} veces UwU`; 
+      }
+    } 
+    else {
+      if((n16<1000&&n16>99)||(n16<-99&&n16>-1000)){
+        if (sort.length == 1) {
+          document.getElementById("r16").innerHTML = `El número ${n16} cumple las dos condiciones: tiene 3 dígitos y se repiten 2 de sus dígitos, el ${sort} UwU`; 
+        }
+        else{
+          document.getElementById("r16").innerHTML = `El número ${n16} tiene 3 dígitos pero ninguno de ellos se repite :C`; 
+        }
+      }
+      else{
+        if (sort.length >= 1) {
+          if (n16 == 3137054945) {
+            document.getElementById("r16").innerHTML = `MIAU UwU`; 
+          }
+          else{
+            document.getElementById("r16").innerHTML = `El ${n16} no tiene 3 dígitos sino ${length} >:c aunque tiene números repetidos como el ${sort} :o`; 
+          }
+        }
+        else{
+          if (n16 == 69) {
+            document.getElementById("r16").innerHTML = `Hmmm baia baia 7u7 pilluel@ guiño guiño ;) ...pero ño. El ${n16} no tiene ni 3 dígitos ni números repetidos >:c`; 
+          } 
+          else {
+            document.getElementById("r16").innerHTML = `El número ${n16} no tiene números repetidos ni 3 dígitos, tiene ${length} :c F`; 
+          }
+        }
+      }
+    }
+  }
+}
+
+// 17. Leer un número entero de tres dígitos y determinar en qué posición está el mayor dígito.
+function result17(){
+  var n17= document.getElementById("input17").value;
+  var arr = Array.from(String(n17),Number);
+  var length = (n17<0)? (n17.length)-1:n17.length;
+
+  var left = Number.parseInt(n17/100);
+  var right = n17%10;
+  var mid = (n17-((left*100)+right))/10;
+
+  var max = Math.max(...arr);
+  var pos = arr.indexOf(Math.max(...arr))+1;
+
+  // IMPRESORA DE 111111
+  var onesArray = [];
+  var ones = 0;
+  var xxx = 0;
+  for (let d = 0; d < length; d++) {  
+    onesArray.push(1);
+    ones = Number.parseInt(onesArray.join(''));
+    xxx = n17%ones;
+  }
+
+  
+  if ((n17 == 0 && n17 == 0)) {
+    document.getElementById("r17").innerHTML = ``;
+  }
+  else if((n17 == "-" && n17 == "-")){
+    document.getElementById("r17").innerHTML = ``; 
+  }
+  else {
+    if (xxx == 0 && length>1) {
+      document.getElementById("r17").innerHTML = `Eso es un ${right} repetido ${length} veces UwU, así que todas las posiciones tienen el mismo valor`;
+     } 
+    else {        
+      switch (length) {
+        case 1:
+          document.getElementById("r17").innerHTML = `Eso es un ${n17} y sólo tiene un dígito >:c ¡escribe más números, humano!`;
+          break;
+
+        case 2:
+          switch (max) {
+            case parseInt(n17/10):
+              document.getElementById("r17").innerHTML = `El número ${n17} sólo tiene 2 dígitos :c<br>igual el ${parseInt(n17/10)}, ubicado a su izquierda, es su dígito de mayor valor UwU`;
+              break;
+          
+            case right:
+              document.getElementById("r17").innerHTML = `El número ${n17} sólo tiene 2 dígitos :c<br>igual el ${right}, ubicado a su derecha, es su dígito de mayor valor UwU`;
+              break;
+          }
+          break;      
+
+        case 3:
+          switch (max) {
+            case left:
+              document.getElementById("r17").innerHTML = `El número ${n17} tiene 3 dígitos y el mayor dígito es el ${max} posicionado a su izquierda UwU`;
+              break;
+
+            case mid:
+              document.getElementById("r17").innerHTML = `El número ${n17} tiene 3 dígitos y el mayor dígito es el ${max} posicionado en su mitad UwU`;
+              break;
+              
+            case right:
+              document.getElementById("r17").innerHTML = `El número ${n17} tiene 3 dígitos y el mayor dígito es el ${max} posicionado a su derecha UwU`;
+              break;
+          }
+          break;
+          
+        default:
+            document.getElementById("r17").innerHTML = `El número ${n17} no tiene 3 dígitos sino ${length}<br>y su máximo valor es el ${max} en la posición de dígitos n18${pos}`;
+          break;
+      }
+    } 
+  }
+}  
+
+// 18. Leer un número entero de tres dígitos y determinar si algún dígito es múltiplo de los otros.
+function result18(){
+  var n18= document.getElementById("input18").value;
+  var length = (n18<0)? (n18.length)-1:n18.length;
+
+  var left = Number.parseInt(n18/100);
+  var right = n18%10;
+  var mid = (n18-((left*100)+right))/10;
+  var left_  = Number.parseInt(n18/10);
+
+  var a = [];
+  var b = []; 
+  var c = [];
+
+  var multiplesLeft = [];
+  var multiplesMid = [];
+  var multiplesRight = [];
+
+  var resultA="";
+  var resultB="";
+  var resultC="";
+
+//un for donde se resuelva todo el problemón de múltiplos
+  for (let i = -9; i < 10; i++) {
+    i%left;
+    if (i!=left && i%left==0){
+      a.push(i);
+      multiplesLeft = a.filter(x=> x == mid || x == right);
+    }
+    
+    i%mid;
+    if (i!=mid && i%mid==0){
+      b.push(i);
+      multiplesMid = b.filter(x=> x == left || x == right);
+    }
+    
+    i%right;
+    if (i!=right && i%right==0){
+      c.push(i);
+      multiplesRight = c.filter(x=> x == left || x == mid);
+    }
+
+    if (multiplesLeft != 0){
+      resultA =`${left} tiene de múltiplo a: ${multiplesLeft}<br>`;
+    }
+
+    if (multiplesMid != 0) {
+      resultB =`${mid} tiene de múltiplo a: ${multiplesMid}<br>`;
+    }
+
+    if (multiplesRight != 0) {
+      resultC =`${right} tiene de múltiplo a: ${multiplesRight}<br>`;
+    }
+
+  }
+  
+
+  // IMPRESORA DE 111111
+  var onesArray = [];
+  var ones = 0;
+  var xxx = 0;
+  for (let d = 0; d < length; d++) {  
+    onesArray.push(1);
+    ones = Number.parseInt(onesArray.join(''));
+    xxx = n18%ones;
+  }
+
+  
+  if ((n18 == 0 && n18 == 0)) {
+    document.getElementById("r18").innerHTML = ``;
+  }
+  else if((n18 == "-" && n18 == "-")){
+    document.getElementById("r18").innerHTML = ``; 
+  }
+  else { 
+    if (xxx == 0 && length>1) {
+      document.getElementById("r18").innerHTML = `Eso es un ${right} repetido ${length} veces UwU, y pues todo número es múltiplo de si mismo`;
+     } 
+    else {        
+      switch (length) {
+        case 1:
+          document.getElementById("r18").innerHTML = `Eso es un ${n18} y sólo tiene un dígito >:c ¡escribe más números, humano!`;
+          break;
+          
+          case 2:
+          if (left_%right == 0) {
+            document.getElementById("r18").innerHTML = `El ${n18} sólo tiene dos dígito :c<br>Igual el ${left_} es múltiplo del ${right} ;)`;
+          } 
+          else if (right%left_ == 0) {
+            document.getElementById("r18").innerHTML = `El ${n18} sólo tiene dos dígito :c<br>Igual el ${right} es múltiplo del ${left_} ;)`;
+          } 
+          else {  
+            document.getElementById("r18").innerHTML = `El ${n18} sólo tiene dos dígito :c<br>Igual el ${left_} y el ${right} no son múltiplos F`;
+          }
+          break;      
+
+        case 3:
+          if (resultA=="" && resultB=="" && resultC=="") {
+            document.getElementById("r18").innerHTML= `En este caso... Ni ${left} ni ${mid} ni ${right} son múltipos del otro :c intenta otra combinación de números`;
+          }
+          else{
+            document.getElementById("r18").innerHTML = `En este caso...${resultA}${resultB}${resultC}UwU`
+          }
+          break; 
+          
+        default:
+            document.getElementById("r18").innerHTML = `El número ${n18} no tiene 3 dígitos sino ${length}<br>, ponme un número de 3 dígitos.`;
+          break;
+      
+      } 
+    }
+  }
+}  
+
+// 19. Leer tres números enteros y determinar cuál es el mayor. Usar solamente dos variables.
+function result19(){
+  //VAR1: Creamos un arreglo que presentará al usuario los 3 valores de las 3 cajas y sha xd en una variable >:v
+  var arr = [];
+
+  //Ingresamos los inputs que pone el usuario a la variable arreglo (arr)
+  arr.push(document.getElementById("input19").value);
+  arr.push(document.getElementById("input19b").value);
+  arr.push(document.getElementById("input19c").value);
+
+  //comienza el juego
+
+  if (arr == ",,") {
+    document.getElementById("r19").innerHTML = ``; 
+  }
+  else {
+      document.getElementById("r19").innerHTML = `Okay... El mayor es ${Math.max(...arr)}`; 
+  }
+ } 
+
+
+// 20. Leer tres números enteros y mostrarlos ascendentemente.
+
+function result20(){
+  var n20 = document.getElementById("input20").value;
+  var n20b = document.getElementById("input20b").value;
+  var n20c = document.getElementById("input20c").value;
+
+//Por algún motivo que, al momento de realizado este ejercicio, desconozco... JS no puede permutar debidamente variables leídas, quizá no son puramente numéricas, así que...
+  var a = Number.parseInt(n20);
+  var b = Number.parseInt(n20b);
+  var c = Number.parseInt(n20c);
+  
+  if ((n20 == 0 && n20b == 0 && n20c == 0)) {
+    document.getElementById("r20").innerHTML = ``;
+
+  }
+  else if((n20 == "-" && n20b == "-" && n20c == "-")){
+    document.getElementById("r20").innerHTML = ``; 
+  }
+ //Generamos una estructura de casos aplicable para ejercicios de 3 cifras 
+  else {
+    if (n20c == 0) {
+      if (n20 != 0 && n20b != 0) {
+        document.getElementById("r20").innerHTML = `Okay, un ${n20} y un ${n20b}. Pero ponme un número en el otro cuadro también >:c`;
+      }
+      else{
+        document.getElementById("r20").innerHTML = `Okay, un ${n20}${n20b}. Pero ponme un número en los otros dos cuadros también >:c`;
+      }
+    }
+    else {
+      if (n20 == 0 && n20b == 0) {
+        document.getElementById("r20").innerHTML = `Okay, un ${n20c}. Pero ponme un número en los otros dos cuadros también >:c`;
+      }
+      else if (n20 == 0 || n20b == 0) {
+        document.getElementById("r20").innerHTML = `Okay, un ${n20c} y un ${n20}${n20b}. Pero ponme un número en el otro cuadro también >:c`;
+      }
+      else{
+        if (a<=b && a<=c) {   
+          if (b<c) {
+            document.getElementById("r20").innerHTML = `${a}, ${b}, ${c} UwU`;
+          } 
+          else {
+            document.getElementById("r20").innerHTML = `${a}, ${c}, ${b} UwU`;
+          }
+        } 
+        else {
+          if (b<=a && b<=c) {   
+            if (a<c) {
+              document.getElementById("r20").innerHTML = `${b}, ${a}, ${c} UwU`;
+            } 
+            else {
+              document.getElementById("r20").innerHTML = `${b}, ${c}, ${a} UwU`;
+            }
+          } 
+          else {
+            if (c<=a && c<=b) {   
+              if (a<b) {
+                document.getElementById("r20").innerHTML = `${c}, ${a}, ${b} UwU`;
+              } 
+              else {
+                document.getElementById("r20").innerHTML = `${c}, ${b}, ${a} UwU`;
+              }
+            }
+          } 
+        }
+      }
+    }
+  }  
+}
+
+// 21. Leer tres números enteros de dos dígitos cada uno y determinar en cuál de ellos se encuentra el mayor dígito.
+function result°(){
+  var n° = document.getElementById("input°").value;
+  var n°b = document.getElementById("input°b").value;
+  var n°c = document.getElementById("input°c").value;
+  var length = (n°<0)? (n°.length)-1:n°.length;
+  
+  
+  if ((n20 == 0 && n20b == 0 && n20c == 0)) {
+    document.getElementById("r20").innerHTML = ``;
+
+  }
+  else if((n20 == "-" && n20b == "-" && n20c == "-")){
+    document.getElementById("r20").innerHTML = ``; 
+  }
+ //Generamos una estructura de casos aplicable para ejercicios de 3 cifras 
+  else {
+    if (n20c == 0) {
+      if (n20 != 0 && n20b != 0) {
+        document.getElementById("r20").innerHTML = `Okay, un ${n20} y un ${n20b}. Pero ponme un número en el otro cuadro también >:c`;
+      }
+      else{
+        document.getElementById("r20").innerHTML = `Okay, un ${n20}${n20b}. Pero ponme un número en los otros dos cuadros también >:c`;
+      }
+    }
+    else {
+      if (n20 == 0 && n20b == 0) {
+        document.getElementById("r20").innerHTML = `Okay, un ${n20c}. Pero ponme un número en los otros dos cuadros también >:c`;
+      }
+      else if (n20 == 0 || n20b == 0) {
+        document.getElementById("r20").innerHTML = `Okay, un ${n20c} y un ${n20}${n20b}. Pero ponme un número en el otro cuadro también >:c`;
+      }
+      else{
+        switch (length) {
+          case 1:
+            document.getElementById("r°").innerHTML = ``; 
+            break;
+            
+          case 2:
+            document.getElementById("r°").innerHTML = ``; 
+            break;
+              
+          case 3:
+            document.getElementById("r°").innerHTML = ``; 
+            break;
+            
+          default:
+            document.getElementById("r°").innerHTML = ``; 
+            break;
+        }
+      }
+    }  
+  }
+}
+
+// 22. Leer un número entero de tres dígitos y determinar si el primer dígito es igual al último.
+// 23. Leer un número entero de tres dígitos y determinar cuántos dígitos primos tiene.
+// 24. Leer un número entero de tres dígitos y determinar cuántos dígitos pares tiene.
+// 25. Leer un número entero de tres dígitos y determinar si alguno de sus dígitos es igual a la suma de los otros dos.
+// 26. Leer un número entero de cuatro dígitos y determinar a cuanto es igual la suma de sus dígitos.
+// 27. Leer un número entero de cuatro dígitos y determinar cuántos dígitos pares tiene.
+// 28. Leer un número entero menor que 50 y positivo y determinar si es un número primo.
+// 29. Leer un número entero de cinco dígitos y determinar si es un número capicúo. Ej. 15651, 59895.
+// 30. Leer un número entero de cuatro dígitos y determinar si el segundo dígito es igual al penúltimo.
