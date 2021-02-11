@@ -815,7 +815,7 @@ function result11(){
     document.getElementById("r11").innerHTML = ""; 
   }
   else {
-    if  ((n11 == 0 || n11b == 0)) {
+    if  ((n11 == `` || n11b == ``)) {
       document.getElementById("r11").innerHTML = `Okay, un ${n11}${n11b}. Pero ponme un número en el otro cuadro también >:c`; 
     }
     else{
@@ -851,7 +851,7 @@ function result12(){
       document.getElementById("r12").innerHTML = ""; 
     }
     else {
-      if (n12 == 0 || n12b == 0) {
+      if (n12 == `` || n12b == ``) {
         document.getElementById("r12").innerHTML = `Okay, un ${n12}${n12b}. Pero ponme un número en el otro cuadro también >:c `;
       } 
       else{
@@ -892,7 +892,7 @@ function result13() {
     document.getElementById("r13").innerHTML = ""; 
   }
   else {
-    if (n13 == 0 || n13b == 0) {
+    if (n13 == `` || n13b == ``) {
       document.getElementById("r13").innerHTML = `Okay, un ${n13}${n13b}. Pero ponme un número en el otro cuadro también >:c`;
     } 
     else{
@@ -953,7 +953,7 @@ function result14() {
     document.getElementById("r14").innerHTML = ""; 
   }
   else {
-    if (n14 == 0 || n14b == 0) {
+    if (n14 == `` || n14b == ``) {
       document.getElementById("r14").innerHTML = `Okay, un ${n14}${n14b}. Pero ponme un número en el otro cuadro también >:c`;
     } 
     else{
@@ -1251,13 +1251,13 @@ function result18(){
           
           case 2:
           if (left_%right == 0) {
-            document.getElementById("r18").innerHTML = `El ${n18} sólo tiene dos dígito :c<br>Igual el ${left_} es múltiplo del ${right} ;)`;
+            document.getElementById("r18").innerHTML = `El ${n18} sólo tiene dos dígitos :c<br>Igual el ${left_} es múltiplo del ${right} ;)`;
           } 
           else if (right%left_ == 0) {
-            document.getElementById("r18").innerHTML = `El ${n18} sólo tiene dos dígito :c<br>Igual el ${right} es múltiplo del ${left_} ;)`;
+            document.getElementById("r18").innerHTML = `El ${n18} sólo tiene dos dígitos :c<br>Igual el ${right} es múltiplo del ${left_} ;)`;
           } 
           else {  
-            document.getElementById("r18").innerHTML = `El ${n18} sólo tiene dos dígito :c<br>Igual el ${left_} y el ${right} no son múltiplos F`;
+            document.getElementById("r18").innerHTML = `El ${n18} sólo tiene dos dígitos :c<br>Igual el ${left_} y el ${right} no son múltiplos F`;
           }
           break;      
 
@@ -1319,8 +1319,8 @@ function result20(){
   }
  //Generamos una estructura de casos aplicable para ejercicios de 3 cifras 
   else {
-    if (n20c == 0) {
-      if (n20 != 0 && n20b != 0) {
+    if (n20c == ``) {
+      if (n20 != `` && n20b != ``) {
         document.getElementById("r20").innerHTML = `Okay, un ${n20} y un ${n20b}. Pero ponme un número en el otro cuadro también >:c`;
       }
       else{
@@ -1328,10 +1328,10 @@ function result20(){
       }
     }
     else {
-      if (n20 == 0 && n20b == 0) {
+      if (n20 == `` && n20b == ``) {
         document.getElementById("r20").innerHTML = `Okay, un ${n20c}. Pero ponme un número en los otros dos cuadros también >:c`;
       }
-      else if (n20 == 0 || n20b == 0) {
+      else if (n20 == `` || n20b == ``) {
         document.getElementById("r20").innerHTML = `Okay, un ${n20c} y un ${n20}${n20b}. Pero ponme un número en el otro cuadro también >:c`;
       }
       else{
@@ -1396,8 +1396,8 @@ function result21(){
     }
    //Generamos una estructura de casos aplicable para ejercicios de 3 cifras 
     else {
-      if (n21c == 0) {
-        if (n21 != 0 && n21b != 0) {
+      if (n21c == ``) {
+        if (n21 != `` && n21b != ``) {
           document.getElementById("r21").innerHTML = `Okay, un ${n21} y un ${n21b}. Pero ponme un número en el otro cuadro también >:c`;
         }
         else{
@@ -1405,10 +1405,10 @@ function result21(){
         }
       }
       else {
-        if (n21 == 0 && n21b == 0) {
+        if (n21 == `` && n21b == ``) {
           document.getElementById("r21").innerHTML = `Okay, un ${n21c}. Pero ponme un número en los otros dos cuadros también >:c`;
         }
-        else if (n21 == 0 || n21b == 0) {
+        else if (n21 == `` || n21b == ``) {
           document.getElementById("r21").innerHTML = `Okay, un ${n21c} y un ${n21}${n21b}. Pero ponme un número en el otro cuadro también >:c`;
         }
         else{     // Después de definir ceros y casillas vacías... Aquí comienza la locura.
@@ -1974,7 +1974,473 @@ function result31(){
 }
 
 // 32. Leer un número entero y determinar si es múltiplo de 7.
+function result32(){
+  
+    var n32 = document.getElementById("input32").value;
+    var aux = Number.parseInt(n32%7);
+
+    if((n32 == 0)){
+      document.getElementById("r32").innerHTML = ``;
+    }
+    else if((n32 == "-")){
+      document.getElementById("r32").innerHTML = ``; 
+    }
+    else{
+      switch (aux) {
+        case 0:
+          document.getElementById("r32").innerHTML = `¡¡¡HURRAAA!!! UN MÚLTIPLO DE 7 :DDDD  ¡¡777 777 777 77 777 7!!<Br>UwU QUÉ FELICIDAD, UN MÚLTIPLO DE 7 AWIWIII UwU<BR>En fin... Ya podrían ponerme algo más difícil, humanos 7n7`; 
+          break;
+          
+        default:
+          document.getElementById("r32").innerHTML = `Ese tal ${n32} no es múltiplo de 7 >:C`; 
+          break;
+      }
+    }
+}
+
 // 33. Leer un número entero y determinar si termina en 7.
+function result33(){
+  
+    var n33 = document.getElementById("input33").value;
+    var aux = Math.abs(n33%10);
+
+    if((n33 == 0)){
+      document.getElementById("r33").innerHTML = ``;
+    }
+    else if((n33 == "-")){
+      document.getElementById("r33").innerHTML = ``; 
+    }
+    else{
+      switch (aux) {
+        case 7:
+          document.getElementById("r33").innerHTML = `¡¡¡HURRAAA!!! TERMINA EN 7 :DDDD ¡¡777 777 777 77 777 7!!<Br>UwU QUÉ FELICIDAD, UN 7 AWIWIII UwU<BR>En fin... Ya podrían ponerme algo más difícil, humanos 7n7|||`; 
+          break;
+          
+        default:
+          document.getElementById("r33").innerHTML = `${n33} NO TERMINA EN 7, TERMINA EN ${aux} >:C`; 
+          break;
+      }
+    }
+}
+
 // 34. Leer un número entero menor que mil y determinar cuántos dígitos tiene.
+function result34(){
+  
+    var n34 = document.getElementById("input34").value;
+    var length = (n34<0)? n34.length-1:n34.length;
+    var len = (length==1)? `tiene solo 1 dígito`:`tiene ${length} dígitos`;
+    var aux = Number.parseInt(n34);
+  
+    //Personalización del problema 
+    var solution = (aux<=1000)? `El ${aux} es igual o menor a 1000 :D`:`${aux} es mayor a 1000 :c`; 
+    
+    if((n34 == 0)){
+      document.getElementById("r34").innerHTML = ``;
+    }
+    else if((n34 == "-")){
+      document.getElementById("r34").innerHTML = ``; 
+    }
+    else{
+      document.getElementById("r34").innerHTML = `${solution} y ${len}`; 
+    }
+}
+
 // 35. Leer un número entero de dos dígitos, guardar cada dígito en una variable diferente y luego mostrarlas en pantalla.
+function result35(){
+  
+    var n35 = document.getElementById("input35").value;
+    var aux = Math.abs(n35);
+    var arr = Array.from(String(aux),Number);
+    var length = (n35<0)? n35.length-1:n35.length;
+    var len = (length==1)? `El ${n35} tiene solo 1 dígito`:`El ${n35} tiene ${length} dígitos`;
+    
+    //ARREGLO PARA EL ABECEDARIO (con fromCharCode y un for)
+    var abc = [];
+    for (let i = 97; i<123; i++) {
+      abc.push(String.fromCharCode(i));
+    };
+    
+    //ARREGLO PARA ASOCIAR CADA DÍGITO A UNA LETRA (VARIABLE)
+    var xd = ``;
+    for (let miau = 0; miau < arr.length; miau++) {
+      var solution = `${abc[miau]} = ${arr[miau]};<br>`;
+      xd += solution;
+    }
+    if (n35<0) {
+      xd += `...Y por supuesto, le agregas el signo negativo (-) a las variables en algún momento UwU`
+    }
+
+    if((n35 == 0)){
+      document.getElementById("r35").innerHTML = ``;
+    }
+    else if((n35 == "-")){
+      document.getElementById("r35").innerHTML = ``; 
+    }
+    else{
+      switch (length) {
+        case 1:
+          document.getElementById("r35").innerHTML = `Pos... Eso es un ${n35}, sin más...<br>Pero que igual te lo hago variable, si quieres xd<br>${xd}`; 
+          break;
+          
+          case 2:
+            document.getElementById("r35").innerHTML = `${len} :D y sus dígitos separados en variables quedan así:<br>${xd}`; 
+            break;
+            
+            default:
+          document.getElementById("r35").innerHTML = `${len} y no 2 :C, pero que no importa... Que igual te lo calculo :D<br>${xd}`; 
+          break;
+      }
+    }
+}
+
 // 36. Leer un número entero de 4 dígitos y determinar si tiene mas dígitos pares o impares.
+function result36(){
+  
+    var n36 = document.getElementById("input36").value;
+    var aux = Math.abs(n36);
+    var length = (n36<0)? n36.length-1:n36.length;
+    var len = (length==1)? `El ${n36} tiene solo 1 dígito`:`El ${n36} tiene ${length} dígitos`;
+    var arr = Array.from(String(aux),Number);
+  
+  //En este caso, solution es un filtro de números primos
+    var even = arr.filter(x=>x%2==0); 
+    var odd = arr.filter(x=>!(x%2==0));
+    var oneDigit = (aux%2==0)? `y no 4 :c y pues es un número par`:`y no 4 :c y pues es un número impar`;
+  //sort organizará nuestro arreglo, mostrando la informacion de manera clara al usuario  
+    var sortEven = even.sort().filter((value,index,array)=>(array.indexOf(value)==index));
+    var sortOdd = odd.sort().filter((value,index,array)=>(array.indexOf(value)==index));
+  //Personalización del problema (singulares o plurales)
+    var evenResult = (sortEven.length==1)? `El ${n36} tiene un número par: el ${sortEven} `:`El ${n36} tiene varios números par: ${sortEven} `;
+    var oddResult = (sortOdd.length==1)? `y tiene al ${sortOdd} que es impar`:`y tiene varios números impares: ${sortOdd}`;
+    var solution = evenResult.concat(oddResult);
+    var equals = (even.length == odd.length)? `<br>Y el ${n36} tiene igual proporción de pares (tiene ${even.length}) que de impares (tiene ${odd.length}) UwU`:``;
+    var max = (even.length > odd.length)? `<br>Y el ${n36} tiene más números pares (tiene ${even.length}) que impares (tiene ${odd.length}) UwU`:`<br>Y el ${n36} tiene más números impares (tiene ${odd.length}) que pares (tiene ${even.length}) UwU`;
+    var off = (equals == ``)? max:``;
+
+    if((n36 == 0)){
+      document.getElementById("r36").innerHTML = ``;
+    }
+    else if((n36 == "-")){
+      document.getElementById("r36").innerHTML = ``; 
+    }
+    else{
+      switch (length) {
+        case 1:
+          document.getElementById("r36").innerHTML = `${len} ${oneDigit}`; 
+          break;
+      
+        case 4:
+          switch (sortEven.length) {
+            case 0:
+              document.getElementById("r36").innerHTML = `${len} :D <br>el ${n36} no tiene números pares ${oddResult} ${equals} ${off}`; 
+              break;
+              
+            default:
+              switch (sortOdd.length) {
+                case 0:
+                  document.getElementById("r36").innerHTML = `${len} :D <br> ${evenResult} pero curiosamente no tiene números impares ${equals} ${off}`; 
+                  break;
+              
+                default:
+                  document.getElementById("r36").innerHTML = `${len} :D <br> ${solution} ${equals} ${off}`; 
+                  break;
+              }
+              break;
+          }
+          break;
+        
+        default:
+          switch (sortEven.length) {
+            case 0:
+              document.getElementById("r36").innerHTML = `${len} y no 4 :C ...Pero que igual te lo calculo :D<BR>no tiene números pares ${oddResult} ${equals} ${off}`; 
+              break;
+              
+            default:
+              switch (sortOdd.length) {
+                case 0:
+                  document.getElementById("r36").innerHTML = `${len} y no 4 :C ...Pero que igual te lo calculo :D<br> ${evenResult} pero curiosamente no tiene números impares :O ${equals} ${off}`; 
+                  break;
+              
+                default:
+                  document.getElementById("r36").innerHTML = `${len} y no 4 :C ...Pero que igual te lo calculo :D<br>${solution} ${equals} ${off}`; 
+                  break;
+              }
+              break;
+          }
+          break;
+      }
+    }
+}
+
+// 37. Leer dos números enteros y determinar cuál es múltiplo de cuál.
+function result37(){
+
+  //Variable 1
+  var n37 = document.getElementById("input37").value;
+  var aux = Math.abs(n37);
+
+  //Variable 2
+  var n37b = document.getElementById("input37b").value;
+  var auxb = Math.abs(n37b);
+  
+
+  if ((n37 == 0 && n37b == 0)) {
+    document.getElementById("r37").innerHTML = ``;
+  }
+  else if((n37 == "-" && n37b == "-")){
+    document.getElementById("r37").innerHTML = ``; 
+  }
+  else {
+    if (n37 == `` || n37b == ``) {                                                                                           //PARA EJERCICIOS CON MÚLTIPLES VARIABLES 
+      document.getElementById("r37").innerHTML = `Okay, un ${n37}${n37b}. Pero ponme un número en el otro cuadro también >:c`;
+    } 
+    else{
+      switch (aux) {
+        case auxb:
+          document.getElementById("r37").innerHTML = `¡Ambas casillas tienen el mismo número, humano!<BR>Y pues todo número es múltiplo de si y ${n37} no es la excepción UwU`;
+          break;
+      
+        default:
+          switch (aux%auxb) {
+            case 0:
+              document.getElementById("r37").innerHTML = `El número de la izquierda (${n37}) es múltiplo del de la derecha (${n37b}) :D<br>Ya que si multiplicas ${n37b} * ${(n37/n37b)} veces, te dará ${n37} UwU`;
+              break;
+          
+            default:
+              switch (auxb%aux) {
+                case 0:
+                  document.getElementById("r37").innerHTML = `El número de la derecha (${n37b}) es múltiplo del de la izquierda (${n37}) :D<br>Ya que si multiplicas ${n37} * ${(n37b/n37)} veces, te dará ${n37b} UwU`;
+                  break;
+              
+                default:
+                  document.getElementById("r37").innerHTML = `Ninguno de los dos números, ni ${n37}, ni ${n37b} son múltiplos del otro :c<br>¡Prueba con otros números, humano!`;
+                  break;
+              }
+              break;
+          }
+          break;
+      }
+    }
+  }
+}  
+
+// n38. Leer tres números enteros y determinar si el último dígito de los tres números es igual.
+function result38(){
+
+    //Variables
+    var n38 = document.getElementById("input38").value;
+    var n38b = document.getElementById("input38b").value;
+    var n38c = document.getElementById("input38c").value;
+
+    //Valores absolutos de las variables (para que los arreglos no se pifeen con el signo menos (-))
+    var aux = Math.abs(n38);
+    var auxb = Math.abs(n38b);
+    var auxc = Math.abs(n38c);
+
+    //Arreglos para adquirir el último dígito de cada número
+    var arr = Array.from(String(aux),Number); 
+    var arrb = Array.from(String(auxb),Number);
+    var arrc = Array.from(String(auxc),Number);
+
+    var lastOne = arr[(arr.length-1)];
+    var lastTwo = arrb[(arrb.length-1)];
+    var lastThree = arrc[(arrc.length-1)];
+    
+    //LETS GO
+
+    if ((n38 == 0 && n38b == 0 && n38c == 0)) {
+      document.getElementById("r38").innerHTML = ``;
+    }
+    else if((n38 == "-" && n38b == "-" && n38c == "-")){
+      document.getElementById("r38").innerHTML = ``; 
+    }
+   //Generamos una estructura de casos aplicable para ejercicios de 3 cifras 
+    else {
+      if (n38c == ``) {
+        if (n38 != `` && n38b != ``) {
+          document.getElementById("r38").innerHTML = `Okay, un ${n38} y un ${n38b}. Pero ponme un número en el otro cuadro también >:c`;
+        }
+        else{
+          document.getElementById("r38").innerHTML = `Okay, un ${n38}${n38b}. Pero ponme un número en los otros dos cuadros también >:c`;
+        }
+      }
+      else {
+        if (n38 == `` && n38b == ``) {
+          document.getElementById("r38").innerHTML = `Okay, un ${n38c}. Pero ponme un número en los otros dos cuadros también >:c`;
+        }
+        else if (n38 == `` || n38b == ``) {
+          document.getElementById("r38").innerHTML = `Okay, un ${n38c} y un ${n38}${n38b}. Pero ponme un número en el otro cuadro también >:c`;
+        }
+        else{
+          switch (lastOne) {
+
+            case lastTwo:
+              switch (lastTwo) {
+                case lastThree:
+                  document.getElementById("r38").innerHTML = `Los 3 números ${n38}, ${n38b} y ${n38c}...<br>¡Terminan en el mismo número: ${n38%10}! :D UwU`;
+                  break;
+                  
+                default:
+                  document.getElementById("r38").innerHTML = `El ${n38} de la izquierda termina igual que el ${n38b} del medio UwU<br>Ambos terminan en el número ${n38%10} c:`;
+                  break;
+              }
+              break;
+
+            case lastThree:
+              switch (lastThree) {
+                case lastTwo:
+                  document.getElementById("r38").innerHTML = `Los 3 números ${n38}, ${n38b} y ${n38c}<br>terminan en el mismo número: ${n38%10}! :D UwU`;
+                  break;
+              
+                default:
+                  document.getElementById("r38").innerHTML = `El ${n38} de la izquierda termina igual que el ${n38c} de la derecha UwU<br>Ambos terminan en el número ${n38%10} c:`;
+                  break;
+              }
+              break;
+                
+            default:
+                  switch (lastTwo) {
+                    case lastThree:
+                  document.getElementById("r38").innerHTML = `El ${n38b} del medio  y el ${n38c} de la derecha terminan igual UwU<br>Ambos terminan en el número ${n38%10} c:`;
+                  break;
+              
+                default:
+                  document.getElementById("r38").innerHTML = `Ninguno de los 3 números terminan igual :c<br>¡PRUEBA OTRA COMBINACIÓN!`; 
+                  break;
+              }
+              break;
+          }
+        }
+      }  
+    }
+}
+
+// 39. Leer tres números enteros y determina si el penúltimo dígito de los tres números es igual.
+function result39(){
+
+  //Variables
+  var n39 = document.getElementById("input39").value;
+  var n39b = document.getElementById("input39b").value;
+  var n39c = document.getElementById("input39c").value;
+
+  //Valores absolutos de las variables (para que los arreglos no se pifeen con el signo menos (-))
+  var aux = Math.abs(n39);
+  var auxb = Math.abs(n39b);
+  var auxc = Math.abs(n39c);
+
+  //Arreglos para adquirir el penúltimo dígito de cada número
+  var arr = Array.from(String(aux),Number); 
+  var arrb = Array.from(String(auxb),Number);
+  var arrc = Array.from(String(auxc),Number);
+
+  var penltOne = arr[(arr.length-2)];
+  var penltTwo = arrb[(arrb.length-2)];
+  var penltThree = arrc[(arrc.length-2)];
+  
+  //LETS GO
+
+  if ((n39 == 0 && n39b == 0 && n39c == 0)) {
+    document.getElementById("r39").innerHTML = ``;
+  }
+  else if((n39 == "-" && n39b == "-" && n39c == "-")){
+    document.getElementById("r39").innerHTML = ``; 
+  }
+ //Generamos una estructura de casos aplicable para ejercicios de 3 cifras 
+  else {
+    if (n39c == ``) {
+      if (n39 != `` && n39b != ``) {
+        document.getElementById("r39").innerHTML = `Okay, un ${n39} y un ${n39b}. Pero ponme un número en el otro cuadro también >:c`;
+      }
+      else{
+        document.getElementById("r39").innerHTML = `Okay, un ${n39}${n39b}. Pero ponme un número en los otros dos cuadros también >:c`;
+      }
+    }
+    else {
+      if (n39 == `` && n39b == ``) {
+        document.getElementById("r39").innerHTML = `Okay, un ${n39c}. Pero ponme un número en los otros dos cuadros también >:c`;
+      }
+      else if (n39 == `` || n39b == ``) {
+        document.getElementById("r39").innerHTML = `Okay, un ${n39c} y un ${n39}${n39b}. Pero ponme un número en el otro cuadro también >:c`;
+      }
+      else{
+        switch (penltOne) {
+
+          case penltTwo:
+            switch (penltTwo) {
+              case penltThree:
+                document.getElementById("r39").innerHTML = `Los 3 números ${n39}, ${n39b} y ${n39c}...<br>¡Terminan en el mismo número: ${n39%10}! :D UwU`;
+                break;
+                
+              default:
+                document.getElementById("r39").innerHTML = `El ${n39} de la izquierda termina igual que el ${n39b} del medio UwU<br>Ambos terminan en el número ${n39%10} c:`;
+                break;
+            }
+            break;
+
+          case penltThree:
+            switch (penltThree) {
+              case penltTwo:
+                document.getElementById("r39").innerHTML = `Los 3 números ${n39}, ${n39b} y ${n39c}<br>terminan en el mismo número: ${n39%10}! :D UwU`;
+                break;
+            
+              default:
+                document.getElementById("r39").innerHTML = `El ${n39} de la izquierda termina igual que el ${n39c} de la derecha UwU<br>Ambos terminan en el número ${n39%10} c:`;
+                break;
+            }
+            break;
+              
+          default:
+                switch (penltTwo) {
+                  case penltThree:
+                document.getElementById("r39").innerHTML = `El ${n39b} del medio  y el ${n39c} de la derecha terminan igual UwU<br>Ambos terminan en el número ${n39%10} c:`;
+                break;
+            
+              default:
+                document.getElementById("r39").innerHTML = `Ninguno de los 3 números terminan igual :c<br>¡PRUEBA OTRA COMBINACIÓN!`; 
+                break;
+            }
+            break;
+        }
+      }
+    }  
+  }
+}
+
+// 40. Leer dos números enteros y si la diferencia entre los dos es menor o igual a 10 entonces mostrar en pantalla todos los enteros comprendidos entre el menor y el mayor de los números leídos.
+function result40(){
+  
+  //variables de inputs
+  var n40 = document.getElementById("input40").value;
+  var n40b = document.getElementById("input40b").value;
+
+  //variable que determina cuál número es el menor y mayor (para comenzar a contar desde allí)
+  var min = Math.min(n40,n40b);
+  var max = Math.max(n40,n40b);
+  var box = [];
+  
+  for (let i = min; i <= max; i++) {
+    box.push(i);
+  };
+  
+  //variable que responda a la resta de las dos variables
+  var test = (((n40-n40b)<=10)&&((n40-n40b)>=-10))? true:false;
+  var rest = (test == true)? `La diferencia entre ${n40} y ${n40b} da ${n40-n40b}, lo que es menor a 10 unidades UwU<br>Si contáramos los números que hay entre el ${n40} y el ${n40b}, obtendríamos esto:<br>${box} UwU` :`La diferencia entre ${n40} y ${n40b} da ${n40-n40b}, lo que es mayor a 10 unidades...<br>Por lo que me salvé de contar huehuehue xd`;
+
+
+  
+  if ((n40 == 0 && n40b == 0)) {
+    document.getElementById("r40").innerHTML = ``;
+  }
+  else if((n40 == "-" && n40b == "-")){
+    document.getElementById("r40").innerHTML = ``; 
+  }
+  else {
+    if (n40 == `` || n40b == ``) {                                                                                           //PARA EJERCICIOS CON MÚLTIPLES VARIABLES 
+      document.getElementById("r40").innerHTML = `Okay, un ${n40}${n40b}. Pero ponme un número en el otro cuadro también >:c`;
+    } 
+    else{
+      document.getElementById("r40").innerHTML = `Qué ejercicio tan rarito e,e... Pero okay, humano. ¡Aquí vamos! >:c<br>${rest}`;
+    }
+  } 
+}
+
