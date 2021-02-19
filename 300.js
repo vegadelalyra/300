@@ -331,7 +331,7 @@ ciclos de acciones
 Toda acción sólo se ejecuta si se cumple una condición, sea una secuencia, decisión o ciclo de acciones.
 */
 
-// 50 algoritmos reales
+// 50 algoritmos reales de decisión
 
 x = 0
 a = 0
@@ -2838,7 +2838,6 @@ function result49(){
   }
 }
 
-
 //50. Leer un número entero y si es múltiplo de 4 mostrar en pantalla su mitad, si es múltiplo de 5 mostrar en pantalla su cuadrado y si es múltiplo de 6 mostrar en pantalla su primer dígito. Asumir que el número no es mayor que 100.
 function result50(){
   
@@ -2905,5 +2904,246 @@ function result50(){
         document.getElementById("r50").innerHTML = `${n50} es mayor a 100 :c ...Pero que no importa, que igual te lo calculo todo :D LET'S GOOOOO <br>${xd}`; 
         break;
     }
+  }
+}
+
+// 50 algoritmos reales de ciclos
+
+x = 0
+a = 0
+b = 0
+c = 0
+d = 0
+
+// 1. Leer un número entero y mostrar todos los enteros comprendidos entre 1 y el número leído.
+function cycle01(){
+  var c01 = document.getElementById("cycle01").value;
+  var aux = Number.parseInt(c01);
+  var text = ``;
+
+  if (c01 == ``) {
+    document.getElementById("c01").innerHTML = ``;
+  }
+  else if (c01 == "-") {
+    document.getElementById("c01").innerHTML = ``;
+  }
+  else {
+    if (c01 <= 0) {
+      for (let i = aux; i <= 1; i++) {
+        text += `${i} `;
+        document.getElementById("c01").innerHTML = `${text}   `;
+      }
+    }
+    else {
+      for (let i = 1; i <= aux; i++) {
+        text += `${i} `;
+        document.getElementById("c01").innerHTML = `${text}   `;
+      }
+    }
+  }
+}
+
+// 2. Leer un número entero y mostrar todos los pares comprendidos entre 1 y el número leído.
+function cycle02(){
+  var c02 = document.getElementById("cycle02").value;
+  var aux = Number.parseInt(c02);
+  var text = ``;
+
+  if (c02 == ``) {        
+    document.getElementById("c02").innerHTML = ``;
+  }
+  else if (c02 == "-") {
+    document.getElementById("c02").innerHTML = ``;
+  }
+  else {
+    if (c02 <= 0) {
+      for (let i = aux; i <= 1; i=i+2) {
+        text += `${i} `;
+        document.getElementById("c02").innerHTML = `${text}   `;
+      }
+    }
+    else {
+      for (let i = 0; i <= aux; i=i+2) {
+        text += `${i} `;
+        document.getElementById("c02").innerHTML = `${text}   `;
+      }
+    }
+  }
+}
+
+// 3. Leer un número entero y mostrar todos los divisores exactos del número comprendidos entre 1 y el número leído.
+function cycle03(){
+  var c03 = document.getElementById("cycle03").value;
+  var aux = Number.parseInt(c03);
+  var text = ``;
+
+  if (c03 == ``) {
+    document.getElementById("c03").innerHTML = ``;
+  }
+  else if (c03 == "-") {
+    document.getElementById("c03").innerHTML = ``;
+  }
+  else {
+    if (c03 <= 0) {
+      for (let i = aux; i <= 1; i++) {
+        if ((c03%i)==0){
+          text += `${i} `;
+          document.getElementById("c03").innerHTML = `${text}   `;
+        }
+      }
+    }
+    else {
+      for (let i = 1; i <= aux; i++) {
+        if ((c03%i)==0){
+          text += `${i} `;
+          document.getElementById("c03").innerHTML = `${text}   `;
+        }
+      }
+    }
+  }
+}
+
+// 4. Leer dos números y mostrar todos los enteros comprendidos entre ellos.
+function cycle04(){
+  var c04 = document.getElementById("cycle04").value;
+  var c04b = document.getElementById("cycle04b").value;
+  var aux = Number.parseInt(c04);
+  var auxb = Number.parseInt(c04b);
+  var text = ``;
+  var min = Math.min(aux,auxb);
+  var max = Math.max(aux,auxb);
+
+  if ((c04 == `` && c04b == ``) || (c04 == "-" && c04b == "-")) {
+    document.getElementById("c04").innerHTML = ``;
+  }
+  else if (c04 == `` || c04b == ``) {
+    document.getElementById("c04").innerHTML = `Bueno, un ${c04}${c04b}... Y la otra casilla qué >:c`;
+  }
+  else {
+    for (let i = min; i <= max; i++) {
+      text += `${i} `;
+      document.getElementById("c04").innerHTML = `${text} `;
+    }
+  }
+}
+
+// 5. Leer dos números y mostrar todos los números terminados en 4 comprendidos entre ellos.
+function cycle05(){
+    var c05 = document.getElementById("cycle05").value;
+    var c05b = document.getElementById("cycle05b").value;
+    var aux = Number.parseInt(c05);
+    var auxb = Number.parseInt(c05b);
+    var text = ``;
+    var min = Math.min(aux,auxb);
+    var max = Math.max(aux,auxb);
+  
+    if ((c05 == `` && c05b == ``) || (c05 == "-" && c05b == "-")) {
+      document.getElementById("c05").innerHTML = ``;
+    }
+    else if (c05 == `` || c05b == ``) {
+      document.getElementById("c05").innerHTML = `Bueno, un ${c05}${c05b}... Y la otra casilla qué >:c`;
+    }
+    else {
+      for (let i = min; i <= max; i++) {
+        if ((i%10)==4){
+          text += `${i} `;
+          document.getElementById("c05").innerHTML = `${text} `;
+        }
+        else {
+          document.getElementById("c05").innerHTML = `Ninguno de los números entre ${aux} y ${auxb} terminan en 4 :c`;
+        }
+      }
+    }
+}
+
+// 6. Leer un número entero de tres dígitos y mostrar todos los enteros comprendidos entre 1 y cada uno de los dígitos.
+function cycle06(){
+  
+    //VARIABLES BÁSICAS PARA EL CICLO
+    var c06 = document.getElementById("cycle06").value;
+    var aux = Math.abs(c06);
+    var array = Array.from(String(aux),Number);
+    var text = ``;
+    
+  
+    //VARIABLES MAX Y MIN PARA UN for
+    var max = '';
+    var min = '';
+  
+
+    //LETS GO 
+    if (c06 == `` || c06 == "-") {
+      document.getElementById("c06").innerHTML = ``;
+    }
+    else {
+      for (let index = 0; index <= array.length; index++) {   
+        if (c06<0) {
+          max = Math.max(1,-(array[index]));
+          min = Math.min(1,-(array[index]));
+        }
+        else{
+          max = Math.max(1,-(array[index]));
+          min = Math.min(1,-(array[index]));
+        }
+        for (let i = min; i <= max; i++) {
+          text += `${i} `;
+          document.getElementById("c06").innerHTML = `${text} `;
+        }
+        text += `<br>`;
+      }
+    }
+}
+
+// 7. Mostrar en pantalla todos los enteros comprendidos entre 1 y 100.
+function button(){
+  document.getElementById("c07").innerHTML = ``;
+  document.getElementById("cycle07").onclick = function() {cycle07()};
+  
+}
+
+function cycle07() {
+  var count = ``;
+
+    for (let index = 1; index <= 100; index++) {
+      count += `${index} `;
+      document.getElementById("c07").innerHTML = `${count} UwU`;
+    }
+    document.getElementById("cycle07").onclick = function() {button()};
+}
+
+// 8. Mostrar en pantalla todos los pares comprendidos entre 20 y 200.
+
+
+// 9. Mostrar en pantalla todos los números terminados en 6 comprendidos entre 25 y 205.
+
+
+// 10. Leer un número entero y determinar a cuánto es igual la suma de todos los enteros comprendidos entre 1 y el número leído.
+function cycle10(){
+  
+  //VARIABLES BÁSICAS PARA EL CICLO
+  var c10 = document.getElementById("cycle10").value;
+  var aux = Number.parseInt(c10);
+  var text = ``;
+  var summ = 0;
+
+  //VARIABLES MAX Y MIN PARA UN for
+  var max = Math.max(aux,1);
+  var min = Math.min(aux,1);
+
+  if (c10 == `` || c10 == "-") {
+    document.getElementById("c10").innerHTML = ``;
+  }
+  else {
+    text = `${min} `;
+      for (let i = min; i <= max; i++) {
+        if (i<0){
+          text += ` ${i} `;
+        }
+        else{
+          text += `+ ${i} `;
+        }
+        summ += i;
+        document.getElementById("c10").innerHTML = `${text} = <br> Eso te da un total de ${summ} UwU`;
+      }
   }
 }
