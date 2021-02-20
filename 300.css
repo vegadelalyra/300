@@ -2,7 +2,7 @@ body{
     background-color: black; 
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     color:blanchedalmond;
-    font-size:2.6ch;
+    font-size:2.4ch;
     text-align: justify;
 }
 summary{
@@ -11,10 +11,18 @@ summary{
     top:0;
     cursor:pointer;
     background-color:black;
+    outline: none;
+}
+summary:hover{
+    color:goldenrod;
 }
 h1{
     width: fit-content;
     cursor:pointer;
+}
+h1:hover{
+    color:rgb(255, 255, 255);
+    font-size:3.9ch;
 }
 td{
     white-space: pre-line;
@@ -51,16 +59,51 @@ tr,td{
 #seudoCode {
     font-size: large;
 }
+input::placeholder{
+    font-size: 0.8em;
+    text-align: center;
+    font-style: italic;
+}
+    
 input{
-    width: 5em;
+    color:blanchedalmond;
+    margin: 15px 0;
+    font-size: 20px;
+    padding: 10px;
+    width: 250px;
+    border: 1px solid rgb(107, 84, 35);
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    background: rgba(0, 0, 0);
+    outline: none;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+input:hover {
+    border: 1px solid rgb(255, 255, 255);
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+input:active{
+    border: 1px solid rgb(114, 0, 245);
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+input:focus{
+    border: 1px solid rgb(255, 215, 39);
+    border-top: none;
+    border-left: none;
+    border-right: none;
 }
 
 button{
-	box-shadow:inset 0px 1px 1px -50px #fff6af;
-	background:linear-gradient(to bottom, #ffec64 5%, #ffab23 100%);
-	background-color:#ffec64;
+    outline: none;
+	box-shadow:inset 0px 1px 1px -50px #fffefa;
+	background:linear-gradient(to bottom, #fff186 5%, #f7b64e 100%);
 	border-radius:42px;
-	border:3px solid #ffaa22;
+	border:1px solid #ffe572;
 	display:inline-block;
 	cursor:pointer;
 	color:#333333;
@@ -72,12 +115,16 @@ button{
 	text-shadow:0px 1px 50px #ffee66;
 }
 button:hover {
+    border:1px solid #ffaa22;
     background:linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
-	background-color:#ffab23;
 }
 button:active{
+    border:3px solid #ffaa22;
+    background:linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%);
+    color: rgb(31, 11, 11);
     position:relative;
 	top:1px;
 }
+
 
 /* a las clases las llamas con .elNombreDeLaClass :D  */

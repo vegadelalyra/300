@@ -331,6 +331,7 @@ ciclos de acciones
 Toda acción sólo se ejecuta si se cumple una condición, sea una secuencia, decisión o ciclo de acciones.
 */
 
+
 // 50 algoritmos reales de decisión
 
 x = 0
@@ -3082,8 +3083,8 @@ function cycle06(){
           min = Math.min(1,-(array[index]));
         }
         else{
-          max = Math.max(1,-(array[index]));
-          min = Math.min(1,-(array[index]));
+          max = Math.max(1,(array[index]));
+          min = Math.min(1,(array[index]));
         }
         for (let i = min; i <= max; i++) {
           text += `${i} `;
@@ -3094,23 +3095,58 @@ function cycle06(){
     }
 }
 
+
 // 7. Mostrar en pantalla todos los enteros comprendidos entre 1 y 100.
-function button(){
+{
+const button = document.getElementById("cycle07");
+function onMouseOverLight(){
+  button.style.border="1px solid #ffaa22";
+  button.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
+};
+function onMouseOutLight(){
+  button.style.border='1px solid #ffe572';
+  button.style.color='#333333';
+  button.style.background='linear-gradient(to bottom, #fff186 5%, #f7b64e 100%)';
+};
+
+function onMouseOverDark(){
+  button.style.border="3px solid #ffaa22";
+  button.style.background="linear-gradient(to bottom, #ffe205 5%, #ffb71b 100%)";
+};
+function onMouseOutDark(){
+  button.style.border = '3px solid #ffaa22';
+  button.style.color = 'rgb(31, 11, 11)';
+  button.style.background = 'linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)';
+};
+
+function buttonc07(){
+  //SWITCH
   document.getElementById("c07").innerHTML = ``;
   document.getElementById("cycle07").onclick = function() {cycle07()};
-  
+  //OH, STYLO
+  document.getElementById("cycle07").innerHTML = `>:C`;
+  button.onmouseover = function(){onMouseOverLight()};
+  button.onmouseout = function(){onMouseOutLight()};
 }
 
 function cycle07() {
-  var count = ``;
+
+  //SOLUTION
+    var count = ``;
 
     for (let index = 1; index <= 100; index++) {
       count += `${index} `;
       document.getElementById("c07").innerHTML = `${count} UwU`;
     }
-    document.getElementById("cycle07").onclick = function() {button()};
-}
 
+    //SWITCH
+    document.getElementById("cycle07").onclick = function() {buttonc07()};
+    //OH, STYLO
+    document.getElementById("cycle07").innerHTML = `UwU`;
+    button.onmouseover = function(){onMouseOverDark()};
+    button.onmouseout = function(){onMouseOutDark()};
+}
+}
 // 8. Mostrar en pantalla todos los pares comprendidos entre 20 y 200.
 
 
