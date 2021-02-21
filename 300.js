@@ -2950,6 +2950,15 @@ function cycle02(){
   var aux = Number.parseInt(c02);
   var text = ``;
 
+  var max = Math.max(1,aux);
+  var min = Math.min(1,aux);
+
+  for (let index = min; index <= max; index++) {
+    if ((index%2)==0 && index!=0){
+      text += `${index} `;
+    }
+  }
+
   if (c02 == ``) {        
     document.getElementById("c02").innerHTML = ``;
   }
@@ -2957,18 +2966,7 @@ function cycle02(){
     document.getElementById("c02").innerHTML = ``;
   }
   else {
-    if (c02 <= 0) {
-      for (let i = aux; i <= 1; i=i+2) {
-        text += `${i} `;
-        document.getElementById("c02").innerHTML = `${text}   `;
-      }
-    }
-    else {
-      for (let i = 0; i <= aux; i=i+2) {
-        text += `${i} `;
-        document.getElementById("c02").innerHTML = `${text}   `;
-      }
-    }
+    document.getElementById("c02").innerHTML = `${text} `;
   }
 }
 
@@ -3037,6 +3035,12 @@ function cycle05(){
     var text = ``;
     var min = Math.min(aux,auxb);
     var max = Math.max(aux,auxb);
+
+    for (let i = min; i <= max; i++) {
+      if ((i%10)==4||(i%10)==-4){
+        text += `${i} `;
+      }
+    };
   
     if ((c05 == `` && c05b == ``) || (c05 == "-" && c05b == "-")) {
       document.getElementById("c05").innerHTML = ``;
@@ -3045,14 +3049,11 @@ function cycle05(){
       document.getElementById("c05").innerHTML = `Bueno, un ${c05}${c05b}... Y la otra casilla qué >:c`;
     }
     else {
-      for (let i = min; i <= max; i++) {
-        if ((i%10)==4){
-          text += `${i} `;
-          document.getElementById("c05").innerHTML = `${text} `;
-        }
-        else {
-          document.getElementById("c05").innerHTML = `Ninguno de los números entre ${aux} y ${auxb} terminan en 4 :c`;
-        }
+      if (text==``) {
+        document.getElementById("c05").innerHTML = `Ninguno de los números enteros entre el ${c05} y el ${c05b} terminan en 4 :C `;
+      } 
+      else {
+        document.getElementById("c05").innerHTML = `${text} UwU`;
       }
     }
 }
@@ -3097,61 +3098,183 @@ function cycle06(){
 
 
 // 7. Mostrar en pantalla todos los enteros comprendidos entre 1 y 100.
-{
-const button = document.getElementById("cycle07");
-function onMouseOverLight(){
-  button.style.border="1px solid #ffaa22";
-  button.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
+//FUNCIONES PARA LOS BOTONES
+var button07 = document.getElementById("cycle07");
+function onMouseOverLight07(){
+  button07.style.border="1px solid #ffaa22";
+  button07.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
 };
-function onMouseOutLight(){
-  button.style.border='1px solid #ffe572';
-  button.style.color='#333333';
-  button.style.background='linear-gradient(to bottom, #fff186 5%, #f7b64e 100%)';
+function onMouseOutLight07(){
+  button07.style.border='1px solid #ffe572';
+  button07.style.color='#333333';
+  button07.style.background='linear-gradient(to bottom, #fff186 5%, #f7b64e 100%)';
 };
 
-function onMouseOverDark(){
-  button.style.border="3px solid #ffaa22";
-  button.style.background="linear-gradient(to bottom, #ffe205 5%, #ffb71b 100%)";
+function onMouseOverDark07(){
+  button07.style.border="3px solid #ffaa22";
+  button07.style.background="linear-gradient(to bottom, #ffe205 5%, #ffb71b 100%)";
 };
-function onMouseOutDark(){
-  button.style.border = '3px solid #ffaa22';
-  button.style.color = 'rgb(31, 11, 11)';
-  button.style.background = 'linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)';
+function onMouseOutDark07(){
+  button07.style.border = '3px solid #ffaa22';
+  button07.style.color = 'rgb(31, 11, 11)';
+  button07.style.background = 'linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)';
+};
+function hoverr07(){
+  button07.style.border="3px solid #ffaa22";
+  button07.style.background ="linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)";
+  button07.style.color="rgb(31, 11, 11)";
+	button07.style.top="1px";
 };
 
 function buttonc07(){
   //SWITCH
   document.getElementById("c07").innerHTML = ``;
-  document.getElementById("cycle07").onclick = function() {cycle07()};
+  button07.onclick = function () {cycle07()};
   //OH, STYLO
-  document.getElementById("cycle07").innerHTML = `>:C`;
-  button.onmouseover = function(){onMouseOverLight()};
-  button.onmouseout = function(){onMouseOutLight()};
+  button07.innerHTML = `>:C`;
+  button07.onmouseover = function (){onMouseOverLight07()};
+  button07.onmouseout = function (){onMouseOutLight07()};
+  button07.onmousedown = function (){hoverr07()};
 }
 
 function cycle07() {
-
+  
   //SOLUTION
-    var count = ``;
+  var count07 = ``;
 
     for (let index = 1; index <= 100; index++) {
-      count += `${index} `;
-      document.getElementById("c07").innerHTML = `${count} UwU`;
+      count07 += `${index} `;
+      document.getElementById("c07").innerHTML = `${count07} UwU`;
     }
-
+    
     //SWITCH
-    document.getElementById("cycle07").onclick = function() {buttonc07()};
+    button07.onclick = function () {buttonc07()};
     //OH, STYLO
-    document.getElementById("cycle07").innerHTML = `UwU`;
-    button.onmouseover = function(){onMouseOverDark()};
-    button.onmouseout = function(){onMouseOutDark()};
+    button07.innerHTML = `UwU`;
+    button07.onmouseover = function (){onMouseOverDark07()};
+    button07.onmouseout = function (){onMouseOutDark07()};
+    button07.onmousedown = function (){onMouseOverLight07()};
 }
-}
-// 8. Mostrar en pantalla todos los pares comprendidos entre 20 y 200.
 
+// 8. Mostrar en pantalla todos los pares comprendidos entre 20 y 200.
+//FUNCIONES PARA LOS BOTONES
+var button08 = document.getElementById("cycle08");
+function onMouseOverLight08(){
+  button08.style.border="1px solid #ffaa22";
+  button08.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
+};
+function onMouseOutLight08(){
+  button08.style.border='1px solid #ffe572';
+  button08.style.color='#333333';
+  button08.style.background='linear-gradient(to bottom, #fff186 5%, #f7b64e 100%)';
+};
+
+function onMouseOverDark08(){
+  button08.style.border="3px solid #ffaa22";
+  button08.style.background="linear-gradient(to bottom, #ffe205 5%, #ffb71b 100%)";
+};
+function onMouseOutDark08(){
+  button08.style.border = '3px solid #ffaa22';
+  button08.style.color = 'rgb(31, 11, 11)';
+  button08.style.background = 'linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)';
+};
+function hoverr08(){
+  button08.style.border="3px solid #ffaa22";
+  button08.style.background ="linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)";
+  button08.style.color="rgb(31, 11, 11)";
+	button08.style.top="1px";
+};
+
+function buttonc08(){
+  //SWITCH
+  document.getElementById("c08").innerHTML = ``;
+  button08.onclick = function () {cycle08()};
+  //OH, STYLO
+  button08.innerHTML = `>:C`;
+  button08.onmouseover = function (){onMouseOverLight08()};
+  button08.onmouseout = function (){onMouseOutLight08()};
+  button08.onmousedown = function (){hoverr08()};
+}
+
+function cycle08() {
+  
+  //SOLUTION
+  var count08 = ``;
+
+    for (let index = 20; index <= 200; index=index+2) {
+      count08 += `${index} `;
+      document.getElementById("c08").innerHTML = `${count08} UwU`;
+    }
+    
+    //SWITCH
+    button08.onclick = function () {buttonc08()};
+    //OH, STYLO
+    button08.innerHTML = `UwU`;
+    button08.onmouseover = function (){onMouseOverDark08()};
+    button08.onmouseout = function (){onMouseOutDark08()};
+    button08.onmousedown = function (){onMouseOverLight08()};
+}
 
 // 9. Mostrar en pantalla todos los números terminados en 6 comprendidos entre 25 y 205.
+//FUNCIONES PARA LOS BOTONES
+var button09 = document.getElementById("cycle09");
+function onMouseOverLight09(){
+  button09.style.border="1px solid #ffaa22";
+  button09.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
+};
+function onMouseOutLight09(){
+  button09.style.border='1px solid #ffe572';
+  button09.style.color='#333333';
+  button09.style.background='linear-gradient(to bottom, #fff186 5%, #f7b64e 100%)';
+};
 
+function onMouseOverDark09(){
+  button09.style.border="3px solid #ffaa22";
+  button09.style.background="linear-gradient(to bottom, #ffe205 5%, #ffb71b 100%)";
+};
+function onMouseOutDark09(){
+  button09.style.border = '3px solid #ffaa22';
+  button09.style.color = 'rgb(31, 11, 11)';
+  button09.style.background = 'linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)';
+};
+function hoverr09(){
+  button09.style.border="3px solid #ffaa22";
+  button09.style.background ="linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)";
+  button09.style.color="rgb(31, 11, 11)";
+	button09.style.top="1px";
+};
+
+function buttonc09(){
+  //SWITCH
+  document.getElementById("c09").innerHTML = ``;
+  button09.onclick = function () {cycle09()};
+  //OH, STYLO
+  button09.innerHTML = `>:C`;
+  button09.onmouseover = function (){onMouseOverLight09()};
+  button09.onmouseout = function (){onMouseOutLight09()};
+  button09.onmousedown = function (){hoverr09()};
+}
+
+function cycle09() {
+  
+  //SOLUTION
+  var count09 = ``;
+
+    for (let index = 25; index <= 205; index++) {
+      if ((index%10)==6){
+        count09 += `${index} `;
+      }
+      document.getElementById("c09").innerHTML = `${count09} UwU`;
+    }
+    
+    //SWITCH
+    button09.onclick = function () {buttonc09()};
+    //OH, STYLO
+    button09.innerHTML = `UwU`;
+    button09.onmouseover = function (){onMouseOverDark09()};
+    button09.onmouseout = function (){onMouseOutDark09()};
+    button09.onmousedown = function (){onMouseOverLight09()};
+}
 
 // 10. Leer un número entero y determinar a cuánto es igual la suma de todos los enteros comprendidos entre 1 y el número leído.
 function cycle10(){
@@ -3170,16 +3293,20 @@ function cycle10(){
     document.getElementById("c10").innerHTML = ``;
   }
   else {
-    text = `${min} `;
       for (let i = min; i <= max; i++) {
         if (i<0){
-          text += ` ${i} `;
+          text += `${i}`;
         }
         else{
-          text += `+ ${i} `;
+          if (i==min){
+            text += `${i}`;
+          }
+          else {
+            text += `+${i}`;
+          }
         }
         summ += i;
-        document.getElementById("c10").innerHTML = `${text} = <br> Eso te da un total de ${summ} UwU`;
+        document.getElementById("c10").innerHTML = `${text} = ... <br> Eso te da un total de ${summ} UwU`;
       }
   }
 }

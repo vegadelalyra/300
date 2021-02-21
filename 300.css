@@ -118,13 +118,14 @@ button:hover {
     border:1px solid #ffaa22;
     background:linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
 }
-button:active{
+button:focus{
     border:3px solid #ffaa22;
     background:linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%);
     color: rgb(31, 11, 11);
-    position:relative;
 	top:1px;
 }
+
+
 
 
 /* a las clases las llamas con .elNombreDeLaClass :D  */
