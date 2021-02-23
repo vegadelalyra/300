@@ -78,6 +78,7 @@ input{
     background: rgba(0, 0, 0);
     outline: none;
     font-family:Georgia, 'Times New Roman', Times, serif;
+    text-align: center;
 }
 input:hover {
     border: 1px solid rgb(255, 255, 255);
@@ -85,13 +86,8 @@ input:hover {
     border-left: none;
     border-right: none;
 }
-input:active{
-    border: 1px solid rgb(114, 0, 245);
-    border-top: none;
-    border-left: none;
-    border-right: none;
-}
-input:focus{
+input:focus,
+input:valid{
     border: 1px solid rgb(255, 215, 39);
     border-top: none;
     border-left: none;
@@ -124,8 +120,12 @@ button:focus{
     color: rgb(31, 11, 11);
 	top:1px;
 }
+#c17,#c17b{ /*spans cortados a la mitad*/
+    display:inline-table;
+    margin-inline: 6%;
+}
 
 
 
-
-/* a las clases las llamas con .elNombreDeLaClass :D  */
+/* a las clases las llamas con (elemento)."elNombreDeLaClass" :D  */
+/* a los ID las llamas con #"elIDdelElemento" :D */

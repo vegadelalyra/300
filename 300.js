@@ -1133,7 +1133,7 @@ function result17(){
           break;
           
         default:
-            document.getElementById("r17").innerHTML = `El número ${n17} no tiene 3 dígitos sino ${length}<br>Igual su máximo valor es el ${max} en la posición de dígitos n47${pos} UwU`;
+            document.getElementById("r17").innerHTML = `El número ${n17} no tiene 3 dígitos sino ${length}<br>Igual su máximo valor es el ${max} en la posición de dígitos n°${pos} UwU`;
           break;
       }
     } 
@@ -2932,13 +2932,13 @@ function cycle01(){
     if (c01 <= 0) {
       for (let i = aux; i <= 1; i++) {
         text += `${i} `;
-        document.getElementById("c01").innerHTML = `${text}   `;
+        document.getElementById("c01").innerHTML = `${text}   UwU`;
       }
     }
     else {
       for (let i = 1; i <= aux; i++) {
         text += `${i} `;
-        document.getElementById("c01").innerHTML = `${text}   `;
+        document.getElementById("c01").innerHTML = `${text}   UwU`;
       }
     }
   }
@@ -2966,7 +2966,7 @@ function cycle02(){
     document.getElementById("c02").innerHTML = ``;
   }
   else {
-    document.getElementById("c02").innerHTML = `${text} `;
+    document.getElementById("c02").innerHTML = `${text} UwU`;
   }
 }
 
@@ -2987,7 +2987,7 @@ function cycle03(){
       for (let i = aux; i <= 1; i++) {
         if ((c03%i)==0){
           text += `${i} `;
-          document.getElementById("c03").innerHTML = `${text}   `;
+          document.getElementById("c03").innerHTML = `${text}   UwU`;
         }
       }
     }
@@ -2995,7 +2995,7 @@ function cycle03(){
       for (let i = 1; i <= aux; i++) {
         if ((c03%i)==0){
           text += `${i} `;
-          document.getElementById("c03").innerHTML = `${text}   `;
+          document.getElementById("c03").innerHTML = `${text}   UwU`;
         }
       }
     }
@@ -3021,7 +3021,7 @@ function cycle04(){
   else {
     for (let i = min; i <= max; i++) {
       text += `${i} `;
-      document.getElementById("c04").innerHTML = `${text} `;
+      document.getElementById("c04").innerHTML = `${text} UwU`;
     }
   }
 }
@@ -3072,26 +3072,38 @@ function cycle06(){
     var max = '';
     var min = '';
   
+    for (let index = 0; index <= array.length; index++) { //UNA TRAMPITA QUE SE ME OCURRIÓ PARA DIFERENCIAR POSITIVOS Y NEGATIVOS xd   
+      if (c06<0) {
+        max = Math.max(1,-(array[index]));
+        min = Math.min(1,-(array[index]));
+      }
+      else{
+        max = Math.max(1,(array[index]));
+        min = Math.min(1,(array[index]));
+      }
+      for (let i = min; i <= max; i++) {
+        text += `${i} `;
+      }
+      text += `<br>`;
+    };
 
     //LETS GO 
     if (c06 == `` || c06 == "-") {
       document.getElementById("c06").innerHTML = ``;
     }
     else {
-      for (let index = 0; index <= array.length; index++) {   
-        if (c06<0) {
-          max = Math.max(1,-(array[index]));
-          min = Math.min(1,-(array[index]));
-        }
-        else{
-          max = Math.max(1,(array[index]));
-          min = Math.min(1,(array[index]));
-        }
-        for (let i = min; i <= max; i++) {
-          text += `${i} `;
-          document.getElementById("c06").innerHTML = `${text} `;
-        }
-        text += `<br>`;
+      switch (array.length) {
+        case 1:
+          document.getElementById("c06").innerHTML = `¿Solo 1 dígito? Pon los dígitos que quieras UwU <br> ${text} `;
+          break;
+          
+          case 3:
+          document.getElementById("c06").innerHTML = `UwU <br> ${text} `;
+          break;  
+          
+          default:
+          document.getElementById("c06").innerHTML = `El ejercicio pide 3 dígitos y no ${array.length}, pero que da igual UwU <br> Te lo ejecuto de todas formas: <br> ${text} `;
+          break;
       }
     }
 }
@@ -3310,3 +3322,482 @@ function cycle10(){
       }
   }
 }
+
+// 11. Leer un número entero de dos dígitos y mostrar en pantalla todos los enteros comprendidos entre un dígito y otro.
+function cycle11(){
+  
+    //VARIABLES BÁSICAS PARA EL CICLO
+    var c11 = document.getElementById("cycle11").value;
+    var text = ``;
+    
+    //VARIABLES PARA EL EJERCICIO (dígito 1 y 2)
+    var abs = Math.abs(c11);
+    var arr = Array.from(String(abs),Number);
+    var left = arr[0];
+    var right = arr[1];
+
+    //CANTIDAD DE DÍGITOS
+    var length = arr.length;
+    var len = (length==1)? `El número ${c11} tiene ${length} dígito y no 2 :c <br> Dame al menos un dígito más, ser humano`:`El número ${c11} tiene ${length} dígitos y no 2 :c <br>...Pero que igual te calculo los dos primeros dígitos :D`;
+
+    //VARIABLES MAX Y MIN PARA UN for
+    var max = Math.max(left,right);
+    var min = Math.min(left,right);
+
+    for (let i = min; i <= max; i++) {
+      text += `${i} `;
+    }
+  
+    if (c11 == `` || c11 == "-" || c11 == 0) {
+      document.getElementById("c11").innerHTML = ``;
+    }
+    else {
+      switch (length) {
+        case 1:
+          document.getElementById("c11").innerHTML = `${len}`;
+          break;
+      
+        case 2:
+          document.getElementById("c11").innerHTML = `${text}   UwU`;
+          break;
+          
+          default:
+          document.getElementById("c11").innerHTML = `${len}<br>${text}   UwU`;
+          break;
+      }
+    }
+}
+// 12. Leer un número entero de 3 dígitos y determinar si tiene el dígito 1.
+function cycle12(){
+  
+  //VARIABLES BÁSICAS PARA EL CICLO
+  var c12 = document.getElementById("cycle12").value;
+  var abs = Math.abs(c12);
+  var arr = Array.from(String(abs),Number);
+  
+  //VARIABLES PARA EL EJERCICIO (array.filters y demás)
+  var three = [arr[0],arr[1],arr[2]];
+  var uno3 = three.filter(x=>x==1);
+  var derecha = (three[2] == 1)? `en la derecha`:``;
+  var middle = (arr.length==3)? `en el medio`:`en el segundo dígito`;
+  var mitad = (three[1] == 1)? `${middle} `:``;
+  var izquierda = (three[0] == 1)? `en la izquierda`:``;
+  var and = (uno3.length==3 || (three[0]!=1 && three[2]==1))? `y `:``;
+  var comma = (uno3.length==3)? `, `:``;
+  var yIzq = (uno3.length==2 && izquierda==`en la izquierda`)? ` y `:``;
+  //Cada palabra se valoró de manera binaria para volver posible el código
+  var uno = arr.filter(x=>x==1);
+  var totalUnos = (uno.length==1)? `tiene un 1 :D`:`tiene ${uno.length} UNOS :D`;
+  var hafIs = (abs==1)? `el número es un 1 :D`:`${totalUnos}`;
+  var though = (uno.length>=1)? `...Aunque ${hafIs}`:`...Y de todas maneras, no tiene un 1 en ninguna parte >:c`;
+  //POSICIÓN (en caso de número de 4 dígitos o más con un 1)
+  var pos = [];
+  var box = [];
+  var sortedPos = [];
+  for (let i = 0; i < arr.length; i++) {
+    pos = (arr.indexOf(1,i))+1;
+    if (pos!=0){
+      box.push(pos);
+    };
+    sortedPos = box.filter((value,index,array)=>array.indexOf(value)==index);
+  };
+  
+  //EN BÚSQUEDA DEL 1 
+  var oneInThree = (uno3.length>=1)? `El número ${c12} tiene 3 dígitos :D y un 1 ${izquierda}${comma}${yIzq}${mitad}${and}${derecha}`:`El número ${c12} tiene 3 dígitos :D pero ninguno de ellos es un 1 :c`;
+  var length = arr.length;
+  var len = (length==1)? `El número ${c12} tiene ${length} dígito y no 3 :c ${though} <br> Dame al menos dos dígitos más, ser humano >:c`:`El número ${c12} tiene ${length} dígitos y no 3 :c ${though}`;
+  var coor = (uno.length==1)? `Y ese 1 está en la posición n°`:`Los 1 están en las posiciones n°:`;
+  var position = (uno.length>=1)? `${coor} ${sortedPos} UwU`:``;
+
+
+  if (c12 == `` || c12 == "-" || c12 == 0) {
+    document.getElementById("c12").innerHTML = ``;
+  }
+  else {
+    switch (length) {
+      case 1:
+        document.getElementById("c12").innerHTML = `${len}`;
+        break;
+    
+      case 3:
+        document.getElementById("c12").innerHTML = `${oneInThree} UwU`;
+        break;
+        
+        default:
+        document.getElementById("c12").innerHTML = `${len}<br>${position}`;
+        break;
+    }
+  }
+}
+
+// 13. Leer un entero y mostrar todos los múltiplos de 5 comprendidos entre 1 y el número leído.
+function cycle13(){
+  
+    //VARIABLES BÁSICAS PARA EL CICLO
+    var c13 = document.getElementById("cycle13").value;
+    var aux = Number.parseInt(c13);
+    var text = ``;
+  
+    //VARIABLES MAX Y MIN PARA UN for
+    var max = Math.max(aux,1);
+    var min = Math.min(aux,1);
+
+    for (let i = min; i <= max; i++) {
+      if ((i%5)==0 && i!=0){
+        text += `${i} `;
+      };
+    }
+  
+    if (c13 == `` || c13 == "-") {
+      document.getElementById("c13").innerHTML = ``;
+    }
+    else {
+      if (text==``){
+        document.getElementById("c13").innerHTML = `Entre los números ${min} y ${max} no hay múltiplos de 5 :C <br> ¡Prueba con otro número, humano!`;
+      }
+      else{
+        document.getElementById("c13").innerHTML = `${text} UwU`;
+      }
+    }
+}
+
+// 14. Mostrar en pantalla los primeros 20 múltiplos de 3.
+//FUNCIONES PARA LOS BOTONES
+var button14 = document.getElementById("cycle14");
+function onMouseOverLight14(){
+  button14.style.border="1px solid #ffaa22";
+  button14.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
+};
+function onMouseOutLight14(){
+  button14.style.border='1px solid #ffe572';
+  button14.style.color='#333333';
+  button14.style.background='linear-gradient(to bottom, #fff186 5%, #f7b64e 100%)';
+};
+
+function onMouseOverDark14(){
+  button14.style.border="3px solid #ffaa22";
+  button14.style.background="linear-gradient(to bottom, #ffe205 5%, #ffb71b 100%)";
+};
+function onMouseOutDark14(){
+  button14.style.border = '3px solid #ffaa22';
+  button14.style.color = 'rgb(31, 11, 11)';
+  button14.style.background = 'linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)';
+};
+function hoverr14(){
+  button14.style.border="3px solid #ffaa22";
+  button14.style.background ="linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)";
+  button14.style.color="rgb(31, 11, 11)";
+	button14.style.top="1px";
+};
+
+function buttonc14(){
+  //SWITCH
+  document.getElementById("c14").innerHTML = ``;
+  button14.onclick = function () {cycle14()};
+  //OH, STYLO
+  button14.innerHTML = `>:C`;
+  button14.onmouseover = function (){onMouseOverLight14()};
+  button14.onmouseout = function (){onMouseOutLight14()};
+  button14.onmousedown = function (){hoverr14()};
+}
+
+function cycle14() {
+  
+  //SOLUTION
+  var count14 = ``;
+  var mult = 3;
+  var quant = 20;
+
+    for (let index = mult; index <= mult*quant; index=index+mult) {
+      count14 += `${index} `;
+      document.getElementById("c14").innerHTML = `${count14} UwU`;
+    }
+    
+    //SWITCH
+    button14.onclick = function () {buttonc14()};
+    //OH, STYLO
+    button14.innerHTML = `UwU`;
+    button14.onmouseover = function (){onMouseOverDark14()};
+    button14.onmouseout = function (){onMouseOutDark14()};
+    button14.onmousedown = function (){onMouseOverLight14()};
+}
+
+// 15. Escribir en pantalla el resultado de sumar los primeros 20 múltiplos de 3.
+//FUNCIONES PARA LOS BOTONES
+var button15 = document.getElementById("cycle15");
+function onMouseOverLight15(){
+  button15.style.border="1px solid #ffaa22";
+  button15.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
+};
+function onMouseOutLight15(){
+  button15.style.border='1px solid #ffe572';
+  button15.style.color='#333333';
+  button15.style.background='linear-gradient(to bottom, #fff186 5%, #f7b64e 100%)';
+};
+
+function onMouseOverDark15(){
+  button15.style.border="3px solid #ffaa22";
+  button15.style.background="linear-gradient(to bottom, #ffe205 5%, #ffb71b 100%)";
+};
+function onMouseOutDark15(){
+  button15.style.border = '3px solid #ffaa22';
+  button15.style.color = 'rgb(31, 11, 11)';
+  button15.style.background = 'linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)';
+};
+function hoverr15(){
+  button15.style.border="3px solid #ffaa22";
+  button15.style.background ="linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)";
+  button15.style.color="rgb(31, 11, 11)";
+	button15.style.top="1px";
+};
+
+function buttonc15(){
+  //SWITCH
+  document.getElementById("c15").innerHTML = ``;
+  button15.onclick = function () {cycle15()};
+  //OH, STYLO
+  button15.innerHTML = `>:C`;
+  button15.onmouseover = function (){onMouseOverLight15()};
+  button15.onmouseout = function (){onMouseOutLight15()};
+  button15.onmousedown = function (){hoverr15()};
+}
+
+function cycle15() {
+  
+  //SOLUTION
+  var count15 = ``;
+  var mult = 3;
+  var quant=20;
+  var summ = 0;
+
+    for (let index = mult; index <= mult*quant; index=index+mult) {
+      if (index==mult){
+        count15 += `${mult} `;
+      }
+      else{
+        count15 += `+ ${index} `;
+      };
+      summ += index;
+      document.getElementById("c15").innerHTML = `${count15} = ... <br> La suma de los ${quant} primeros múltiplos de ${mult} te dará ${summ} UwU`;
+    }
+    
+    //SWITCH
+    button15.onclick = function () {buttonc15()};
+    //OH, STYLO
+    button15.innerHTML = `UwU`;
+    button15.onmouseover = function (){onMouseOverDark15()};
+    button15.onmouseout = function (){onMouseOutDark15()};
+    button15.onmousedown = function (){onMouseOverLight15()};
+}
+
+// 16. Mostrar en pantalla el promedio entero de los n primeros múltiplos de 3 para un número n leído.
+function cycle16(){
+  
+    //VARIABLES BÁSICAS PARA EL CICLO
+    var c16 = document.getElementById("cycle16").value;
+    var abs = Math.abs(c16);
+
+    var text = ``;
+    var box = 0;
+    var avg = 0;
+
+    //BUCLE
+    for (let i = 0; i <= abs; i++) {
+      box += 3*i;
+      text += `3*${i} = ${3*i}<br> `;
+    }
+    
+    //TRAMPILLA PARA QUE TE DE 0 AL DIVIDIR 0 POR X
+    avg = Number.parseInt(box/abs);   
+    avgg = (box == 0)? 0:avg;
+
+    if (c16 == `` || c16 == "-") {
+      document.getElementById("c16").innerHTML = ``;
+    }
+    else {
+      if(c16<0){
+        document.getElementById("c16").innerHTML = `Oshe, quítale ese menos (-) al ${abs}, porque sho sólo cuento múltiplos para arriba UwU <br> MÚLTIPLOS: ${abs} <br> TOTAL: ${box} <br> PROMEDIO: ${avg}<br>UwU <br> ${text} `;
+      }
+      else{
+        document.getElementById("c16").innerHTML = `MÚLTIPLOS: ${abs} <br> SUMA TOTAL: ${box} <br> PROMEDIO: ${avgg} <br> UwU <br> ${text} `;
+      }
+    }
+}
+
+// 17. Promediar los x primeros múltiplos de 2 y determinar si ese promedio es mayor que los y primeros múltiplos de 5 para valores de x y y leídos.
+function cycle17(){
+  
+  //VARIABLES BÁSICAS PARA EL CICLO
+  var c17 = document.getElementById("cycle17").value;
+  var c17b = document.getElementById("cycle17b").value;
+  //VARIABLES PARA UN for X (múltiplos 2)
+  var abs = Math.abs(c17);
+  var aux = Number.parseInt(c17);
+  var avg = 0;
+  var box = 0;
+  var text = ``;
+  //VARIABLES MAX Y MIN PARA UN for Y (múltiplos de 5)
+  var absb = Math.abs(c17b);
+  var auxb = Number.parseInt(c17b);
+  var avgb = 0;
+  var boxb = 0;
+  var textb = ``;
+  
+  //IDENTIFICADOR DE NEGATIVOS
+  var min = Math.min(aux,auxb);
+  var neg = (aux<0 && auxb<0)? `${aux} y ${auxb} son negativos y sho sólo cuento múltiplos hacia arriba, ¡quítales ese menos! (-)`:`${min} es negativo, quítale ese menos (-) que los múltiplos los cuento para arriba`;
+  
+  
+  //BUCLE PARA X
+  for (let i = 0; i <= abs; i++) {
+    box += 2*i;
+    text += `2*${i} = ${i*2}<br> `;
+  };
+  
+  //BUCLE PARA Y
+  for (let miau = 0; miau <= absb; miau++) {
+    boxb += 5*miau;
+    textb += `5*${miau} = ${miau*5}<br> `;
+  };
+
+  
+  
+  //¿QUÉ PROMEDIO ES MAYOR?
+  avg = Number.parseInt(box/abs);
+  avgg = (box == 0)? 0:avg;
+
+  avgb = Number.parseInt(boxb/absb);
+  avggb = (boxb == 0)? 0:avgb;  
+  
+  var theOne = (avgg>avggb)? `El promedio entero de los ${abs} múltiplos de 2 (${avgg}) es mayor que el de los ${absb} múltiplos de 5 (${avggb}) UwU`:`El promedio entero de los ${abs} múltiplos de 2 (${avgg}) es menor que el de los ${absb} múltiplos de 5 (${avggb}) UwU`;
+  var equals = (avgg==avggb)? `El promedio entero de los ${abs} múltiplos de 2 y de los ${absb} múltiplos de 5...¡Es el mismo! ${avgg} UwU`:theOne;
+
+
+  if (c17 == `` && c17b == ``){
+    document.getElementById("c17").innerHTML = ``;
+    document.getElementById("c17b").innerHTML = ``;
+    document.getElementById("c17c").innerHTML = ``;
+  }
+  else if (c17 == "-" && c17b == "-"){
+    document.getElementById("c17").innerHTML = ``;
+    document.getElementById("c17b").innerHTML = ``;
+    document.getElementById("c17c").innerHTML = ``;
+  }
+  else {
+    if (c17 == `` || c17b == ``) {
+    document.getElementById("c17c").innerHTML = `Bueno, un ${c17}${c17b}... Y la otra casilla qué >:c`;
+  }
+  else {
+      if(c17 < 0 || c17b < 0){
+      document.getElementById("c17c").innerHTML = `Oshe, que ${neg} >:c`;
+      document.getElementById("c17").innerHTML = `MÚLTIPLOS: ${abs} <br> SUMA TOTAL: ${box}<br>PROMEDIO: ${avgg}<br>UwU <br> ${text} `;
+      document.getElementById("c17b").innerHTML = `MÚLTIPLOS: ${absb} <br> SUMA TOTAL: ${boxb}<br>PROMEDIO: ${avggb}<br>UwU <br> ${textb} `;
+      }
+      else{
+        document.getElementById("c17").innerHTML = `MÚLTIPLOS: ${abs} <br> SUMA TOTAL: ${box}<br>PROMEDIO: ${avgg}<br>UwU <br> ${text} `;
+        document.getElementById("c17b").innerHTML = `MÚLTIPLOS: ${absb} <br> SUMA TOTAL: ${boxb}<br>PROMEDIO: ${avggb}<br>UwU <br> ${textb} `;
+        document.getElementById("c17c").innerHTML = `${equals}`;
+      }
+    }
+  }
+}
+
+// 18. Leer dos números enteros y mostrar todos los múltiplos de 5 comprendidos entre el menor y el mayor.
+function cycle18(){
+    var c18 = document.getElementById("cycle18").value;
+    var c18b = document.getElementById("cycle18b").value;
+    var aux = Number.parseInt(c18);
+    var auxb = Number.parseInt(c18b);
+    var text = ``;
+    var min = Math.min(aux,auxb);
+    var max = Math.max(aux,auxb);
+
+    for (let i = min; i <= max; i++) {
+      if ((i%5)==0 && i!=0){
+        text += `${i} `;
+      }
+    }
+  
+    if ((c18 == `` && c18b == ``) || (c18 == "-" && c18b == "-")) {
+      document.getElementById("c18").innerHTML = ``;
+    }
+    else if (c18 == `` || c18b == ``) {
+      document.getElementById("c18").innerHTML = `Bueno, un ${c18}${c18b}... Y la otra casilla qué >:c`;
+    }
+    else {
+      if (text==``){
+        document.getElementById("c18").innerHTML = `Entre el ${min} y el ${max} no hay múltiplos del 5 :c Prueba con otros números`;
+      }
+      else{
+        document.getElementById("c18").innerHTML = `${text} UwU`;
+      }
+    }
+}
+
+// 19. Leer un número entero y determinar si es primo.
+function cycle19(){
+  
+    var c19 = document.getElementById("cycle19").value;
+    var aux = Math.abs(c19);
+
+      //ALGORITHM FOR PRIME NUMBERS >:c
+  var box = [];
+  var primes = ``;
+
+  for (let numbers = 1; numbers <= aux; numbers++) {
+      const prime = c19%numbers;
+      if (prime == 0) {
+        box.push(numbers);  
+      }
+    }
+    
+  var primes = (box.length == 2)? `El número ${c19} es primo UwU ya que...<br>Es múltiplo solo de si mismo y del 1 (${box})`:`El número ${c19} no es primo :c ya que...<br> Es múltiplo de varios números a la vez: <br> Es múltiplo del... ${box}`;
+
+    if((c19 == `` || c19 == "-" || c19 == 0)){
+      document.getElementById("c19").innerHTML = ``;
+    }
+    else{
+    document.getElementById("c19").innerHTML = primes; 
+    }
+}
+
+// 20. Leer un número entero y determinar cuántos dígitos tiene.
+function cycle20(){
+  
+    //VARIABLES BÁSICAS PARA EL CICLO
+    var c20 = document.getElementById("cycle20").value;
+    var aux = Math.abs(c20);
+    var arr = Array.from(String(aux),Number);
+
+    //CONTADOR DE DÍGITOS... Sin ciclos, ni mamadas xd solo arrays hermosos
+    var digits = arr.length;
+    var uno = (digits==1)? `El número ${c20} tiene ${digits} dígito UwU`:`El número ${c20} tiene ${digits} dígitos UwU`;
+
+    //LET'S GOOO
+    if (c20 == `` || c20 == "-" || c20 == 0) {
+      document.getElementById("c20").innerHTML = ``;
+    }
+    else {
+      document.getElementById("c20").innerHTML = `${uno}`;
+    }
+}
+
+// 21. Leer un número entero y determinar a cuánto es igual al suma de sus dígitos.
+
+// 22. Leer un número entero y determinar cuántas veces tiene el dígito 1.
+
+// 23. Leer un número entero y determinar si la suma de sus dígitos es también un número primo.
+
+// 24. Leer un número entero y determinar a cuánto es igual al suma de sus dígitos pares.
+
+// 25. Leer un número entero y determinar a cuánto es igual el promedio entero de sus dígitos.
+
+// 26. Leer un número entero y determinar cuál es el mayor de sus dígitos.
+
+// 27. Leer 2 números enteros y determinar cuál de los dos tiene mayor cantidad de dígitos.
+
+// 28. Leer 2 números enteros y determinar cual de los dos tiene mayor cantidad de dígitos primos.
+
+// 29. Leer un número entero y determinar a cuánto es igual el primero de sus dígitos.
+
+// 30. Leer un número entero y mostrar todos sus componentes numéricos o sea aquellos para quienes el sea un múltiplo.
