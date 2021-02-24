@@ -358,7 +358,7 @@ function onlyNum(evt)
     }
 }
  
- //"1. Leer un número entero y determinar si es un número terminado en 4."
+ // 1. Leer un número entero y determinar si es un número terminado en 4.
  function result(){
     var inputValue = document.getElementById("input").value;
    
@@ -389,7 +389,7 @@ function onlyNum(evt)
 /*Esta función me permite contar cuántos dígitos tiene cualquier valor
 TAREA: CONVERTIR ESTA FUNCIÓN EN UNA LLAVE UNIVERSAL, VOLVIENDO numValue UN ARREGLO REUTILIZABLE*/
 
-//2. Leer un número entero y determinar si tiene 3 dígitos.
+// 2. Leer un número entero y determinar si tiene 3 dígitos.
 function result2(){
 
   var numValue = document.getElementById("input2").value;
@@ -426,7 +426,7 @@ function result3(){
   }
 }
 
-//4. Leer un número entero de dos dígitos y determinar a cuánto es igual la suma de sus dígitos.
+// 4. Leer un número entero de dos dígitos y determinar a cuánto es igual la suma de sus dígitos.
 function result4(){
   var n4 = document.getElementById("input4").value;
 
@@ -494,7 +494,7 @@ function result5(){
   }
 }  
 
-//6. Leer un número entero de dos dígitos menor que 20 y determinar si es primo.
+// 6. Leer un número entero de dos dígitos menor que 20 y determinar si es primo.
 
 //PRIMERA PROPUESTA DE ESTRUCTURA DE CASOS PARA NÚMEROS PRIMOS
 /*function prime(){
@@ -566,13 +566,14 @@ function result6(){
       }
     }
   //¿PRIMOS?
-  var primes = (box.length == 1)? `es número primo UwU`:`igual no es primo :c`;
+  var primes = (box.length == 1)? ` es número primo UwU`:` igual no es primo :c`;
+  var ngtv = (n6<0)? `... ¿Sabías que los números primos <br> no pueden ser negativos? Quítale ese feo menos (-) al pobre ${aux} >:c`:primes;
   // ¿MENORES A 20?
   var min = (n6<20)? `es menor a 20 UwU`:`ojito que no es menor a 20`;
 
   //Personalización del problema
-  var pero = (((box.length == 1)&&(n6<20))||((box.length != 1)&&(n6>20)))? `y`:`pero`;
-  var xd = `${min} ${pero} ${primes}`;
+  var pero = (((box.length == 1)&&(n6<20&&n6>0))||((box.length != 1)&&(n6>20&&n6>0)))? `y`:`pero`;
+  var xd = `${min} ${pero}${ngtv}`;
     
     if((n6 == 0)){
       document.getElementById("r6").innerHTML = ``;
@@ -594,7 +595,7 @@ function result6(){
     }
 }
 
-//7. Leer un número entero de dos dígitos y determinar si es primo y además si es negativo.
+// 7. Leer un número entero de dos dígitos y determinar si es primo y además si es negativo.
 function result7(){
   
   var n7 = document.getElementById("input7").value;
@@ -639,7 +640,7 @@ function result7(){
     }
 }
 
-//8. Leer un número entero de dos dígitos y determinar si sus dos dígitos son pares.
+// 8. Leer un número entero de dos dígitos y determinar si sus dos dígitos son pares.
 function result8(){
 
     let n8 = document.getElementById("input8").value;
@@ -714,7 +715,7 @@ function result8(){
   } 
 }
 
-//9. Leer un número entero de dos dígitos y determinar si un dígito es múltiplo del otro.
+// 9. Leer un número entero de dos dígitos y determinar si un dígito es múltiplo del otro.
 function result9(){
   
   var n9 = document.getElementById("input9").value;
@@ -748,7 +749,7 @@ function result9(){
   }
 }
 
-//10. Leer un número entero de dos dígitos y determinar si los dos dígitos son iguales.
+// 10. Leer un número entero de dos dígitos y determinar si los dos dígitos son iguales.
 function result10(){
 
   var n10 = document.getElementById("input10").value;
@@ -1476,7 +1477,8 @@ function result23(){
 //sort organizará nuestro arreglo, mostrando la informacion de manera clara al usuario  
   var sort = solution.sort().filter((value,index,array)=>(array.indexOf(value)==index));
 //Personalización del problema
- var xd = (sort.length==1)? `tiene al ${sort} que es primo`:`tiene varios números primos: ${sort}`;
+  var ngtv = (n23<0)? `<br>Por cierto... ¿Sabías que los números primos no pueden ser negativos? Ese menos (-) sobra e,e`:``;
+  var xd = (sort.length==1)? `tiene al ${sort} que es primo ${ngtv}`:`tiene varios números primos: ${sort} ${ngtv}`;
   
   if((n23 == 0)){
     document.getElementById("r23").innerHTML = ``;
@@ -1852,7 +1854,7 @@ function result30(){
   }
 }  
 
-//31. Leer un número entero y determina si es igual a 10.
+// 31. Leer un número entero y determina si es igual a 10.
 function result31(){
   
     var n31 = document.getElementById("input31").value;
@@ -2128,7 +2130,7 @@ function result37(){
   }
 }  
 
-// n38. Leer tres números enteros y determinar si el último dígito de los tres números es igual.
+// 38. Leer tres números enteros y determinar si el último dígito de los tres números es igual.
 function result38(){
 
     //Variables
@@ -2517,7 +2519,7 @@ function result44(){
     }
 }
 
-//45. Leer un número entero de 2 dígitos y si es par mostrar en pantalla la suma de sus dígitos, si es primo y menor que 10 mostrar en pantalla su último dígito y si es múltiplo de 5 y menor que 30 mostrar en pantalla el primer dígito.
+// 45. Leer un número entero de 2 dígitos y si es par mostrar en pantalla la suma de sus dígitos, si es primo y menor que 10 mostrar en pantalla su último dígito y si es múltiplo de 5 y menor que 30 mostrar en pantalla el primer dígito.
 function result45(){
   
   //Variables
@@ -2553,8 +2555,8 @@ function result45(){
       }
     }
     
-  var primes = (box.length == 1)? `El ${n45} es primo UwU`:`El ${n45} no es primo :c`;
-  var pero = (((box.length==1)&&(n45<10))||((box.length!=1)&&(n45>10)))? `y`:`pero`;
+  var primes = (box.length == 1 && n45>0)? `El ${n45} es primo UwU`:`El ${n45} no es primo :c`;
+  var pero = (((box.length==1)&&(n45<10&&n45>0))||((box.length!=1)&&(n45>10&&n45>0)))? `y`:`pero`;
   var lessThan10 = (n45<10)? `es menor a 10 :D`:`es mayor que 10 :c ...`;
   var lastDigit = arr[(arr.length-1)];
   var showLast = ((box.length==1)&&(n45<10))? `Así que puedo mostrarte al ${lastDigit}, el último dígito del número UwU`:`No cumple ambas condiciones, así que no puedo mostrarte el ${lastDigit} :c xd`;
@@ -2591,7 +2593,7 @@ function result45(){
   }
 }
 
-//46. Leer un número entero de 2 dígitos y si termina en 1 mostrar en pantalla su primer dígito, si termina en 2 mostrar en pantalla la suma de sus dígitos y si termina en 3 mostrar en pantalla el producto de sus dos dígitos.
+// 46. Leer un número entero de 2 dígitos y si termina en 1 mostrar en pantalla su primer dígito, si termina en 2 mostrar en pantalla la suma de sus dígitos y si termina en 3 mostrar en pantalla el producto de sus dos dígitos.
 function result46(){
   
   //Variables
@@ -2649,7 +2651,7 @@ function result46(){
   }
 }
 
-//47. Leer dos números enteros y si la diferencia entre los dos números es par mostrar en pantalla la suma de los dígitos de los números, si dicha diferencia es un número primo menor que 10 entonces mostrar en pantalla el producto de los dos números y si la diferencia entre ellos termina en 4 mostrar en pantalla todos los dígitos por separado.
+// 47. Leer dos números enteros y si la diferencia entre los dos números es par mostrar en pantalla la suma de los dígitos de los números, si dicha diferencia es un número primo menor que 10 entonces mostrar en pantalla el producto de los dos números y si la diferencia entre ellos termina en 4 mostrar en pantalla todos los dígitos por separado.
 function result47(){
   var n47 = document.getElementById("input47").value;
   var n47b = document.getElementById("input47b").value;
@@ -2721,7 +2723,7 @@ function result47(){
   }  
 }
 
-//48. Leer un número entero y si es menor que 100 determinar si es primo.
+// 48. Leer un número entero y si es menor que 100 determinar si es primo.
 function result48(){
   
   //Variables
@@ -2741,15 +2743,15 @@ function result48(){
     if (prime == 0) {
       box.push(numbers);  
     }
-  }s
+  };
 
   var fixBox = box.filter((value,index,array)=>array.indexOf(value)===index);
   
-  var primes = (box.length == 2)? `es primo UwU ya que sólo puede ser dividido de manera exacta por el 1 y por si mismo (${fixBox}) c: awiwii`:`no es primo :c ya que es divisible de manera exacta por todos estos números ${fixBox} <br> ¡Prueba otro número, humano!`;
-
+  var primes = (box.length == 2)? `es primo UwU ya que sólo puede ser dividido de manera exacta por el 1 y por si mismo (${fixBox}) c: awiwii`:`no es primo :c ya que es divisible de manera exacta por todos estos números: ${fixBox} <br> ¡Prueba otro número, humano! :c`;
+  var ngtv = (n48<0)? `es negativo, así que hasta aquí llegamos, humano... <br> Porque los números primos no pueden ser negativos :c`:primes;
 
   //Personalización del problema
-  var xd = `El ${n48} ${primes}`;
+  var xd = `El ${n48} ${ngtv}`;
 
 
   //COMENZAMOS    
@@ -2772,7 +2774,7 @@ function result48(){
   }
 }
 
-//49. Leer un número entero y si es múltiplo de 4 determinar si su último dígito es primo.
+// 49. Leer un número entero y si es múltiplo de 4 determinar si su último dígito es primo.
 function result49(){
   
   //Variables
@@ -2839,7 +2841,7 @@ function result49(){
   }
 }
 
-//50. Leer un número entero y si es múltiplo de 4 mostrar en pantalla su mitad, si es múltiplo de 5 mostrar en pantalla su cuadrado y si es múltiplo de 6 mostrar en pantalla su primer dígito. Asumir que el número no es mayor que 100.
+// 50. Leer un número entero y si es múltiplo de 4 mostrar en pantalla su mitad, si es múltiplo de 5 mostrar en pantalla su cuadrado y si es múltiplo de 6 mostrar en pantalla su primer dígito. Asumir que el número no es mayor que 100.
 function result50(){
   
   //Variables
@@ -3752,12 +3754,13 @@ function cycle19(){
     }
     
   var primes = (box.length == 2)? `El número ${c19} es primo UwU ya que...<br>Es múltiplo solo de si mismo y del 1 (${box})`:`El número ${c19} no es primo :c ya que...<br> Es múltiplo de varios números a la vez: <br> Es múltiplo del... ${box}`;
+  var ngtv = (c19<0)? `Si sabes que los números negativos no pueden ser negativos ya que deben ser mayores a 1... ¿No? <br> Quítale ese feo menos (-) al pobre ${aux} de encima >:c`:primes;
 
     if((c19 == `` || c19 == "-" || c19 == 0)){
       document.getElementById("c19").innerHTML = ``;
     }
     else{
-    document.getElementById("c19").innerHTML = primes; 
+    document.getElementById("c19").innerHTML = ngtv; 
     }
 }
 
@@ -3783,21 +3786,401 @@ function cycle20(){
 }
 
 // 21. Leer un número entero y determinar a cuánto es igual al suma de sus dígitos.
+function cycle21(){
+  
+  var c21 = document.getElementById("cycle21").value;
+  var abs = Math.abs(c21);
+  var arr = Array.from(String(abs),Number);
+  var length = arr.length;
+  var len = (length==1)? `${c21} tiene solo 1 dígito`:`${c21} tiene ${length} dígitos`;
+
+  //En este caso, solution es un filtro de suma del arreglo
+  var solution = arr.join('+'); 
+  var negative = (c21<0)? `Más el signo menos, claro xd`:``;
+  //Personalización del problema
+  var summ = 0;
+  for (let i = 0; i < arr.length; i++) {
+  summ += arr[i];  
+  };
+  if (c21<0) {summ = summ*(-1)};
+
+  if((c21 == 0 || c21 == `` || c21 == "-")){
+    document.getElementById("c21").innerHTML = ``;
+  }
+  else{
+    switch (length) {
+      case 1:
+        document.getElementById("c21").innerHTML = `${len} y pues es un ${c21} sin más... ¡Dame más números, humano! >:c`;
+        break;
+        
+        default:
+        document.getElementById("c21").innerHTML = `${len} y la suma de sus dígitos sería... <br> ${solution} <br> Lo que da un total de ${summ} UwU <br> ${negative}`;
+        break;
+    }
+  }
+}
 
 // 22. Leer un número entero y determinar cuántas veces tiene el dígito 1.
+function cycle22(){
+  //VARIABLES BÁSICAS PARA EL CICLO
+  var c22 = document.getElementById("cycle22").value;
+  var abs = Math.abs(c22);
+  var arr = Array.from(String(abs),Number);
+  
+  //POSICIÓN (en caso de número de 4 dígitos o más con un 1)
+  var pos = [];
+  var box = [];
+  var sortedPos = [];
+  for (let i = 0; i < arr.length; i++) {
+    pos = (arr.indexOf(1,i))+1;
+    if (pos!=0){
+      box.push(pos);
+    };
+    sortedPos = box.filter((value,index,array)=>array.indexOf(value)==index);
+  };
+  
+  //Escáner de UNOS
+  var uno = arr.filter(x=>x==1);
+  var totalUnos = (uno.length==1)? `El número ${c22} tiene un 1 :D <br> En la posición n° ${sortedPos} UwU`:`El número ${c22} tiene ${uno.length} UNOS :D <br> En las posiciones n° ${sortedPos} UwU`;
+  var ngtv = (c22<0)? `así sea negativo UwU`:``;
+  var hafIs = (abs==1)? `Eso es un 1 :D ${ngtv}`:`${totalUnos}`;
+  var though = (uno.length>=1)? `${hafIs}`:`El número ${c22} no tiene un 1 en ninguna parte >:c`;
+  
+  
+  //EN BÚSQUEDA DEL 1 
+  if (c22 == `` || c22 == "-" || c22 == 0) {
+    document.getElementById("c22").innerHTML = ``;
+  }
+  else {
+    document.getElementById("c22").innerHTML = `${though}`;
+  }
+}
 
 // 23. Leer un número entero y determinar si la suma de sus dígitos es también un número primo.
+function cycle23(){
+  
+  var c23 = document.getElementById("cycle23").value;
+  var abs = Math.abs(c23);
+  var arr = Array.from(String(abs),Number);
+  var length = arr.length;
+  var len = (length==1)? `${c23} tiene solo 1 dígito`:`${c23} tiene ${length} dígitos`;
+
+  //En este caso, solution es un filtro de suma del arreglo
+  var solution = arr.join('+'); 
+  
+  //Personalización del problema
+  var summ = 0;
+  for (let i = 0; i < arr.length; i++) {
+    summ += arr[i];  
+  };
+  if (c23<0) {summ = summ*(-1)};
+  var sum = Math.abs(summ);
+  
+  //ALGORITHM FOR PRIME NUMBERS >:c
+  var box = [];
+  var primes = ``;
+  
+  for (let numbers = 2; numbers <= sum; numbers++) {
+      const prime = sum%numbers;
+      if (prime == 0) {
+        box.push(numbers);  
+      }
+    };
+    
+    var primes = (box.length == 1)? `<br>Ah, y...¡¡${summ} ES PRIMOO!! :DDd`:`<br> ...Igual ${summ} no es primo :c`;
+    var negative = (c23<0)? `<br>Más el signo menos, claro xd<br> Por cierto... Los números negativos no pueden ser primos c:`:`${primes}`;
+    var neg = (arr.length==1 && c23<0)? `Por cierto... Los números negativos no pueden ser primos c:`:`${primes}`; 
+
+  if((c23 == 0 || c23 == `` || c23 == "-")){
+    document.getElementById("c23").innerHTML = ``;
+  }
+  else{
+    switch (length) {
+      case 1:
+        document.getElementById("c23").innerHTML = `${len} y pues es un ${c23} sin más... ¡Dame más números, humano! >:c ${neg}`;
+        break;
+        
+        default:
+        document.getElementById("c23").innerHTML = `${len} y la suma de sus dígitos sería... <br> ${solution} <br> Lo que da un total de ${summ} UwU ${negative}`;
+        break;
+    }
+  }
+}
 
 // 24. Leer un número entero y determinar a cuánto es igual al suma de sus dígitos pares.
+function cycle24(){
+  
+  var c24 = document.getElementById("cycle24").value;
+  var abs = Math.abs(c24);
+  var arr = Array.from(String(abs),Number);
+  var length = arr.length;
+  var len = (length==1)? `${c24} tiene solo 1 dígito`:`${c24} tiene ${length} dígitos`;
+
+  //En este caso, solution es un filtro de suma del arreglo
+  var pair = arr.filter(x=>x%2==0);
+  var solution = pair.join('+'); 
+  var negative = (c24<0)? `Más el signo menos, claro xd`:``;
+  //Personalización del problema
+  var summ = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (i%2==0){
+      summ += arr[i];  
+    }
+  };
+  if (c24<0) {summ = summ*(-1)};
+
+  if((c24 == 0 || c24 == `` || c24 == "-")){
+    document.getElementById("c24").innerHTML = ``;
+  }
+  else{
+    switch (length) {
+      case 1:
+        document.getElementById("c24").innerHTML = `${len} y pues es un ${c24} sin más... ¡Dame más números, humano! >:c`;
+        break;
+        
+        default:
+        document.getElementById("c24").innerHTML = `${len} y la suma de sus dígitos pares sería... <br> ${solution} <br> Lo que da un total de ${summ} UwU <br> ${negative}`;
+        break;
+    }
+  }
+}
 
 // 25. Leer un número entero y determinar a cuánto es igual el promedio entero de sus dígitos.
+function cycle25(){
+  
+  var c25 = document.getElementById("cycle25").value;
+  var abs = Math.abs(c25);
+  var arr = Array.from(String(abs),Number);
+  var length = arr.length;
+  var len = (length==1)? `${c25} tiene solo 1 dígito`:`${c25} tiene ${length} dígitos`;
+
+  //En este caso, solution es un filtro de suma del arreglo
+  var solution = arr.join('+'); 
+  var negative = (c25<0)? `<br> Más el signo menos, claro xd <br>`:`<br>`;
+  //Personalización del problema
+  var summ = 0;
+  for (let i = 0; i < arr.length; i++) {
+    summ += arr[i];  
+  };
+  if (c25<0) {summ = summ*(-1)};
+  var avg = Number.parseInt(summ/length);
+
+  if((c25 == 0 || c25 == `` || c25 == "-")){
+    document.getElementById("c25").innerHTML = ``;
+  }
+  else{
+    switch (length) {
+      case 1:
+        document.getElementById("c25").innerHTML = `${len} y pues es un ${c25} sin más... ¡Dame más números, humano! >:c`;
+        break;
+        
+        default:
+        document.getElementById("c25").innerHTML = `${len} y la suma de sus dígitos sería... ${solution} <br> Lo que da un total de ${summ} UwU y al dividir enteros... ${negative} El promedio de la suma de los dígitos del ${c25} equivale a ${avg} ( ${summ} / ${length} = ${avg} ) UwU`;
+        break;
+    }
+  }
+}
 
 // 26. Leer un número entero y determinar cuál es el mayor de sus dígitos.
+function cycle26(){
+  
+    //VARIABLES BÁSICAS PARA EL CICLO
+    var c26 = document.getElementById("cycle26").value;
+    var aux = Math.abs(c26);
+    var arr = Array.from(String(aux),Number);
+    var length = arr.length;
+    
+    //MAX 
+    var max = Math.max(...arr);
+    var ngtv = (c26<0)? `<br> ¡Y me vale si es negativo! >:v`:``;
+  
+    if (c26 == `` || c26 == "-") {
+      document.getElementById("c26").innerHTML = ``;
+    }
+    else {
+      switch (length) {
+        case 1:
+          document.getElementById("c26").innerHTML = `Eso es un ${c26} y pos... Ajá. ${ngtv}`;
+          break;
+          
+          case 2:
+          document.getElementById("c26").innerHTML = `El mayor número de esos dos (${aux}) es el ${max} UwU ${ngtv}`;
+          break;
+
+        default:
+          document.getElementById("c26").innerHTML = `El mayor dígito en el número ${aux} es el ${max} UwU ${ngtv}`;
+          break;
+      }
+    }
+}
 
 // 27. Leer 2 números enteros y determinar cuál de los dos tiene mayor cantidad de dígitos.
+function cycle27(){
+  //VARIABLES
+    var c27 = document.getElementById("cycle27").value;
+    var c27b = document.getElementById("cycle27b").value;
+    var abs = Math.abs(c27);
+    var absb = Math.abs(c27b);
+
+  //ARRAYS
+    var arr = Array.from(String(abs),Number);
+    var arrb = Array.from(String(absb),Number);
+
+  //WHICH ONE KEEPS MORE DIGITS?
+    var length = arr.length;
+    var lengthb = arrb.length;
+    var high = Math.max(abs,absb);
+    var low = Math.min(abs,absb);
+    var max = Math.max(length,lengthb);
+    var min = Math.min(length,lengthb);
+    var plural = (max==1)? `${max} dígito`:`${max} dígitos`;
+    var pluralb = (min==1)? `${min} dígito`:`${min} dígitos`;
+    var win = `Entre el ${c27} y el ${c27b}, hasta tú mismo, humano, puedes contar que <br> el ${high} tiene más dígitos (${plural}) que el ${low} (${pluralb}) UwU`
+    var digits = (length==lengthb)? `Los dos números (${c27} & ${c27b}) tienen la misma cantidad de dígitos: ${max} c:`:win;
+
+    if ((c27 == `` && c27b == ``) || (c27 == "-" && c27b == "-") || (c27 == 0 && c27b == 0)) {
+      document.getElementById("c27").innerHTML = ``;
+    }
+    else if (c27 == 0 || c27b == 0) {
+      document.getElementById("c27").innerHTML = `Bueno, un ${c27}${c27b}... Y la otra casilla qué >:c`;
+    }
+    else {
+      document.getElementById("c27").innerHTML = `${digits}`;
+    }
+}
 
 // 28. Leer 2 números enteros y determinar cual de los dos tiene mayor cantidad de dígitos primos.
+function cycle28(){
+  //VARIABLES
+    var c28 = document.getElementById("cycle28").value;
+    var c28b = document.getElementById("cycle28b").value;
+    var abs = Math.abs(c28);
+    var absb = Math.abs(c28b);
+
+  //ARRAYS
+    var arr = Array.from(String(abs),Number);
+    var arrb = Array.from(String(absb),Number);
+
+  //ALGORITHM FOR PRIME NUMBERS A >:c
+  const primes = [2,3,5,7];
+
+  var box = arr.filter(x=>primes.includes(x));
+  var sortbox = box.sort();
+
+  //ALGORITHM FOR PRIME NUMBERS B >:c
+  var boxb = arrb.filter(x=>primes.includes(x));
+  var sortboxb = boxb.sort();
+
+  //WHICH ONE KEEPS MORE PRIME DIGITS?
+    var length = box.length;
+    var lengthb = boxb.length;
+    var singular = (length == 1)? `solo un número primo: <br> el ${c28} tiene al ${sortbox} y el ${c28b} tiene al ${sortboxb}`:`la misma cantidad de dígitos primos: ${length} <br> El ${c28} tiene los primos n° ${sortbox} mientras que el ${c28b} tiene los primos n° ${sortboxb}`;
+    var max = (length>lengthb)? `Por ende... El número con más dígitos primos es el ${c28}`:`Por ende... El número con más dígitos primos es el ${c28b}`;
+    var plural = (length==1)? `El ${c28} tiene ${length} dígito primo: el n°`:`El ${c28} tiene ${length} dígitos primos: los n°`;
+    var pluralb = (lengthb==1)? `El ${c28b} tiene ${lengthb} dígito primo: el n°`:`El ${c28b} tiene ${length} dígitos primos: los n°`;
+    var itsOn = `${plural} ${sortbox}`;
+    var itsOnb = `${pluralb} ${sortboxb}`;
+    var zero = (length == 0)? `El número ${c28} no tiene dígitos primos :C`:itsOn;
+    var zeroB = (lengthb == 0)? `El número ${c28b} no tiene dígitos primos :C`:itsOnb;
+
+    var win = `${zero} <br> ${zeroB} <br> ${max} UwU`;
+    var digits = (length==lengthb)? `Ambos números (${c28} & ${c28b}) tienen ${singular} c:`:win;
+    var ngtv = (c28<0||c28b<0)? `<br>Por cierto... Los números negativos no pueden ser primos... <br> Pero como andamos hablando de dígitos, te la pasaré esta vez... e,e`:``;
+
+    //LET'S GET STARTED
+    if ((c28 == `` && c28b == ``) || (c28 == "-" && c28b == "-") || (c28 == 0 && c28b == 0)) {
+      document.getElementById("c28").innerHTML = ``;
+    }
+    else if (c28 == `` || c28b == ``) {
+      document.getElementById("c28").innerHTML = `Bueno, un ${c28}${c28b}... Y la otra casilla qué >:c`;
+    }
+    else {
+      document.getElementById("c28").innerHTML = `${digits} ${ngtv}`;
+    }
+}
 
 // 29. Leer un número entero y determinar a cuánto es igual el primero de sus dígitos.
+function cycle29(){
 
-// 30. Leer un número entero y mostrar todos sus componentes numéricos o sea aquellos para quienes el sea un múltiplo.
+  //VARIABLES ELEMENTALES 
+  var c29 = document.getElementById("cycle29").value;
+  var abs = Math.abs(c29);
+
+  //ARREGLO
+  var arr = Array.from(String(abs),Number);
+
+  //PRIMER DÍGITO
+  var firstDigit = arr[0];
+
+  //PERSONALIZACIÓN DE LA SOLUCIÓN
+  var ngtv = (c29<0)? `<br> ¡Y me vale que sea negativo! >:v xd`:``;
+
+  //ESQUEMA DE CASOS
+  if (c29 == `-` || c29 == `` || c29 == 0) {
+    document.getElementById("c29").innerHTML = ``;
+  }
+  else {
+    document.getElementById("c29").innerHTML = `El primer dígito del ${c29} es el ${firstDigit} UwU ${ngtv}`;
+  }
+}
+
+// 30. Leer un número entero y mostrar todos sus componentes numéricos o sea aquellos para quienes él sea un múltiplo.
+function cycle30(){
+    //VARIABLES BÁSICAS PARA EL CICLO
+    var c30 = document.getElementById("cycle30").value;
+    var abs = Math.abs(c30);
+    
+    //ARREGLOS PARA DEPOSITAR Y ORDENAR LOS COMPONENTES NUMÉRICOS
+    var boxx = [];
+    
+    for (let i = 1; i <= abs; i++) {
+      if (abs%i==0) {
+        boxx.push(i);
+      };
+    };
+    
+    var comp = boxx.sort().filter((value,index,array)=>array.indexOf(value)===index);
+    
+    //ALGORITHM FOR PRIME NUMBERS >:c
+  var box = [];
+  var primes = ``;
+
+  for (let numbers = 2; numbers <= abs; numbers++) {
+      const prime = c30%numbers;
+      if (prime == 0) {
+        box.push(numbers);  
+      };
+    };
+    
+  var primes = (box.length == 1)? `(es un número primo UwU)`:``;
+
+
+    if (c30 == `` || c30 == "-") {
+      document.getElementById("c30").innerHTML = ``;
+    }
+    else {
+        document.getElementById("c30").innerHTML = `Los componentes numéricos o números de los que <br> el ${c30} es múltiplo, son los n° ${comp} ${primes}`;
+    }
+}
+
+// 31. Leer números hasta que digiten 0 y determinar a cuánto es igual el promedio de los números terminados en 5.
+
+// 32. Leer números hasta que digiten 0 y determinar a cuanto es igual el promedio entero de los número primos leídos.
+
+// 33. Si 32768 es el tope superior para los números entero cortos, determinar cuál es el número primo mas cercano por debajo de él.
+
+// 34. Generar los números del 1 al 10 utilizando un ciclo que vaya de 10 a 1.
+
+// 35. Leer dos números enteros y determinar a cuánto es igual el producto mutuo del primer dígito de cada uno.
+
+// 36. Mostrar en pantalla la tabla de multiplicar del número 5.
+
+// 37. Generar todas las tablas de multiplicar del 1 al 10.
+
+// 38. Leer un número entero y mostrar en pantalla su tabla de multiplicar.
+
+// 39. Se define la serie de Fibonacci como la serie que comienza con los dígitos 1 y 0 y va sumando progresivamente los dos últimos elementos de la serie, así:
+//     0 1 1 2 3 5 8 13 21 34.......
+//     Utilizando el concepto de ciclo generar la serie de Fibonacci hasta llegar o sobrepasas el número 10.000.
+
+// 40. Leer un número de dos dígitos y determinar si pertenece a la serie de Fibonacci.
