@@ -2,8 +2,16 @@ body{
     background-color: black; 
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     color:blanchedalmond;
-    font-size:2.82ch;
+    font-size:2.755341649ch;
     text-align: justify;
+}
+*::selection{
+    color:#f7b64e;
+    background-color: #333333;
+}
+*::-moz-selection{
+    color:#f7b64e;
+    background-color: #333333;
 }
 summary{
     text-align:center;
@@ -22,7 +30,7 @@ h1{
 }
 h1:hover{
     color:rgb(255, 255, 255);
-    font-size:3.9ch;
+    font-size:3.79ch;
 }
 td{
     white-space: pre-line;
@@ -64,7 +72,6 @@ input::placeholder{
     text-align: center;
     font-style: italic;
 }
-    
 input{
     color:blanchedalmond;
     margin: 15px 0;
@@ -93,7 +100,6 @@ input:valid{
     border-left: none;
     border-right: none;
 }
-
 button{
     outline: none;
 	box-shadow:inset 0px 1px 1px -50px #fffefa;
@@ -124,8 +130,63 @@ button:focus{
     display:inline-table;
     margin-inline: 6%;
 }
+#tr10 {/*tabla de multiplicar*/
+    text-align: center;
+    font-size:15.4274pt;
+}   
 
+/* Para la scrollbar UwU */
+::-webkit-scrollbar{
+    width: 20.666px;
+    background-color: #000000;
+}
+::-webkit-scrollbar-track{
+    -webkit-box: inset 0 0 6px rgba(0, 0, 0, 0.9);
+    border-radius: 10px;
+    background-color: #000000;
+}
+::-webkit-scrollbar-track:hover{
+    background-color: #000000;
+}
+::-webkit-scrollbar-track:active{
+    background-color: #555555;
+}
+::-webkit-scrollbar-thumb{
+    /*Estilo metalizado  para el thumb*/
 
+    /* border-radius: 10px;
+    background-color: #d4d4d4;
+    background-image: -webkit-linear-gradient(90deg,transparent,rgba(0, 0, 0, 0.4) 50%,transparent,transparent); */
+    
+    /*Estilo sofisticado, papá 7u7*/
+
+    background-color: rgba(255, 255, 255, 0.507);
+    -Moz-border-radius-bottomRight: 50px;
+    border-bottom-right-radius: 50px;
+    -Moz-border-radius-topLeft: 50px;
+    border-top-left-radius: 50px;
+}
+::-webkit-scrollbar-thumb:hover{
+    /*Estilo metalizado */
+
+    /* background-color: rgb(255, 255, 255);
+    background-image: -webkit-linear-gradient(90deg,transparent,rgba(0, 0, 0, 0.4) 50%,transparent,transparent); */
+    
+    /*Estilo sofisticado 7u7*/
+
+    background-color: rgba(245, 245, 245, 0.89);
+}
+::-webkit-scrollbar-thumb:active{
+    /*Estilo sofisticado e.e*/
+
+    /* background-color: rgb(252, 243, 229);
+    background-image: -webkit-linear-gradient(90deg,transparent,rgba(255, 196, 0, 0.589) 50%, transparent,transparent); */
+    
+    /*Estilo sofisticado >:)))*/
+    
+    background-color: rgb(255, 255, 255);
+}
+/*FINAL DE LA SCROLLBAR xd*/
 
 /* a las clases las llamas con (elemento)."elNombreDeLaClass" :D  */
 /* a los ID las llamas con #"elIDdelElemento" :D */

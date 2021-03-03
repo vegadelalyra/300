@@ -3145,7 +3145,7 @@ function buttonc07(){
   document.getElementById("c07").innerHTML = ``;
   button07.onclick = function () {cycle07()};
   //OH, STYLO
-  button07.innerHTML = `>:C`;
+  button07.innerHTML = `LET'S GOOO >:C`;
   button07.onmouseover = function (){onMouseOverLight07()};
   button07.onmouseout = function (){onMouseOutLight07()};
   button07.onmousedown = function (){hoverr07()};
@@ -3204,7 +3204,7 @@ function buttonc08(){
   document.getElementById("c08").innerHTML = ``;
   button08.onclick = function () {cycle08()};
   //OH, STYLO
-  button08.innerHTML = `>:C`;
+  button08.innerHTML = `LET'S GOOO >:C`;
   button08.onmouseover = function (){onMouseOverLight08()};
   button08.onmouseout = function (){onMouseOutLight08()};
   button08.onmousedown = function (){hoverr08()};
@@ -3263,7 +3263,7 @@ function buttonc09(){
   document.getElementById("c09").innerHTML = ``;
   button09.onclick = function () {cycle09()};
   //OH, STYLO
-  button09.innerHTML = `>:C`;
+  button09.innerHTML = `LET'S GOOO >:C`;
   button09.onmouseover = function (){onMouseOverLight09()};
   button09.onmouseout = function (){onMouseOutLight09()};
   button09.onmousedown = function (){hoverr09()};
@@ -3298,6 +3298,7 @@ function cycle10(){
   var aux = Number.parseInt(c10);
   var text = ``;
   var summ = 0;
+  var cont = 0;
 
   //VARIABLES MAX Y MIN PARA UN for
   var max = Math.max(aux,1);
@@ -3308,17 +3309,22 @@ function cycle10(){
   }
   else {
       for (let i = min; i <= max; i++) {
-        if (i<0){
-          text += `${i}`;
-        }
-        else{
-          if (i==min){
+         cont++;
+         if (cont>25){
+          text += `<br>`;
+          cont=0;
+         };
+          if (i<0){
             text += `${i}`;
           }
-          else {
-            text += `+${i}`;
+          else{
+            if (i==min){
+              text += `${i}`;
+            }
+            else {
+              text += `+${i}`;
+            }
           }
-        }
         summ += i;
         document.getElementById("c10").innerHTML = `${text} = ... <br> Eso te da un total de ${summ} UwU`;
       }
@@ -3497,7 +3503,7 @@ function buttonc14(){
   document.getElementById("c14").innerHTML = ``;
   button14.onclick = function () {cycle14()};
   //OH, STYLO
-  button14.innerHTML = `>:C`;
+  button14.innerHTML = `LET'S GOOO >:C`;
   button14.onmouseover = function (){onMouseOverLight14()};
   button14.onmouseout = function (){onMouseOutLight14()};
   button14.onmousedown = function (){hoverr14()};
@@ -3558,7 +3564,7 @@ function buttonc15(){
   document.getElementById("c15").innerHTML = ``;
   button15.onclick = function () {cycle15()};
   //OH, STYLO
-  button15.innerHTML = `>:C`;
+  button15.innerHTML = `LET'S GOOO >:C`;
   button15.onmouseover = function (){onMouseOverLight15()};
   button15.onmouseout = function (){onMouseOutLight15()};
   button15.onmousedown = function (){hoverr15()};
@@ -4164,23 +4170,1428 @@ function cycle30(){
 }
 
 // 31. Leer números hasta que digiten 0 y determinar a cuánto es igual el promedio de los números terminados en 5.
+  
+  //Definimos ENTER como botón para el input 
+  var i31 = document.getElementById("cycle31");
+  i31.addEventListener('keydown', interactive31, false);
+
+  //Variables requeridas
+  var spanCycle31 = document.getElementById("c31");
+  var spanCycle31c = document.getElementById("c31c");
+  var arrCycle31 = [];
+  var sorCycle31 = [];
+  var endCycle31 = [];
+  var fivesFilter = [];
+  var element = 0;
+  var avg = 0;
+  var zero = 0;
+  var zero2 = 0;
+  var shit = 0;
+
+  //Función que se ejecutará cuando se oprima ENTER dentro del input 31 de la sección ciclos
+  function interactive31(e){
+    if (e.keyCode === 13) {
+      
+      //Variables "locales"
+      var i31 = document.getElementById("cycle31");
+      var number = i31.value;
+      var c31 = document.getElementById("c31");
+      
+      //Esquema de casos
+      if ( number>0 || number<0 ){
+        arrCycle31.push(Number.parseInt(number));
+        sorCycle31 = arrCycle31.sort().filter((value,index,array)=>array.indexOf(value)===index);
+        endCycle31 = sorCycle31.join(', ');
+        c31.innerHTML = `Números registrados: ${endCycle31}`;
+        fivesFilter = sorCycle31.filter(x=>x%10==5);
+        element = eval(fivesFilter.join("+"));
+        avg = Number.parseInt((element)/(fivesFilter.length));
+        i31.value = ``;
+        if (sorCycle31.length>=1){
+          document.getElementById("c31c").innerHTML = `Cuando hayas acabado de registrar números, <br> ingresa el CERO para mostrarte el resultado c:`;
+        }
+      }
+      else if (number==``){
+      }
+      else {
+        i31.value = ``;
+
+        if (sorCycle31.length==0){
+          document.getElementById("c31c").innerHTML = `>:CC ¡Te dije que escribieras primero un número diferente a CERO, humano! <br> ¿Cómo quieres que te calcule nada si no me has registrado números? >:c`;
+          c31.innerHTML = ``;
+        }
+        else{
+          arrCycle31.push(Number.parseInt(number));
+          //Personalización de la solución
+          var plural = (fivesFilter.length==1)? `${fivesFilter.length} termina en 5: ${fivesFilter.join(', ')} <br> Y pues ni modo a sacarle promedio a un solo número... xd Ingresa más números UwU`:`${fivesFilter.length} terminan en 5: ${fivesFilter.join(', ')} <br> El promedio de estos números [ ( ${fivesFilter.join(" + ")} ) / ${fivesFilter.length} ] = ( ${element} / ${fivesFilter.length} ) es ${avg} UwU`;
+          var ninguno = (fivesFilter.length==0)? `ninguno termina en 5 :C <br> Ingresa más números, humano (y ojalá que terminen en 5 e,e)`:plural;
+          //Solución
+          document.getElementById("c31c").innerHTML = `De los números que me registraste, ${ninguno} <br> Si ingresas nuevamente el cero, puedo reiniciarte los números registrados, humano c:`;
+          //El cero como botón de reinicio
+          zero = arrCycle31[(arrCycle31.length)-1]; // El último número ingresado
+          zero2 = arrCycle31[(arrCycle31.length)-2]; //El penúltimo número ingresado
+          if (zero == 0 ){
+            shit = 69;
+          }
+          else{
+            shit = 98;
+          };
+          if ( zero == 0 && zero2 == 0){
+            c31.innerHTML = `Has reiniciado los números registrados con éxito :D`;
+            document.getElementById("c31c").innerHTML = `Te invito a registrar nuevos números (obvio distintos a cero)`;
+            arrCycle31 = [];
+            sorCycle31 = [];
+            endCycle31 = [];
+            fivesFilter = [];
+            element = 0;
+            avg = 0;
+            zero = 0;
+            zero2 = 0;
+            shit = 0;
+          };
+        }
+      }
+    }
+  }
+  
+
+    //Creamos una función para que aparezca un texto cuando el usuario escribe
+    function cycle31 () {
+      var c31 = document.getElementById("cycle31").value;
+      var aux = Number.parseInt(c31);
+      var five = (aux%10);
+  
+
+      if (c31 == `` || c31 == '-'){
+        document.getElementById("c31b").innerHTML = ``;
+      }
+      else {
+        if (five==5 && aux!=5){
+          document.getElementById("c31b").innerHTML = `¡Genial! Un número que termina en 5 c:< Oprime ENTER para yo registrarlo UwU`;
+        }
+        else if (c31 == 0 && sorCycle31.length==0){
+          document.getElementById("c31b").innerHTML = `Oshe, regístrame números primero, antes de pensar en ceros >:c`;
+        }
+        else{
+          if (c31 == 0){
+            if (shit == 69){
+              document.getElementById("c31b").innerHTML = `¿Quieres reiniciar los números registrados? UwU`;
+            }
+            else{
+              document.getElementById("c31b").innerHTML = `¿Quieres calcular ya el resultado? UwU`;
+            }
+          }
+          else{
+            if (sorCycle31.includes(aux)){
+              document.getElementById("c31b").innerHTML = `Ya registraste al ${aux}, intenta con otro número`;
+            }
+            else{
+              document.getElementById("c31b").innerHTML = `¡Genial! Un ${aux} c: Oprime ENTER para yo registrarlo UwU`;
+            }
+          }
+        }
+      }
+    }
 
 // 32. Leer números hasta que digiten 0 y determinar a cuanto es igual el promedio entero de los número primos leídos.
+  
+  //Definimos ENTER como botón para el input 
+  var i32 = document.getElementById("cycle32");
+  i32.addEventListener('keydown', interactive32, false);
 
-// 33. Si 32768 es el tope superior para los números entero cortos, determinar cuál es el número primo mas cercano por debajo de él.
+  //Variables requeridas
+  var spanCycle32 = document.getElementById("c32");
+  var spanCycle32c = document.getElementById("c32c");
+  var arrCycle32 = [];
+  var sorCycle32 = [];
+  var endCycle32 = [];
+  var primesFilter = [];
+  var sortedFilter = [];
+  var element32 = 0;
+  var avg32 = 0;
+  var zero32 = 0;
+  var zero232 = 0;
+  var shit32 = 0;
+  var box = [];
+
+
+  //Función que se ejecutará cuando se oprima ENTER dentro del input 32 de la sección ciclos
+  function interactive32(e){
+    if (e.keyCode === 13) {
+      
+      //Variables "locales"
+      var i32 = document.getElementById("cycle32");
+      var number = i32.value;
+      var c32 = document.getElementById("c32");
+
+      //Esquema de casos
+      if ( number>0 || number<0 ){
+        arrCycle32.push(Number.parseInt(number));
+        sorCycle32 = arrCycle32.sort().filter((value,index,array)=>array.indexOf(value)===index);
+        endCycle32 = sorCycle32.join(', ');
+        c32.innerHTML = `Números registrados: ${endCycle32}`;
+        element = eval(primesFilter.join("+"));
+        avg = Number.parseInt((element)/(primesFilter.length));
+        i32.value = ``;
+        //ALGORITHM FOR PRIME NUMBERS >:c
+        for (let index = 0; index < sorCycle32.length; index++) {
+          const miau = sorCycle32[index];
+          for (let numbers = 2; numbers <= miau; numbers++) {
+            const prime = miau%numbers;
+            if (prime == 0) {
+              box.push(numbers);
+            };
+            if (box.length == 1) {
+              primesFilter.push(miau);
+            };
+            box = [];
+          };
+        };
+        sortedFilter = primesFilter.filter((value,index,array)=>array.indexOf(value)===index);
+        if (sorCycle32.length>=1){
+          document.getElementById("c32c").innerHTML = `Cuando hayas acabado de registrar números, <br> ingresa el CERO para mostrarte el resultado c:`;
+        };
+      }
+      else if (number==``){
+      }
+      else {
+        i32.value = ``;
+
+        if (sorCycle32.length==0){
+          document.getElementById("c32c").innerHTML = `>:CC ¡Te dije que escribieras primero un número diferente a CERO, humano! <br> ¿Cómo quieres que te calcule nada si no me has registrado números? >:c`;
+          c32.innerHTML = ``;
+        }
+        else{
+          arrCycle32.push(Number.parseInt(number));
+          //Personalización de la solución
+          var plural = (sortedFilter.length==1)? `${sortedFilter.length} es primo: ${sortedFilter.join(', ')} <br> Y pues ni modo a sacarle promedio a un solo número... xd Ingresa más números UwU`:`${sortedFilter.length} son primos: ${sortedFilter.join(', ')} <br> El promedio de estos números [ ( ${sortedFilter.join(" + ")} ) / ${sortedFilter.length} ] = ( ${element} / ${sortedFilter.length} ) es ${avg} UwU`;
+          var ninguno = (sortedFilter.length==0)? `ninguno es primo :C <br> Ingresa más números, humano (y ojalá primos e,e)`:plural;
+          //Solución
+          document.getElementById("c32c").innerHTML = `De los números que me registraste, ${ninguno} <br> Si ingresas nuevamente el cero, puedo reiniciarte los números registrados, humano c:`;
+          //El cero como botón de reinicio
+          zero = arrCycle32[(arrCycle32.length)-1]; // El último número ingresado
+          zero2 = arrCycle32[(arrCycle32.length)-2]; //El penúltimo número ingresado
+          if (zero == 0 ){
+            shit = 69;
+          }
+          else{
+            shit = 98;
+          };
+          if ( zero == 0 && zero2 == 0){
+            c32.innerHTML = `Has reiniciado los números registrados con éxito :D`;
+            document.getElementById("c32c").innerHTML = `Te invito a registrar nuevos números (obvio distintos a cero)`;
+            arrCycle32 = [];
+            sorCycle32 = [];
+            endCycle32 = [];
+            primesFilter = [];
+            element = 0;
+            avg = 0;
+            zero = 0;
+            zero2 = 0;
+            shit = 0;
+          };
+        }
+      }
+    }
+  }
+  
+
+    //Creamos una función para que aparezca un texto cuando el usuario escribe
+    function cycle32 () {
+      var c32 = document.getElementById("cycle32").value;
+      var aux = Number.parseInt(c32);
+      var abs = Math.abs(c32);
+  
+      //ALGORITHM FOR PRIME NUMBERS >:c
+      var box = [];
+
+      for (let numbers = 2; numbers <= abs; numbers++) {
+          const prime = c32%numbers;
+          if (prime == 0) {
+            box.push(numbers);  
+          }
+      };
+    
+      var primes = (box.length == 1)? `es primo UwU`:`no es primo :c`;
+      var ngtv = (c32<0)? `... En su versión positiva. <br> Recuerda que los negativos no son primos e.e`:` c:`;
+
+      if (c32 == `` || c32 == '-'){
+        document.getElementById("c32b").innerHTML = ``;
+      }
+      else {
+        if (primes == `es primo UwU`){
+          document.getElementById("c32b").innerHTML = `¡Genial! El ${abs} es primo${ngtv} <br> Oprime ENTER para yo registrarlo UwU`;
+        }
+        else if (c32 == 0 && sorCycle32.length==0){
+          document.getElementById("c32b").innerHTML = `Oshe, regístrame números primero, antes de pensar en ceros >:c`;
+        }
+        else{
+          if (c32 == 0){
+            if (shit == 69){
+              document.getElementById("c32b").innerHTML = `¿Quieres reiniciar los números registrados? UwU`;
+            }
+            else{
+              document.getElementById("c32b").innerHTML = `¿Quieres calcular ya el resultado? UwU`;
+            }
+          }
+          else{
+            if (sorCycle32.includes(aux)){
+              document.getElementById("c32b").innerHTML = `Ya registraste al ${aux}, intenta con otro número`;
+            }
+            else{
+              document.getElementById("c32b").innerHTML = `¡Genial! Un ${aux} c: aunque no es primo... Igual si quieres lo registro <br> Oprime ENTER para yo registrarlo UwU`;
+            }
+          }
+        }
+      }
+    }
+
+// 33. Si 32768 es el tope superior para los números enteros, determinar cuál es el número primo mas cercano por debajo de él.
+//FUNCIONES PARA LOS BOTONES
+var button33 = document.getElementById("cycle33");
+function onMouseOverLight33(){
+  button33.style.border="1px solid #ffaa22";
+  button33.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
+};
+function onMouseOutLight33(){
+  button33.style.border='1px solid #ffe572';
+  button33.style.color='#333333';
+  button33.style.background='linear-gradient(to bottom, #fff186 5%, #f7b64e 100%)';
+};
+
+function onMouseOverDark33(){
+  button33.style.border="3px solid #ffaa22";
+  button33.style.background="linear-gradient(to bottom, #ffe205 5%, #ffb71b 100%)";
+};
+function onMouseOutDark33(){
+  button33.style.border = '3px solid #ffaa22';
+  button33.style.color = 'rgb(31, 11, 11)';
+  button33.style.background = 'linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)';
+};
+function hoverr33(){
+  button33.style.border="3px solid #ffaa22";
+  button33.style.background ="linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)";
+  button33.style.color="rgb(31, 11, 11)";
+	button33.style.top="1px";
+};
+
+function buttonc33(){
+  //SWITCH
+  document.getElementById("c33").innerHTML = ``;
+  button33.onclick = function () {cycle33()};
+  //OH, STYLO
+  button33.innerHTML = `LET'S GOOO >:C`;
+  button33.onmouseover = function (){onMouseOverLight33()};
+  button33.onmouseout = function (){onMouseOutLight33()};
+  button33.onmousedown = function (){hoverr33()};
+}
+
+function cycle33() {
+  // Si 32768 es el tope superior para los números enteros, determinar cuál es el número primo mas cercano por debajo de él.
+  
+  //SOLUTION
+  //ALGORITHM FOR PRIME NUMBERS >:c
+  var box = [];
+  var primes = [];
+  var subject = 0;
+  var lastFive = [];
+  
+  for (let index = 32700; index <= 32768; index++) {
+    subject = index;
+    for (let numbers = 2; numbers <= subject; numbers++) {
+      const prime = subject%numbers;
+      if (prime == 0) {
+        box.push(numbers);
+      };
+    };
+    if (box.length==1){
+      primes.push(subject);
+    };
+    lastFive = primes.join(`,  `);
+    document.getElementById("c33").innerHTML = `ÚLTIMO PRIMO:  ${primes[primes.length-1]} c: <BR> ÚLTIMOS 5 PRIMOS:  ${lastFive} UwU`;
+    box = [];
+  };
+  
+    
+    //SWITCH
+    button33.onclick = function () {buttonc33()};
+    //OH, STYLO
+    button33.innerHTML = `UwU`;
+    button33.onmouseover = function (){onMouseOverDark33()};
+    button33.onmouseout = function (){onMouseOutDark33()};
+    button33.onmousedown = function (){onMouseOverLight33()};
+}
 
 // 34. Generar los números del 1 al 10 utilizando un ciclo que vaya de 10 a 1.
+//FUNCIONES PARA LOS BOTONES
+var button34 = document.getElementById("cycle34");
+function onMouseOverLight34(){
+  button34.style.border="1px solid #ffaa22";
+  button34.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
+};
+function onMouseOutLight34(){
+  button34.style.border='1px solid #ffe572';
+  button34.style.color='#333333';
+  button34.style.background='linear-gradient(to bottom, #fff186 5%, #f7b64e 100%)';
+};
 
+function onMouseOverDark34(){
+  button34.style.border="3px solid #ffaa22";
+  button34.style.background="linear-gradient(to bottom, #ffe205 5%, #ffb71b 100%)";
+};
+function onMouseOutDark34(){
+  button34.style.border = '3px solid #ffaa22';
+  button34.style.color = 'rgb(31, 11, 11)';
+  button34.style.background = 'linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)';
+};
+function hoverr34(){
+  button34.style.border="3px solid #ffaa22";
+  button34.style.background ="linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)";
+  button34.style.color="rgb(31, 11, 11)";
+	button34.style.top="1px";
+};
+
+function buttonc34(){
+  //SWITCH
+  document.getElementById("c34").innerHTML = ``;
+  button34.onclick = function () {cycle34()};
+  //OH, STYLO
+  button34.innerHTML = `LET'S GOOO >:C`;
+  button34.onmouseover = function (){onMouseOverLight34()};
+  button34.onmouseout = function (){onMouseOutLight34()};
+  button34.onmousedown = function (){hoverr34()};
+}
+
+function cycle34() {
+  
+  //SOLUTION
+  var count34 = ``;
+
+    for (let index = 10; index >= 1; index--) {
+      count34 += `${index} `;
+    };
+
+    document.getElementById("c34").innerHTML = `${count34} UwU`;
+    
+    //SWITCH
+    button34.onclick = function () {buttonc34()};
+    //OH, STYLO
+    button34.innerHTML = `UwU`;
+    button34.onmouseover = function (){onMouseOverDark34()};
+    button34.onmouseout = function (){onMouseOutDark34()};
+    button34.onmousedown = function (){onMouseOverLight34()};
+}
 // 35. Leer dos números enteros y determinar a cuánto es igual el producto mutuo del primer dígito de cada uno.
+function cycle35(){
+  //variables
+  var c35 = document.getElementById("cycle35").value;
+  var c35b = document.getElementById("cycle35b").value;
+
+  //Valores absolutos
+  var abs = Math.abs(c35);
+  var absb = Math.abs(c35b);
+
+  //arrays
+  var arr = Array.from(String(abs),Number);
+  var arrb = Array.from(String(absb),Number);
+  var product = arr[0]*arrb[0];
+  var ngtv = ((c35*c35b)<0)? product*-1:product;
+  var miau = (c35<0||c35b<0)? `Siempre respetando signos`:``;
+  
+  //Personalización del problema
+  var digits = (arr.length==1)? `PRIMER NÚMERO: ${c35}`:`PRIMER DÍGITO DE ${c35}: ${arr[0]}`;
+  var digitsb = (arrb.length==1)? `SEGUNDO NÚMERO: ${c35b}`:`PRIMER DÍGITO DE ${c35b}: ${arrb[0]}`;
+
+  //Esquema de casos
+  if ((c35 == 0 && c35b == 0)) {
+    document.getElementById("c35").innerHTML = ``;
+  }
+  else if((c35 == "-" && c35b == "-")){
+    document.getElementById("c35").innerHTML = ``; 
+  }
+  else {
+    if (c35 == 0 || c35b == 0) {                                                                                           //PARA EJERCICIOS CON MÚLTIPLES VARIABLES 
+      document.getElementById("c35").innerHTML = `Okay, un ${c35}${c35b}. Pero ponme un número en el otro cuadro también >:c`;
+    }
+    else{
+      document.getElementById("c35").innerHTML = `${digits}<br> ${digitsb} <br> RESULTADO DEL PRODUCTO: ${ngtv} <br> ${miau} UwU`; 
+    } 
+  }  
+}
+
 
 // 36. Mostrar en pantalla la tabla de multiplicar del número 5.
+//FUNCIONES PARA LOS BOTONES
+var button36 = document.getElementById("cycle36");
+function onMouseOverLight36(){
+  button36.style.border="1px solid #ffaa22";
+  button36.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
+};
+function onMouseOutLight36(){
+  button36.style.border='1px solid #ffe572';
+  button36.style.color='#333333';
+  button36.style.background='linear-gradient(to bottom, #fff186 5%, #f7b64e 100%)';
+};
+
+function onMouseOverDark36(){
+  button36.style.border="3px solid #ffaa22";
+  button36.style.background="linear-gradient(to bottom, #ffe205 5%, #ffb71b 100%)";
+};
+function onMouseOutDark36(){
+  button36.style.border = '3px solid #ffaa22';
+  button36.style.color = 'rgb(31, 11, 11)';
+  button36.style.background = 'linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)';
+};
+function hoverr36(){
+  button36.style.border="3px solid #ffaa22";
+  button36.style.background ="linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)";
+  button36.style.color="rgb(31, 11, 11)";
+	button36.style.top="1px";
+};
+
+function buttonc36(){
+  //SWITCH
+  document.getElementById("c36").innerHTML = ``;
+  button36.onclick = function () {cycle36()};
+  //OH, STYLO
+  button36.innerHTML = `LET'S GOOO >:C`;
+  button36.onmouseover = function (){onMouseOverLight36()};
+  button36.onmouseout = function (){onMouseOutLight36()};
+  button36.onmousedown = function (){hoverr36()};
+}
+
+function cycle36() {
+  
+  //SOLUTION
+  var count36 = ``;
+
+    for (let index = 0; index <= 10; index++) {
+      count36 += `5 * ${index} = ${5*index} <br>`;
+    }
+
+  document.getElementById("c36").innerHTML = `UwU <br> ${count36}`;
+    
+    //SWITCH
+    button36.onclick = function () {buttonc36()};
+    //OH, STYLO
+    button36.innerHTML = `UwU`;
+    button36.onmouseover = function (){onMouseOverDark36()};
+    button36.onmouseout = function (){onMouseOutDark36()};
+    button36.onmousedown = function (){onMouseOverLight36()};
+}
 
 // 37. Generar todas las tablas de multiplicar del 1 al 10.
+//FUNCIONES PARA LOS BOTONES
+var button37 = document.getElementById("cycle37");
+function onMouseOverLight37(){
+  button37.style.border="1px solid #ffaa22";
+  button37.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
+};
+function onMouseOutLight37(){
+  button37.style.border='1px solid #ffe572';
+  button37.style.color='#333333';
+  button37.style.background='linear-gradient(to bottom, #fff186 5%, #f7b64e 100%)';
+};
+
+function onMouseOverDark37(){
+  button37.style.border="3px solid #ffaa22";
+  button37.style.background="linear-gradient(to bottom, #ffe205 5%, #ffb71b 100%)";
+};
+function onMouseOutDark37(){
+  button37.style.border = '3px solid #ffaa22';
+  button37.style.color = 'rgb(31, 11, 11)';
+  button37.style.background = 'linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)';
+};
+function hoverr37(){
+  button37.style.border="3px solid #ffaa22";
+  button37.style.background ="linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)";
+  button37.style.color="rgb(31, 11, 11)";
+	button37.style.top="1px";
+};
+
+function buttonc37(){
+  //SWITCH
+  for (let index = 1; index <= 10; index++) {
+    document.getElementById(`c37${index}`).innerHTML = ``;
+  };
+  button37.onclick = function () {cycle37()};
+  //OH, STYLO
+  button37.innerHTML = `LET'S GOOO >:C`;
+  button37.onmouseover = function (){onMouseOverLight37()};
+  button37.onmouseout = function (){onMouseOutLight37()};
+  button37.onmousedown = function (){hoverr37()};
+}
+
+function cycle37() {
+  
+  //SOLUTION
+  var count37 = ``;
+  var number = 0; 
+
+  for (let i = 1; i <= 10; i++) {    
+    number = i;
+    for (let n = 0; n <= 10; n++) {
+      count37 += `${number} * ${n} = ${number*n}<br>`
+    };  
+    document.getElementById(`c37${i}`).innerHTML = `${count37}`;
+    count37 = ``;
+  };
+    
+    //SWITCH
+    button37.onclick = function () {buttonc37()};
+    //OH, STYLO
+    button37.innerHTML = `UwU`;
+    button37.onmouseover = function (){onMouseOverDark37()};
+    button37.onmouseout = function (){onMouseOutDark37()};
+    button37.onmousedown = function (){onMouseOverLight37()};
+}
 
 // 38. Leer un número entero y mostrar en pantalla su tabla de multiplicar.
+function cycle38(){
+  
+    //VARIABLES BÁSICAS PARA EL CICLO
+    var c38 = document.getElementById("cycle38").value;
+    var aux = Number.parseInt(c38);
+  
+  //SOLUTION
+  var count38 = ``;
+
+    for (let index = 0; index <= 10; index++) {
+      count38 += `${aux} * ${index} = ${aux*index} <br>`;
+    }
+
+  //CASOS    
+    if (c38 == `` || c38 == "-") {
+      document.getElementById("c38").innerHTML = ``;
+    }
+    else {
+      document.getElementById("c38").innerHTML = `UwU <br> ${count38}`;
+    }
+    
+}
 
 // 39. Se define la serie de Fibonacci como la serie que comienza con los dígitos 1 y 0 y va sumando progresivamente los dos últimos elementos de la serie, así:
 //     0 1 1 2 3 5 8 13 21 34.......
 //     Utilizando el concepto de ciclo generar la serie de Fibonacci hasta llegar o sobrepasas el número 10.000.
+//FUNCIONES PARA LOS BOTONES
+var button39 = document.getElementById("cycle39");
+function onMouseOverLight39(){
+  button39.style.border="1px solid #ffaa22";
+  button39.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
+};
+function onMouseOutLight39(){
+  button39.style.border='1px solid #ffe572';
+  button39.style.color='#333333';
+  button39.style.background='linear-gradient(to bottom, #fff186 5%, #f7b64e 100%)';
+};
+
+function onMouseOverDark39(){
+  button39.style.border="3px solid #ffaa22";
+  button39.style.background="linear-gradient(to bottom, #ffe205 5%, #ffb71b 100%)";
+};
+function onMouseOutDark39(){
+  button39.style.border = '3px solid #ffaa22';
+  button39.style.color = 'rgb(31, 11, 11)';
+  button39.style.background = 'linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)';
+};
+function hoverr39(){
+  button39.style.border="3px solid #ffaa22";
+  button39.style.background ="linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)";
+  button39.style.color="rgb(31, 11, 11)";
+	button39.style.top="1px";
+};
+
+function buttonc39(){
+  //SWITCH
+  document.getElementById("c39").innerHTML = ``;
+  button39.onclick = function () {cycle39()};
+  //OH, STYLO
+  button39.innerHTML = `LET'S GOOO >:C`;
+  button39.onmouseover = function (){onMouseOverLight39()};
+  button39.onmouseout = function (){onMouseOutLight39()};
+  button39.onmousedown = function (){hoverr39()};
+}
+
+function cycle39() {
+  
+  //FIBONNACI
+  a = 0;
+  b = 1;
+  text = ``;
+
+  for (let fibo = 0; fibo <= 11000; fibo = a+b) {
+    text += `${fibo}`;
+    a = b;
+    b = fibo;
+
+    if (fibo<10000){
+      text += `, `;
+    }
+    else {
+      text += `...`;
+    };
+  };
+  
+  document.getElementById("c39").innerHTML = `${text} <br> UwU`;
+    
+    //SWITCH
+    button39.onclick = function () {buttonc39()};
+    //OH, STYLO
+    button39.innerHTML = `UwU`;
+    button39.onmouseover = function (){onMouseOverDark39()};
+    button39.onmouseout = function (){onMouseOutDark39()};
+    button39.onmousedown = function (){onMouseOverLight39()};
+}
 
 // 40. Leer un número de dos dígitos y determinar si pertenece a la serie de Fibonacci.
+function cycle40(){
+  
+    //VARIABLES BÁSICAS PARA EL CICLO
+    var c40 = document.getElementById("cycle40").value;
+    var abs = Math.abs(c40);
+    var arr = Array.from(String(abs),Number);
+    var length = arr.length;
+  
+    //FIBONACCI
+  var a = 0;
+  var b = 1;
+  var box = [];
+
+  for (let fibo = 0; fibo <= 11000; fibo = a+b) {
+    box.push(fibo);
+    a = b;
+    b = fibo;
+  };
+
+  var fibou = box.filter(x=>x==abs);
+  var ngtv = (c40<0)? `<br> Aunque es negativo... Pero eso le quitas el menos (-) y ya queda xd UwU`:``;
+  var solution = (fibou.length==1 || abs == 1)? `PERTENECE A LA SERIE FIBONACCI :DD ${ngtv}`:`no pertenece a la serie FIBONACCI :c Prueba con otro número <br> ...En el ejercicio anterior tienes la serie hasta el n° 10.000 *guiño guiño* `;
+  var digits = (length==1)? `dígito`:`dígitos`;
+  var fiboFilter = (fibou.length==1 || abs == 1)? `y es una pena porque...<br> SI ${solution}`:`<br>...Y de todas maneras, ${solution}`;
+  var twoDigits = (length==2)? `Aunque el ${c40} tiene ${length} ${digits}, ${solution}`:`El ${c40} no tiene 2 dígitos sino ${length} :C ${fiboFilter}`;
+  var fibonacci = (length==2 && fibou.length==1)? `El ${c40} no sólo tiene ${length} ${digits}, sino que también... ${solution} <br> AWIWIIIIIIIIIIIIII UwUwUwUwUwUwUwU xd`:`${twoDigits}`;
+  
+  
+    if (c40 == `` || c40 == "-") {
+      document.getElementById("c40").innerHTML = ``;
+    }
+    else {
+      switch (length) {
+        case 2:
+          document.getElementById("c40").innerHTML = ` ${fibonacci}   `;
+          break;
+          
+        default:
+          document.getElementById("c40").innerHTML = `${fibonacci}   `;
+          break;
+      }
+    }
+}
+
+// 41. Determinar a cuánto es igual la suma de los elementos de la serie de Fibonacci entre 0 y 100.
+//FUNCIONES PARA LOS BOTONES
+var button41 = document.getElementById("cycle41");
+function onMouseOverLight41(){
+  button41.style.border="1px solid #ffaa22";
+  button41.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
+};
+function onMouseOutLight41(){
+  button41.style.border='1px solid #ffe572';
+  button41.style.color='#333333';
+  button41.style.background='linear-gradient(to bottom, #fff186 5%, #f7b64e 100%)';
+};
+
+function onMouseOverDark41(){
+  button41.style.border="3px solid #ffaa22";
+  button41.style.background="linear-gradient(to bottom, #ffe205 5%, #ffb71b 100%)";
+};
+function onMouseOutDark41(){
+  button41.style.border = '3px solid #ffaa22';
+  button41.style.color = 'rgb(31, 11, 11)';
+  button41.style.background = 'linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)';
+};
+function hoverr41(){
+  button41.style.border="3px solid #ffaa22";
+  button41.style.background ="linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)";
+  button41.style.color="rgb(31, 11, 11)";
+	button41.style.top="1px";
+};
+
+function buttonc41(){
+  //SWITCH
+  document.getElementById("c41").innerHTML = ``;
+  button41.onclick = function () {cycle41()};
+  //OH, STYLO
+  button41.innerHTML = `LET'S GOOO >:C`;
+  button41.onmouseover = function (){onMouseOverLight41()};
+  button41.onmouseout = function (){onMouseOutLight41()};
+  button41.onmousedown = function (){hoverr41()};
+}
+
+function cycle41() {
+  
+    //FIBONACCI
+  a = 0;
+  b = 1;
+  text = ``;
+  summ = 0;
+
+  for (let fibo = 0; fibo <= 100; fibo = a+b) {
+
+    //FOR TEXTING FIBO SERIE
+    text += `${fibo}`;
+    a = b;
+    b = fibo;
+
+    if (fibo<80){
+      text += ` + `;
+    }
+    else {
+      text += ` = ...`;
+    };
+    //FOR SUMMARIZE THAT FIBO SERIE TIL 100
+    summ += fibo;
+
+  };
+  
+  document.getElementById("c41").innerHTML = `${text} <br> ¡¡¡ ${summ} !!! Es el total de sumar la serie fibonacci hasta 100 UwU`;
+    
+    //SWITCH
+    button41.onclick = function () {buttonc41()};
+    //OH, STYLO
+    button41.innerHTML = `UwU`;
+    button41.onmouseover = function (){onMouseOverDark41()};
+    button41.onmouseout = function (){onMouseOutDark41()};
+    button41.onmousedown = function (){onMouseOverLight41()};
+}
+
+// 42. Determinar a cuánto es igual el promedio entero de los elementos de la serie de Fibonacci entre 0 y 1000.
+//FUNCIONES PARA LOS BOTONES
+var button42 = document.getElementById("cycle42");
+function onMouseOverLight42(){
+  button42.style.border="1px solid #ffaa22";
+  button42.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
+};
+function onMouseOutLight42(){
+  button42.style.border='1px solid #ffe572';
+  button42.style.color='#333333';
+  button42.style.background='linear-gradient(to bottom, #fff186 5%, #f7b64e 100%)';
+};
+
+function onMouseOverDark42(){
+  button42.style.border="3px solid #ffaa22";
+  button42.style.background="linear-gradient(to bottom, #ffe205 5%, #ffb71b 100%)";
+};
+function onMouseOutDark42(){
+  button42.style.border = '3px solid #ffaa22';
+  button42.style.color = 'rgb(31, 11, 11)';
+  button42.style.background = 'linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)';
+};
+function hoverr42(){
+  button42.style.border="3px solid #ffaa22";
+  button42.style.background ="linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)";
+  button42.style.color="rgb(31, 11, 11)";
+	button42.style.top="1px";
+};
+
+function buttonc42(){
+  //SWITCH
+  document.getElementById("c42").innerHTML = ``;
+  button42.onclick = function () {cycle42()};
+  //OH, STYLO
+  button42.innerHTML = `LET'S GOOO >:C`;
+  button42.onmouseover = function (){onMouseOverLight42()};
+  button42.onmouseout = function (){onMouseOutLight42()};
+  button42.onmousedown = function (){hoverr42()};
+}
+
+function cycle42() {
+  
+    //FIBONACCI
+  var a = 0;
+  var b = 1;
+  var text = ``;
+  var summ = 0;
+  var box = [];
+
+  for (let fibo = 0; fibo <= 1000; fibo = a+b) {
+
+    //FOR TEXTING FIBO SERIE
+    text += `${fibo}`;
+    a = b;
+    b = fibo;
+
+    if (fibo<900){
+      text += ` + `;
+    }
+    else {
+      text += ` = ...`;
+    };
+    //FOR SUMMARIZE THAT FIBO SERIE 
+    summ += fibo;
+    box.push(fibo);
+  };
+
+    var avg = Number.parseInt(summ/box.length);
+  
+  document.getElementById("c42").innerHTML = `${text} <br> ¡¡¡ ${summ} !!! Es el total de sumar la serie fibonacci hasta 1000 UwU <br> Y el promedio entero de esta serie fibonacci hasta 1000 es ${avg} ( ${summ} / ${box.length} c: )`;
+    
+    //SWITCH
+    button42.onclick = function () {buttonc42()};
+    //OH, STYLO
+    button42.innerHTML = `UwU`;
+    button42.onmouseover = function (){onMouseOverDark42()};
+    button42.onmouseout = function (){onMouseOutDark42()};
+    button42.onmousedown = function (){onMouseOverLight42()};
+}
+
+// 43. Determinar cuántos elementos de la serie de Fibonacci se encuentran entre 1000 y 2000.
+//FUNCIONES PARA LOS BOTONES
+var button43 = document.getElementById("cycle43");
+function onMouseOverLight43(){
+  button43.style.border="1px solid #ffaa22";
+  button43.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
+};
+function onMouseOutLight43(){
+  button43.style.border='1px solid #ffe572';
+  button43.style.color='#333333';
+  button43.style.background='linear-gradient(to bottom, #fff186 5%, #f7b64e 100%)';
+};
+
+function onMouseOverDark43(){
+  button43.style.border="3px solid #ffaa22";
+  button43.style.background="linear-gradient(to bottom, #ffe205 5%, #ffb71b 100%)";
+};
+function onMouseOutDark43(){
+  button43.style.border = '3px solid #ffaa22';
+  button43.style.color = 'rgb(31, 11, 11)';
+  button43.style.background = 'linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)';
+};
+function hoverr43(){
+  button43.style.border="3px solid #ffaa22";
+  button43.style.background ="linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)";
+  button43.style.color="rgb(31, 11, 11)";
+	button43.style.top="1px";
+};
+
+function buttonc43(){
+  //SWITCH
+  document.getElementById("c43").innerHTML = ``;
+  button43.onclick = function () {cycle43()};
+  //OH, STYLO
+  button43.innerHTML = `LET'S GOOO >:C`;
+  button43.onmouseover = function (){onMouseOverLight43()};
+  button43.onmouseout = function (){onMouseOutLight43()};
+  button43.onmousedown = function (){hoverr43()};
+}
+
+function cycle43() {
+  
+    //FIBONACCI
+  a = 0;
+  b = 1;
+  text = ``;
+  summ = 0;
+  box = [];
+
+  for (let fibo = 0; fibo <= 3000; fibo = a+b) {
+
+    //FOR TEXTING FIBO SERIE
+    text += `${fibo}`;
+    a = b;
+    b = fibo;
+    
+    if (fibo<2500){
+      text += `, `;
+    }
+    else {
+      text += `...`;
+    };
+    //FOR SUMMARIZE THAT FIBO SERIE TIL 100
+    summ += fibo;
+    box.push(fibo);
+  };
+
+  howMany = box.length;
+
+  document.getElementById("c43").innerHTML = `Entre el 1000 y el 2000 sólo hay un número fibonacci: el 1597 <br> Aquí abajo te los dejo por si no me crees UwU <br> ${text} xd`;
+    
+    //SWITCH
+    button43.onclick = function () {buttonc43()};
+    //OH, STYLO
+    button43.innerHTML = `UwU`;
+    button43.onmouseover = function (){onMouseOverDark43()};
+    button43.onmouseout = function (){onMouseOutDark43()};
+    button43.onmousedown = function (){onMouseOverLight43()};
+}
+
+// 44. Leer un número y calcularle su factorial.
+function cycle44(){
+  
+    //VARIABLES BÁSICAS PARA EL CICLO
+    var c44 = document.getElementById("cycle44").value;
+    var aux = Math.abs(c44);
+    var text = ``;
+    
+    //FACTOR NUMBERS!
+    var fact = 1;
+    for (let i = 1; i <= aux; i++) {
+      //ALGORITHM FOR TEXT      
+      text += `${i}`;
+      if (i < aux){
+        text += ` * `;
+      }
+      else {
+        text += ` = `;
+      }
+
+      //ALGORITHM FOR RESULT
+      fact = fact*i;
+    };
+
+    ngtv = (c44<0)? `<br> Aunque por definición, <br> los factoriales no pueden ser negativos... <br> Pero te la paso por esta vez, humano xd`:``;
+  
+    if (c44 == `` || c44 == "-") {
+      document.getElementById("c44").innerHTML = ``;
+    }
+    else {
+        document.getElementById("c44").innerHTML = `${text} ¡¡¡ ${fact} !!! <br> Ese es el factorial de ${c44} UwU ${ngtv}`;
+    }
+}
+
+// 45. Leer un número y calcularle el factorial a todos los enteros comprendidos entre 1 y el número leído.
+function cycle45(){
+  
+    //VARIABLES BÁSICAS PARA EL CICLO
+    var c45 = document.getElementById("cycle45").value;
+    var abs = Math.abs(c45);
+    
+    //VARIABLES NECESARIAS PARA EL FACTORIAL EN CICLO
+    var fact = 1;
+    var arr = [];
+    var array = [];
+    var arrow = 0;
+    var text = ``;
+    
+    //CICLO PARA ORGANIZAR LOS NÚMEROS DE 1 A N
+    for (let number = 1; number <= abs; number++) {
+      arr.push(number);
+      array = arr.filter((value,index,array)=>array.indexOf(value)===index);
+    };
+    
+    //CICLO FACTORIAL
+    for (let index = 0; index < array.length; index++) {
+      arrow = array[index];
+      for (let count = 1; count <= arrow; count++) { 
+        //algorithm for solution
+        fact = fact*count;
+        //ALGORITHM FOR TEXT      
+        text += `${count}`;
+        if (count < arrow ){
+          text += ` * `;
+        }
+        else {
+          text += ` = ${fact} <br>`;
+        }      
+      }
+    };
+
+    var red = (c45<0)? `Que los números negativos no pueden ser factorialesss >:c pero supongamos que <br> no tiene ese feo signo de menos (-) y calculémoslo igual UwU`:``;
+      
+  
+    if (c45 == `` || c45 == "-" || c45 == 0) {
+      document.getElementById("c45").innerHTML = ``;
+    }
+    else {
+      document.getElementById("c45").innerHTML = `UwU <br> ${text}${red}`;
+    }
+}
+
+// 46. Leer un número entero y calcular el promedio entero de los factoriales de los enteros comprendidos entre 1 y el número leído.
+function cycle46(){
+  
+  //VARIABLES BÁSICAS PARA EL CICLO
+  var c46 = document.getElementById("cycle46").value;
+  var abs = Math.abs(c46);
+  
+  //VARIABLES NECESARIAS PARA EL FACTORIAL EN CICLO
+  var fact = 1;
+  var arr = [];
+  var array = [];
+  var arrow = 0;
+  var text = ``;
+  var summ = 0;
+  
+  //CICLO PARA ORGANIZAR LOS NÚMEROS DE 1 A N
+  for (let number = 1; number <= abs; number++) {
+    arr.push(number);
+    array = arr.filter((value,index,array)=>array.indexOf(value)===index);
+  };
+  
+  //CICLO FACTORIAL
+  for (let index = 0; index < array.length; index++) {
+    arrow = array[index];
+    for (let count = 1; count <= arrow; count++) { 
+      //algorithm for solution
+      fact = fact*count;
+      //ALGORITHM FOR TEXT      
+      text += `${count}`;
+      if (count < arrow ){
+        text += ` * `;
+      }
+      else {
+        text += ` = ${fact} <br>`;
+        summ += fact;
+      }      
+    }
+  };
+
+  var red = (c46<0)? `Que los números negativos no pueden ser factorialesss >:c pero supongamos que <br> no tiene ese feo signo de menos (-) y calculémoslo igual UwU`:``;
+  var avg = Number.parseInt(summ/arr.length);
+
+  if (c46 == `` || c46 == "-" || c46 == 0) {
+    document.getElementById("c46").innerHTML = ``;
+  }
+  else {
+    document.getElementById("c46").innerHTML = `SUMA DE FACTORIALES: ${summ} <br> CANTIDAD DE ELEMENTOS: ${array.length} <br> PROMEDIO ENTERO: ${avg}  UwU <br> Puedes comprobarlo tú mismo, humano c: <br> ${text}${red}`;
+  }
+}
+
+// 47. Leer un número entero y calcular a cuánto es igual la sumatoria de todos los factoriales de los números comprendidos entre 1 y el número leído.
+function cycle47(){
+  
+  //VARIABLES BÁSICAS PARA EL CICLO
+  var c47 = document.getElementById("cycle47").value;
+  var abs = Math.abs(c47);
+  
+  //VARIABLES NECESARIAS PARA EL FACTORIAL EN CICLO
+  var fact = 1;
+  var arr = [];
+  var array = [];
+  var arrow = 0;
+  var text = ``;
+  var summ = 0;
+  
+  //CICLO PARA ORGANIZAR LOS NÚMEROS DE 1 A N
+  for (let number = 1; number <= abs; number++) {
+    arr.push(number);
+    array = arr.filter((value,index,array)=>array.indexOf(value)===index);
+  };
+  
+  //CICLO FACTORIAL
+  for (let index = 0; index < array.length; index++) {
+    arrow = array[index];
+    for (let count = 1; count <= arrow; count++) { 
+      //algorithm for solution
+      fact = fact*count;
+      //ALGORITHM FOR TEXT      
+      text += `${count}`;
+      if (count < arrow ){
+        text += ` * `;
+      }
+      else {
+        text += ` = ${fact} <br>`;
+        summ += fact;
+      }      
+    }
+  };
+
+  var red = (c47<0)? `Que los números negativos no pueden ser factorialesss >:c pero supongamos que <br> no tiene ese feo signo de menos (-) y calculémoslo igual UwU`:``;
+    
+
+  if (c47 == `` || c47 == "-" || c47 == 0) {
+    document.getElementById("c47").innerHTML = ``;
+  }
+  else {
+    document.getElementById("c47").innerHTML = `SUMA DE FACTORIALES: ${summ} UwU <br> Puedes comprobarlo tú mismo, humano c: <br> ${text}${red}`;
+  }
+}
+
+// 48. Utilizando ciclos anidados generar las siguientes parejas de enteros
+
+// 0 1
+// 1 1
+// 2 2
+// 3 2
+// 4 3
+// 5 3
+// 6 4
+// 7 4
+// 8 5
+// 9 5
+
+//FUNCIONES PARA LOS BOTONES
+var button48 = document.getElementById("cycle48");
+function onMouseOverLight48(){
+  button48.style.border="1px solid #ffaa22";
+  button48.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
+};
+function onMouseOutLight48(){
+  button48.style.border='1px solid #ffe572';
+  button48.style.color='#333333';
+  button48.style.background='linear-gradient(to bottom, #fff186 5%, #f7b64e 100%)';
+};
+
+function onMouseOverDark48(){
+  button48.style.border="3px solid #ffaa22";
+  button48.style.background="linear-gradient(to bottom, #ffe205 5%, #ffb71b 100%)";
+};
+function onMouseOutDark48(){
+  button48.style.border = '3px solid #ffaa22';
+  button48.style.color = 'rgb(31, 11, 11)';
+  button48.style.background = 'linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)';
+};
+function hoverr48(){
+  button48.style.border="3px solid #ffaa22";
+  button48.style.background ="linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)";
+  button48.style.color="rgb(31, 11, 11)";
+	button48.style.top="1px";
+};
+
+function buttonc48(){
+  //SWITCH
+  document.getElementById("c48").innerHTML = ``;
+  button48.onclick = function () {cycle48()};
+  //OH, STYLO
+  button48.innerHTML = `LET'S GOOO >:C`;
+  button48.onmouseover = function (){onMouseOverLight48()};
+  button48.onmouseout = function (){onMouseOutLight48()};
+  button48.onmousedown = function (){hoverr48()};
+}
+
+function cycle48() {
+  
+  //SOLUTION
+  var left = [];
+  var right = [];
+  var text = ``;
+
+  for (let miau = 0; miau <= 9; miau++) {
+    left.push(miau);
+  };
+  
+  for (let lol = 1; lol <= 5; lol++) {
+    for (let wow = 1; wow <= 2; wow++) { 
+      right.push(lol);
+    }
+  };
+
+  for (let pairs = 0; pairs <= 9; pairs++) {
+    text += `${left[pairs]} ${right[pairs]} <br>`;
+  };
+
+  document.getElementById("c48").innerHTML = `${text} <br> aWIWIII`;
+  
+    //SWITCH
+    button48.onclick = function () {buttonc48()};
+    //OH, STYLO
+    button48.innerHTML = `UwU`;
+    button48.onmouseover = function (){onMouseOverDark48()};
+    button48.onmouseout = function (){onMouseOutDark48()};
+    button48.onmousedown = function (){onMouseOverLight48()};
+}
+
+// 49. Utilizando ciclos anidados generar las siguientes ternas de números
+
+// 1 1 1
+// 2 1 2
+// 3 1 3
+// 4 2 1
+// 5 2 2
+// 6 2 3
+// 7 3 1
+// 8 3 2
+// 9 3 3
+
+//FUNCIONES PARA LOS BOTONES
+var button49 = document.getElementById("cycle49");
+function onMouseOverLight49(){
+  button49.style.border="1px solid #ffaa22";
+  button49.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
+};
+function onMouseOutLight49(){
+  button49.style.border='1px solid #ffe572';
+  button49.style.color='#333333';
+  button49.style.background='linear-gradient(to bottom, #fff186 5%, #f7b64e 100%)';
+};
+
+function onMouseOverDark49(){
+  button49.style.border="3px solid #ffaa22";
+  button49.style.background="linear-gradient(to bottom, #ffe205 5%, #ffb71b 100%)";
+};
+function onMouseOutDark49(){
+  button49.style.border = '3px solid #ffaa22';
+  button49.style.color = 'rgb(31, 11, 11)';
+  button49.style.background = 'linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)';
+};
+function hoverr49(){
+  button49.style.border="3px solid #ffaa22";
+  button49.style.background ="linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)";
+  button49.style.color="rgb(31, 11, 11)";
+	button49.style.top="1px";
+};
+
+function buttonc49(){
+  //SWITCH
+  document.getElementById("c49").innerHTML = ``;
+  button49.onclick = function () {cycle49()};
+  //OH, STYLO
+  button49.innerHTML = `LET'S GOOO >:C`;
+  button49.onmouseover = function (){onMouseOverLight49()};
+  button49.onmouseout = function (){onMouseOutLight49()};
+  button49.onmousedown = function (){hoverr49()};
+}
+
+function cycle49() {
+  
+  //SOLUTION
+  var left = [];
+  var mid = [];
+  var right = [];
+  var text = ``;
+
+  //LEFT NUMBER
+  for (let miau = 1; miau <= 9; miau++) {
+    left.push(miau);
+  };
+  
+  //MID NUMBER
+  for (let lol = 1; lol <= 3; lol++) {
+    for (let wow = 1; wow <= 3; wow++) { 
+      mid.push(lol);
+    }
+  };
+  
+  //RIGHT NUMBER
+  for (let lol = 1; lol <= 3; lol++) {
+    for (let wow = 1; wow <= 3; wow++) { 
+      right.push(wow);
+    }
+  };
+
+  //full sequence
+  for (let pairs = 0; pairs <= 8; pairs++) {
+    text += `${left[pairs]} ${mid[pairs]} ${right[pairs]} <br>`;
+  };
+
+  document.getElementById("c49").innerHTML = `${text} <br> :DD aWIWIII`;
+  
+    //SWITCH
+    button49.onclick = function () {buttonc49()};
+    //OH, STYLO
+    button49.innerHTML = `UwU`;
+    button49.onmouseover = function (){onMouseOverDark49()};
+    button49.onmouseout = function (){onMouseOutDark49()};
+    button49.onmousedown = function (){onMouseOverLight49()};
+}
+
+// 50. Utilizando ciclos anidados generar las siguientes parejas de números
+
+// 0 1
+// 1 1
+// 2 1
+// 3 1
+// 4 2
+// 5 2
+// 6 2
+// 7 2
+
+//FUNCIONES PARA LOS BOTONES
+var button50 = document.getElementById("cycle50");
+function onMouseOverLight50(){
+  button50.style.border="1px solid #ffaa22";
+  button50.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
+};
+function onMouseOutLight50(){
+  button50.style.border='1px solid #ffe572';
+  button50.style.color='#333333';
+  button50.style.background='linear-gradient(to bottom, #fff186 5%, #f7b64e 100%)';
+};
+
+function onMouseOverDark50(){
+  button50.style.border="3px solid #ffaa22";
+  button50.style.background="linear-gradient(to bottom, #ffe205 5%, #ffb71b 100%)";
+};
+function onMouseOutDark50(){
+  button50.style.border = '3px solid #ffaa22';
+  button50.style.color = 'rgb(31, 11, 11)';
+  button50.style.background = 'linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)';
+};
+function hoverr50(){
+  button50.style.border="3px solid #ffaa22";
+  button50.style.background ="linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)";
+  button50.style.color="rgb(31, 11, 11)";
+	button50.style.top="1px";
+};
+
+function buttonc50(){
+  //SWITCH
+  document.getElementById("c50").innerHTML = ``;
+  button50.onclick = function () {cycle50()};
+  //OH, STYLO
+  button50.innerHTML = `LET'S GOOO >:C`;
+  button50.onmouseover = function (){onMouseOverLight50()};
+  button50.onmouseout = function (){onMouseOutLight50()};
+  button50.onmousedown = function (){hoverr50()};
+}
+
+function cycle50() {
+  
+  //SOLUTION
+  var left = [];
+  var right = [];
+  var text = ``;
+
+  for (let miau = 0; miau <= 7; miau++) {
+    left.push(miau);
+  };
+  
+  for (let lol = 1; lol <= 2; lol++) {
+    for (let wow = 1; wow <= 4; wow++) { 
+      right.push(lol);
+    }
+  };
+
+  for (let pairs = 0; pairs <= 7; pairs++) {
+    text += `${left[pairs]} ${right[pairs]} <br>`;
+  };
+
+  document.getElementById("c50").innerHTML = `${text} <br> AWIWII UwU`;
+  
+    //SWITCH
+    button50.onclick = function () {buttonc50()};
+    //OH, STYLO
+    button50.innerHTML = `UwU`;
+    button50.onmouseover = function (){onMouseOverDark50()};
+    button50.onmouseout = function (){onMouseOutDark50()};
+    button50.onmousedown = function (){onMouseOverLight50()};
+}
+
+// 50 algoritmos reales de arreglos
+
+x = 0
+a = 0
+b = 0
+c = 0
+d = 0
+
+// 1. Leer 10 enteros, almacenarlos en un vector y determinar en qué posición del vector está el mayor número leído.
+function array0(){}
+// 2. Leer 10 enteros, almacenarlos en un vector y determinar en qué posición del vector está el mayor número par leído.
+function array0(){}
+// 3. Leer 10 enteros, almacenarlos en un vector y determinar en qué posición del vector está el mayor número primo leído.
+function array0(){}
+// 4. Cargar un vector de 10 posiciones con los 10 primeros elementos de la serie de Fibonacci y mostrarlo en pantalla.
+function array0(){}
+// 5. Almacenar en un vector de 10 posiciones los 10 números primos comprendidos entre 100 y 300. Luego mostrarlos en pantalla.
+function array0(){}
+// 6. Leer dos números enteros y almacenar en un vector los 10 primeros números primos comprendidos entre el menor y el mayor. Luego mostrarlos en pantalla.
+function array0(){}
+// 7. Leer 10 números enteros, almacenarlos en un vector y determinar en qué posiciones se encuentra el número mayor.
+function array0(){}
+// 8. Leer 10 números enteros, almacenarlos en un vector y determinar en qué posiciones se encuentran los números terminados en 4.
+function array0(){}
+// 9. Leer 10 números enteros, almacenarlos en un vector y determinar cuántas veces está repetido el mayor.
+function array0(){}
+// 10. Leer 10 números enteros, almacenarlos en un vector y determinar en qué posiciones se encuentran los números con mas de 3 dígitos.
+function array0(){}
