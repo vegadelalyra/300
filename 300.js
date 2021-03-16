@@ -1,3 +1,204 @@
+//10/03/2021 Le robé esta pequeña gran idea de función a alguien en los comentarios de soloLearn xd
+function getE(id){
+  return document.getElementById(id);
+}
+function getClass(c){
+  document.getElementsByClassName(c);
+}
+function getTag(tagName){
+  return document.getElementsByTagName(tagName);
+}
+
+//ANIMACIÓN INTRO 300
+var intro300 = document.querySelector("#fixed300");
+var aaa = document.querySelector("#absolute300");
+aaa.addEventListener("click",kil);
+function pre(){
+  aaa.style.transform="translateX(-1850px)";
+  setTimeout(pe,300);
+}
+function pe(){
+  aaa.style.fontSize="160px";
+}
+function pree(){
+  aaa.style.fontSize="240px";
+  setTimeout(pee,200);
+}
+function pee(){
+  aaa.style.transform="translateX(2500px)";
+}
+function kil(){
+  aaa.style.fontSize="140px";
+  aaa.style.opacity="0";
+  setTimeout(kill,200);
+}
+function kill(){
+  document.body.removeChild(intro300);
+}
+
+//MÚSICA Y SONIDOS
+//PARA MENÚES AL INICIAR
+var timm = 0;
+function launcher(){
+  var zuish = new Audio();
+  var faia = new Audio();
+  zuish.src = "music/test.mp3";
+  faia.src = "music/fire.mp3";
+  zuish.play();
+  faia.play();
+  var launch = setInterval(wii,300);
+}
+function wii(){
+  timm++;
+  if (timm<7){
+    var zuish = new Audio();
+    zuish.src = "music/test.mp3";
+    zuish.play();
+  }
+  else{
+    clearInterval(launch);
+    var suizh = new Audio();
+    suizsh.src = "music/fire.mp3"
+    zuish.play();
+  };
+}
+
+//BACKGROUND
+// var think = new Audio();
+// think.src = "music/bg.mp3";
+// function hope(){
+//   think.play();
+// }
+// var corpse = document.body;
+// corpse.addEventListener("click",hope);
+
+//PARA 300
+var tre = document.querySelector("#h300"); //300
+tre.addEventListener("mouseover",drama);
+tre.addEventListener("mouseout",noDrama);
+tre.onclick = function() {nostalgia()};
+
+var colossus = new Audio();
+colossus.src = "music/300hover.mp3";
+var omg = 0;
+function drama(){
+    colossus.play();
+    think.pause();
+}
+function noDrama(){
+  colossus.pause();
+}
+var dofus = new Audio();
+dofus.src = "music/dofusAstrub.mp3"
+function nostalgia(){
+  colossus.pause();
+  colossus = 0;
+  dofus.play();
+  tre.onclick = function() {enough()};
+}
+function enough(){
+  dofus.pause();
+  tre.onclick = function() {puta()};
+}
+function puta(){
+  dofus.play();
+  tre.onclick = function() {enough()};
+}
+
+//PARA SECCIONES
+const sections = getTag("summary");
+//al abrir y cerrar
+bipBip = 0;
+for (let i = 0; i < sections.length; i++){
+  sections[i].addEventListener("click",openClose); //al abrir y cerrar
+};
+function openClose(){
+  switch (bipBip) {
+    case 0:
+      var sonido = new Audio();
+      sonido.src = "music/open.mp3";
+      sonido.play();
+      bipBip++;
+      break;
+
+    default:
+      var sonido = new Audio();
+      sonido.src = "music/close.mp3";
+      sonido.play();
+      bipBip--;
+      break;
+  }
+}
+//Intro
+function yugioh(){
+  var yugi = new Audio();
+  yugi.src = "music/test.mp3";
+  yugi.play();
+}
+
+//PARA BOTONES HASTA FINAL DE CICLOS
+var clicCLIC = 0;
+for (let i = 0; i < 16; i++){
+  getTag("button")[i].addEventListener("mouseup",downUp);
+  getTag("button")[i].oncontextmenu = function(){return false};
+}
+function downUp(){
+  switch (clicCLIC) {
+    case 0:
+      var buttonSound = new Audio();
+      buttonSound.src = "music/buttonUP.mp3";
+      buttonSound.play();
+      clicCLIC++;
+      break;
+      
+    default:
+      var buttonSound = new Audio();
+      buttonSound.src = "music/buttonDOWN.mp3";
+      buttonSound.play();
+      clicCLIC--;
+      break;
+    }
+} 
+//PARA BOTONES DESDE ARRAY
+var miiauu = 0;
+for (let i = 16; i < getTag("button").length; i++) {
+  getTag("button")[i].addEventListener("mouseup",guau);
+  getTag("button")[i].oncontextmenu = function(){return false};
+}
+function guau(){ 
+  var buttonSound = new Audio();
+  buttonSound.src = "music/buttonUP.mp3";
+  buttonSound.play();
+  miiauu = 1;
+  for (let i= 16; i < getTag("button").length; i++) {
+    getTag("button")[i].addEventListener("mouseout",guauu);
+  }
+}
+
+function guauu(){
+  if (miiauu == 1){
+  var buttonSound = new Audio();
+  buttonSound.src = "music/buttonDOWN.mp3";
+    buttonSound.play();
+  miiauu = 0;
+  }
+  else{}
+}
+//2 SONIDOS DE LOS VECTORES
+//al pasar el mouse por encima
+var vectorBoxes = document.querySelectorAll(".vector > div");
+for(let i=0; i<10; i++){
+  vectorBoxes[i].addEventListener("mouseover",flashes);
+}
+function flashes(){
+  var flsh = new Audio();
+  flsh.src = "music/flashes.mp3";
+  flsh.play();
+}
+//al agarrarlos y soltarlos
+
+
+//INICIO DE LOS PROBLEMAS Y SOLUCIONES
 // 6 EJERCICIOS DE VARIABLES
 
 "1." 
@@ -546,6 +747,7 @@ function result5(){
   }
   
 }*/
+
 
 //EJERCICIO 6 Leer un número entero de dos dígitos menor que 20 y determinar si es primo.
 function result6(){
@@ -3115,11 +3317,11 @@ function cycle06(){
 //FUNCIONES PARA LOS BOTONES
 var button07 = document.getElementById("cycle07");
 function onMouseOverLight07(){
-  button07.style.border="1px solid #ffaa22";
+  button07.style.border="3px solid #ffaa22";
   button07.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
 };
 function onMouseOutLight07(){
-  button07.style.border='1px solid #ffe572';
+  button07.style.border='3px solid #f7b64e';
   button07.style.color='#333333';
   button07.style.background='linear-gradient(to bottom, #fff186 5%, #f7b64e 100%)';
 };
@@ -3133,11 +3335,16 @@ function onMouseOutDark07(){
   button07.style.color = 'rgb(31, 11, 11)';
   button07.style.background = 'linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)';
 };
-function hoverr07(){
-  button07.style.border="3px solid #ffaa22";
+function onMouseDownDark07(){
+  button07.style.border="1px solid #ffaa22";
   button07.style.background ="linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)";
   button07.style.color="rgb(31, 11, 11)";
 	button07.style.top="1px";
+};
+function onMouseDownLight07(){
+  button07.style.border="1px solid #ffa22";
+  button07.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
+  button07.style.top="1px";
 };
 
 function buttonc07(){
@@ -3148,7 +3355,7 @@ function buttonc07(){
   button07.innerHTML = `LET'S GOOO >:C`;
   button07.onmouseover = function (){onMouseOverLight07()};
   button07.onmouseout = function (){onMouseOutLight07()};
-  button07.onmousedown = function (){hoverr07()};
+  button07.onmousedown = function (){onMouseDownDark07()};
 }
 
 function cycle07() {
@@ -3167,18 +3374,18 @@ function cycle07() {
     button07.innerHTML = `UwU`;
     button07.onmouseover = function (){onMouseOverDark07()};
     button07.onmouseout = function (){onMouseOutDark07()};
-    button07.onmousedown = function (){onMouseOverLight07()};
+    button07.onmousedown = function (){onMouseDownLight07()};
 }
 
 // 8. Mostrar en pantalla todos los pares comprendidos entre 20 y 200.
 //FUNCIONES PARA LOS BOTONES
 var button08 = document.getElementById("cycle08");
 function onMouseOverLight08(){
-  button08.style.border="1px solid #ffaa22";
+  button08.style.border="3px solid #ffaa22";
   button08.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
 };
 function onMouseOutLight08(){
-  button08.style.border='1px solid #ffe572';
+  button08.style.border='3px solid #f7b64e';
   button08.style.color='#333333';
   button08.style.background='linear-gradient(to bottom, #fff186 5%, #f7b64e 100%)';
 };
@@ -3192,11 +3399,16 @@ function onMouseOutDark08(){
   button08.style.color = 'rgb(31, 11, 11)';
   button08.style.background = 'linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)';
 };
-function hoverr08(){
-  button08.style.border="3px solid #ffaa22";
+function onMouseDownDark08(){
+  button08.style.border="1px solid #ffaa22";
   button08.style.background ="linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)";
   button08.style.color="rgb(31, 11, 11)";
 	button08.style.top="1px";
+};
+function onMouseDownLight08(){
+  button08.style.border="1px solid #ffa22";
+  button08.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
+  button07.style.top="1px";
 };
 
 function buttonc08(){
@@ -3207,7 +3419,7 @@ function buttonc08(){
   button08.innerHTML = `LET'S GOOO >:C`;
   button08.onmouseover = function (){onMouseOverLight08()};
   button08.onmouseout = function (){onMouseOutLight08()};
-  button08.onmousedown = function (){hoverr08()};
+  button08.onmousedown = function (){onMouseDownDark08()};
 }
 
 function cycle08() {
@@ -3226,18 +3438,18 @@ function cycle08() {
     button08.innerHTML = `UwU`;
     button08.onmouseover = function (){onMouseOverDark08()};
     button08.onmouseout = function (){onMouseOutDark08()};
-    button08.onmousedown = function (){onMouseOverLight08()};
+    button08.onmousedown = function (){onMouseDownLight08()};
 }
 
 // 9. Mostrar en pantalla todos los números terminados en 6 comprendidos entre 25 y 205.
 //FUNCIONES PARA LOS BOTONES
 var button09 = document.getElementById("cycle09");
 function onMouseOverLight09(){
-  button09.style.border="1px solid #ffaa22";
+  button09.style.border="3px solid #ffaa22";
   button09.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
 };
 function onMouseOutLight09(){
-  button09.style.border='1px solid #ffe572';
+  button09.style.border='3px solid #f7b64e';
   button09.style.color='#333333';
   button09.style.background='linear-gradient(to bottom, #fff186 5%, #f7b64e 100%)';
 };
@@ -3251,11 +3463,16 @@ function onMouseOutDark09(){
   button09.style.color = 'rgb(31, 11, 11)';
   button09.style.background = 'linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)';
 };
-function hoverr09(){
-  button09.style.border="3px solid #ffaa22";
+function onMouseDownDark09(){
+  button09.style.border="1px solid #ffaa22";
   button09.style.background ="linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)";
   button09.style.color="rgb(31, 11, 11)";
 	button09.style.top="1px";
+};
+function onMouseDownLight09(){
+  button09.style.border="1px solid #ffa22";
+  button09.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
+  button07.style.top="1px";
 };
 
 function buttonc09(){
@@ -3266,7 +3483,7 @@ function buttonc09(){
   button09.innerHTML = `LET'S GOOO >:C`;
   button09.onmouseover = function (){onMouseOverLight09()};
   button09.onmouseout = function (){onMouseOutLight09()};
-  button09.onmousedown = function (){hoverr09()};
+  button09.onmousedown = function (){onMouseDownDark09()};
 }
 
 function cycle09() {
@@ -3287,7 +3504,7 @@ function cycle09() {
     button09.innerHTML = `UwU`;
     button09.onmouseover = function (){onMouseOverDark09()};
     button09.onmouseout = function (){onMouseOutDark09()};
-    button09.onmousedown = function (){onMouseOverLight09()};
+    button09.onmousedown = function (){onMouseDownLight09()};
 }
 
 // 10. Leer un número entero y determinar a cuánto es igual la suma de todos los enteros comprendidos entre 1 y el número leído.
@@ -3473,11 +3690,11 @@ function cycle13(){
 //FUNCIONES PARA LOS BOTONES
 var button14 = document.getElementById("cycle14");
 function onMouseOverLight14(){
-  button14.style.border="1px solid #ffaa22";
+  button14.style.border="3px solid #ffaa22";
   button14.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
 };
 function onMouseOutLight14(){
-  button14.style.border='1px solid #ffe572';
+  button14.style.border='3px solid #f7b64e';
   button14.style.color='#333333';
   button14.style.background='linear-gradient(to bottom, #fff186 5%, #f7b64e 100%)';
 };
@@ -3491,11 +3708,16 @@ function onMouseOutDark14(){
   button14.style.color = 'rgb(31, 11, 11)';
   button14.style.background = 'linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)';
 };
-function hoverr14(){
-  button14.style.border="3px solid #ffaa22";
+function onMouseDownDark14(){
+  button14.style.border="1px solid #ffaa22";
   button14.style.background ="linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)";
   button14.style.color="rgb(31, 11, 11)";
 	button14.style.top="1px";
+};
+function onMouseDownLight14(){
+  button14.style.border="1px solid #ffa22";
+  button14.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
+  button07.style.top="1px";
 };
 
 function buttonc14(){
@@ -3506,7 +3728,7 @@ function buttonc14(){
   button14.innerHTML = `LET'S GOOO >:C`;
   button14.onmouseover = function (){onMouseOverLight14()};
   button14.onmouseout = function (){onMouseOutLight14()};
-  button14.onmousedown = function (){hoverr14()};
+  button14.onmousedown = function (){onMouseDownDark14()};
 }
 
 function cycle14() {
@@ -3527,18 +3749,18 @@ function cycle14() {
     button14.innerHTML = `UwU`;
     button14.onmouseover = function (){onMouseOverDark14()};
     button14.onmouseout = function (){onMouseOutDark14()};
-    button14.onmousedown = function (){onMouseOverLight14()};
+    button14.onmousedown = function (){onMouseDownLight14()};
 }
 
 // 15. Escribir en pantalla el resultado de sumar los primeros 20 múltiplos de 3.
 //FUNCIONES PARA LOS BOTONES
 var button15 = document.getElementById("cycle15");
 function onMouseOverLight15(){
-  button15.style.border="1px solid #ffaa22";
+  button15.style.border="3px solid #ffaa22";
   button15.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
 };
 function onMouseOutLight15(){
-  button15.style.border='1px solid #ffe572';
+  button15.style.border='3px solid #f7b64e';
   button15.style.color='#333333';
   button15.style.background='linear-gradient(to bottom, #fff186 5%, #f7b64e 100%)';
 };
@@ -3552,11 +3774,16 @@ function onMouseOutDark15(){
   button15.style.color = 'rgb(31, 11, 11)';
   button15.style.background = 'linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)';
 };
-function hoverr15(){
-  button15.style.border="3px solid #ffaa22";
+function onMouseDownDark15(){
+  button15.style.border="1px solid #ffaa22";
   button15.style.background ="linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)";
   button15.style.color="rgb(31, 11, 11)";
 	button15.style.top="1px";
+};
+function onMouseDownLight15(){
+  button15.style.border="1px solid #ffa22";
+  button15.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
+  button07.style.top="1px";
 };
 
 function buttonc15(){
@@ -3567,7 +3794,7 @@ function buttonc15(){
   button15.innerHTML = `LET'S GOOO >:C`;
   button15.onmouseover = function (){onMouseOverLight15()};
   button15.onmouseout = function (){onMouseOutLight15()};
-  button15.onmousedown = function (){hoverr15()};
+  button15.onmousedown = function (){onMouseDownDark15()};
 }
 
 function cycle15() {
@@ -3595,7 +3822,7 @@ function cycle15() {
     button15.innerHTML = `UwU`;
     button15.onmouseover = function (){onMouseOverDark15()};
     button15.onmouseout = function (){onMouseOutDark15()};
-    button15.onmousedown = function (){onMouseOverLight15()};
+    button15.onmousedown = function (){onMouseDownLight15()};
 }
 
 // 16. Mostrar en pantalla el promedio entero de los n primeros múltiplos de 3 para un número n leído.
@@ -4450,11 +4677,11 @@ function cycle30(){
 //FUNCIONES PARA LOS BOTONES
 var button33 = document.getElementById("cycle33");
 function onMouseOverLight33(){
-  button33.style.border="1px solid #ffaa22";
+  button33.style.border="3px solid #ffaa22";
   button33.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
 };
 function onMouseOutLight33(){
-  button33.style.border='1px solid #ffe572';
+  button33.style.border='3px solid #f7b64e';
   button33.style.color='#333333';
   button33.style.background='linear-gradient(to bottom, #fff186 5%, #f7b64e 100%)';
 };
@@ -4468,11 +4695,16 @@ function onMouseOutDark33(){
   button33.style.color = 'rgb(31, 11, 11)';
   button33.style.background = 'linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)';
 };
-function hoverr33(){
-  button33.style.border="3px solid #ffaa22";
+function onMouseDownDark33(){
+  button33.style.border="1px solid #ffaa22";
   button33.style.background ="linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)";
   button33.style.color="rgb(31, 11, 11)";
 	button33.style.top="1px";
+};
+function onMouseDownLight33(){
+  button33.style.border="1px solid #ffa22";
+  button33.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
+  button07.style.top="1px";
 };
 
 function buttonc33(){
@@ -4483,7 +4715,7 @@ function buttonc33(){
   button33.innerHTML = `LET'S GOOO >:C`;
   button33.onmouseover = function (){onMouseOverLight33()};
   button33.onmouseout = function (){onMouseOutLight33()};
-  button33.onmousedown = function (){hoverr33()};
+  button33.onmousedown = function (){onMouseDownDark33()};
 }
 
 function cycle33() {
@@ -4519,18 +4751,18 @@ function cycle33() {
     button33.innerHTML = `UwU`;
     button33.onmouseover = function (){onMouseOverDark33()};
     button33.onmouseout = function (){onMouseOutDark33()};
-    button33.onmousedown = function (){onMouseOverLight33()};
+    button33.onmousedown = function (){onMouseDownLight33()};
 }
 
 // 34. Generar los números del 1 al 10 utilizando un ciclo que vaya de 10 a 1.
 //FUNCIONES PARA LOS BOTONES
 var button34 = document.getElementById("cycle34");
 function onMouseOverLight34(){
-  button34.style.border="1px solid #ffaa22";
+  button34.style.border="3px solid #ffaa22";
   button34.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
 };
 function onMouseOutLight34(){
-  button34.style.border='1px solid #ffe572';
+  button34.style.border='3px solid #f7b64e';
   button34.style.color='#333333';
   button34.style.background='linear-gradient(to bottom, #fff186 5%, #f7b64e 100%)';
 };
@@ -4544,11 +4776,16 @@ function onMouseOutDark34(){
   button34.style.color = 'rgb(31, 11, 11)';
   button34.style.background = 'linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)';
 };
-function hoverr34(){
-  button34.style.border="3px solid #ffaa22";
+function onMouseDownDark34(){
+  button34.style.border="1px solid #ffaa22";
   button34.style.background ="linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)";
   button34.style.color="rgb(31, 11, 11)";
 	button34.style.top="1px";
+};
+function onMouseDownLight34(){
+  button34.style.border="1px solid #ffa22";
+  button34.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
+  button07.style.top="1px";
 };
 
 function buttonc34(){
@@ -4559,7 +4796,7 @@ function buttonc34(){
   button34.innerHTML = `LET'S GOOO >:C`;
   button34.onmouseover = function (){onMouseOverLight34()};
   button34.onmouseout = function (){onMouseOutLight34()};
-  button34.onmousedown = function (){hoverr34()};
+  button34.onmousedown = function (){onMouseDownDark34()};
 }
 
 function cycle34() {
@@ -4579,7 +4816,7 @@ function cycle34() {
     button34.innerHTML = `UwU`;
     button34.onmouseover = function (){onMouseOverDark34()};
     button34.onmouseout = function (){onMouseOutDark34()};
-    button34.onmousedown = function (){onMouseOverLight34()};
+    button34.onmousedown = function (){onMouseDownLight34()};
 }
 // 35. Leer dos números enteros y determinar a cuánto es igual el producto mutuo del primer dígito de cada uno.
 function cycle35(){
@@ -4624,11 +4861,11 @@ function cycle35(){
 //FUNCIONES PARA LOS BOTONES
 var button36 = document.getElementById("cycle36");
 function onMouseOverLight36(){
-  button36.style.border="1px solid #ffaa22";
+  button36.style.border="3px solid #ffaa22";
   button36.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
 };
 function onMouseOutLight36(){
-  button36.style.border='1px solid #ffe572';
+  button36.style.border='3px solid #f7b64e';
   button36.style.color='#333333';
   button36.style.background='linear-gradient(to bottom, #fff186 5%, #f7b64e 100%)';
 };
@@ -4642,11 +4879,16 @@ function onMouseOutDark36(){
   button36.style.color = 'rgb(31, 11, 11)';
   button36.style.background = 'linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)';
 };
-function hoverr36(){
-  button36.style.border="3px solid #ffaa22";
+function onMouseDownDark36(){
+  button36.style.border="1px solid #ffaa22";
   button36.style.background ="linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)";
   button36.style.color="rgb(31, 11, 11)";
 	button36.style.top="1px";
+};
+function onMouseDownLight36(){
+  button36.style.border="1px solid #ffa22";
+  button36.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
+  button07.style.top="1px";
 };
 
 function buttonc36(){
@@ -4657,7 +4899,7 @@ function buttonc36(){
   button36.innerHTML = `LET'S GOOO >:C`;
   button36.onmouseover = function (){onMouseOverLight36()};
   button36.onmouseout = function (){onMouseOutLight36()};
-  button36.onmousedown = function (){hoverr36()};
+  button36.onmousedown = function (){onMouseDownDark36()};
 }
 
 function cycle36() {
@@ -4677,18 +4919,18 @@ function cycle36() {
     button36.innerHTML = `UwU`;
     button36.onmouseover = function (){onMouseOverDark36()};
     button36.onmouseout = function (){onMouseOutDark36()};
-    button36.onmousedown = function (){onMouseOverLight36()};
+    button36.onmousedown = function (){onMouseDownLight36()};
 }
 
 // 37. Generar todas las tablas de multiplicar del 1 al 10.
 //FUNCIONES PARA LOS BOTONES
 var button37 = document.getElementById("cycle37");
 function onMouseOverLight37(){
-  button37.style.border="1px solid #ffaa22";
+  button37.style.border="3px solid #ffaa22";
   button37.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
 };
 function onMouseOutLight37(){
-  button37.style.border='1px solid #ffe572';
+  button37.style.border='3px solid #f7b64e';
   button37.style.color='#333333';
   button37.style.background='linear-gradient(to bottom, #fff186 5%, #f7b64e 100%)';
 };
@@ -4702,11 +4944,16 @@ function onMouseOutDark37(){
   button37.style.color = 'rgb(31, 11, 11)';
   button37.style.background = 'linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)';
 };
-function hoverr37(){
-  button37.style.border="3px solid #ffaa22";
+function onMouseDownDark37(){
+  button37.style.border="1px solid #ffaa22";
   button37.style.background ="linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)";
   button37.style.color="rgb(31, 11, 11)";
 	button37.style.top="1px";
+};
+function onMouseDownLight37(){
+  button37.style.border="1px solid #ffa22";
+  button37.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
+  button07.style.top="1px";
 };
 
 function buttonc37(){
@@ -4719,7 +4966,7 @@ function buttonc37(){
   button37.innerHTML = `LET'S GOOO >:C`;
   button37.onmouseover = function (){onMouseOverLight37()};
   button37.onmouseout = function (){onMouseOutLight37()};
-  button37.onmousedown = function (){hoverr37()};
+  button37.onmousedown = function (){onMouseDownDark37()};
 }
 
 function cycle37() {
@@ -4743,7 +4990,7 @@ function cycle37() {
     button37.innerHTML = `UwU`;
     button37.onmouseover = function (){onMouseOverDark37()};
     button37.onmouseout = function (){onMouseOutDark37()};
-    button37.onmousedown = function (){onMouseOverLight37()};
+    button37.onmousedown = function (){onMouseDownLight37()};
 }
 
 // 38. Leer un número entero y mostrar en pantalla su tabla de multiplicar.
@@ -4776,11 +5023,11 @@ function cycle38(){
 //FUNCIONES PARA LOS BOTONES
 var button39 = document.getElementById("cycle39");
 function onMouseOverLight39(){
-  button39.style.border="1px solid #ffaa22";
+  button39.style.border="3px solid #ffaa22";
   button39.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
 };
 function onMouseOutLight39(){
-  button39.style.border='1px solid #ffe572';
+  button39.style.border='3px solid #f7b64e';
   button39.style.color='#333333';
   button39.style.background='linear-gradient(to bottom, #fff186 5%, #f7b64e 100%)';
 };
@@ -4794,11 +5041,16 @@ function onMouseOutDark39(){
   button39.style.color = 'rgb(31, 11, 11)';
   button39.style.background = 'linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)';
 };
-function hoverr39(){
-  button39.style.border="3px solid #ffaa22";
+function onMouseDownDark39(){
+  button39.style.border="1px solid #ffaa22";
   button39.style.background ="linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)";
   button39.style.color="rgb(31, 11, 11)";
 	button39.style.top="1px";
+};
+function onMouseDownLight39(){
+  button39.style.border="1px solid #ffa22";
+  button39.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
+  button07.style.top="1px";
 };
 
 function buttonc39(){
@@ -4809,7 +5061,7 @@ function buttonc39(){
   button39.innerHTML = `LET'S GOOO >:C`;
   button39.onmouseover = function (){onMouseOverLight39()};
   button39.onmouseout = function (){onMouseOutLight39()};
-  button39.onmousedown = function (){hoverr39()};
+  button39.onmousedown = function (){onMouseDownDark39()};
 }
 
 function cycle39() {
@@ -4840,7 +5092,7 @@ function cycle39() {
     button39.innerHTML = `UwU`;
     button39.onmouseover = function (){onMouseOverDark39()};
     button39.onmouseout = function (){onMouseOutDark39()};
-    button39.onmousedown = function (){onMouseOverLight39()};
+    button39.onmousedown = function (){onMouseDownLight39()};
 }
 
 // 40. Leer un número de dos dígitos y determinar si pertenece a la serie de Fibonacci.
@@ -4892,11 +5144,11 @@ function cycle40(){
 //FUNCIONES PARA LOS BOTONES
 var button41 = document.getElementById("cycle41");
 function onMouseOverLight41(){
-  button41.style.border="1px solid #ffaa22";
+  button41.style.border="3px solid #ffaa22";
   button41.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
 };
 function onMouseOutLight41(){
-  button41.style.border='1px solid #ffe572';
+  button41.style.border='3px solid #f7b64e';
   button41.style.color='#333333';
   button41.style.background='linear-gradient(to bottom, #fff186 5%, #f7b64e 100%)';
 };
@@ -4910,11 +5162,16 @@ function onMouseOutDark41(){
   button41.style.color = 'rgb(31, 11, 11)';
   button41.style.background = 'linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)';
 };
-function hoverr41(){
-  button41.style.border="3px solid #ffaa22";
+function onMouseDownDark41(){
+  button41.style.border="1px solid #ffaa22";
   button41.style.background ="linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)";
   button41.style.color="rgb(31, 11, 11)";
 	button41.style.top="1px";
+};
+function onMouseDownLight41(){
+  button41.style.border="1px solid #ffa22";
+  button41.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
+  button07.style.top="1px";
 };
 
 function buttonc41(){
@@ -4925,7 +5182,7 @@ function buttonc41(){
   button41.innerHTML = `LET'S GOOO >:C`;
   button41.onmouseover = function (){onMouseOverLight41()};
   button41.onmouseout = function (){onMouseOutLight41()};
-  button41.onmousedown = function (){hoverr41()};
+  button41.onmousedown = function (){onMouseDownDark41()};
 }
 
 function cycle41() {
@@ -4962,18 +5219,18 @@ function cycle41() {
     button41.innerHTML = `UwU`;
     button41.onmouseover = function (){onMouseOverDark41()};
     button41.onmouseout = function (){onMouseOutDark41()};
-    button41.onmousedown = function (){onMouseOverLight41()};
+    button41.onmousedown = function (){onMouseDownLight41()};
 }
 
 // 42. Determinar a cuánto es igual el promedio entero de los elementos de la serie de Fibonacci entre 0 y 1000.
 //FUNCIONES PARA LOS BOTONES
 var button42 = document.getElementById("cycle42");
 function onMouseOverLight42(){
-  button42.style.border="1px solid #ffaa22";
+  button42.style.border="3px solid #ffaa22";
   button42.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
 };
 function onMouseOutLight42(){
-  button42.style.border='1px solid #ffe572';
+  button42.style.border='3px solid #f7b64e';
   button42.style.color='#333333';
   button42.style.background='linear-gradient(to bottom, #fff186 5%, #f7b64e 100%)';
 };
@@ -4987,11 +5244,16 @@ function onMouseOutDark42(){
   button42.style.color = 'rgb(31, 11, 11)';
   button42.style.background = 'linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)';
 };
-function hoverr42(){
-  button42.style.border="3px solid #ffaa22";
+function onMouseDownDark42(){
+  button42.style.border="1px solid #ffaa22";
   button42.style.background ="linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)";
   button42.style.color="rgb(31, 11, 11)";
 	button42.style.top="1px";
+};
+function onMouseDownLight42(){
+  button42.style.border="1px solid #ffa22";
+  button42.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
+  button07.style.top="1px";
 };
 
 function buttonc42(){
@@ -5002,7 +5264,7 @@ function buttonc42(){
   button42.innerHTML = `LET'S GOOO >:C`;
   button42.onmouseover = function (){onMouseOverLight42()};
   button42.onmouseout = function (){onMouseOutLight42()};
-  button42.onmousedown = function (){hoverr42()};
+  button42.onmousedown = function (){onMouseDownDark42()};
 }
 
 function cycle42() {
@@ -5042,18 +5304,18 @@ function cycle42() {
     button42.innerHTML = `UwU`;
     button42.onmouseover = function (){onMouseOverDark42()};
     button42.onmouseout = function (){onMouseOutDark42()};
-    button42.onmousedown = function (){onMouseOverLight42()};
+    button42.onmousedown = function (){onMouseDownLight42()};
 }
 
 // 43. Determinar cuántos elementos de la serie de Fibonacci se encuentran entre 1000 y 2000.
 //FUNCIONES PARA LOS BOTONES
 var button43 = document.getElementById("cycle43");
 function onMouseOverLight43(){
-  button43.style.border="1px solid #ffaa22";
+  button43.style.border="3px solid #ffaa22";
   button43.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
 };
 function onMouseOutLight43(){
-  button43.style.border='1px solid #ffe572';
+  button43.style.border='3px solid #f7b64e';
   button43.style.color='#333333';
   button43.style.background='linear-gradient(to bottom, #fff186 5%, #f7b64e 100%)';
 };
@@ -5067,11 +5329,16 @@ function onMouseOutDark43(){
   button43.style.color = 'rgb(31, 11, 11)';
   button43.style.background = 'linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)';
 };
-function hoverr43(){
-  button43.style.border="3px solid #ffaa22";
+function onMouseDownDark43(){
+  button43.style.border="1px solid #ffaa22";
   button43.style.background ="linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)";
   button43.style.color="rgb(31, 11, 11)";
 	button43.style.top="1px";
+};
+function onMouseDownLight43(){
+  button43.style.border="1px solid #ffa22";
+  button43.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
+  button07.style.top="1px";
 };
 
 function buttonc43(){
@@ -5082,7 +5349,7 @@ function buttonc43(){
   button43.innerHTML = `LET'S GOOO >:C`;
   button43.onmouseover = function (){onMouseOverLight43()};
   button43.onmouseout = function (){onMouseOutLight43()};
-  button43.onmousedown = function (){hoverr43()};
+  button43.onmousedown = function (){onMouseDownDark43()};
 }
 
 function cycle43() {
@@ -5122,7 +5389,7 @@ function cycle43() {
     button43.innerHTML = `UwU`;
     button43.onmouseover = function (){onMouseOverDark43()};
     button43.onmouseout = function (){onMouseOutDark43()};
-    button43.onmousedown = function (){onMouseOverLight43()};
+    button43.onmousedown = function (){onMouseDownLight43()};
 }
 
 // 44. Leer un número y calcularle su factorial.
@@ -5323,11 +5590,11 @@ function cycle47(){
 //FUNCIONES PARA LOS BOTONES
 var button48 = document.getElementById("cycle48");
 function onMouseOverLight48(){
-  button48.style.border="1px solid #ffaa22";
+  button48.style.border="3px solid #ffaa22";
   button48.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
 };
 function onMouseOutLight48(){
-  button48.style.border='1px solid #ffe572';
+  button48.style.border='3px solid #f7b64e';
   button48.style.color='#333333';
   button48.style.background='linear-gradient(to bottom, #fff186 5%, #f7b64e 100%)';
 };
@@ -5341,11 +5608,16 @@ function onMouseOutDark48(){
   button48.style.color = 'rgb(31, 11, 11)';
   button48.style.background = 'linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)';
 };
-function hoverr48(){
-  button48.style.border="3px solid #ffaa22";
+function onMouseDownDark48(){
+  button48.style.border="1px solid #ffaa22";
   button48.style.background ="linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)";
   button48.style.color="rgb(31, 11, 11)";
 	button48.style.top="1px";
+};
+function onMouseDownLight48(){
+  button48.style.border="1px solid #ffa22";
+  button48.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
+  button07.style.top="1px";
 };
 
 function buttonc48(){
@@ -5356,7 +5628,7 @@ function buttonc48(){
   button48.innerHTML = `LET'S GOOO >:C`;
   button48.onmouseover = function (){onMouseOverLight48()};
   button48.onmouseout = function (){onMouseOutLight48()};
-  button48.onmousedown = function (){hoverr48()};
+  button48.onmousedown = function (){onMouseDownDark48()};
 }
 
 function cycle48() {
@@ -5388,7 +5660,7 @@ function cycle48() {
     button48.innerHTML = `UwU`;
     button48.onmouseover = function (){onMouseOverDark48()};
     button48.onmouseout = function (){onMouseOutDark48()};
-    button48.onmousedown = function (){onMouseOverLight48()};
+    button48.onmousedown = function (){onMouseDownLight48()};
 }
 
 // 49. Utilizando ciclos anidados generar las siguientes ternas de números
@@ -5406,11 +5678,11 @@ function cycle48() {
 //FUNCIONES PARA LOS BOTONES
 var button49 = document.getElementById("cycle49");
 function onMouseOverLight49(){
-  button49.style.border="1px solid #ffaa22";
+  button49.style.border="3px solid #ffaa22";
   button49.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
 };
 function onMouseOutLight49(){
-  button49.style.border='1px solid #ffe572';
+  button49.style.border='3px solid #f7b64e';
   button49.style.color='#333333';
   button49.style.background='linear-gradient(to bottom, #fff186 5%, #f7b64e 100%)';
 };
@@ -5424,11 +5696,16 @@ function onMouseOutDark49(){
   button49.style.color = 'rgb(31, 11, 11)';
   button49.style.background = 'linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)';
 };
-function hoverr49(){
-  button49.style.border="3px solid #ffaa22";
+function onMouseDownDark49(){
+  button49.style.border="1px solid #ffaa22";
   button49.style.background ="linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)";
   button49.style.color="rgb(31, 11, 11)";
 	button49.style.top="1px";
+};
+function onMouseDownLight49(){
+  button49.style.border="1px solid #ffa22";
+  button49.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
+  button07.style.top="1px";
 };
 
 function buttonc49(){
@@ -5439,7 +5716,7 @@ function buttonc49(){
   button49.innerHTML = `LET'S GOOO >:C`;
   button49.onmouseover = function (){onMouseOverLight49()};
   button49.onmouseout = function (){onMouseOutLight49()};
-  button49.onmousedown = function (){hoverr49()};
+  button49.onmousedown = function (){onMouseDownDark49()};
 }
 
 function cycle49() {
@@ -5482,7 +5759,7 @@ function cycle49() {
     button49.innerHTML = `UwU`;
     button49.onmouseover = function (){onMouseOverDark49()};
     button49.onmouseout = function (){onMouseOutDark49()};
-    button49.onmousedown = function (){onMouseOverLight49()};
+    button49.onmousedown = function (){onMouseDownLight49()};
 }
 
 // 50. Utilizando ciclos anidados generar las siguientes parejas de números
@@ -5499,11 +5776,11 @@ function cycle49() {
 //FUNCIONES PARA LOS BOTONES
 var button50 = document.getElementById("cycle50");
 function onMouseOverLight50(){
-  button50.style.border="1px solid #ffaa22";
+  button50.style.border="3px solid #ffaa22";
   button50.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
 };
 function onMouseOutLight50(){
-  button50.style.border='1px solid #ffe572';
+  button50.style.border='3px solid #f7b64e';
   button50.style.color='#333333';
   button50.style.background='linear-gradient(to bottom, #fff186 5%, #f7b64e 100%)';
 };
@@ -5517,11 +5794,16 @@ function onMouseOutDark50(){
   button50.style.color = 'rgb(31, 11, 11)';
   button50.style.background = 'linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)';
 };
-function hoverr50(){
-  button50.style.border="3px solid #ffaa22";
+function onMouseDownDark50(){
+  button50.style.border="1px solid #ffaa22";
   button50.style.background ="linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)";
   button50.style.color="rgb(31, 11, 11)";
 	button50.style.top="1px";
+};
+function onMouseDownLight50(){
+  button50.style.border="1px solid #ffa22";
+  button50.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
+  button07.style.top="1px";
 };
 
 function buttonc50(){
@@ -5532,7 +5814,7 @@ function buttonc50(){
   button50.innerHTML = `LET'S GOOO >:C`;
   button50.onmouseover = function (){onMouseOverLight50()};
   button50.onmouseout = function (){onMouseOutLight50()};
-  button50.onmousedown = function (){hoverr50()};
+  button50.onmousedown = function (){onMouseDownDark50()};
 }
 
 function cycle50() {
@@ -5564,7 +5846,7 @@ function cycle50() {
     button50.innerHTML = `UwU`;
     button50.onmouseover = function (){onMouseOverDark50()};
     button50.onmouseout = function (){onMouseOutDark50()};
-    button50.onmousedown = function (){onMouseOverLight50()};
+    button50.onmousedown = function (){onMouseDownLight50()};
 }
 
 // 50 algoritmos reales de arreglos
@@ -5575,23 +5857,321 @@ b = 0
 c = 0
 d = 0
 
+//IMÁGENES DE FLECHAS APAGADAS PARA VECTORES
+var offArrows = document.querySelectorAll("div.arrow > div");
+[].forEach.call(offArrows,function(quiver){
+  quiver.innerHTML = `<img class="arrowImg" src="./arrowOff.png" alt="Aquí había una flecha... Ya no está xd">`;
+});
+
+
+//OBJETO PARA GENERAR UN ARRAY Y 10 NÚMEROS ALEATORIOS DESDE -999 HASTA 999
+function get10Random(vectorClass){
+  this.nums = 0;
+  this.box = document.getElementsByClassName(vectorClass);
+  this.aux = new Array;
+
+  this.method = function(min,max){
+    if (this.aux.length == 10){
+      this.aux = new Array;
+      for (let i = 0; i < 10; i++) {
+        this.nums = Math.round(Math.random()*(max-min)+min);
+        this.aux.push(this.nums);
+        this.box[i].innerHTML = this.aux[i];
+      }
+    }
+    else{
+      for (let i = this.aux.length; i < 10; i++) {
+        this.nums = Math.round(Math.random()*(max-min)+min);
+        this.aux.push(this.nums);
+        this.box[i].innerHTML = this.aux[i];
+      }
+    }
+    return this.box;
+  };
+
+  this.equalize = function(){
+    for (let i = 0; i < this.aux.length; i++){
+      this.box[i].innerHTML = this.aux[i];
+    }
+    if (this.aux.length == 0){
+      for (let i = 0; i < 10; i++){
+        this.box[i].innerHTML = ` `;
+      }
+    }
+    return this.box;
+  };
+}
+
+
+
 // 1. Leer 10 enteros, almacenarlos en un vector y determinar en qué posición del vector está el mayor número leído.
-function array0(){}
+var box01 = new get10Random("vector01");
+var buttona01 = document.getElementById("arrayb01");
+var inputArr01 = document.getElementById("arrayi01");
+var freedom;
+var justice;
+var flash = 0;
+var xd = 0;
+var truai = 0;
+//solución al problema
+function solutiona01(){
+  
+  //Variables locales elementales
+  let arrow = document.getElementsByClassName("arrow01");
+  var imgOn   = '<img class="arrowImg" src="./arrowOn.png" alt="Aquí había una flecha... Ya no está xd">';
+  var imgOff = `<img class="arrowImg" src="./arrowOff.png" alt="Aquí había una flecha... Ya no está xd">`;
+  var img = `<img class="arrowImg" src="./arrow.png" alt="Aquí había una flecha... Ya no está xd">`;
+  //Un reinicio ligero al oprimir el vector
+  [].forEach.call(arrow,function(arrows){
+    arrows.innerHTML = imgOff; 
+  });
+    //Variables para solucionar la pregunta concreta
+    let seeker = Math.max(...box01.aux);
+    let snitch = box01.aux.indexOf(seeker);
+
+  //"Animación" de las flechas
+  function animation(){
+    var card = new Audio();
+    card.src = "music/arrows.mp3";
+    card.play();
+
+    if(xd == 2){ 
+      if (flash==-1){
+        arrow[0].innerHTML = imgOff;
+        xd = 0;
+        flash=0;
+      }
+      else if (flash==0){
+        arrow[1].innerHTML = imgOff;
+        arrow[0].innerHTML = img;
+        flash=-1;
+      }
+      else{
+        if (flash<=8){
+          arrow[(flash+1)].innerHTML = imgOff;
+        };
+        arrow[flash].innerHTML = img;
+        flash--;
+      }               
+    }
+    else if(xd == 1){             //¿A LAS CUÁNTAS VUELTAS QUIERES VOLTEAR?
+      flash = 9;
+      arrow[flash].innerHTML = img;
+      xd = 2;
+      flash--;
+    }
+    else{
+      if (flash==10){                       //VUELTA 2
+        arrow[(flash-1)].innerHTML = imgOff;
+        xd++;
+        flash = 0;
+      }
+      else{                                 //VUELTA 1
+        if (flash>=1){
+          arrow[(flash-1)].innerHTML = imgOff;
+        };
+        arrow[flash].innerHTML = img;
+        flash++;
+      }
+    };
+      getE("a01e").innerHTML = `...`
+      truai = 1;
+  };
+    
+
+  //SOLUCIÓN LÓGICA ESQUEMÁTICA DEL PROBLEMA 
+  function solution(){
+    clearInterval(freedom);
+    win = new Audio();
+    win.src = "music/win.mp3";
+    win.play();
+    card = new Audio();
+    card.src = "music/arrows.mp3";
+    card.play();
+    flash = snitch;
+
+    for (let i = 0; i < 10; i++) {
+      if(i == snitch) {
+        arrow[i].innerHTML = imgOn;
+      }
+      else{
+        arrow[i].innerHTML = imgOff;
+      }
+    };
+    getE("a01e").innerHTML = `De este vector, el número más alto es el ${seeker} y se halla en la posición n°${snitch} c:`;
+  }; 
+  
+
+  //Diálogos al vaciar
+  if (box01.aux.length == 0) {
+    let zero = new Audio();
+    zero.src = "music/hollow.mp3";
+    zero.play();
+    getE("a01e").innerHTML = ``;
+    [].forEach.call(arrow,function(arrows){
+      arrows.innerHTML = imgOff; 
+    });
+  }
+  else if (box01.aux.length == 10){
+    freedom = setInterval(animation,250);
+    justice = setTimeout(solution, 4000);
+  }
+  else{
+    getE("a01e").innerHTML = `De este vector, el número más alto es el ${seeker} y se halla en la posición n°${snitch} c: <br> Te invito a llenar todo el vector, humano, y mira lo que pasa -guiño guiño-`;
+  };
+};
+
+
+//FUNCIONES PARA EL INPUT
+inputArr01.addEventListener("keydown",arrayi01, false); 
+function arrayi01(e){
+    //DIÁLOGOS PARA EL BOTÓN
+    if (box01.aux.length == 10 || box01.aux.length == 0){
+      buttona01.innerHTML = `GENERAR 10 NÚMEROS ALEATORIOS`;
+    }
+    else{
+      if (box01.aux.length == 9){
+        buttona01.innerHTML = `GENERAR 1 NÚMERO ALEATORIO`;
+      }
+      else{
+        buttona01.innerHTML = `GENERAR ${10-box01.aux.length} NÚMEROS ALEATORIOS`;
+      }
+    };
+
+  box01.equalize();
+  var ngt = (inputArr01.value<0)? `-`:``;
+  if (inputArr01.value == `` || inputArr01.value == '-'){
+    document.getElementById("a01").innerHTML = ``;
+  }
+  else{
+    if (inputArr01.value == 0){
+      if (box01.aux.length > 0){
+        document.getElementById("a01").innerHTML = `¿Quieres reiniciar el vector, humano? ¡Tírame ese cero entonces! c:<`;
+      }
+      else{
+        document.getElementById("a01").innerHTML = `Oye, humano... Primero regístrame números con ENTER <br> antes de estar pensando en reiniciar el vector... ¿No? >:c`;
+      }
+    }
+    else{
+      document.getElementById("a01").innerHTML = `¡Cool, un ${ngt}${Math.abs(inputArr01.value)}! Regístralo oprimiendo ENTER c:`;
+    }
+  };
+  //Ejecutar función cuando se oprima ENTER
+  if (e.keyCode === 13){ 
+    if (inputArr01.value == ``){
+    }
+    else if (inputArr01.value == 0){
+      if(box01.aux==0){
+        inputArr01.value = ``;
+      }
+      else{
+        clearTimeout(justice);
+        clearInterval(freedom);
+        document.getElementById("a01b").innerHTML = ``;
+        document.getElementById("a01c").innerHTML = `Vector reiniciado con éxito.`;
+        setTimeout(fade,7000);
+        function fade(){
+          return document.getElementById("a01c").innerHTML = ``;
+        };
+        box01.aux = [];
+        solutiona01();
+        inputArr01.value = ``;
+      }
+    }
+    else{
+      if (box01.aux.length == 10){
+        document.getElementById("a01c").innerHTML = `Puedes registrar el número 0 para reiniciar el vector uwu`;
+        box01.aux.shift();
+        box01.aux.push(Number(inputArr01.value));
+        solutiona01();
+        inputArr01.value = ``;
+      }
+      else{
+        document.getElementById("a01c").innerHTML = `Puedes registrar el número 0 para reiniciar el vector uwu`;
+        box01.aux.push(Number(inputArr01.value));
+        solutiona01();
+        inputArr01.value = ``;
+      }
+    }
+  };
+} 
+
+//FUNCIONES PARA EL BOTÓN
+function onMouseOverLight01(){
+  buttona01.style.border="3px solid #ffab22";
+  buttona01.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
+  buttona01.style.color="rgb(31, 11, 11)";
+};
+function onMouseOutLight01(){
+  buttona01.style.border='3px solid #f7b64e';
+  buttona01.style.color='#333333';
+  buttona01.style.background='linear-gradient(to bottom, #fff186 5%, #f7b64e 100%)';
+};
+
+function onMouseOverDark01(){
+  buttona01.style.border="3px solid #ffaa22";
+  buttona01.style.background="linear-gradient(to bottom, #ffe205 5%, #ffb71b 100%)";
+};
+function onMouseOutDark01(){
+  buttona01.style.border = '1px solid #ff9d00';
+  buttona01.style.color = 'rgb(31, 11, 11)';
+  buttona01.style.background = 'linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)';
+};
+
+function array01(){
+  //SOLUTION
+  box01.method(-999,10000);
+  document.getElementById("a01c").innerHTML = `Puedes registrar el número 0 para reiniciar el vector uwu`;
+  buttona01.innerHTML = `GENERAR 10 NÚMEROS ALEATORIOS`;
+  solutiona01();
+
+  //OH, STYLO
+  buttona01.onmouseover = function (){onMouseOverLight01()};
+  buttona01.onmouseout = function (){onMouseOutLight01()};
+  buttona01.onmousedown = function (){onMouseOutDark01()};
+  buttona01.onmouseup = function (){onMouseOverDark01()};
+}
+
 // 2. Leer 10 enteros, almacenarlos en un vector y determinar en qué posición del vector está el mayor número par leído.
-function array0(){}
+function array02(){
+
+}
+
 // 3. Leer 10 enteros, almacenarlos en un vector y determinar en qué posición del vector está el mayor número primo leído.
-function array0(){}
+function array03(){
+
+}
 // 4. Cargar un vector de 10 posiciones con los 10 primeros elementos de la serie de Fibonacci y mostrarlo en pantalla.
-function array0(){}
+function array04(){
+
+}
+
 // 5. Almacenar en un vector de 10 posiciones los 10 números primos comprendidos entre 100 y 300. Luego mostrarlos en pantalla.
-function array0(){}
+function array05(){
+
+}
+
 // 6. Leer dos números enteros y almacenar en un vector los 10 primeros números primos comprendidos entre el menor y el mayor. Luego mostrarlos en pantalla.
-function array0(){}
+function array06(){
+
+}
+
 // 7. Leer 10 números enteros, almacenarlos en un vector y determinar en qué posiciones se encuentra el número mayor.
-function array0(){}
+function array07(){
+
+}
+
 // 8. Leer 10 números enteros, almacenarlos en un vector y determinar en qué posiciones se encuentran los números terminados en 4.
-function array0(){}
+function array08(){
+
+}
+
 // 9. Leer 10 números enteros, almacenarlos en un vector y determinar cuántas veces está repetido el mayor.
-function array0(){}
+function array09(){
+
+}
+
 // 10. Leer 10 números enteros, almacenarlos en un vector y determinar en qué posiciones se encuentran los números con mas de 3 dígitos.
-function array0(){}
+function array10(){
+
+}

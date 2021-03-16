@@ -1,22 +1,46 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
+<head style="background-color: aqua;" >
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"&amp;gt>
     <link rel="icon" type="image/png" href="./icon.png">
-    <link rel="stylesheet" type="text/css" href="./300.css">
+    <link rel="stylesheet" href="./300.css">
     <title>300</title>
 </head>
-<!--<body oncontextmenu="return false" onkeydown="return false"> para proteger código-->
+<!--oncontextmenu="return false" para proteger código -->
+<!-- Animaciones para el menú -->
+<body onload= "return pre()" onfocus= "return pre()" onblur= "return pree()">
+
+    <!-- Intro al inicio -->
+    <div id="fixed300">
+        <div id="relative300">
+               <h1 id="absolute300" onclick="
+                    document.getElementById('h300').style.opacity='1'; 
+                    document.getElementById('section01').style.transform='translateY(0px)';  
+                    document.getElementById('section02').style.transform='translateY(0px)';  
+                    document.getElementById('section03').style.transform='translateY(0px)';  
+                    document.getElementById('section04').style.transform='translateY(0px)';  
+                    document.getElementById('section05').style.transform='translateY(0px)';  
+                    document.getElementById('section06').style.transform='translateY(0px)';  
+                    document.getElementById('section07').style.transform='translateY(0px)';
+                    setTimeout(launcher,200);
+            ">300</h1>
+        </div>
+    </div>
+    
     <header id="título300">
-       <center><h1>300</h1></center>
+        <div id="div300" >
+            <center>
+                <h1 id="h300">300</h1>
+            </center>
+        </div>
     </header>
 
    <details id="50algoritmosInformales">
        
-    <summary>
-           <h3>50 algoritmos informales</h3>
-        </summary>
+       <summary id="section01" style="transform:translateY(-3000px)">
+        <h3>50 algoritmos informales</h3>
+    </summary>
         <pre>
             
         1. Desarrollar un algoritmo que permita adquirir una revista.
@@ -867,8 +891,8 @@
 
     <details id="6variables">
 
-        <summary>
-            <h3>6 ejercicios de variables</h3>
+        <summary id="section02" style="transform:translateY(-12000px)">
+            <h3 >6 ejercicios de variables</h3>
         </summary>
 
     <table><!--tr fila / td columna-->
@@ -1053,8 +1077,9 @@
     </details>
 
     <details id="20operadores">
-        <summary>
-            <h3>20 ejercicios de operadores</h3>
+
+        <summary id="section03" style="transform:translateY(-30000px)">
+            <h3 >20 ejercicios de operadores</h3>
         </summary>
         <div id="title">
             <center>Todos los siguientes ejercicios deberán desarrollarse utilizando las reglas de la aritmética entera.</center>
@@ -1286,7 +1311,7 @@
             </td>
         </tr> 
         </table>
-            <center id="title1"><h3>“Linealizar” las siguientes expresiones</center></h3>
+            <center ><h3 id="title1">“Linealizar” las siguientes expresiones</center></h3>
         <table id="centrarTabla2">
         <tr>
             <!--slide-->
@@ -1304,7 +1329,8 @@
     </details>
 
     <details id="3estructuras">
-    <summary>
+
+    <summary  id="section04" style="transform:translateY(-60000px)">
         <h3>3 técnicas de transcripción</h3>
     </summary>
 <center><table>
@@ -1363,227 +1389,227 @@
     </details>
 
     <details id="50decisiones">
-        <summary><h3>50 algoritmos de decisiones</h3></summary><br><br>
+        <summary id="section05" style="transform:translateY(-120000px)"><h3>50 algoritmos de decisiones</h3></summary><br><br>
         
         <center>        
         1. Leer un número entero y determinar si es un número terminado en 4.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result();" onkeydown="return e()" required> <br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result();" onkeydown="return e()" required> <br>
             <span id="r1"></span>
             <br><br>
         2. Leer un número entero y determinar si tiene 3 dígitos.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input2" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result2();"  required> <br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input2" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result2();"  required> <br>
             <span id="r2"></span>
             <br><br>
         3. Leer un número entero y determinar si es negativo.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input3" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result3();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input3" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result3();"  required><br>
             <span id="r3"></span>
             <br><br>
         4. Leer un número entero de dos dígitos y determinar a cuánto es igual la suma de sus dígitos.            <br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input4" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result4();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input4" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result4();"  required><br>
             <span id="r4"></span>
             <br><br>
         5. Leer un número entero de dos dígitos y determinar si ambos dígitos son pares.           <br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input5" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result5();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input5" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result5();"  required><br>
             <span id="r5"></span>
             <br><br>
         6. Leer un número entero de dos dígitos menor que 20 y determinar si es primo.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input6" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result6();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input6" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result6();"  required><br>
             <span id="r6"></span>
             <br><br>
         7. Leer un número entero de dos dígitos y determinar si es primo y además si es negativo.    <br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input7" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result7();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input7" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result7();"  required><br>
             <span id="r7"></span>
             <br><br>
         8. Leer un número entero de dos dígitos y determinar si sus dos dígitos son pares.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input8" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result8();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input8" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result8();"  required><br>
             <span id="r8"></span>
             <br><br>
         9. Leer un número entero de dos dígitos y determinar si un dígito es múltiplo del otro.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input9" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result9();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input9" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result9();"  required><br>
             <span id="r9"></span>
             <br><br>
         10. Leer un número entero de dos dígitos y determinar si los dos dígitos son iguales.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input10" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result10();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input10" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result10();"  required><br>
             <span id="r10"></span>
             <br><br>
         11. Leer dos números enteros y determinar cuál es el mayor.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input11" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result11();"  required>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input11b" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result11();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input11" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result11();"  required>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input11b" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result11();"  required><br>
             <span id="r11"></span>
             <br><br>
         12. Leer dos números enteros de dos dígitos y determinar si tienen dígitos comunes.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input12" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result12();"  required>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input12b" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result12();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input12" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result12();"  required>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input12b" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result12();"  required><br>
             <span id="r12"></span>
             <br><br>
         13. Leer dos números enteros de dos dígitos y determinar si la suma de los dos números origina un número par.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input13" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result13();"  required>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input13b" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result13();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input13" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result13();"  required>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input13b" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result13();"  required><br>
             <span id="r13"></span>
             <br><br>
         14. Leer dos números enteros de dos dígitos y determinar a cuánto es igual la suma de todos los dígitos.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input14" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result14();"  required>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input14b" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result14();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input14" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result14();"  required>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input14b" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result14();"  required><br>
             <span id="r14"></span>
             <br><br>
         15. Leer un número entero de tres dígitos y determinar a cuánto es igual la suma de sus dígitos.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input15" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result15();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input15" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result15();"  required><br>
             <span id="r15"></span>
             <br><br>
         16. Leer un número entero de tres dígitos y determinar si al menos dos de sus tres dígitos son iguales.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input16" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result16();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input16" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result16();"  required><br>
             <span id="r16"></span>
             <br><br>
         17. Leer un número entero de tres dígitos y determinar en qué posición está el mayor dígito.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input17" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result17();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input17" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result17();"  required><br>
             <span id="r17"></span>
             <br><br>
         18. Leer un número entero de tres dígitos y determinar si algún dígito es múltiplo de los otros.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input18" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result18();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input18" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result18();"  required><br>
             <span id="r18"></span>
             <br><br>
         19. Leer tres números enteros y determinar cuál es el mayor. Usar solamente dos variables.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input19" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result19();"  required>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input19b" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result19();"  required>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input19c" placeholder="Escribe números aquí >:c" title="Escribe un número en las otras dos cajas" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result19();" required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input19" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result19();"  required>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input19b" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result19();"  required>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input19c" placeholder="Escribe números aquí >:c" title="Escribe un número en las otras dos cajas" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result19();" required><br>
             <span id="r19"></span>
             <br><br>
         20. Leer tres números enteros y mostrarlos ascendentemente.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input20" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result20();"  required>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input20b" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result20();"  required>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input20c" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result20();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input20" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result20();"  required>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input20b" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result20();"  required>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input20c" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result20();"  required><br>
             <span id="r20"></span>
             <br><br>
         21. Leer tres números enteros de dos dígitos cada uno y determinar en cuál de ellos se encuentra el mayor dígito.  <br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input21" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result21();"  required>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input21b" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result21();"  required>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input21c" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result21();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input21" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result21();"  required>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input21b" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result21();"  required>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input21c" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result21();"  required><br>
             <span id="r21"></span>
             <br><br> 
         22. Leer un número entero de tres dígitos y determinar si el primer dígito es igual al último.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input22" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result22();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input22" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result22();"  required><br>
             <span id="r22"></span>
             <br><br>
         23. Leer un número entero de tres dígitos y determinar cuántos dígitos primos tiene.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input23" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result23();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input23" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result23();"  required><br>
             <span id="r23"></span>
             <br><br>
         24. Leer un número entero de tres dígitos y determinar cuántos dígitos pares tiene.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input24" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result24();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input24" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result24();"  required><br>
             <span id="r24"></span>
             <br><br>
         25. Leer un número entero de tres dígitos y determinar si alguno de sus dígitos es igual a la suma de los otros dos.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input25" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result25();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input25" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result25();"  required><br>
             <span id="r25"></span>
             <br><br>
         26. Leer un número entero de cuatro dígitos y determinar a cuanto es igual la suma de sus dígitos.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input26" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result26();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input26" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result26();"  required><br>
             <span id="r26"></span>
             <br><br>
         27. Leer un número entero de cuatro dígitos y determinar cuántos dígitos pares tiene.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input27" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result27();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input27" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result27();"  required><br>
             <span id="r27"></span>
             <br><br>
         28. Leer un número entero menor que 50 y que sea positivo y determinar si es un número par.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input28" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result28();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input28" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result28();"  required><br>
             <span id="r28"></span>
             <br><br>
         29. Leer un número entero de cinco dígitos y determinar si es un número capicúo. Ej. 15651, 59895.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input29" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result29();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input29" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result29();"  required><br>
             <span id="r29"></span>
             <br><br>
         30. Leer un número entero de cuatro dígitos y determinar si el segundo dígito es igual al penúltimo.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input30" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result30();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input30" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result30();"  required><br>
             <span id="r30"></span>
             <br><br>                                    
         31. Leer un número entero y determina si es igual a 10.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input31" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result31();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input31" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result31();"  required><br>
             <span id="r31"></span>
             <br><br>                    
         32. Leer un número entero y determinar si es múltiplo de 7.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input32" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result32();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input32" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result32();"  required><br>
             <span id="r32"></span>
             <br><br>                    
         33. Leer un número entero y determinar si termina en 7.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input33" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result33();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input33" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result33();"  required><br>
             <span id="r33"></span>
             <br><br>                    
         34. Leer un número entero menor que mil y determinar cuántos dígitos tiene.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input34" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result34();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input34" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result34();"  required><br>
             <span id="r34"></span>
             <br><br>                    
         35. Leer un número entero de dos dígitos, guardar cada dígito en una variable diferente y luego mostrarlas en pantalla.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input35" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result35();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input35" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result35();"  required><br>
             <span id="r35"></span>
             <br><br>                    
         36. Leer un número entero de 4 dígitos y determinar si tiene mas dígitos pares o impares.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input36" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result36();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input36" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result36();"  required><br>
             <span id="r36"></span>
             <br><br>                    
         37. Leer dos números enteros y determinar cuál es múltiplo de cuál.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input37" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result37();"  required>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input37b" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result37();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input37" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result37();"  required>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input37b" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result37();"  required><br>
             <span id="r37"></span>
             <br><br>  
         38. Leer tres números enteros y determinar si el último dígito de los tres números es igual.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input38" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result38();"  required>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input38b" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result38();"  required>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input38c" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result38();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input38" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result38();"  required>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input38b" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result38();"  required>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input38c" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result38();"  required><br>
             <span id="r38"></span>
             <br><br>  
         39. Leer tres números enteros y determina si el penúltimo dígito de los tres números es igual.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input39" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result39();"  required>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input39b" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result39();"  required>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input39c" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result39();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input39" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result39();"  required>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input39b" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result39();"  required>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input39c" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result39();"  required><br>
             <span id="r39"></span>
             <br><br>  
         40. Leer dos números enteros y si la diferencia entre los dos es menor o igual a 10<br>entonces mostrar en pantalla todos los enteros comprendidos entre el menor y el mayor de los números leídos.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input40" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result40();"  required>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input40b" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result40();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input40" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result40();"  required>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input40b" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result40();"  required><br>
             <span id="r40"></span>
             <br><br>  
         41. Leer dos números enteros y determinar si la diferencia entre los dos es un número primo.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input41" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result41();"  required>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input41b" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result41();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input41" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result41();"  required>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input41b" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result41();"  required><br>
             <span id="r41"></span>
             <br><br>  
         42. Leer dos números enteros y determinar si la diferencia entre los dos es un número par.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input42" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result42();"  required>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input42b" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result42();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input42" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result42();"  required>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input42b" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result42();"  required><br>
             <span id="r42"></span>
             <br><br>  
         43. Leer dos números enteros y determinar si la diferencia entre los dos<br>es un número divisor exacto de alguno de los dos números.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input43" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result43();"  required>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input43b" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result43();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input43" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result43();"  required>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input43b" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result43();"  required><br>
             <span id="r43"></span>
             <br><br>  
         44. Leer un número entero de 4 dígitos y determinar<br>si el primer dígito es múltiplo de alguno de los otros dígitos.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input44" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result44();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input44" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result44();"  required><br>
             <span id="r44"></span>
             <br><br>       
         45. Leer un número entero de 2 dígitos y si es par, mostrar en pantalla la suma de sus dígitos,<br>si es primo y menor que 10, mostrar en pantalla su último dígito<br> y si es múltiplo de 5 y menor que 30, mostrar en pantalla el primer dígito.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input45" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result45();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input45" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result45();"  required><br>
             <span id="r45"></span>
             <br><br>       
         46. Leer un número entero de 2 dígitos y si termina en 1, mostrar en pantalla su primer dígito,<br>si termina en 2, mostrar en pantalla la suma de sus dígitos<br>y si termina en 3, mostrar en pantalla el producto de sus dos dígitos.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input46" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result46();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input46" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result46();"  required><br>
             <span id="r46"></span>
             <br><br>       
         47. Leer dos números enteros y si la diferencia entre los dos números es par, mostrar en pantalla la suma de los dígitos de los números,<br>si dicha diferencia es un número primo menor que 10, entonces mostrar en pantalla el producto de los dos números<br>y si la diferencia entre ellos termina en 4, mostrar en pantalla todos los dígitos por separado.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input47" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result47();"  required>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input47b" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result47();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input47" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result47();"  required>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input47b" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result47();"  required><br>
             <span id="r47"></span>
             <br><br>       
         48. Leer un número entero y si es menor que 100 determinar si es primo.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input48" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result48();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input48" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result48();"  required><br>
             <span id="r48"></span>
             <br><br>       
         49. Leer un número entero y si es múltiplo de 4 determinar si su último dígito es primo.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input49" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result49();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input49" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result49();"  required><br>
             <span id="r49"></span>
             <br><br>       
         50. Leer un número entero y si es múltiplo de 4, mostrar en pantalla su mitad,<br>si es múltiplo de 5, mostrar en pantalla su cuadrado y si es múltiplo de 6,<br>mostrar en pantalla su primer dígito. Asumir que el número no es mayor que 100.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input50" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result50();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="input50" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return result50();"  required><br>
             <span id="r50"></span>
             <br><br>       
 
@@ -1593,32 +1619,32 @@
     </details>
 
     <details id="50ciclos">
-        <summary><h3>50 algoritmos de ciclos</h3></summary><br><br>
+        <summary id="section06" style="transform:translateY(-500000px)"><h3>50 algoritmos de ciclos</h3></summary><br><br>
             <center>
         1. Leer un número entero y mostrar todos los enteros comprendidos entre 1 y el número leído.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle01" placeholder="Escribe números aquí >:c"  title="Escribe un número" maxlength="3" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle01();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle01" placeholder="Escribe números aquí >:c"  title="Escribe un número" maxlength="3" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle01();"  required><br>
             <span id="c01"></span>
             <br><br>       
         2. Leer un número entero y mostrar todos los pares comprendidos entre 1 y el número leído.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle02" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="3" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle02();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle02" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="3" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle02();"  required><br>
             <span id="c02"></span>
             <br><br>       
         3. Leer un número entero y mostrar todos los divisores exactos <br> del número comprendidos entre 1 y el número leído.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle03" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="3" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle03();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle03" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="3" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle03();"  required><br>
             <span id="c03"></span>
             <br><br>       
         4. Leer dos números y mostrar todos los enteros comprendidos entre ellos.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle04" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="3" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle04();"  required>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle04b" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="3" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle04();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle04" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="3" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle04();"  required>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle04b" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="3" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle04();"  required><br>
             <span id="c04"></span>
             <br><br>       
         5. Leer dos números y mostrar todos los números terminados en 4 comprendidos entre ellos.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle05" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="3" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle05();"  required>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle05b" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="3" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle05();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle05" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="3" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle05();"  required>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle05b" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="3" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle05();"  required><br>
             <span id="c05"></span>
             <br><br>       
         6. Leer un número entero de tres dígitos y mostrar  todos los <br> enteros comprendidos entre 1 y cada uno de los dígitos.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle06" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="15" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle06();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle06" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="15" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle06();"  required><br>
             <span id="c06"></span>
             <br><br>       
         7. Mostrar en pantalla todos los enteros comprendidos entre 1 y 100.<br><br>
@@ -1634,19 +1660,19 @@
             <span id="c09"></span>
             <br><br>       
         10. Leer un número entero y determinar a cuánto es igual la suma <br> de todos los enteros comprendidos entre 1 y el número leído.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle10" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="3" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle10();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle10" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="3" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle10();"  required><br>
             <span id="c10"></span>
             <br><br>       
         11. Leer un número entero de dos dígitos y mostrar en pantalla <br> todos los enteros comprendidos entre un dígito y otro.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle11" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="15" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle11();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle11" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="15" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle11();"  required><br>
             <span id="c11"></span>
             <br><br>       
         12. Leer un número entero de 3 dígitos y determinar si tiene el dígito 1.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle12" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="15" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle12();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle12" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="15" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle12();"  required><br>
             <span id="c12"></span>
             <br><br>       
         13. Leer un entero y mostrar todos los múltiplos de 5 comprendidos entre 1 y el número leído.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle13" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="3" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle13();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle13" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="3" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle13();"  required><br>
             <span id="c13"></span>
             <br><br>       
         14. Mostrar en pantalla los primeros 20 múltiplos de 3.<br><br>
@@ -1668,70 +1694,70 @@
             <span id="c17"></span><span id="c17b"></span>
             <br><br>       
         18. Leer dos números enteros y mostrar todos los múltiplos de 5 comprendidos entre el menor y el mayor.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle18" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="3" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle18();"  required>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle18b" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="3" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle18();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle18" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="3" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle18();"  required>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle18b" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="3" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle18();"  required><br>
             <span id="c18"></span>
             <br><br>       
         19. Leer un número entero y determinar si es primo.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle19" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle19();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle19" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle19();"  required><br>
             <span id="c19"></span>
             <br><br>       
         20. Leer un número entero y determinar cuántos dígitos tiene.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle20" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="15" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle20();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle20" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="15" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle20();"  required><br>
             <span id="c20"></span>
             <br><br>       
         21. Leer un número entero y determinar a cuánto es igual la suma de sus dígitos.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle21" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="15" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle21();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle21" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="15" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle21();"  required><br>
             <span id="c21"></span>
             <br><br>  
         22. Leer un número entero y determinar cuántas veces tiene el dígito 1.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle22" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="15" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle22();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle22" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="15" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle22();"  required><br>
             <span id="c22"></span>
             <br><br>  
         23. Leer un número entero y determinar si la suma de sus dígitos es también un número primo.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle23" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="15" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle23();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle23" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="15" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle23();"  required><br>
             <span id="c23"></span>
             <br><br>  
         24. Leer un número entero y determinar a cuánto es igual al suma de sus dígitos pares.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle24" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="15" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle24();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle24" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="15" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle24();"  required><br>
             <span id="c24"></span>
             <br><br>  
         25. Leer un número entero y determinar a cuánto es igual el promedio entero de sus dígitos.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle25" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="15" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle25();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle25" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="15" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle25();"  required><br>
             <span id="c25"></span>
             <br><br>  
         26. Leer un número entero y determinar cuál es el mayor de sus dígitos.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle26" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="15" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle26();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle26" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="15" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle26();"  required><br>
             <span id="c26"></span>
             <br><br>  
         27. Leer 2 números enteros y determinar cuál de los dos tiene mayor cantidad de dígitos.            <br><br> 
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle27" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="15" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle27();"  required>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle27b" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="15" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle27();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle27" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="15" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle27();"  required>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle27b" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="15" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle27();"  required><br>
             <span id="c27"></span>
             <br><br> 
         28. Leer 2 números enteros y determinar cual de los dos tiene mayor cantidad de dígitos primos.            <br><br> 
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle28" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="15" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle28();"  required>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle28b" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="15" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle28();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle28" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="15" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle28();"  required>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle28b" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="15" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle28();"  required><br>
             <span id="c28"></span>
             <br><br> 
         29. Leer un número entero y determinar a cuánto es igual el primero de sus dígitos.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle29" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="15" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle29();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle29" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="15" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle29();"  required><br>
             <span id="c29"></span>
             <br><br>  
         30. Leer un número entero y mostrar todos sus componentes numéricos <br> o sea aquellos para quienes él sea un múltiplo.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle30" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="3" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle30();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle30" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="3" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle30();"  required><br>
             <span id="c30"></span>
             <br><br>  
         31. Leer números hasta que digiten 0 y determinar a cuánto es igual el promedio de los números terminados en 5.<br><br>
             <span id="c31a"></span><br>
-            <input onmouseover="this.placeholder=''" onfocus="document.getElementById('c31a').innerHTML='Escribe números distintos a CERO, humano c:<br> (si terminan en 5 como pide el ejercicio, mejor que mejor -guiño, guiño-)'" onblur="this.placeholder='Escribe números aquí >:c'; document.getElementById('c31a').innerHTML=''" type="text" id="cycle31" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="3" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle31();" required><br>
+            <input  onfocus="this.placeholder=''; document.getElementById('c31a').innerHTML='Escribe números distintos a CERO, humano c:<br> (si terminan en 5 como pide el ejercicio, mejor que mejor -guiño, guiño-)'" onblur="this.placeholder='Escribe números aquí >:c'; document.getElementById('c31a').innerHTML=''" type="text" id="cycle31" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="3" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle31();" required><br>
             <span id="c31b"></span><br>
             <span id="c31"></span><br>
             <span id="c31c"></span>
             <br><br>  
-            32. Leer números hasta que digiten 0 y determinar a cuanto es igual el promedio entero de los números primos leídos.<br><br>
+        32. Leer números hasta que digiten 0 y determinar a cuanto es igual el promedio entero de los números primos leídos.<br><br>
             <span id="c32a"></span><br>
-            <input onmouseover="this.placeholder=''" onfocus="document.getElementById('c32a').innerHTML='Escribe números distintos a CERO, humano c:<br> (yo te determino si son primos o ño -guiño guiño-)'" onblur="this.placeholder='Escribe números aquí >:c'; document.getElementById('c32a').innerHTML=''" type="text" id="cycle32" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="3" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle32();" required><br>
+            <input  onfocus="this.placeholder=''; document.getElementById('c32a').innerHTML='Escribe números distintos a CERO, humano c:<br> (yo te determino si son primos o ño -guiño guiño-)'" onblur="this.placeholder='Escribe números aquí >:c'; document.getElementById('c32a').innerHTML=''" type="text" id="cycle32" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="3" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle32();" required><br>
             <span id="c32b"></span><br>
             <span id="c32"></span><br>
             <span id="c32c"></span>
@@ -1745,8 +1771,8 @@
             <span id="c34"></span>
             <br><br>   
         35. Leer dos números enteros y determinar a cuánto es igual el producto mutuo del primer dígito de cada uno.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle35" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="15" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle35();"  required>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle35b" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="15" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle35();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle35" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="15" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle35();"  required>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle35b" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="15" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle35();"  required><br>
             <span id="c35"></span>
             <br><br>  
         36. Mostrar en pantalla la tabla de multiplicar del número 5.<br><br>
@@ -1783,7 +1809,7 @@
             </table>
             <br><br>   
         38. Leer un número entero y mostrar en pantalla su tabla de multiplicar.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle38" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="4" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle38();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle38" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="4" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle38();"  required><br>
             <span id="c38"></span>
             <br><br>  
         39. Se define la serie de Fibonacci como la serie que comienza con los dígitos 1 y 0 y va sumando progresivamente los dos últimos elementos de la serie, así:<br>
@@ -1793,7 +1819,7 @@
             <span id="c39"></span>
             <br><br>   
         40. Leer un número de dos dígitos y determinar si pertenece a la serie de Fibonacci.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle40" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="15" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle40();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle40" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="15" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle40();"  required><br>
             <span id="c40"></span>
             <br><br>  
         41. Determinar a cuánto es igual la suma de los elementos de la serie de Fibonacci entre 0 y 100.<br><br>
@@ -1809,19 +1835,19 @@
             <span id="c43"></span>
             <br><br>   
         44. Leer un número y calcularle su factorial.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle44" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="3" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle44();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle44" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="3" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle44();"  required><br>
             <span id="c44"></span>
             <br><br>  
         45. Leer un número y calcularle el factorial a todos los enteros comprendidos entre 1 y el número leído.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle45" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="2" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle45();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle45" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="2" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle45();"  required><br>
             <span id="c45"></span>
             <br><br>  
         46. Leer un número entero y calcular el promedio entero de los factoriales de los enteros comprendidos entre 1 y el número leído.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle46" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="2" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle46();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle46" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="2" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle46();"  required><br>
             <span id="c46"></span>
             <br><br>  
         47. Leer un número entero y calcular a cuánto es igual la sumatoria de todos los factoriales de los números comprendidos entre 1 y el número leído.<br><br>
-            <input onmouseover="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle47" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="2" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle47();"  required><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle47" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="2" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle47();"  required><br>
             <span id="c47"></span>
             <br><br>  
         48. Utilizando ciclos anidados generar las siguientes parejas de enteros<br>
@@ -1868,25 +1894,87 @@
                 <br><br>   
         </center>
     </details>
-        
+    
     <details id="50arreglos">
-        <summary><h3>50 algoritmos de arreglos</h3></summary><br><br>
+        <summary id="section07" style="transform:translateY(-1000000px)"><h3>50 algoritmos de arreglos</h3></summary><br>
         <center>
-            <h1>PRÓXIMAMENTE. UwU</h1>
+        <div id="divArr00" onclick="title='REGISTRAR NÚMEROS EN EL INPUT: ENTER | BORRAR NÚMEROS REGISTRADOS: REGISTRAR CERO'"  >
+            <br> Para los ejercicios de "leer 10 números", puedes optar por registrar <br> números en el input y generar el resto de números aleatoriamente UwU <br><br>
+        </div>
+        <br>
+        <br>
+        1. Leer 10 enteros, almacenarlos en un vector y determinar en qué posición del vector está el mayor número leído.<br><br>
+            <span id="a01c"></span><br>
+            <input class="falseButton"  type="text" id="arrayi01" placeholder='INGRESAR NÚMEROS' title="" maxlength="4" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return arrayi01();"  required><br>
+            <div class="randBut">    
+                <button onclick="array01();" id="arrayb01"> GENERAR 10 NÚMEROS ALEATORIOS </button>
+            </div>
+            <br>
+            <span id="a01"></span><br>
+            <span id="a01b"></span><br>
+            <div id="a01d" class="vector">
+                <div class="vector01"></div>
+                <div class="vector01"></div>
+                <div class="vector01"></div>
+                <div class="vector01"></div>
+                <div class="vector01"></div>
+                <div class="vector01"></div>
+                <div class="vector01"></div>
+                <div class="vector01"></div>
+                <div class="vector01"></div>
+                <div class="vector01"></div>
+            </div>
+            <div class="arrow">
+                <div class="arrow01"></div>
+                <div class="arrow01"></div>
+                <div class="arrow01"></div>
+                <div class="arrow01"></div>
+                <div class="arrow01"></div>
+                <div class="arrow01"></div>
+                <div class="arrow01"></div>
+                <div class="arrow01"></div>
+                <div class="arrow01"></div>
+                <div class="arrow01"></div>
+            </div><br>
+            <span id="a01e"></span><br>
+            <br><br>  
+        2. Leer 10 enteros, almacenarlos en un vector y determinar en qué posición del vector está el mayor número par leído.<br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="array02" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="3" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return array02();"  required><br>
+            <span id="a02"></span>
+            <br><br>  
+        3. Leer 10 enteros, almacenarlos en un vector y determinar en qué posición del vector está el mayor número primo leído.<br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="array03" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="3" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return array03();"  required><br>
+            <span id="a03"></span>
+            <br><br>  
+        4. Cargar un vector de 10 posiciones con los 10 primeros elementos de la serie de Fibonacci y mostrarlo en pantalla.<br>
+        
+        5. Almacenar en un vector de 10 posiciones los 10 números primos comprendidos entre 100 y 300. Luego mostrarlos en pantalla.<br>
+        
+        6. Leer dos números enteros y almacenar en un vector los 10 primeros números primos comprendidos entre el menor y el mayor. Luego mostrarlos en pantalla.<br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="array06" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="3" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return array06();"  required><br>
+            <span id="a06"></span>
+            <br><br>  
+        7. Leer 10 números enteros, almacenarlos en un vector y determinar en qué posiciones se encuentra el número mayor.<br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="array07" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="3" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return array07();"  required><br>
+            <span id="a07"></span>
+            <br><br>  
+        8. Leer 10 números enteros, almacenarlos en un vector y determinar en qué posiciones se encuentran los números terminados en 4.<br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="array08" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="3" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return array08();"  required><br>
+            <span id="a08"></span>
+            <br><br>  
+        9. Leer 10 números enteros, almacenarlos en un vector y determinar cuántas veces está repetido el mayor.<br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="array09" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="3" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return array09();"  required><br>
+            <span id="a09"></span>
+            <br><br>  
+        10. Leer 10 números enteros, almacenarlos en un vector y determinar en qué posiciones se encuentran los números con mas de 3 dígitos.<br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="array10" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="3" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return array10();"  required><br>
+            <span id="a10"></span>
+            <br><br>  
+            <h1 id="theEnd">PRÓXIMAMENTE. UwU</h1>
+            <br><br>
         </center>
     </details>
-
     <!--
-        1. Leer 10 enteros, almacenarlos en un vector y determinar en qué posición del vector está el mayor número leído.
-        2. Leer 10 enteros, almacenarlos en un vector y determinar en qué posición del vector está el mayor número par leído.
-        3. Leer 10 enteros, almacenarlos en un vector y determinar en qué posición del vector está el mayor número primo leído.
-        4. Cargar un vector de 10 posiciones con los 10 primeros elementos de la serie de Fibonacci y mostrarlo en pantalla.
-        5. Almacenar en un vector de 10 posiciones los 10 números primos comprendidos entre 100 y 300. Luego mostrarlos en pantalla.
-        6. Leer dos números enteros y almacenar en un vector los 10 primeros números primos comprendidos entre el menor y el mayor. Luego mostrarlos en pantalla.
-        7. Leer 10 números enteros, almacenarlos en un vector y determinar en qué posiciones se encuentra el número mayor.
-        8. Leer 10 números enteros, almacenarlos en un vector y determinar en qué posiciones se encuentran los números terminados en 4.
-        9. Leer 10 números enteros, almacenarlos en un vector y determinar cuántas veces está repetido el mayor.
-        10. Leer 10 números enteros, almacenarlos en un vector y determinar en qué posiciones se encuentran los números con mas de 3 dígitos.
         11. Leer 10 números enteros, almacenarlos en un vector y determinar cuántos números tienen, de los almacenados allí, tienen menos de 3 dígitos.
         12. Leer 10 números enteros, almacenarlos en un vector y determinar a cuánto es igual el promedio entero de los datos del vector.
         13. Leer 10 números enteros, almacenarlos en un vector y determinar si el promedio entero de estos datos está almacenado en el vector.
@@ -1930,7 +2018,10 @@
         49. Leer 10 números enteros, almacenarlos en un vector y determinar cuántos números terminar en dígito primo.
         50. Leer 10 números enteros, almacenarlos en un vector y determinar cuántos números de los almacenados en dicho vector comienzan en dígito primo.
      -->
-
+    <audio autoplay preload="metadata">
+        <source src="music/bg.mp3" type="audio/mpeg">
+            Your fcking browser doesn't support the goddamn audio.
+    </audio>
 <script src=300.js></script>
 </body>
 </html>

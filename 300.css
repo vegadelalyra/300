@@ -1,10 +1,47 @@
+html,body{
+    margin: 0;
+    height:100%;
+    padding:0;
+}
 body{
-    background-color: black; 
+    background-color: rgb(0, 0, 0); 
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     color:blanchedalmond;
     font-size:2.755341649ch;
     text-align: justify;
 }
+/* Intro 300 */
+#fixed300{
+    background:black;
+    position:fixed;
+    height:2000px;
+    width:100%;
+    color:blanchedalmond;
+    cursor:default;
+    user-select: none;
+    z-index: 999;
+}
+#relative300{
+    background:black;
+    z-index: 9999;
+    position:relative;
+    height:100%;
+}
+#absolute300{
+    transition:0.5s;
+    left:2500px;
+    top:200px;
+    margin:0;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    position:absolute;
+    font-size: 200px;
+}
+#absolute300:hover{
+    color:whitesmoke;
+    cursor: pointer;
+}
+/* Fin del intro 300 */
+
 *::selection{
     color:#f7b64e;
     background-color: #333333;
@@ -14,24 +51,86 @@ body{
     background-color: #333333;
 }
 summary{
-    text-align:center;
     position: sticky;
     top:0;
     cursor:pointer;
-    background-color:black;
+    background-color:rgb(0, 0, 0);
     outline: none;
+    user-select: none;
 }
 summary:hover{
     color:goldenrod;
 }
-h1{
+#theEnd{
     width: fit-content;
     cursor:pointer;
+    transition: 3.9s;
 }
-h1:hover{
+#theEnd:hover{
+    width:fit-content;
     color:rgb(255, 255, 255);
-    font-size:3.79ch;
+    font-size:6ch;
+    transition: 1.23s;
 }
+#div300{
+    display:flex;
+    justify-content: center;
+    position:sticky;
+    z-index: 666;
+    background-color:black;
+}
+#h300{/*EL TÍTULO 300*/
+    user-select: none;
+    position:sticky;
+    z-index: 666;
+    opacity: 0;
+    width:min-content;
+    cursor:pointer;
+    transition: 2s;
+    transition-delay: 2.3s;
+}
+#h300:hover{
+    color:rgb(255, 255, 255);
+    font-size:72ch;
+    transform: translateY(-777px);
+    transition:100s;
+}
+/*SECCIÓN PARA LOS SUMMARIES (el título de cada sección y sus animaciones de cargarse en cascada)*/
+#section01,#section02,#section03,#section04,#section05,#section06,#section07{
+    display:flex;
+    justify-content: center;
+    position:sticky;
+}
+#section01{
+    z-index: 7;
+    transition:transform 0.3s;
+}
+#section02{
+    z-index:6;
+    transition:transform 0.6s;
+}
+#section03{
+    z-index:5;
+    transition:transform 1s;
+}
+#section04{
+    z-index:4;
+    transition:transform 1.3s;
+}
+#section05{
+    z-index:3;
+    transition:transform 1.6s;
+}
+#section06{
+    z-index:2;
+    transition:transform 1.9s;
+}
+#section07{
+    z-index:1;
+    transition:transform 2.2s;
+}
+/*Aquí termina la sección dedicada a los títulos de las secciones (summaries) */
+
 td{
     white-space: pre-line;
 }
@@ -67,6 +166,8 @@ tr,td{
 #seudoCode {
     font-size: large;
 }
+
+/*Diseño minimalista inputs*/
 input::placeholder{
     font-size: 0.8em;
     text-align: center;
@@ -100,12 +201,13 @@ input:valid{
     border-left: none;
     border-right: none;
 }
+/*botones vivos*/
 button{
     outline: none;
-	box-shadow:inset 0px 1px 1px -50px #fffefa;
+	box-shadow:inset 0px 0px 10px -50px #fffefa;
 	background:linear-gradient(to bottom, #fff186 5%, #f7b64e 100%);
 	border-radius:42px;
-	border:1px solid #ffe572;
+	border:3px solid #f7b64e;
 	display:inline-block;
 	cursor:pointer;
 	color:#333333;
@@ -114,14 +216,15 @@ button{
 	font-weight:bold;
 	padding:10px 15px;
 	text-decoration:none;
-	text-shadow:0px 1px 50px #ffee66;
+	text-shadow:0px 1px -50px #ffffff;
 }
 button:hover {
-    border:1px solid #ffaa22;
+    border:3px solid #ffaa22;
     background:linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
+    color:rgb(31, 11, 11);
 }
 button:focus{
-    border:3px solid #ffaa22;
+    border:1px solid #ffaa22;
     background:linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%);
     color: rgb(31, 11, 11);
 	top:1px;
@@ -137,56 +240,125 @@ button:focus{
 
 /* Para la scrollbar UwU */
 ::-webkit-scrollbar{
-    width: 20.666px;
-    background-color: #000000;
+    width: 16px;
+    background-color: transparent;
 }
 ::-webkit-scrollbar-track{
-    -webkit-box: inset 0 0 6px rgba(0, 0, 0, 0.9);
-    border-radius: 10px;
-    background-color: #000000;
+    -webkit-box: transparent;
+    -Moz-border-radius-bottomRight: 100px;
+    border-bottom-right-radius: 100px;
+    -Moz-border-radius-topLeft: 100px;
+    border-top-left-radius: 100px;
+    background-color: #00000000;
 }
 ::-webkit-scrollbar-track:hover{
-    background-color: #000000;
+    background-color: transparent;
 }
 ::-webkit-scrollbar-track:active{
     background-color: #555555;
 }
 ::-webkit-scrollbar-thumb{
-    /*Estilo metalizado  para el thumb*/
-
-    /* border-radius: 10px;
-    background-color: #d4d4d4;
-    background-image: -webkit-linear-gradient(90deg,transparent,rgba(0, 0, 0, 0.4) 50%,transparent,transparent); */
-    
-    /*Estilo sofisticado, papá 7u7*/
-
-    background-color: rgba(255, 255, 255, 0.507);
-    -Moz-border-radius-bottomRight: 50px;
-    border-bottom-right-radius: 50px;
-    -Moz-border-radius-topLeft: 50px;
-    border-top-left-radius: 50px;
+    background: #434343a9;
+    -Moz-border-radius-bottomRight: 100px;
+    border-bottom-right-radius: 100px;
+    -Moz-border-radius-topLeft: 100px;
+    border-top-left-radius: 100px;
+    box-shadow:inset 2px 2px 2px hsl(0deg 0% 100% / 25%), inset -2px -2px 2px rgb(0 0 0 / 25%);
 }
 ::-webkit-scrollbar-thumb:hover{
-    /*Estilo metalizado */
-
-    /* background-color: rgb(255, 255, 255);
-    background-image: -webkit-linear-gradient(90deg,transparent,rgba(0, 0, 0, 0.4) 50%,transparent,transparent); */
-    
-    /*Estilo sofisticado 7u7*/
-
-    background-color: rgba(245, 245, 245, 0.89);
+    box-shadow:inset 2px 2px 2px hsl(0deg 0% 100% / 25%), inset -2px -2px 2px rgb(0 0 0 / 25%);
+    background-color: rgba(138, 138, 138, 0.89);
 }
 ::-webkit-scrollbar-thumb:active{
-    /*Estilo sofisticado e.e*/
-
-    /* background-color: rgb(252, 243, 229);
-    background-image: -webkit-linear-gradient(90deg,transparent,rgba(255, 196, 0, 0.589) 50%, transparent,transparent); */
-    
-    /*Estilo sofisticado >:)))*/
-    
-    background-color: rgb(255, 255, 255);
+    box-shadow:inset 2px 2px 2px hsl(0deg 0% 100% / 25%), inset -2px -2px 2px rgb(0 0 0 / 25%);
+    background-image: -webkit-linear-gradient(180deg,transparent,rgb(255, 255, 255) 100%, transparent);
+    background-color: rgb(207, 207, 207);
 }
 /*FINAL DE LA SCROLLBAR xd*/
+
+#divArr00:hover{
+    background-color:#333333;
+    cursor:pointer;
+}
+/* Diseño de input/button */
+.falseButton{
+    color:whitesmoke;
+    outline: none;
+	box-shadow: inset 2px 3px 20px rgb(187, 187, 187);
+    background:#2b2f33;
+	border-radius:42px;
+	display:inline-block;
+	cursor:pointer;
+	font-weight:bold;
+	padding:10px 15px;
+	text-decoration:none;
+    height:26px;
+    width: 340px;
+    transition:4s;
+}
+.falseButton:hover{
+    box-shadow:inset 4px 4px 20px  #494d4d;
+    background:#dadada;
+    border: 1px solid;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    transition:2s;
+}
+.falseButton:focus,
+.falseButton:valid{
+    box-shadow:none;
+    cursor:text;
+    background:black;
+    transform: translateY(60px);
+    transition:background 1s, transform 6s;
+    transition-delay: 0s, 3s;
+    transition-timing-function: ease-in;
+}
+.falseButton::placeholder{
+    transition:3.5s;
+    font-size:18px;
+    color:rgb(255, 255, 255);
+    font-style: normal;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.falseButton:hover::placeholder{
+    color:rgba(0, 0, 0, 0.76);
+}
+/*FINAL DEL Diseño de input/button */
+
+/*DISEÑO DE CUADRÍCULA PARA LOS VECTORES Y LA FLECHA DE LA SECCIÓN ARREGLOS*/
+.vector,
+.arrow{
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-auto-rows:minmax(50px,auto);
+    margin-left:69px;
+    margin-right:69px;
+}
+.vector > div {
+    padding: 10px;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.431);
+    border: 2px solid rgb(227, 180, 79);
+    user-select: none;
+}
+.vector > div:hover{
+    cursor: pointer;
+    border: 2px solid rgb(255, 255, 255);
+}
+.randBut{/* Un pequeño ajuste a los botones de generar números random */
+    block-size: 47px;
+}
+.arrow > div { /* Creamos bordes invisibles para la cuadrícula de la flecha, para que su tamaño sea responsive */
+    border: solid black;
+}
+.arrowImg{ /* Dimensiones de las imágenes de las flechas */
+    padding-top: 6.9px;
+    width:  50%;
+    height: 110%;
+}
+/*FIN DE DISEÑO DE VECTORES*/
 
 /* a las clases las llamas con (elemento)."elNombreDeLaClass" :D  */
 /* a los ID las llamas con #"elIDdelElemento" :D */
