@@ -28,7 +28,7 @@ function pee(){
   aaa.style.transform="translateX(2500px)";
 }
 function kil(){
-  aaa.style.fontSize="140px";
+  aaa.style.fontSize="300px";
   aaa.style.opacity="0";
   setTimeout(kill,200);
 }
