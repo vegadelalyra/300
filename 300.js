@@ -39,6 +39,7 @@ function kill(){
 //MÚSICA Y SONIDOS
 //PARA MENÚES AL INICIAR
 var timm = 0;
+var launch;
 function launcher(){
   var zuish = new Audio();
   var faia = new Audio();
@@ -46,7 +47,7 @@ function launcher(){
   faia.src = "music/fire.mp3";
   zuish.play();
   faia.play();
-  var launch = setInterval(wii,300);
+  launch = setInterval(wii,300);
 }
 function wii(){
   timm++;
@@ -57,9 +58,6 @@ function wii(){
   }
   else{
     clearInterval(launch);
-    var suizh = new Audio();
-    suizsh.src = "music/fire.mp3"
-    zuish.play();
   };
 }
 
@@ -83,7 +81,6 @@ colossus.src = "music/300hover.mp3";
 var omg = 0;
 function drama(){
     colossus.play();
-    think.pause();
 }
 function noDrama(){
   colossus.pause();
@@ -196,6 +193,7 @@ function flashes(){
   flsh.play();
 }
 //al agarrarlos y soltarlos
+
 
 
 //INICIO DE LOS PROBLEMAS Y SOLUCIONES
@@ -540,6 +538,7 @@ a = 0
 b = 0
 c = 0
 d = 0
+
 
 //Función para que sólo entren números en el input, carácteres diferentes arrojarán error
 function onlyNum(evt)
@@ -5857,6 +5856,50 @@ b = 0
 c = 0
 d = 0
 
+//DRAG AND DROP
+var vectorBlocks = document.querySelectorAll("div.vector > div");
+var dragSrcEl = null;
+function handleDragStart(e){
+  this.style.opacity = '0.4';
+  let ploop = new Audio("/music/drag.mp3");
+  ploop.play();
+  dragSrcEl = this;
+  e.dataTransfer.effectAllowed = 'move';
+  e.dataTransfer.setData('text/html',this.innerHTML);}
+function handleDragOver(e){
+  if (e.preventDefault){e.preventDefault();}
+  e.dataTransfer.dropEffect = 'move';
+  return false;
+}
+function handleDragEnter(e){this.classList.add('over');}
+function handleDragLeave(e){this.classList.remove('over');}
+function handleDrop(e){
+  let droop = new Audio("/music/drop.mp3");
+  droop.play();
+  if(e.stopPropagation){e.stopPropagation();}
+  if (dragSrcEl != this){
+    dragSrcEl.innerHTML = this.innerHTML;
+    this.innerHTML = e.dataTransfer.getData('text/html');
+  }
+  return false; 
+}
+function handleDragEnd(e){
+  this.style.opacity = '1';
+  [].forEach.call(vectorBlocks,function(block){
+    block.classList.remove('over');
+  });
+}
+//DRAG AND DROP PARA EL VECTOR Y SUS CASILLAS
+[].forEach.call(vectorBlocks,function(block){
+  block.addEventListener('dragstart',handleDragStart);
+  block.addEventListener('dragover',handleDragOver);
+  block.addEventListener('dragenter',handleDragEnter);
+  block.addEventListener('dragleave',handleDragLeave);
+  block.addEventListener('drop',handleDrop);
+  block.addEventListener('dragend',handleDragEnd);
+});
+
+
 //IMÁGENES DE FLECHAS APAGADAS PARA VECTORES
 var offArrows = document.querySelectorAll("div.arrow > div");
 [].forEach.call(offArrows,function(quiver){
@@ -5865,41 +5908,43 @@ var offArrows = document.querySelectorAll("div.arrow > div");
 
 
 //OBJETO PARA GENERAR UN ARRAY Y 10 NÚMEROS ALEATORIOS DESDE -999 HASTA 999
-function get10Random(vectorClass){
-  this.nums = 0;
-  this.box = document.getElementsByClassName(vectorClass);
-  this.aux = new Array;
+class get10Random {
+  constructor(vectorClass) {
+    this.nums = 0;
+    this.box = document.getElementsByClassName(vectorClass);
+    this.aux = new Array;
 
-  this.method = function(min,max){
-    if (this.aux.length == 10){
-      this.aux = new Array;
-      for (let i = 0; i < 10; i++) {
-        this.nums = Math.round(Math.random()*(max-min)+min);
-        this.aux.push(this.nums);
+    this.method = function (min, max) {
+      if (this.aux.length == 10) {
+        this.aux = new Array;
+        for (let i = 0; i < 10; i++) {
+          this.nums = Math.round(Math.random() * (max - min) + min);
+          this.aux.push(this.nums);
+          this.box[i].innerHTML = this.aux[i];
+        }
+      }
+      else {
+        for (let i = this.aux.length; i < 10; i++) {
+          this.nums = Math.round(Math.random() * (max - min) + min);
+          this.aux.push(this.nums);
+          this.box[i].innerHTML = this.aux[i];
+        }
+      }
+      return this.box;
+    };
+
+    this.equalize = function () {
+      for (let i = 0; i < this.aux.length; i++) {
         this.box[i].innerHTML = this.aux[i];
       }
-    }
-    else{
-      for (let i = this.aux.length; i < 10; i++) {
-        this.nums = Math.round(Math.random()*(max-min)+min);
-        this.aux.push(this.nums);
-        this.box[i].innerHTML = this.aux[i];
+      if (this.aux.length == 0) {
+        for (let i = 0; i < 10; i++) {
+          this.box[i].innerHTML = ` `;
+        }
       }
-    }
-    return this.box;
-  };
-
-  this.equalize = function(){
-    for (let i = 0; i < this.aux.length; i++){
-      this.box[i].innerHTML = this.aux[i];
-    }
-    if (this.aux.length == 0){
-      for (let i = 0; i < 10; i++){
-        this.box[i].innerHTML = ` `;
-      }
-    }
-    return this.box;
-  };
+      return this.box;
+    };
+  }
 }
 
 
@@ -5912,7 +5957,6 @@ var freedom;
 var justice;
 var flash = 0;
 var xd = 0;
-var truai = 0;
 //solución al problema
 function solutiona01(){
   
@@ -5975,7 +6019,6 @@ function solutiona01(){
       }
     };
       getE("a01e").innerHTML = `...`
-      truai = 1;
   };
     
 
@@ -6007,6 +6050,8 @@ function solutiona01(){
     let zero = new Audio();
     zero.src = "music/hollow.mp3";
     zero.play();
+    flash = 0;
+
     getE("a01e").innerHTML = ``;
     [].forEach.call(arrow,function(arrows){
       arrows.innerHTML = imgOff; 

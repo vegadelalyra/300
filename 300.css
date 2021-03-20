@@ -328,6 +328,27 @@ button:focus{
 /*FINAL DEL Diseño de input/button */
 
 /*DISEÑO DE CUADRÍCULA PARA LOS VECTORES Y LA FLECHA DE LA SECCIÓN ARREGLOS*/
+/*DRAG AND DROP*/
+[draggable] {
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    /* Required to make elements draggable in old WebKit */
+    -khtml-user-drag: element;
+    -webkit-user-drag: element;
+    cursor:grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+}
+[draggable]:active{
+    transform:scale(0.9);
+    cursor:grabbing;
+    cursor:-webkit-grabbing;
+    cursor:-moz-grabbing;
+}
+/*FINAL DEL DRAG AND DROP*/
+
 .vector,
 .arrow{
     display: grid;
@@ -341,11 +362,12 @@ button:focus{
     border-radius: 5px;
     background-color: rgba(0, 0, 0, 0.431);
     border: 2px solid rgb(227, 180, 79);
-    user-select: none;
 }
 .vector > div:hover{
-    cursor: pointer;
     border: 2px solid rgb(255, 255, 255);
+}
+.vector > div.over{
+    border:2px dashed rgb(241, 241, 241);
 }
 .randBut{/* Un pequeño ajuste a los botones de generar números random */
     block-size: 47px;
@@ -357,6 +379,8 @@ button:focus{
     padding-top: 6.9px;
     width:  50%;
     height: 110%;
+    user-select: none;
+    -webkit-user-drag: none;
 }
 /*FIN DE DISEÑO DE VECTORES*/
 
