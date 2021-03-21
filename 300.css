@@ -340,6 +340,7 @@ button:focus{
     cursor:grab;
     cursor: -moz-grab;
     cursor: -webkit-grab;
+//FUNCIONES PARA EL BOTÓN
 }
 [draggable]:active{
     transform:scale(0.9);

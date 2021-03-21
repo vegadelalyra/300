@@ -5955,11 +5955,23 @@ var buttona01 = document.getElementById("arrayb01");
 var inputArr01 = document.getElementById("arrayi01");
 var freedom;
 var justice;
+var love;
 var flash = 0;
 var xd = 0;
+var cancelButton = 0;
+var arrVector01 = [];
+for (let nums of box01.box){
+  arrVector01.push(Number.parseInt(nums.textContent));
+};
+
 //solución al problema
 function solutiona01(){
-  
+  if (cancelButton==1){}
+  else{
+
+  function limitSolution(){
+    cancelButton = 0;
+  };
   //Variables locales elementales
   let arrow = document.getElementsByClassName("arrow01");
   var imgOn   = '<img class="arrowImg" src="./arrowOn.png" alt="Aquí había una flecha... Ya no está xd">';
@@ -5970,8 +5982,8 @@ function solutiona01(){
     arrows.innerHTML = imgOff; 
   });
     //Variables para solucionar la pregunta concreta
-    let seeker = Math.max(...box01.aux);
-    let snitch = box01.aux.indexOf(seeker);
+    let seeker = Math.max(...arrVector01);
+    let snitch = arrVector01.indexOf(seeker);
 
   //"Animación" de las flechas
   function animation(){
@@ -6019,8 +6031,7 @@ function solutiona01(){
       }
     };
       getE("a01e").innerHTML = `...`
-  };
-    
+  };  
 
   //SOLUCIÓN LÓGICA ESQUEMÁTICA DEL PROBLEMA 
   function solution(){
@@ -6058,12 +6069,15 @@ function solutiona01(){
     });
   }
   else if (box01.aux.length == 10){
+    cancelButton = 1;
     freedom = setInterval(animation,250);
-    justice = setTimeout(solution, 4000);
+    justice = setTimeout(solution, 2000);
+    love = setTimeout(limitSolution,3000);
   }
   else{
     getE("a01e").innerHTML = `De este vector, el número más alto es el ${seeker} y se halla en la posición n°${snitch} c: <br> Te invito a llenar todo el vector, humano, y mira lo que pasa -guiño guiño-`;
   };
+};
 };
 
 
