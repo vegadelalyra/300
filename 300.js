@@ -5858,7 +5858,6 @@ d = 0
 
 // Función para omitir el 0 como número máximo en un arreglo lleno de valores negativos
 var max2 = -1000;
-
 const theSecondHigher = (arr) =>{
   var arr;
   let max1 = max2;
@@ -5982,6 +5981,8 @@ var love;
 var flash = 0;
 var xd = 0;
 var cancelButton = 0;
+var filterOfZeros01 = [];
+
   //DRAG AND DROP
   [].forEach.call(vectorBlocks,function(block){
     block.addEventListener('dragend',solutiona01);
@@ -6004,16 +6005,19 @@ function solutiona01(){
   [].forEach.call(arrow,function(arrows){
     arrows.innerHTML = imgOff; 
   });
-    //Variables para solucionar la pregunta concreta
-    var arrVector01 = [];
-    for (let nums of box01.box){
+  //EL CÓDGO MÁGICO QUE PERMITE ACOPLAR FUNCIONALIDAD Y DRAG AND DROP
+  var arrVector01 = [];
+  for (let nums of box01.box){
       if (nums.textContent == 0){
         arrVector01.push(Number.parseInt(0));
       }
       else{
         arrVector01.push(Number.parseInt(nums.textContent));
       }
-    };
+  };
+  filterOfZeros01 = arrVector01.filter(x=>x!=0);
+
+  //Variables para solucionar la pregunta concreta
     var seeker = ((Math.max(...arrVector01))==0)? theSecondHigher(arrVector01):Math.max(...arrVector01);
     var snitch = arrVector01.indexOf(seeker);
 
@@ -6089,7 +6093,7 @@ function solutiona01(){
 
 
   //Diálogos al vaciar
-  if (box01.aux.length == 0) {
+  if (filterOfZeros01.length == 0) {
     flash = 0;
 
     getE("a01e").innerHTML = ``;
@@ -6097,15 +6101,13 @@ function solutiona01(){
       arrows.innerHTML = imgOff; 
     });
   }
-  else if (box01.aux.length == 10){
+  else if (filterOfZeros01.length == 10){
     cancelButton = 1;
     freedom = setInterval(animation,250);
     justice = setTimeout(solution, 2000);
     love = setTimeout(limitSolution,3000);
   }
   else{
-    console.log(arrVector01);
-    console.log(box01.aux);
     getE("a01e").innerHTML = `De este vector, el número más alto es el ${seeker} y se halla en la posición n°${snitch} c: <br> Te invito a llenar todo el vector, humano, y mira lo que pasa -guiño guiño-`;
   };
 };
@@ -6113,28 +6115,34 @@ function solutiona01(){
 
 
 //FUNCIONES PARA EL INPUT
-inputArr01.addEventListener("keydown",arrayi01, false); 
+inputArr01.addEventListener("keydown",arrayi01, false);
+var iOfBox = 0; 
 function arrayi01(e){
     //DIÁLOGOS PARA EL BOTÓN
-    if (box01.aux.length == 10 || box01.aux.length == 0){
+    if (filterOfZeros01.length == 10 || filterOfZeros01.length == 0){
       buttona01.innerHTML = `GENERAR 10 NÚMEROS ALEATORIOS`;
     }
     else{
-      if (box01.aux.length == 9){
+      if (filterOfZeros01.length == 9){
         buttona01.innerHTML = `GENERAR 1 NÚMERO ALEATORIO`;
       }
       else{
-        buttona01.innerHTML = `GENERAR ${10-box01.aux.length} NÚMEROS ALEATORIOS`;
+        buttona01.innerHTML = `GENERAR ${10-filterOfZeros01.length} NÚMEROS ALEATORIOS`;
       }
     };
-
+    //DIÁLOGOS PARA EL SPAN
   var ngt = (inputArr01.value<0)? `-`:``;
-  if (inputArr01.value == `` || inputArr01.value == '-' || inputArr01.value == '--' || inputArr01.value == '---' || inputArr01.value == '----' || inputArr01.value == NaN){
+
+  if (isNaN(inputArr01.value)){
+    document.getElementById("a01").innerHTML = `¿A quién intentas trollear con esos valores imposibles, humano?`;
+  }else{
+ 
+  if (inputArr01.value == `` || inputArr01.value == '-' || inputArr01.value == '--' || inputArr01.value == '---' || inputArr01.value == '----'){
     document.getElementById("a01").innerHTML = ``;
   }
   else{
     if (inputArr01.value == 0){
-      if (box01.aux.length > 0){
+      if (filterOfZeros01.length > 0){
         document.getElementById("a01").innerHTML = `¿Quieres reiniciar el vector, humano? ¡Tírame ese cero entonces! c:<`;
       }
       else{
@@ -6144,10 +6152,14 @@ function arrayi01(e){
     else{
       document.getElementById("a01").innerHTML = `¡Cool, un ${ngt}${Math.abs(inputArr01.value)}! Regístralo oprimiendo ENTER c:`;
     }
+  } 
   };
   //Ejecutar función cuando se oprima ENTER
   if (e.keyCode === 13){ 
-    if (inputArr01.value == `` || inputArr01.value == '-' || inputArr01.value == '--' || inputArr01.value == '---' || inputArr01.value == '----' || inputArr01.value == NaN){
+    if (isNaN(inputArr01.value)){
+      inputArr01.value = ``;
+    }else{
+    if (inputArr01.value == `` || inputArr01.value == '-' || inputArr01.value == '--' || inputArr01.value == '---' || inputArr01.value == '----'){
       inputArr01.value = ``;
     }
     else if (inputArr01.value == 0){
@@ -6173,7 +6185,7 @@ function arrayi01(e){
       }
     }
     else{
-      if (box01.aux.length == 10){
+      if (filterOfZeros01.length == 10){
         document.getElementById("a01c").innerHTML = `Puedes registrar el número 0 para reiniciar el vector uwu`;
         box01.aux.shift();
         box01.aux.push(Number(inputArr01.value));
@@ -6183,13 +6195,17 @@ function arrayi01(e){
       }
       else{
         document.getElementById("a01c").innerHTML = `Puedes registrar el número 0 para reiniciar el vector uwu`;
-        box01.aux.push(Number(inputArr01.value));
-        box01.equalize();
+        box01.box[iOfBox].innerHTML = Number(inputArr01.value);
         solutiona01();
         inputArr01.value = ``;
+        iOfBox++;
+        if(iOfBox==10){
+          iOfBox = 0;
+        };
       }
     }
   };
+}
 } 
 
 //FUNCIONES PARA EL BOTÓN
