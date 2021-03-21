@@ -5856,12 +5856,35 @@ b = 0
 c = 0
 d = 0
 
+// Función para omitir el 0 como número máximo en un arreglo lleno de valores negativos
+var max2 = -1000;
+
+const theSecondHigher = (arr) =>{
+  var arr;
+  let max1 = max2;
+  
+  for(var i=0;i<arr.length;i++){
+    if((Number.parseInt(arr[i]))>max1){
+      if(arr[i]!=0){
+        max1=(Number.parseInt(arr[i]));
+      }
+    };
+    if(max1!=0 && max1!=max2){
+      max2 = max1;
+      return max1;
+    };
+  };
+    if(max1 == max1){
+      return max1;
+    };
+}
+
 //DRAG AND DROP
 var vectorBlocks = document.querySelectorAll("div.vector > div");
 var dragSrcEl = null;
 function handleDragStart(e){
   this.style.opacity = '0.4';
-  let ploop = new Audio("/music/drag.mp3");
+  let ploop = new Audio("./music/drag.mp3");
   ploop.play();
   dragSrcEl = this;
   e.dataTransfer.effectAllowed = 'move';
@@ -5874,7 +5897,7 @@ function handleDragOver(e){
 function handleDragEnter(e){this.classList.add('over');}
 function handleDragLeave(e){this.classList.remove('over');}
 function handleDrop(e){
-  let droop = new Audio("/music/drop.mp3");
+  let droop = new Audio("./music/drop.mp3");
   droop.play();
   if(e.stopPropagation){e.stopPropagation();}
   if (dragSrcEl != this){
@@ -5939,7 +5962,7 @@ class get10Random {
       }
       if (this.aux.length == 0) {
         for (let i = 0; i < 10; i++) {
-          this.box[i].innerHTML = ` `;
+          this.box[i].innerHTML = ``;
         }
       }
       return this.box;
@@ -5959,16 +5982,16 @@ var love;
 var flash = 0;
 var xd = 0;
 var cancelButton = 0;
-var arrVector01 = [];
-for (let nums of box01.box){
-  arrVector01.push(Number.parseInt(nums.textContent));
-};
+  //DRAG AND DROP
+  [].forEach.call(vectorBlocks,function(block){
+    block.addEventListener('dragend',solutiona01);
+  });
 
 //solución al problema
 function solutiona01(){
   if (cancelButton==1){}
   else{
-
+    
   function limitSolution(){
     cancelButton = 0;
   };
@@ -5982,8 +6005,17 @@ function solutiona01(){
     arrows.innerHTML = imgOff; 
   });
     //Variables para solucionar la pregunta concreta
-    let seeker = Math.max(...arrVector01);
-    let snitch = arrVector01.indexOf(seeker);
+    var arrVector01 = [];
+    for (let nums of box01.box){
+      if (nums.textContent == 0){
+        arrVector01.push(Number.parseInt(0));
+      }
+      else{
+        arrVector01.push(Number.parseInt(nums.textContent));
+      }
+    };
+    var seeker = ((Math.max(...arrVector01))==0)? theSecondHigher(arrVector01):Math.max(...arrVector01);
+    var snitch = arrVector01.indexOf(seeker);
 
   //"Animación" de las flechas
   function animation(){
@@ -6054,13 +6086,10 @@ function solutiona01(){
     };
     getE("a01e").innerHTML = `De este vector, el número más alto es el ${seeker} y se halla en la posición n°${snitch} c:`;
   }; 
-  
+
 
   //Diálogos al vaciar
   if (box01.aux.length == 0) {
-    let zero = new Audio();
-    zero.src = "music/hollow.mp3";
-    zero.play();
     flash = 0;
 
     getE("a01e").innerHTML = ``;
@@ -6075,6 +6104,8 @@ function solutiona01(){
     love = setTimeout(limitSolution,3000);
   }
   else{
+    console.log(arrVector01);
+    console.log(box01.aux);
     getE("a01e").innerHTML = `De este vector, el número más alto es el ${seeker} y se halla en la posición n°${snitch} c: <br> Te invito a llenar todo el vector, humano, y mira lo que pasa -guiño guiño-`;
   };
 };
@@ -6097,9 +6128,8 @@ function arrayi01(e){
       }
     };
 
-  box01.equalize();
   var ngt = (inputArr01.value<0)? `-`:``;
-  if (inputArr01.value == `` || inputArr01.value == '-'){
+  if (inputArr01.value == `` || inputArr01.value == '-' || inputArr01.value == '--' || inputArr01.value == '---' || inputArr01.value == '----' || inputArr01.value == NaN){
     document.getElementById("a01").innerHTML = ``;
   }
   else{
@@ -6117,13 +6147,17 @@ function arrayi01(e){
   };
   //Ejecutar función cuando se oprima ENTER
   if (e.keyCode === 13){ 
-    if (inputArr01.value == ``){
+    if (inputArr01.value == `` || inputArr01.value == '-' || inputArr01.value == '--' || inputArr01.value == '---' || inputArr01.value == '----' || inputArr01.value == NaN){
+      inputArr01.value = ``;
     }
     else if (inputArr01.value == 0){
       if(box01.aux==0){
         inputArr01.value = ``;
       }
       else{
+        let zero = new Audio();
+        zero.src = "music/hollow.mp3";
+        zero.play();
         clearTimeout(justice);
         clearInterval(freedom);
         document.getElementById("a01b").innerHTML = ``;
@@ -6133,6 +6167,7 @@ function arrayi01(e){
           return document.getElementById("a01c").innerHTML = ``;
         };
         box01.aux = [];
+        box01.equalize();
         solutiona01();
         inputArr01.value = ``;
       }
@@ -6142,12 +6177,14 @@ function arrayi01(e){
         document.getElementById("a01c").innerHTML = `Puedes registrar el número 0 para reiniciar el vector uwu`;
         box01.aux.shift();
         box01.aux.push(Number(inputArr01.value));
+        box01.equalize();
         solutiona01();
         inputArr01.value = ``;
       }
       else{
         document.getElementById("a01c").innerHTML = `Puedes registrar el número 0 para reiniciar el vector uwu`;
         box01.aux.push(Number(inputArr01.value));
+        box01.equalize();
         solutiona01();
         inputArr01.value = ``;
       }

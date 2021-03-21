@@ -217,6 +217,7 @@ button{
 	padding:10px 15px;
 	text-decoration:none;
 	text-shadow:0px 1px -50px #ffffff;
+    user-select: none;
 }
 button:hover {
     border:3px solid #ffaa22;
@@ -282,6 +283,7 @@ button:focus{
 }
 /* Diseño de input/button */
 .falseButton{
+    user-select:none;
     color:whitesmoke;
     outline: none;
 	box-shadow: inset 2px 3px 20px rgb(187, 187, 187);
@@ -340,7 +342,6 @@ button:focus{
     cursor:grab;
     cursor: -moz-grab;
     cursor: -webkit-grab;
-//FUNCIONES PARA EL BOTÓN
 }
 [draggable]:active{
     transform:scale(0.9);
