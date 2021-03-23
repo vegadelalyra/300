@@ -10,25 +10,27 @@ function getTag(tagName){
 }
 
 //ANIMACIÓN INTRO 300
-var intro300 = document.querySelector("#fixed300");
-var aaa = document.querySelector("#absolute300");
+var intro300 = document.querySelector("#containerIntro300");
+var aaa = document.querySelector("#intro300");
 aaa.addEventListener("click",kil);
 function pre(){
-  aaa.style.transform="translateX(-1850px)";
-  setTimeout(pe,300);
+  aaa.style.transform = 'translate(0%,0%)';
+  setTimeout(pe,600);
 }
 function pe(){
-  aaa.style.fontSize="160px";
+  aaa.style.transform = 'scale(0.6)';
 }
 function pree(){
-  aaa.style.fontSize="240px";
-  setTimeout(pee,200);
+  aaa.style.transform = 'scale(1.2)';  
+  setTimeout(pee,400);
 }
 function pee(){
-  aaa.style.transform="translateX(2500px)";
+  aaa.style.transform = 'translate(1000%,-300%)';
 }
 function kil(){
-  aaa.style.fontSize="300px";
+  let whooosh = new Audio('./music/whooosh.mp3');
+  whooosh.play();
+  aaa.style.transform = 'scale(2)';
   aaa.style.opacity="0";
   setTimeout(kill,200);
 }

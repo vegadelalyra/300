@@ -11,34 +11,62 @@ body{
     text-align: justify;
 }
 /* Intro 300 */
-#fixed300{
-    background:black;
-    position:fixed;
-    height:2000px;
-    width:100%;
-    color:blanchedalmond;
-    cursor:default;
-    user-select: none;
-    z-index: 999;
-}
-#relative300{
-    background:black;
-    z-index: 9999;
-    position:relative;
-    height:100%;
-}
-#absolute300{
-    transition:0.5s;
-    left:2500px;
-    top:200px;
-    margin:0;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+#containerIntro300{
+    background:rgb(0, 0, 0);
     position:absolute;
-    font-size: 200px;
+    height:100%;
+    width:100%;
+    z-index:669;
+    display:flex;
+    justify-content: center;
+    align-items: center;
 }
-#absolute300:hover{
-    color:whitesmoke;
+#intro300{
+    user-select:none;
+    transform: translate(1000%,-300%);
+    position:fixed;
+    transition:0.5s;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    height:min-content;
+    font-size: 400px;
+    z-index:999;
+    /*Gradient color animation*/
+    animation: fluidoOff 10s ease-in-out infinite;
+    background: linear-gradient(
+        -45deg,
+        rgba(0, 0, 0, 0.52),
+        #dadada,
+        #dbdbccaf,
+        #00000093);
+    background-size: 300%;
+    -webkit-background-clip: text;
+            background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+@keyframes fluidoOff {
+    0% {background-position: 0 50%}
+    50% {background-position: 100% 50%}
+    100% {background-position: 0 50%}
+}
+#intro300::before{
+    content: "3";
+}
+#intro300::after{
+    content:"0";
+}
+#intro300:hover{
     cursor: pointer;
+    animation: fluidoOn 15s ease-in-out infinite;
+    background: linear-gradient(-45deg, white, rgb(170, 142, 100), white, rgb(170, 142, 100));
+    background-size: 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+@keyframes fluidoOn {
+    0% { background-position: 0 50% }
+    50% { background-position: 100% 50% }
+    100% { background-position: 0 50% }
 }
 /* Fin del intro 300 */
 
@@ -80,11 +108,13 @@ summary:hover{
     background-color:black;
 }
 #h300{/*EL TÍTULO 300*/
+    font-size: 2.3em;
     user-select: none;
     position:sticky;
     z-index: 666;
     opacity: 0;
     width:min-content;
+    height: min-content;
     cursor:pointer;
     transition: 2s;
     transition-delay: 2.3s;
@@ -342,6 +372,7 @@ button:focus{
     cursor:grab;
     cursor: -moz-grab;
     cursor: -webkit-grab;
+    position:relative;
 }
 [draggable]:active{
     transform:scale(0.9);
@@ -358,6 +389,8 @@ button:focus{
     grid-auto-rows:minmax(50px,auto);
     margin-left:69px;
     margin-right:69px;
+    -moz-window-dragging: none;
+    user-select: none;
 }
 .vector > div {
     padding: 10px;
