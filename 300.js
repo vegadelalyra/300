@@ -1,3 +1,775 @@
+//26/03/2021 Implementación del reproductor de audio
+/* Implementation of the presentation of the audio player */
+const playIconContainer = document.getElementById('play-icon');
+const audioPlayerContainer = document.getElementById('audio-player-container');
+const seekSlider = document.getElementById('seek-slider');
+const volumeSlider = document.getElementById('volume-slider');
+const muteIconContainer = document.getElementById('mute-icon');
+let playState = 'play';
+let muteState = 'unmute';
+
+const playAnimation = lottie.loadAnimation({
+  container: playIconContainer,
+  path: 'https://maxst.icons8.com/vue-static/landings/animated-icons/icons/pause/pause.json',
+  renderer: 'svg',
+  loop: false,
+  autoplay: false,
+  name: "Play Animation",
+});
+
+const muteAnimation = lottie.loadAnimation({
+    container: muteIconContainer,
+    path: 'https://maxst.icons8.com/vue-static/landings/animated-icons/icons/mute/mute.json',
+    renderer: 'svg',
+    loop: false,
+    autoplay: false,
+    name: "Mute Animation",
+});
+
+playAnimation.goToAndStop(14, true);
+
+playIconContainer.addEventListener('click', () => {
+    if(playState === 'play') {
+        audio.play();
+        playAnimation.playSegments([14, 27], true);
+        requestAnimationFrame(whilePlaying);
+        playState = 'pause';
+    } else {
+        audio.pause();
+        playAnimation.playSegments([0, 14], true);
+        cancelAnimationFrame(raf);
+        playState = 'play';
+    }
+});
+
+muteIconContainer.addEventListener('click', () => {
+    if(muteState === 'unmute') {
+        muteAnimation.playSegments([0, 15], true);
+        audio.muted = true;
+        muteState = 'mute';
+    } else {
+        muteAnimation.playSegments([15, 25], true);
+        audio.muted = false;
+        muteState = 'unmute';
+    }
+});
+
+const showRangeProgress = (rangeInput) => {
+    if(rangeInput === seekSlider) audioPlayerContainer.style.setProperty('--seek-before-width', rangeInput.value / rangeInput.max * 100 + '%');
+    else audioPlayerContainer.style.setProperty('--volume-before-width', rangeInput.value / rangeInput.max * 100 + '%');
+}
+
+seekSlider.addEventListener('input', (e) => {
+    showRangeProgress(e.target);
+});
+volumeSlider.addEventListener('input', (e) => {
+    showRangeProgress(e.target);
+});
+
+
+
+
+
+/* Implementation of the functionality of the audio player */
+
+var audio = document.querySelector('audio');
+const durationContainer = document.getElementById('duration');
+const currentTimeContainer = document.getElementById('current-time');
+const outputContainer = document.getElementById('volume-output');
+let raf = null;
+
+const calculateTime = (secs) => {
+    const minutes = Math.floor(secs / 60);
+    const seconds = Math.floor(secs % 60);
+    const returnedSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
+    return `${minutes}:${returnedSeconds}`;
+}
+
+const displayDuration = () => {
+    durationContainer.textContent = calculateTime(audio.duration);
+}
+
+const setSliderMax = () => {
+    seekSlider.max = Math.floor(audio.duration);
+}
+
+ const displayBufferedAmount = () => {
+    var bufferedAmount = Math.floor(audio.buffered.end(audio.buffered.length - 1));
+    audioPlayerContainer.style.setProperty('--buffered-width', `${(bufferedAmount / seekSlider.max) * 100}%`);
+}
+
+const whilePlaying = () => {
+    seekSlider.value = Math.floor(audio.currentTime);
+    currentTimeContainer.textContent = calculateTime(seekSlider.value);
+    audioPlayerContainer.style.setProperty('--seek-before-width', `${seekSlider.value / seekSlider.max * 100}%`);
+    raf = requestAnimationFrame(whilePlaying);
+}
+
+if (audio.readyState > 0) {
+    displayDuration();
+    setSliderMax();
+    displayBufferedAmount();
+} else {
+    audio.addEventListener('loadedmetadata', () => {
+        displayDuration();
+        setSliderMax();
+        displayBufferedAmount();
+    });
+}
+
+audio.addEventListener('progress', displayBufferedAmount);
+
+seekSlider.addEventListener('input', () => {
+    currentTimeContainer.textContent = calculateTime(seekSlider.value);
+    if(!audio.paused) {
+        cancelAnimationFrame(raf);
+    }
+});
+
+seekSlider.addEventListener('change', () => {
+    audio.currentTime = seekSlider.value;
+    if(!audio.paused) {
+        requestAnimationFrame(whilePlaying);
+    }
+});
+
+volumeSlider.addEventListener('input', (e) => {
+    const value = e.target.value;
+
+    outputContainer.textContent = value;
+    audio.volume = value / 100;
+});
+
+
+
+
+/* Implementation of the Media Session API */
+if('mediaSession' in navigator) {
+    navigator.mediaSession.metadata = new MediaMetadata({
+        title: 'Komorebi',
+        artist: 'Anitek',
+        album: 'MainStay',
+        artwork: [
+            { src: 'https://assets.codepen.io/4358584/1.300.jpg', sizes: '96x96', type: 'image/png' },
+            { src: 'https://assets.codepen.io/4358584/1.300.jpg', sizes: '128x128', type: 'image/png' },
+            { src: 'https://assets.codepen.io/4358584/1.300.jpg', sizes: '192x192', type: 'image/png' },
+            { src: 'https://assets.codepen.io/4358584/1.300.jpg', sizes: '256x256', type: 'image/png' },
+            { src: 'https://assets.codepen.io/4358584/1.300.jpg', sizes: '384x384', type: 'image/png' },
+            { src: 'https://assets.codepen.io/4358584/1.300.jpg', sizes: '512x512', type: 'image/png' }
+        ]
+    });
+    navigator.mediaSession.setActionHandler('play', () => {
+        if(playState === 'play') {
+            audio.play();
+            playAnimation.playSegments([14, 27], true);
+            requestAnimationFrame(whilePlaying);
+            playState = 'pause';
+        } else {
+            audio.pause();
+            playAnimation.playSegments([0, 14], true);
+            cancelAnimationFrame(raf);
+            playState = 'play';
+        }
+    });
+    navigator.mediaSession.setActionHandler('pause', () => {
+        if(playState === 'play') {
+            audio.play();
+            playAnimation.playSegments([14, 27], true);
+            requestAnimationFrame(whilePlaying);
+            playState = 'pause';
+        } else {
+            audio.pause();
+            playAnimation.playSegments([0, 14], true);
+            cancelAnimationFrame(raf);
+            playState = 'play';
+        }
+    });
+    navigator.mediaSession.setActionHandler('seekbackward', (details) => {
+        audio.currentTime = audio.currentTime - (details.seekOffset || 10);
+    });
+    navigator.mediaSession.setActionHandler('seekforward', (details) => {
+        audio.currentTime = audio.currentTime + (details.seekOffset || 10);
+    });
+    navigator.mediaSession.setActionHandler('seekto', (details) => {
+        if (details.fastSeek && 'fastSeek' in audio) {
+          audio.fastSeek(details.seekTime);
+          return;
+        }
+        audio.currentTime = details.seekTime;
+    });
+    navigator.mediaSession.setActionHandler('stop', () => {
+        audio.currentTime = 0;
+        seekSlider.value = 0;
+        audioPlayerContainer.style.setProperty('--seek-before-width', '0%');
+        currentTimeContainer.textContent = '0:00';
+        if(playState === 'pause') {
+            playAnimation.playSegments([0, 14], true);
+            cancelAnimationFrame(raf);
+            playState = 'play';
+        }
+    });
+}
+
+//FROM HERE STARTS OUR CODE FOR OUR PLAYLISTS AND BUTTONS
+
+//Events and functionalities of the images
+let title = document.querySelector("#plays"); //This is the title of the audio player
+
+//Randomize the playlist with a random index
+var count = 0;
+var first = 1;
+
+const randomSort = ()=>{
+    let jukebox = [];
+    do{
+        jukebox.push(Math.round(Math.random()*(9-0)+0));
+        var jx = jukebox.filter((value,index,array)=>(array.indexOf(value)==index));
+    }
+    while(jx.length<10);
+    return jx;
+};
+var jack = randomSort();
+const redrum = Array.from(jack,Number);
+
+    
+//Function that iterates the array forwards
+function apfwd(arr) {
+
+  if (first == 0) {
+    first = 1;
+    count++;
+  } else {
+    if (count == (arr.length - 1)) {
+      count = 0;
+    } else {
+      count++;
+    }
+  }
+
+  let miau = arr[count];
+  return miau;
+}
+//Function that iterates the array backwards
+function y(arr) {
+    
+    if (first == 1){
+        first = 0;
+        count--;
+        if (count == -1){
+            count=(arr.length-1);
+        }
+    }else{
+        if (count == 0){
+            count=(arr.length-1);
+        }else{
+            count--;
+        }
+    } 
+
+    let miau = arr[count];
+    return miau;    
+};
+
+
+//EPIC PLAYLIST ARRAY
+const epicPlaylist = [
+    "./playlists/epic/Armored Titan - Shingeki no Kyoji.mp3",
+    "./playlists/epic/God of War.mp3",
+    "./playlists/epic/Harry Potter - Battle Of Hogwarts.mp3",
+    "./playlists/epic/Kara Theme - Detroit Become Human.mp3",
+    "./playlists/epic/League of Legends - Ranked Song.mp3",
+    "./playlists/epic/The Opened Way - Shadow of the Colossus.mp3",
+    "./playlists/epic/The Seven Deadly Sins - Perfect Time.mp3",
+    "./playlists/epic/Ultra Instinct - Dragon Ball Super.mp3",
+    "./playlists/epic/World of Warcraft - Nightsong.mp3",
+    "./playlists/epic/NieR Automata - The Sound of the End.mp3"
+];
+
+//REFLEX PLAYLIST ARRAY
+const reflexPlaylist = [
+    "./playlists/reflex/Daft Punk - Veridis Quo.mp3",
+    "./playlists/reflex/Dark Souls II - Majula.mp3",
+    "./playlists/reflex/Death Note - Main Theme.mp3",
+    "./playlists/reflex/Detroit Become Human - Little One.mp3",
+    "./playlists/reflex/Elfen Lied - Lilium (on Classical Guitar).mp3",
+    "./playlists/reflex/Final Fantasy - Prelude (Orchestral).mp3",
+    "./playlists/reflex/Floating Museum - Ghost In The Shell.mp3",
+    "./playlists/reflex/Gwyn, Lord of Cinder - Dark Souls.mp3",
+    "./playlists/reflex/Skyrim - The Streets of Whiterun.mp3",
+    "./playlists/reflex/Thom Yorke - Suspirium.mp3"
+];
+
+
+//COOL PLAYLIST ARRAY
+const coolPlaylist = [
+    "./playlists/cool/505 - Arctic Monkeys.mp3",
+    "./playlists/cool/Breaking The Habit - Linkin Park.mp3",
+    "./playlists/cool/DEFTONES - Digital Bath.mp3",
+    "./playlists/cool/Django Unchained.mp3",
+    "./playlists/cool/Higurashi - Opening.mp3",
+    "./playlists/cool/Naruto Opening 2.mp3",
+    "./playlists/cool/Pearl Jam - Black.mp3",
+    "./playlists/cool/The Midnight - Deep Blue.mp3",
+    "./playlists/cool/The Weeknd - House Of Balloons Glass Table Girls.mp3",
+    "./playlists/cool/Youth - Daughter.mp3"
+];
+
+//SECRET PLAYLIST ARRAY
+const secretPlaylist = [
+  "./playlists/secret/dofusAstrub.mp3",
+  "./playlists/secret/dofusCombat.mp3",
+  "./playlists/secret/Naruto.mp3",
+  "./playlists/secret/Skyrim.mp3",
+  "./playlists/secret/YuGiOh.mp3",
+  "./playlists/secret/Zelda.mp3",
+  "./playlist/secrets/Crash Bandicoot.mp3",
+  "./playlist/secrets/Pokémon - ¡Atrápalos Ya!.mp3",
+  "./playlist/secrets/Dragon Ball Z El Poder Nuestro Es.mp3",
+  "./playlist/secrets/November Rain.mp3"
+];
+
+
+//Epic playlist (fire button)
+var epic = document.querySelector("#epic");
+const fire = (e)=>{e.target.src="./img/epicOn.png"};
+const fireOff = (e)=>{e.target.src="./img/epic.png"};
+epic.addEventListener("mouseover",fire);
+epic.addEventListener("mouseout",fireOff);
+//To tune the playlist name and the lights up
+epic.addEventListener("click",(e)=>{ 
+    e.target.src="./img/epicOn.png";
+    mind.src="./img/mind.png";
+    cool.src="./img/cool.png";
+    epic.removeEventListener("mouseout",fireOff);
+    mind.addEventListener("mouseout",brainOff);
+    cool.addEventListener("mouseout",chillOff);
+    title.textContent = `epic playlist`;
+});
+epic.addEventListener("contextmenu",(e)=>{ 
+    e.target.src="./img/epicOn.png";
+    mind.src="./img/mind.png";
+    cool.src="./img/cool.png";
+    epic.removeEventListener("mouseout",fireOff);
+    mind.addEventListener("mouseout",brainOff);
+    cool.addEventListener("mouseout",chillOff);
+    title.textContent = `epic playlist`;
+});
+//Functions for each image/button (and bound its playlist)
+epic.addEventListener('click', epicPlayForward = () => { 
+    //Changing the song
+    audio.pause();
+    audio = new Audio(epicPlaylist[apfwd(redrum)]);
+    audio.load();
+    //For the animation stuff
+    playAnimation.playSegments([14, 27], true);
+    requestAnimationFrame(whilePlaying);
+    playState = 'pause';
+    cancelAnimationFrame(raf);
+    //For the mute function to work correctly
+    if(muteState === 'unmute') {
+        muteAnimation.playSegments([15, 25], true);
+        audio.muted = false;
+        muteState = 'unmute';
+    } else {
+        muteAnimation.playSegments([0, 15], true);
+        audio.muted = true;
+        muteState = 'mute';
+    };
+    //here we will run a hack so the browser will always load the audio and run the code xd
+    if (audio.readyState > 0) {
+        displayDuration();
+        setSliderMax();
+        displayBufferedAmount();
+        audio.play();
+    } else {
+        audio.addEventListener('loadedmetadata', () => {
+            displayDuration();
+            setSliderMax();
+            displayBufferedAmount();
+            audio.play();
+        });
+    };
+    audio.addEventListener('ended',epicPlayForward);
+});
+epic.oncontextmenu =epicPlayBackward=()=>{
+    //Changing the song
+    audio.pause();
+    audio = new Audio(epicPlaylist[y(redrum)]);
+    audio.load();
+    //For the animation stuff
+    playAnimation.playSegments([14, 27], true);
+    requestAnimationFrame(whilePlaying);
+    playState = 'pause';
+    cancelAnimationFrame(raf);
+    //For the mute function to work correctly
+    if(muteState === 'unmute') {
+        muteAnimation.playSegments([15, 25], true);
+        audio.muted = false;
+        muteState = 'unmute';
+    } else {
+        muteAnimation.playSegments([0, 15], true);
+        audio.muted = true;
+        muteState = 'mute';
+    };
+    //acá usamos un hack para que siempre nos ejecute duración
+    if (audio.readyState > 0) {
+        displayDuration();
+        setSliderMax();
+        displayBufferedAmount();
+        audio.play();
+    } else {
+        audio.addEventListener('loadedmetadata', () => {
+            displayDuration();
+            setSliderMax();
+            displayBufferedAmount();
+            audio.play();
+        });
+    };
+    audio.addEventListener('ended',epicPlayBackward);
+    return false;
+};
+
+
+
+//Chill playlist (mind button)
+var mind = document.querySelector("#mind");
+const brain = (e)=>{e.target.src="./img/mindOn.png"};
+const brainOff = (e)=>{e.target.src="./img/mind.png"};
+mind.addEventListener("mouseover",brain);
+mind.addEventListener("mouseout",brainOff);
+//To tune the playlist name and the lights up
+mind.addEventListener("click",(e)=>{
+    e.target.src="./img/mindOn.png";
+    epic.src="./img/epic.png";
+    cool.src="./img/cool.png";
+    mind.removeEventListener("mouseout",brainOff);
+    epic.addEventListener("mouseout",fireOff);
+    cool.addEventListener("mouseout",chillOff);
+    title.textContent = `reflex playlist`;
+});
+mind.addEventListener("contextmenu",(e)=>{
+    e.target.src="./img/mindOn.png";
+    epic.src="./img/epic.png";
+    cool.src="./img/cool.png";
+    mind.removeEventListener("mouseout",brainOff);
+    epic.addEventListener("mouseout",fireOff);
+    cool.addEventListener("mouseout",chillOff);
+    title.textContent = `reflex playlist`;
+});
+//Functions for each image/button (and bound its playlist)
+mind.addEventListener('click', reflexPlayForward = () => {
+    //Changing the song
+    audio.pause();
+    audio = new Audio(reflexPlaylist[apfwd(redrum)]);
+    audio.load();
+    //For the animation stuff
+    playAnimation.playSegments([14, 27], true);
+    requestAnimationFrame(whilePlaying);
+    playState = 'pause';
+    cancelAnimationFrame(raf);
+    //For the mute function to work correctly
+    if(muteState === 'unmute') {
+        muteAnimation.playSegments([15, 25], true);
+        audio.muted = false;
+        muteState = 'unmute';
+    } else {
+        muteAnimation.playSegments([0, 15], true);
+        audio.muted = true;
+        muteState = 'mute';
+    };
+    //acá usamos un hack para que siempre nos ejecute duración
+    if (audio.readyState > 0) {
+        displayDuration();
+        setSliderMax();
+        displayBufferedAmount();
+        audio.play();
+    } else {
+        audio.addEventListener('loadedmetadata', () => {
+            displayDuration();
+            setSliderMax();
+            displayBufferedAmount();
+            audio.play();
+        });
+    };
+    audio.addEventListener('ended',reflexPlayForward);
+});
+mind.oncontextmenu = reflexPlayBackward = ()=>{
+    //Changing the song
+    audio.pause();
+    audio = new Audio(reflexPlaylist[y(redrum)]);
+    audio.load();
+    //For the animation stuff
+    playAnimation.playSegments([14, 27], true);
+    requestAnimationFrame(whilePlaying);
+    playState = 'pause';
+    cancelAnimationFrame(raf);
+    //For the mute function to work correctly
+    if(muteState === 'unmute') {
+        muteAnimation.playSegments([15, 25], true);
+        audio.muted = false;
+        muteState = 'unmute';
+    } else {
+        muteAnimation.playSegments([0, 15], true);
+        audio.muted = true;
+        muteState = 'mute';
+    };
+    //acá usamos un hack para que siempre nos ejecute duración
+    if (audio.readyState > 0) {
+        displayDuration();
+        setSliderMax();apfwd
+        displayBufferedAmount();
+        audio.play();
+    } else {
+        audio.addEventListener('loadedmetadata', () => {
+            displayDuration();
+            setSliderMax();
+            displayBufferedAmount();
+            audio.play();
+        });
+    };
+    audio.addEventListener('ended',reflexPlayBackward);
+    return false;
+};
+
+
+//Cool playlist (sunglasses button)
+var cool = document.querySelector("#cool");
+const chill = (e)=>{e.target.src="./img/coolOn.png"};
+const chillOff = (e)=>{e.target.src="./img/cool.png"};
+cool.addEventListener("mouseover",chill);
+cool.addEventListener("mouseout",chillOff);
+//To tune the playlist name and the lights up
+cool.addEventListener("click",(e)=>{
+    e.target.src="./img/coolOn.png";
+    mind.src="./img/mind.png";
+    epic.src="./img/epic.png";
+    cool.removeEventListener("mouseout",chillOff);
+    mind.addEventListener("mouseout",brainOff);
+    epic.addEventListener("mouseout",fireOff);
+    title.textContent = `cool playlist`;
+});
+cool.addEventListener("contextmenu",(e)=>{
+    e.target.src="./img/coolOn.png";
+    mind.src="./img/mind.png";
+    epic.src="./img/epic.png";
+    cool.removeEventListener("mouseout",chillOff);
+    mind.addEventListener("mouseout",brainOff);
+    epic.addEventListener("mouseout",fireOff);
+    title.textContent = `cool playlist`;
+});
+//Functions for each image/button (and bound its playlist)
+cool.addEventListener('click', coolPlayForward=()=> {
+    //Changing the song
+    audio.pause();
+    audio = new Audio(coolPlaylist[apfwd(redrum)]);
+    audio.load();
+    //For the animation stuff
+    playAnimation.playSegments([14, 27], true);
+    requestAnimationFrame(whilePlaying);
+    playState = 'pause';
+    cancelAnimationFrame(raf);
+    //For the mute function to work correctly
+    if(muteState === 'unmute') {
+        muteAnimation.playSegments([15, 25], true);
+        audio.muted = false;
+        muteState = 'unmute';
+    } else {
+        muteAnimation.playSegments([0, 15], true);
+        audio.muted = true;
+        muteState = 'mute';
+    };
+    //acá usamos un hack para que siempre nos ejecute duración
+    if (audio.readyState > 0) {
+        displayDuration();
+        setSliderMax();
+        displayBufferedAmount();
+        audio.play();
+    } else {
+        audio.addEventListener('loadedmetadata', () => {
+            displayDuration();
+            setSliderMax();
+            displayBufferedAmount();
+            audio.play();
+        });
+    };
+    audio.addEventListener('ended',coolPlayForward);
+});
+cool.oncontextmenu = coolPlayBackward=()=>{
+    //Changing the song
+    audio.pause();
+    audio = new Audio(coolPlaylist[y(redrum)]);
+    audio.load();
+    //For the animation stuff
+    playAnimation.playSegments([14, 27], true);
+    requestAnimationFrame(whilePlaying);
+    playState = 'pause';
+    cancelAnimationFrame(raf);
+    //For the mute function to work correctly
+    if(muteState === 'unmute') {
+        muteAnimation.playSegments([15, 25], true);
+        audio.muted = false;
+        muteState = 'unmute';
+    } else {
+        muteAnimation.playSegments([0, 15], true);
+        audio.muted = true;
+        muteState = 'mute';
+    };
+    //acá usamos un hack para que siempre nos ejecute duración
+    if (audio.readyState > 0) {
+        displayDuration();
+        setSliderMax();
+        displayBufferedAmount();
+        audio.play();
+    } else {
+        audio.addEventListener('loadedmetadata', () => {
+            displayDuration();
+            setSliderMax();
+            displayBufferedAmount();
+            audio.play();
+        });
+    }
+    audio.addEventListener('ended',coolPlayBackward);
+    return false;
+};
+
+//choose a random playlist once the default song has ended
+const playlists = [epicPlayForward,reflexPlayForward,coolPlayForward];
+audio.addEventListener('ended',()=>{
+    let z = Math.round(Math.random()*(2-0)+0);
+    return playlists[z]();
+});
+
+
+//MOVABLE || DRAGGABLE 
+var draggableDiv = document.querySelector("#draggableDiv");
+
+var PADDING = 1;
+
+var rect;
+var viewport = {
+  left: 0,
+  right:0,
+}
+
+//Make the DIV element draggagle:
+dragElement(draggableDiv);
+dragElement(title);
+
+function dragElement(elmnt) {
+    var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+    if (document.getElementById(elmnt.id + "header")) {
+    /* if present, the header is where you move the DIV from:*/
+    document.getElementById(elmnt.id + "header").onmousedown = dragMouseDown;
+  } else {
+    /* otherwise, move the DIV from anywhere inside the DIV:*/
+    elmnt.onmousedown = dragMouseDown;
+  }
+
+  function dragMouseDown(e) {
+    e = e || window.event;
+    // get the mouse cursor position at startup:
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    
+    // store the current viewport and element dimensions when a drag starts
+    rect = elmnt.getBoundingClientRect();
+    viewport.left = PADDING;
+    viewport.right = window.innerWidth - PADDING;
+    
+    document.onmouseup = closeDragElement;
+    // call a function whenever the cursor moves:
+    document.onmousemove = elementDrag;
+  }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    // calculate the new cursor position:
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    
+    // check to make sure the element will be within our viewport boundary
+    var newLeft = elmnt.offsetLeft - pos1;
+
+    if (newLeft < viewport.left
+        || newLeft + rect.width > viewport.right
+        ) {
+    	// the element will hit the boundary, do nothing...
+    } else {
+      // set the element's new position:
+      elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+      elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+    };
+  };
+
+  function closeDragElement() {
+    /* stop moving when mouse button is released:*/
+    document.onmouseup = null;
+    document.onmousemove = null;
+  };
+}
+
+
+//Erase/recreate div
+function titleHover() {
+    if(divKills==1){
+        return false;
+    }   
+    else{
+        title.onmouseover = function(){
+            title.style.transition='0s';
+            title.style.opacity='0.6';
+        };
+        title.onmouseout = function(){
+            title.style.opacity= '0.3';
+        };
+    };
+};
+let divKills = 0;
+
+function divKiller(){
+    if(divKills == 0){
+        details.appendChild(audioPlayerContainer);
+        draggableDiv.style.width = "430px";
+        title.style.transitionDelay = '0s';
+        title.style.transition = 'opacity 3s';
+        title.style.opacity = '1';
+        title.onmouseover = '';
+        title.onmouseout = '';
+        divKills++;
+    }
+    else{
+        audioPlayerContainer.remove();
+        draggableDiv.style.width = "150px";
+        title.style.transition = 'opacity 3s 1s';
+        title.style.opacity = '0.3';
+        setTimeout(titleHover,1000);
+        divKills--;
+    }
+}
+
+details.addEventListener('toggle',divKiller);
+document.oncontextmenu = () => {return false};
+//end.
+
+//To maintain fixed the audio player while dragging sliders
+seekSlider.addEventListener('mouseover',()=>{
+    draggableDiv.style.width = '4300px';
+});
+seekSlider.addEventListener('mouseout',()=>{
+    draggableDiv.style.width = '430px';
+});
+
+volumeSlider.addEventListener('mouseover',()=>{
+    draggableDiv.style.width = '4300px';
+});
+volumeSlider.addEventListener('mouseout',()=>{
+    draggableDiv.style.width = '430px';
+});
+//end.
+
+
 //10/03/2021 Le robé esta pequeña gran idea de función a alguien en los comentarios de soloLearn xd
 function getE(id){
   return document.getElementById(id);
@@ -36,6 +808,11 @@ function kil(){
 }
 function kill(){
   document.body.removeChild(intro300);
+  audio.play();
+  playAnimation.playSegments([14, 27], true);
+  requestAnimationFrame(whilePlaying);
+  playState = 'pause';
+  cancelAnimationFrame(raf);
 }
 
 //MÚSICA Y SONIDOS
@@ -63,14 +840,6 @@ function wii(){
   };
 }
 
-//BACKGROUND
-// var think = new Audio();
-// think.src = "music/bg.mp3";
-// function hope(){
-//   think.play();
-// }
-// var corpse = document.body;
-// corpse.addEventListener("click",hope);
 
 //PARA 300
 var tre = document.querySelector("#h300"); //300
@@ -6165,7 +6934,7 @@ function arrayi01(e){
       inputArr01.value = ``;
     }
     else if (inputArr01.value == 0){
-      if(box01.aux==0){
+      if(filterOfZeros01.length==0){
         inputArr01.value = ``;
       }
       else{
@@ -6181,9 +6950,11 @@ function arrayi01(e){
           return document.getElementById("a01c").innerHTML = ``;
         };
         box01.aux = [];
+        filterOfZeros01.length = [];
         box01.equalize();
         solutiona01();
         inputArr01.value = ``;
+        iOfBox = 0;
       }
     }
     else{
