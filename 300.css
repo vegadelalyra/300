@@ -46,7 +46,7 @@
       z-index: -1;
       border-radius: 5px;
       transition:1s;
-  }
+    }
   #plays {
       position:absolute;
       top: -17px;
