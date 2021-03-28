@@ -769,6 +769,7 @@ function divKiller(){
     if(divKills == 0){
         details.appendChild(audioPlayerContainer);
         draggableDiv.style.width = "430px";
+        audioPlayerContainer.style.width = "430px"; 
         title.style.transitionDelay = '0s';
         title.style.transition = 'opacity 3s';
         title.style.opacity = '1';
@@ -6901,10 +6902,11 @@ class get10Random {
         }
       }
       else {
-        for (let i = this.aux.length; i < 10; i++) {
+        for (let i = 0; i < 10; i++) {
           this.nums = Math.round(Math.random() * (max - min) + min);
-          this.aux.push(this.nums);
-          this.box[i].innerHTML = this.aux[i];
+          if(this.box[i].textContent == ``){
+            this.box[i].textContent = Number.parseInt(this.nums);
+          };
         }
       }
       return this.box;
@@ -6937,6 +6939,8 @@ var flash = 0;
 var xd = 0;
 var cancelButton = 0;
 var filterOfZeros01 = [];
+var arrow = document.getElementsByClassName("arrow01");
+var imgOff = `<img class="arrowImg" src="./arrowOff.png" alt="Aquí había una flecha... Ya no está xd">`;
 
 
   //DRAG AND DROP
@@ -6953,15 +6957,13 @@ function solutiona01(){
     cancelButton = 0;
   };
   //Variables locales elementales
-  let arrow = document.getElementsByClassName("arrow01");
   var imgOn   = '<img class="arrowImg" src="./arrowOn.png" alt="Aquí había una flecha... Ya no está xd">';
-  var imgOff = `<img class="arrowImg" src="./arrowOff.png" alt="Aquí había una flecha... Ya no está xd">`;
   var img = `<img class="arrowImg" src="./arrow.png" alt="Aquí había una flecha... Ya no está xd">`;
   //Un reinicio ligero al oprimir el vector
   [].forEach.call(arrow,function(arrows){
     arrows.innerHTML = imgOff; 
   });
-  //EL CÓDGO MÁGICO QUE PERMITE ACOPLAR FUNCIONALIDAD Y DRAG AND DROP
+  //EL CÓDIGO MÁGICO QUE PERMITE ACOPLAR FUNCIONALIDAD Y DRAG AND DROP
   var arrVector01 = [];
   for (let nums of box01.box){
       if (nums.textContent == 0){
@@ -7049,19 +7051,21 @@ function solutiona01(){
 
 
   //Diálogos al vaciar
-  if (filterOfZeros01.length == 0) {
-    flash = 0;
-
-    getE("a01e").innerHTML = ``;
-    [].forEach.call(arrow,function(arrows){
-      arrows.innerHTML = imgOff; 
-    });
-  }
-  else if (filterOfZeros01.length == 10){
+  if (filterOfZeros01.length == 10) {
     cancelButton = 1;
     freedom = setInterval(animation,250);
     justice = setTimeout(solution, 2000);
     love = setTimeout(limitSolution,3000);
+  }
+  else if (filterOfZeros01.length == 0){
+    flash = 0;
+    clearInterval(freedom);
+    clearTimeout(justice);
+    clearTimeout(love);
+    getE("a01e").innerHTML = ``;
+    [].forEach.call(arrow,function(arrows){
+      arrows.innerHTML = imgOff; 
+    });
   }
   else{
     getE("a01e").innerHTML = `De este vector, el número más alto es el ${seeker} y se halla en la posición n°${snitch} c: <br> Te invito a llenar todo el vector, humano, y mira lo que pasa -guiño guiño-`;
@@ -7140,6 +7144,14 @@ function arrayi01(e){
         solutiona01();
         inputArr01.value = ``;
         iOfBox = 0;
+
+        clearInterval(freedom);
+        clearTimeout(justice);
+        clearTimeout(love);
+        getE("a01e").innerHTML = ``;
+        [].forEach.call(arrow,function(arrows){
+          arrows.innerHTML = imgOff; 
+        });
       }
     }
     else{
@@ -7155,14 +7167,15 @@ function arrayi01(e){
         let introduce = new Audio("./music/introduce.mp3");
         introduce.play();
         document.getElementById("a01c").innerHTML = `Puedes registrar el número 0 para reiniciar el vector uwu`;
-        box01.box[iOfBox].innerHTML = Number(inputArr01.value);
+        for(iOfBox = 0; iOfBox < 10; iOfBox++){
+          if(box01.box[iOfBox].textContent == ``){
+            box01.box[iOfBox].textContent = Number.parseInt(inputArr01.value);
+            iOfBox = 10;
+          };
+        };
         solutiona01();
         inputArr01.value = ``;
-        iOfBox++;
-        if(iOfBox==10){
-          iOfBox = 0;
-        };
-        console.log(box01.aux);
+        console.log(box01.box);
       }
     }
   };
