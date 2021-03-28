@@ -10,7 +10,7 @@
       float: left;
   }
   #draggableDiv{
-      position:absolute;
+      position:fixed;
       z-index:668;
       top:65%;
       outline:none;
@@ -42,20 +42,20 @@
       height: calc(100% + 4px);
       left: -2px;
       top: -2px;
-      background: linear-gradient(to left, #887133a8, #0c0c0cfd);
+      background: linear-gradient(to left, #978246, #0c0c0cfd);
       z-index: -1;
       border-radius: 5px;
       transition:1s;
   }
   #plays {
       position:absolute;
-      top: -20px;
+      top: -17px;
       margin: 0;
       font-size: 26px;
       font-style: oblique;
       background: transparent;
       color:rgba(250, 246, 233, 0.993);
-      z-index:668;
+      z-index:667;
       cursor: pointer;
       opacity: 0;
       transition: opacity 3s 6s;
@@ -264,10 +264,10 @@ body:not(.puta){
     animation: fluidoOff 10s ease-in-out infinite;
     background: linear-gradient(
         -45deg,
-        rgba(0, 0, 0, 0.52),
-        #dadada,
-        #dbdbccaf,
-        #00000093);
+        rgba(170, 149, 78, 0.52),
+        #b1a87286,
+        #70592d8e,
+        #978c5093);
     background-size: 300%;
     -webkit-background-clip: text;
             background-clip: text;
@@ -287,7 +287,12 @@ body:not(.puta){
 #intro300:hover{
     cursor: pointer;
     animation: fluidoOn 15s ease-in-out infinite;
-    background: linear-gradient(-45deg, white, rgb(170, 142, 100), white, rgb(170, 142, 100));
+    background: linear-gradient(
+        -45deg, 
+        rgb(102, 82, 34), 
+        goldenrod,
+        rgb(107, 88, 46), 
+        rgb(184, 153, 67));
     background-size: 300%;
     -webkit-background-clip: text;
     background-clip: text;
@@ -335,10 +340,11 @@ summary:hover{
     justify-content: center;
     position:sticky;
     z-index: 666;
+    height: fit-content;
     background-color:black;
 }
 #h300{/*EL TÍTULO 300*/
-    font-size: 2.3em;
+    font-size: 55px;
     user-select: none;
     position:sticky;
     z-index: 666;
@@ -428,7 +434,7 @@ tr,td{
 }
 
 /*Diseño minimalista inputs*/
-input::placeholder:not(.aPi){
+input::placeholder{
     font-size: 0.8em;
     text-align: center;
     font-style: italic;
@@ -448,14 +454,14 @@ input:not(.aPi,.falseButton){
     font-family:Georgia, 'Times New Roman', Times, serif;
     text-align: center;
 }
-input:hover:not(.aPi) {
+input:hover:not(.aPi,.falseButton) {
     border: 1px solid rgb(255, 255, 255);
     border-top: none;
     border-left: none;
     border-right: none;
 }
-input:focus:not(.aPi),
-input:valid:not(.aPi){
+input:focus:not(.aPi,.falseButton),
+input:valid:not(.aPi,.falseButton){
     border: 1px solid rgb(255, 215, 39);
     border-top: none;
     border-left: none;
@@ -562,15 +568,19 @@ button:focus:not(.aPb){
     font-size: 20px;
     font-family:Georgia, 'Times New Roman', Times, serif;
     text-align: center;
+    border: 1.5px solid rgb(0, 0, 0);
+    border-top: none;
+    border-left: none;
+    border-right: none;
 }
 .falseButton:hover{
     box-shadow:inset 4px 4px 20px  #494d4d;
     background:#dadada;
-    border: 1px solid;
+    transition:2s;
+    border: 1.5px solid rgb(255, 255, 255);
     border-top: none;
     border-left: none;
     border-right: none;
-    transition:2s;
 }
 .falseButton:focus,
 .falseButton:valid{
@@ -581,6 +591,17 @@ button:focus:not(.aPb){
     transition:background 1s, transform 6s;
     transition-delay: 0s, 3s;
     transition-timing-function: ease-in;
+    border: 1.5px solid rgb(231, 168, 33);
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+.falseButton:focus:hover,
+.falseButton:valid:hover{
+    border: 1.5px solid rgb(255, 255, 255);
+    border-top: none;
+    border-left: none;
+    border-right: none;
 }
 .falseButton::placeholder{
     transition:3.5s;

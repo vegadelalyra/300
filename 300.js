@@ -322,10 +322,10 @@ const secretPlaylist = [
   "./playlists/secret/Skyrim.mp3",
   "./playlists/secret/YuGiOh.mp3",
   "./playlists/secret/Zelda.mp3",
-  "./playlist/secrets/Crash Bandicoot.mp3",
-  "./playlist/secrets/Pokémon - ¡Atrápalos Ya!.mp3",
-  "./playlist/secrets/Dragon Ball Z El Poder Nuestro Es.mp3",
-  "./playlist/secrets/November Rain.mp3"
+  "./playlists/secret/Crash Bandicoot.mp3",
+  "./playlists/secret/Pokémon - ¡Atrápalos Ya!.mp3",
+  "./playlists/secret/Dragon Ball Z El Poder Nuestro Es.mp3",
+  "./playlists/secret/November Rain.mp3"
 ];
 
 
@@ -344,6 +344,7 @@ epic.addEventListener("click",(e)=>{
     mind.addEventListener("mouseout",brainOff);
     cool.addEventListener("mouseout",chillOff);
     title.textContent = `epic playlist`;
+    document.querySelector("#h300").style.color = `blanchedalmond`;
 });
 epic.addEventListener("contextmenu",(e)=>{ 
     e.target.src="./img/epicOn.png";
@@ -353,6 +354,7 @@ epic.addEventListener("contextmenu",(e)=>{
     mind.addEventListener("mouseout",brainOff);
     cool.addEventListener("mouseout",chillOff);
     title.textContent = `epic playlist`;
+    document.querySelector("#h300").style.color = `blanchedalmond`;
 });
 //Functions for each image/button (and bound its playlist)
 epic.addEventListener('click', epicPlayForward = () => { 
@@ -446,6 +448,7 @@ mind.addEventListener("click",(e)=>{
     epic.addEventListener("mouseout",fireOff);
     cool.addEventListener("mouseout",chillOff);
     title.textContent = `reflex playlist`;
+    document.querySelector("#h300").style.color = `blanchedalmond`;
 });
 mind.addEventListener("contextmenu",(e)=>{
     e.target.src="./img/mindOn.png";
@@ -455,6 +458,7 @@ mind.addEventListener("contextmenu",(e)=>{
     epic.addEventListener("mouseout",fireOff);
     cool.addEventListener("mouseout",chillOff);
     title.textContent = `reflex playlist`;
+    document.querySelector("#h300").style.color = `blanchedalmond`;
 });
 //Functions for each image/button (and bound its playlist)
 mind.addEventListener('click', reflexPlayForward = () => {
@@ -547,6 +551,7 @@ cool.addEventListener("click",(e)=>{
     mind.addEventListener("mouseout",brainOff);
     epic.addEventListener("mouseout",fireOff);
     title.textContent = `cool playlist`;
+    document.querySelector("#h300").style.color = `blanchedalmond`;
 });
 cool.addEventListener("contextmenu",(e)=>{
     e.target.src="./img/coolOn.png";
@@ -556,6 +561,7 @@ cool.addEventListener("contextmenu",(e)=>{
     mind.addEventListener("mouseout",brainOff);
     epic.addEventListener("mouseout",fireOff);
     title.textContent = `cool playlist`;
+    document.querySelector("#h300").style.color = `blanchedalmond`;
 });
 //Functions for each image/button (and bound its playlist)
 cool.addEventListener('click', coolPlayForward=()=> {
@@ -636,7 +642,38 @@ cool.oncontextmenu = coolPlayBackward=()=>{
 const playlists = [epicPlayForward,reflexPlayForward,coolPlayForward];
 audio.addEventListener('ended',()=>{
     let z = Math.round(Math.random()*(2-0)+0);
-    return playlists[z]();
+    playlists[z]();
+    switch (z){
+      case 0:
+        epic.src="./img/epicOn.png";
+        mind.src="./img/mind.png";
+        cool.src="./img/cool.png";
+        epic.removeEventListener("mouseout",fireOff);
+        mind.addEventListener("mouseout",brainOff);
+        cool.addEventListener("mouseout",chillOff);
+        title.textContent = `epic playlist`;
+        break;
+        
+      case 1:
+        mind.src="./img/mindOn.png";
+        epic.src="./img/epic.png";
+        cool.src="./img/cool.png";
+        mind.removeEventListener("mouseout",brainOff);
+        epic.addEventListener("mouseout",fireOff);
+        cool.addEventListener("mouseout",chillOff);
+        title.textContent = `reflex playlist`;
+        break;
+          
+      default:
+        cool.src="./img/coolOn.png";
+        mind.src="./img/mind.png";
+        epic.src="./img/epic.png";
+        cool.removeEventListener("mouseout",chillOff);
+        mind.addEventListener("mouseout",brainOff);
+        epic.addEventListener("mouseout",fireOff);
+        title.textContent = `cool playlist`;
+        break;
+    }
 });
 
 
@@ -845,32 +882,179 @@ function wii(){
 var tre = document.querySelector("#h300"); //300
 tre.addEventListener("mouseover",drama);
 tre.addEventListener("mouseout",noDrama);
-tre.onclick = function() {nostalgia()};
+tre.onclick = function() {
+  nostalgia(); 
+  title.textContent = `secret playlist`; 
+  tre.style.color='white';
+  tre.removeEventListener('mouseover',drama);
+  tre.removeEventListener('mouseout',noDrama);
+};
+tre.oncontextmenu = function() {
+  childhood(); 
+  title.textContent = `secret playlist`; 
+  tre.style.color='white';
+  tre.removeEventListener('mouseover',drama);
+  tre.removeEventListener('mouseout',noDrama);
+};
 
 var colossus = new Audio();
 colossus.src = "music/300hover.mp3";
 var omg = 0;
+var lastPlaylist = 0;
+
 function drama(){
-    colossus.play();
+  title.textContent = `???`;
+  colossus.play();
+  
+  if(epic.src=='file:///C:/Users/Daniel%20Vega/Documents/PROGRAMACI%C3%93N%20ALV/300/img/epicOn.png'){
+    epic.src = "./img/epic.png";
+    lastPlaylist = 211;
+  }
+  else if(mind.src=='file:///C:/Users/Daniel%20Vega/Documents/PROGRAMACI%C3%93N%20ALV/300/img/mindOn.png'){
+    mind.src = "./img/mind.png";
+    lastPlaylist = 121;
+  }
+  else if(cool.src=='file:///C:/Users/Daniel%20Vega/Documents/PROGRAMACI%C3%93N%20ALV/300/img/coolOn.png'){
+    cool.src = "./img/cool.png";
+    lastPlaylist = 112;
+  }
+  else{
+    lastPlaylist = 111;
+  };
+
+  muteAnimation.playSegments([0, 15], true);
+  audio.muted = true;
+
+  audio.pause();
+  playAnimation.playSegments([0, 14], true);
+  cancelAnimationFrame(raf);
 }
+
 function noDrama(){
   colossus.pause();
+
+  switch (lastPlaylist){
+    case 211:
+      title.textContent = `epic playlist`;
+      epic.src="./img/epicOn.png";
+      break
+      
+    case 121:
+      title.textContent = `reflex playlist`;
+      mind.src="./img/mindOn.png";
+      break;
+      
+    case 112:
+      title.textContent = `cool playlist`;
+      cool.src="./img/coolOn.png";
+      break;
+
+    default:
+      title.textContent = `playlists`;
+      break;
+  };
+
+  if(muteState === 'unmute'){
+    muteAnimation.playSegments([15, 25], true);
+    audio.muted = false;
+  }
+  else{
+    muteAnimation.playSegments([0, 15], true);
+    audio.muted = true;
+  };
+    
+  if(playState === 'pause'){
+    audio.play();
+    playAnimation.playSegments([14, 27], true);
+    requestAnimationFrame(whilePlaying);
+  }else{
+    playAnimation.playSegments([0, 14], true);
+    cancelAnimationFrame(raf);
+  };
 }
-var dofus = new Audio();
-dofus.src = "music/dofusAstrub.mp3"
+
 function nostalgia(){
-  colossus.pause();
-  colossus = 0;
-  dofus.play();
-  tre.onclick = function() {enough()};
+  if(typeof colossus === 'object'){
+    colossus.pause();
+    colossus = 0;
+  };
+  
+      //Changing the song
+      audio.pause();
+      audio = new Audio(secretPlaylist[apfwd(redrum)]);
+      audio.load();
+      //For the animation stuff
+      playAnimation.playSegments([14, 27], true);
+      requestAnimationFrame(whilePlaying);
+      playState = 'pause';
+      cancelAnimationFrame(raf);
+      //For the mute function to work correctly
+      if(muteState === 'unmute') {
+          muteAnimation.playSegments([15, 25], true);
+          audio.muted = false;
+          muteState = 'unmute';
+      } else {
+          muteAnimation.playSegments([0, 15], true);
+          audio.muted = true;
+          muteState = 'mute';
+      };
+      //here we will run a hack so the browser will always load the audio and run the code xd
+      if (audio.readyState > 0) {
+          displayDuration();
+          setSliderMax();
+          displayBufferedAmount();
+          audio.play();
+      } else {
+          audio.addEventListener('loadedmetadata', () => {
+              displayDuration();
+              setSliderMax();
+              displayBufferedAmount();
+              audio.play();
+          });
+      };
+      audio.addEventListener('ended', nostalgia);
 }
-function enough(){
-  dofus.pause();
-  tre.onclick = function() {puta()};
-}
-function puta(){
-  dofus.play();
-  tre.onclick = function() {enough()};
+function childhood(){
+  if(typeof colossus === 'object'){
+    colossus.pause();
+    colossus = 0;
+  };
+
+    //Changing the song
+    audio.pause();
+    audio = new Audio(secretPlaylist[y(redrum)]);
+    audio.load();
+    //For the animation stuff
+    playAnimation.playSegments([14, 27], true);
+    requestAnimationFrame(whilePlaying);
+    playState = 'pause';
+    cancelAnimationFrame(raf);
+    //For the mute function to work correctly
+    if(muteState === 'unmute') {
+        muteAnimation.playSegments([15, 25], true);
+        audio.muted = false;
+        muteState = 'unmute';
+    } else {
+        muteAnimation.playSegments([0, 15], true);
+        audio.muted = true;
+        muteState = 'mute';
+    };
+    //acá usamos un hack para que siempre nos ejecute duración
+    if (audio.readyState > 0) {
+        displayDuration();
+        setSliderMax();
+        displayBufferedAmount();
+        audio.play();
+    } else {
+        audio.addEventListener('loadedmetadata', () => {
+            displayDuration();
+            setSliderMax();
+            displayBufferedAmount();
+            audio.play();
+        });
+    };
+    audio.addEventListener('ended',childhood);
+    return false;
 }
 
 //PARA SECCIONES
@@ -6754,6 +6938,7 @@ var xd = 0;
 var cancelButton = 0;
 var filterOfZeros01 = [];
 
+
   //DRAG AND DROP
   [].forEach.call(vectorBlocks,function(block){
     block.addEventListener('dragend',solutiona01);
@@ -6787,7 +6972,7 @@ function solutiona01(){
       }
   };
   filterOfZeros01 = arrVector01.filter(x=>x!=0);
-
+  box01.aux = filterOfZeros01;
   //Variables para solucionar la pregunta concreta
     var seeker = ((Math.max(...arrVector01))==0)? theSecondHigher(arrVector01):Math.max(...arrVector01);
     var snitch = arrVector01.indexOf(seeker);
@@ -6967,6 +7152,8 @@ function arrayi01(e){
         inputArr01.value = ``;
       }
       else{
+        let introduce = new Audio("./music/introduce.mp3");
+        introduce.play();
         document.getElementById("a01c").innerHTML = `Puedes registrar el número 0 para reiniciar el vector uwu`;
         box01.box[iOfBox].innerHTML = Number(inputArr01.value);
         solutiona01();
@@ -6975,6 +7162,7 @@ function arrayi01(e){
         if(iOfBox==10){
           iOfBox = 0;
         };
+        console.log(box01.aux);
       }
     }
   };
