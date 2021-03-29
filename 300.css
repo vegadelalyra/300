@@ -563,7 +563,7 @@ button:focus:not(.aPb){
 	text-decoration:none;
     height:26px;
     width: 340px;
-    transition:4s;
+    transition:0.5s;
     margin: 15px 0;
     font-size: 20px;
     font-family:Georgia, 'Times New Roman', Times, serif;
@@ -576,8 +576,7 @@ button:focus:not(.aPb){
 .falseButton:hover{
     box-shadow:inset 4px 4px 20px  #494d4d;
     background:#dadada;
-    transition:2s;
-    border: 1.5px solid rgb(255, 255, 255);
+    border: 2px solid dadada;
     border-top: none;
     border-left: none;
     border-right: none;
@@ -588,17 +587,17 @@ button:focus:not(.aPb){
     cursor:text;
     background:black;
     transform: translateY(60px);
-    transition:background 1s, transform 6s;
-    transition-delay: 0s, 3s;
+    transition:background 1s, transform 0.5s;
+    transition-delay: 0.5s, 0s;
     transition-timing-function: ease-in;
-    border: 1.5px solid rgb(231, 168, 33);
+    border: 2px solid rgb(231, 168, 33);
     border-top: none;
     border-left: none;
     border-right: none;
 }
 .falseButton:focus:hover,
 .falseButton:valid:hover{
-    border: 1.5px solid rgb(255, 255, 255);
+    border: 2px solid rgb(255, 255, 255);
     border-top: none;
     border-left: none;
     border-right: none;

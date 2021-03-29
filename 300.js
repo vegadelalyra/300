@@ -638,44 +638,6 @@ cool.oncontextmenu = coolPlayBackward=()=>{
     return false;
 };
 
-//choose a random playlist once the default song has ended
-const playlists = [epicPlayForward,reflexPlayForward,coolPlayForward];
-audio.addEventListener('ended',()=>{
-    let z = Math.round(Math.random()*(2-0)+0);
-    playlists[z]();
-    switch (z){
-      case 0:
-        epic.src="./img/epicOn.png";
-        mind.src="./img/mind.png";
-        cool.src="./img/cool.png";
-        epic.removeEventListener("mouseout",fireOff);
-        mind.addEventListener("mouseout",brainOff);
-        cool.addEventListener("mouseout",chillOff);
-        title.textContent = `epic playlist`;
-        break;
-        
-      case 1:
-        mind.src="./img/mindOn.png";
-        epic.src="./img/epic.png";
-        cool.src="./img/cool.png";
-        mind.removeEventListener("mouseout",brainOff);
-        epic.addEventListener("mouseout",fireOff);
-        cool.addEventListener("mouseout",chillOff);
-        title.textContent = `reflex playlist`;
-        break;
-          
-      default:
-        cool.src="./img/coolOn.png";
-        mind.src="./img/mind.png";
-        epic.src="./img/epic.png";
-        cool.removeEventListener("mouseout",chillOff);
-        mind.addEventListener("mouseout",brainOff);
-        epic.addEventListener("mouseout",fireOff);
-        title.textContent = `cool playlist`;
-        break;
-    }
-});
-
 
 //MOVABLE || DRAGGABLE 
 var draggableDiv = document.querySelector("#draggableDiv");
@@ -806,6 +768,48 @@ volumeSlider.addEventListener('mouseout',()=>{
     draggableDiv.style.width = '430px';
 });
 //end.
+
+//choose a random playlist once the default song has ended
+const playlists = [epicPlayForward,reflexPlayForward,coolPlayForward];
+audio.addEventListener('ended',()=>{
+    draggableDiv.style.width = "150px";
+    audioPlayerContainer.style.width = "150px"; 
+    let z = Math.round(Math.random()*(2-0)+0);
+    playlists[z]();
+    switch (z){
+      case 0:
+        epic.src="./img/epicOn.png";
+        mind.src="./img/mind.png";
+        cool.src="./img/cool.png";
+        epic.removeEventListener("mouseout",fireOff);
+        mind.addEventListener("mouseout",brainOff);
+        cool.addEventListener("mouseout",chillOff);
+        title.textContent = `epic playlist`;
+        break;
+        
+      case 1:
+        mind.src="./img/mindOn.png";
+        epic.src="./img/epic.png";
+        cool.src="./img/cool.png";
+        mind.removeEventListener("mouseout",brainOff);
+        epic.addEventListener("mouseout",fireOff);
+        cool.addEventListener("mouseout",chillOff);
+        title.textContent = `reflex playlist`;
+        break;
+          
+      default:
+        cool.src="./img/coolOn.png";
+        mind.src="./img/mind.png";
+        epic.src="./img/epic.png";
+        cool.removeEventListener("mouseout",chillOff);
+        mind.addEventListener("mouseout",brainOff);
+        epic.addEventListener("mouseout",fireOff);
+        title.textContent = `cool playlist`;
+        break;
+    }
+});
+//end audioplayer.
+
 
 
 //10/03/2021 Le robé esta pequeña gran idea de función a alguien en los comentarios de soloLearn xd
@@ -7334,7 +7338,12 @@ function solutiona02(){
     card = new Audio();
     card.src = "music/arrows.mp3";
     card.play();
-    flash02 = snitch;
+    if(snitch!=-1){
+      flash02 = snitch;
+    }
+    else{
+      flash02 = 0;
+    };
 
     for (let i = 0; i < 10; i++) {
       if(i == snitch) {
@@ -7591,7 +7600,7 @@ function solutiona03(){
   let seeker = ((Math.max(...primes))==0)? theSecondHigher(primes):Math.max(...primes);
   let snitch = arrVector03.indexOf(seeker);
     
-  let plural = (primes.length == 1)? `solo el ${primes} en la posición n°${snitch} es primo... <br> Por ende, es el número primo más alto uwu`:`${primes} son números primos <br> y el más alto entre estos es el ${seeker} en la posición ${snitch} c:`;
+  let plural = (primes.length == 1)? `solo el ${primes} en la posición n°${snitch} es primo... <br> Por ende, es el número primo más alto uwu`:`${primes} son números primos <br> y el más alto entre estos ${primes.length} es el ${seeker} en la posición ${snitch} c:`;
 
   let noPrimes = (primes.length == 0)? `En este vector no hay ningún número primo :c mala suerte... <br> Intenta ingresando otra tanda de 10 números, humano`:`De este vector, ${plural}`;
 
@@ -7654,7 +7663,13 @@ function solutiona03(){
     card = new Audio();
     card.src = "music/arrows.mp3";
     card.play();
-    flash03 = snitch;
+
+    if(snitch!=-1){
+      flash03 = snitch;
+    }
+    else{
+      flash03 = 0;
+    };
 
     for (let i = 0; i < 10; i++) {
       if(i == snitch) {
@@ -7846,26 +7861,1223 @@ function array05(){
 }
 
 // 6. Leer dos números enteros y almacenar en un vector los 10 primeros números primos comprendidos entre el menor y el mayor. Luego mostrarlos en pantalla.
-function array06(){
 
-}
 
 // 7. Leer 10 números enteros, almacenarlos en un vector y determinar en qué posiciones se encuentra el número mayor.
-function array07(){
+var box07 = new get10Random("vector07");
+var buttona07 = document.getElementById("arrayb07");
+var inputArr07 = document.getElementById("arrayi07");
+var freedom07;
+var justice07;
+var love07;
+var flash07 = 0;
+var xd07 = 0;
+var cancelButton07 = 0;
+var filterOfZeros07 = [];
+var arrow07 = document.getElementsByClassName("arrow07");
+var imgOff07 = `<img class="arrowImg" src="./arrowOff.png" alt="Aquí había una flecha... Ya no está xd">`;
 
+
+  //DRAG AND DROP
+  var dnd07 = document.querySelectorAll('div#a07d > div');
+  [].forEach.call(dnd07,function(block){
+    block.addEventListener('dragend',solutiona07);
+  });
+
+//solución al problema
+function solutiona07(){
+  if (cancelButton07==1){}
+  else{
+    
+  function limitSolution(){
+    cancelButton07 = 0;
+  };
+  //Variables locales elementales
+  var imgOn   = '<img class="arrowImg" src="./arrowOn.png" alt="Aquí había una flecha... Ya no está xd">';
+  var img = `<img class="arrowImg" src="./arrow.png" alt="Aquí había una flecha... Ya no está xd">`;
+  //Un reinicio ligero al oprimir el vector
+  [].forEach.call(arrow07,function(arrows){
+    arrows.innerHTML = imgOff07; 
+  });
+  //EL CÓDIGO MÁGICO QUE PERMITE ACOPLAR FUNCIONALIDAD Y DRAG AND DROP
+  var arrVector07 = [];
+  for (let nums of box07.box){
+      if (nums.textContent == 0){
+        arrVector07.push(Number.parseInt(0));
+      }
+      else{
+        arrVector07.push(Number.parseInt(nums.textContent));
+      }
+  };
+  filterOfZeros07 = arrVector07.filter(x=>x!=0);
+  box07.aux = filterOfZeros07;
+
+  //ACÁ SOLUCIONAS TODO
+  //Variables para solucionar la pregunta concreta
+      //ÍNDICES del número más alto (identifica si se repite)
+  var seeker = Math.max(...filterOfZeros07);
+  var snitch = arrVector07.indexOf(seeker);
+  var basurero = [];
+
+  for (let i=0; i<arrVector07.length; i++){
+    if(seeker == arrVector07[i]){
+      basurero.push(i);
+    }
+  };
+
+  var parallel = (basurero.length>1)? `<br>y se halla repetido ${basurero.length} veces en las posiciones ${basurero} UwU`:`y se halla en la posición n°${snitch} c:`;
+  var answer = `De este vector, el número más alto es el ${seeker} ${parallel}`;
+
+  //"Animación" de las flechas
+  function animation(){
+    var card = new Audio();
+    card.src = "music/arrows.mp3";
+    card.play();
+
+    if(xd07 == 2){ 
+      if (flash07==-1){
+        arrow07[0].innerHTML = imgOff07;
+        xd07 = 0;
+        flash07=0;
+      }
+      else if (flash07==0){
+        arrow07[1].innerHTML = imgOff07;
+        arrow07[0].innerHTML = img;
+        flash07=-1;
+      }
+      else{
+        if (flash07<=8){
+          arrow07[(flash07+1)].innerHTML = imgOff07;
+        };
+        arrow07[flash07].innerHTML = img;
+        flash07--;
+      }               
+    }
+    else if(xd07 == 1){             //¿A LAS CUÁNTAS VUELTAS QUIERES VOLTEAR?
+      flash07 = 9;
+      arrow07[flash07].innerHTML = img;
+      xd07 = 2;
+      flash07--;
+    }
+    else{
+      if (flash07==10){                       //VUELTA 2
+        arrow07[(flash07-1)].innerHTML = imgOff07;
+        xd07++;
+        flash07 = 0;
+      }
+      else{                                 //VUELTA 1
+        if (flash07>=1){
+          arrow07[(flash07-1)].innerHTML = imgOff07;
+        };
+        arrow07[flash07].innerHTML = img;
+        flash07++;
+      }
+    };
+      getE("a07e").innerHTML = `...`
+  };  
+
+  //SOLUCIÓN LÓGICA ESQUEMÁTICA DEL PROBLEMA 
+  function solution(){
+    clearInterval(freedom07);
+    [].forEach.call(arrow07,function(arrows){
+      arrows.innerHTML = imgOff07; 
+    });
+
+    for (let i=0; i<basurero.length; i++){
+      let miau = basurero[i]; 
+      arrow07[miau].innerHTML = imgOn;
+    };
+
+    win = new Audio();
+    win.src = "music/win.mp3";
+    win.play();
+    card = new Audio();
+    card.src = "music/arrows.mp3";
+    card.play();
+
+    getE("a07e").innerHTML = `${answer}`;
+  }; 
+
+
+  //Diálogos al vaciar
+  if (filterOfZeros07.length == 10) {
+    cancelButton07 = 1;
+    freedom07 = setInterval(animation,250);
+    justice07 = setTimeout(solution, 2000);
+    love07 = setTimeout(limitSolution,3000);
+  }
+  else if (filterOfZeros07.length == 0){
+    flash07 = 0;
+    clearInterval(freedom07);
+    clearTimeout(justice07);
+    clearTimeout(love07);
+    getE("a07e").innerHTML = ``;
+    [].forEach.call(arrow07,function(arrows){
+      arrows.innerHTML = imgOff07; 
+    });
+  }
+  else{
+    getE("a07e").innerHTML = `${answer} <br> Te invito a llenar todo el vector, humano, y mira lo que pasa -guiño guiño-`;
+  };
+};
+};
+
+
+//FUNCIONES PARA EL INPUT
+inputArr07.addEventListener("keydown",arrayi07, false);
+var iOfBox07 = 0; 
+function arrayi07(e){
+    //DIÁLOGOS PARA EL BOTÓN
+    if (filterOfZeros07.length == 10 || filterOfZeros07.length == 0){
+      buttona07.innerHTML = `GENERAR 10 NÚMEROS ALEATORIOS`;
+    }
+    else{
+      if (filterOfZeros07.length == 9){
+        buttona07.innerHTML = `GENERAR 1 NÚMERO ALEATORIO`;
+      }
+      else{
+        buttona07.innerHTML = `GENERAR ${10-filterOfZeros07.length} NÚMEROS ALEATORIOS`;
+      }
+    };
+    //DIÁLOGOS PARA EL SPAN
+  var ngt = (inputArr07.value<0)? `-`:``;
+
+  if (isNaN(inputArr07.value)){
+    document.getElementById("a07").innerHTML = `¿A quién intentas trollear con esos valores imposibles, humano?`;
+  }else{
+ 
+  if (inputArr07.value == `` || inputArr07.value == '-' || inputArr07.value == '--' || inputArr07.value == '---' || inputArr07.value == '----'){
+    document.getElementById("a07").innerHTML = ``;
+  }
+  else{
+    if (inputArr07.value == 0){
+      if (filterOfZeros07.length > 0){
+        document.getElementById("a07").innerHTML = `¿Quieres reiniciar el vector, humano? ¡Tírame ese cero entonces! c:<`;
+      }
+      else{
+        document.getElementById("a07").innerHTML = `Oye, humano... Primero regístrame números con ENTER <br> antes de estar pensando en reiniciar el vector... ¿No? >:c`;
+      }
+    }
+    else{
+      document.getElementById("a07").innerHTML = `¡Cool, un ${ngt}${Math.abs(inputArr07.value)}! Regístralo oprimiendo ENTER c:`;
+    }
+  } 
+  };
+  //Ejecutar función cuando se oprima ENTER
+  if (e.keyCode === 13){ 
+    if (isNaN(inputArr07.value)){
+      inputArr07.value = ``;
+    }else{
+    if (inputArr07.value == `` || inputArr07.value == '-' || inputArr07.value == '--' || inputArr07.value == '---' || inputArr07.value == '----'){
+      inputArr07.value = ``;
+    }
+    else if (inputArr07.value == 0){
+      if(filterOfZeros07.length==0){
+        inputArr07.value = ``;
+      }
+      else{
+        let zero = new Audio();
+        zero.src = "music/hollow.mp3";
+        zero.play();
+        clearTimeout(justice07);
+        clearInterval(freedom07);
+        document.getElementById("a07b").innerHTML = ``;
+        document.getElementById("a07c").innerHTML = `Vector reiniciado con éxito.`;
+        setTimeout(fade,7000);
+        function fade(){
+          return document.getElementById("a07c").innerHTML = ``;
+        };
+        box07.aux = [];
+        filterOfZeros07.length = [];
+        box07.equalize();
+        solutiona07();
+        inputArr07.value = ``;
+        iOfBox07 = 0;
+
+        clearInterval(freedom07);
+        clearTimeout(justice07);
+        clearTimeout(love07);
+        getE("a07e").innerHTML = ``;
+        [].forEach.call(arrow07,function(arrows){
+          arrows.innerHTML = imgOff07; 
+        });
+      }
+    }
+    else{
+      if (filterOfZeros07.length == 10){
+        document.getElementById("a07c").innerHTML = `Puedes registrar el número 0 para reiniciar el vector uwu`;
+        box07.aux.shift();
+        box07.aux.push(Number(inputArr07.value));
+        box07.equalize();
+        solutiona07();
+        inputArr07.value = ``;
+      }
+      else{
+        let introduce = new Audio("./music/introduce.mp3");
+        introduce.play();
+        document.getElementById("a07c").innerHTML = `Puedes registrar el número 0 para reiniciar el vector uwu`;
+        for(iOfBox07 = 0; iOfBox07 < 10; iOfBox07++){
+          if(box07.box[iOfBox07].textContent == ``){
+            box07.box[iOfBox07].textContent = Number.parseInt(inputArr07.value);
+            iOfBox07 = 10;
+          };
+        };
+        solutiona07();
+        inputArr07.value = ``;
+      }
+    }
+  };
+}
+} 
+
+//FUNCIONES PARA EL BOTÓN
+function onMouseOverLight07(){
+  buttona07.style.border="3px solid #ffab22";
+  buttona07.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
+  buttona07.style.color="rgb(31, 11, 11)";
+};
+function onMouseOutLight07(){
+  buttona07.style.border='3px solid #f7b64e';
+  buttona07.style.color='#333333';
+  buttona07.style.background='linear-gradient(to bottom, #fff186 5%, #f7b64e 100%)';
+};
+
+function onMouseOverDark07(){
+  buttona07.style.border="3px solid #ffaa22";
+  buttona07.style.background="linear-gradient(to bottom, #ffe205 5%, #ffb71b 100%)";
+};
+function onMouseOutDark07(){
+  buttona07.style.border = '1px solid #ff9d00';
+  buttona07.style.color = 'rgb(31, 11, 11)';
+  buttona07.style.background = 'linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)';
+};
+
+function array07(){
+  //SOLUTION
+  box07.method(-999,10000);
+  document.getElementById("a07c").innerHTML = `Puedes registrar el número 0 para reiniciar el vector uwu`;
+  buttona07.innerHTML = `GENERAR 10 NÚMEROS ALEATORIOS`;
+  solutiona07();
+
+  //OH, STYLO
+  buttona07.onmouseover = function (){onMouseOverLight07()};
+  buttona07.onmouseout = function (){onMouseOutLight07()};
+  buttona07.onmousedown = function (){onMouseOutDark07()};
+  buttona07.onmouseup = function (){onMouseOverDark07()};
 }
 
 // 8. Leer 10 números enteros, almacenarlos en un vector y determinar en qué posiciones se encuentran los números terminados en 4.
-function array08(){
+var box08 = new get10Random("vector08");
+var buttona08 = document.getElementById("arrayb08");
+var inputArr08 = document.getElementById("arrayi08");
+var freedom08;
+var justice08;
+var love08;
+var flash08 = 0;
+var xd08 = 0;
+var cancelButton08 = 0;
+var filterOfZeros08 = [];
+var arrow08 = document.getElementsByClassName("arrow08");
+var imgOff08 = `<img class="arrowImg" src="./arrowOff.png" alt="Aquí había una flecha... Ya no está xd">`;
 
+
+  //DRAG AND DROP
+  var dnd08 = document.querySelectorAll('div#a08d > div');
+  [].forEach.call(dnd08,function(block){
+    block.addEventListener('dragend',solutiona08);
+  });
+
+//solución al problema
+function solutiona08(){
+  if (cancelButton08==1){}
+  else{
+    
+  function limitSolution(){
+    cancelButton08 = 0;
+  };
+  //Variables locales elementales
+  var imgOn   = '<img class="arrowImg" src="./arrowOn.png" alt="Aquí había una flecha... Ya no está xd">';
+  var img = `<img class="arrowImg" src="./arrow.png" alt="Aquí había una flecha... Ya no está xd">`;
+  //Un reinicio ligero al oprimir el vector
+  [].forEach.call(arrow08,function(arrows){
+    arrows.innerHTML = imgOff08; 
+  });
+  //EL CÓDIGO MÁGICO QUE PERMITE ACOPLAR FUNCIONALIDAD Y DRAG AND DROP
+  var arrVector08 = [];
+  for (let nums of box08.box){
+      if (nums.textContent == 0){
+        arrVector08.push(Number.parseInt(0));
+      }
+      else{
+        arrVector08.push(Number.parseInt(nums.textContent));
+      }
+  };
+  filterOfZeros08 = arrVector08.filter(x=>x!=0);
+  box08.aux = filterOfZeros08;
+
+  //ACÁ SOLUCIONAS TODO
+  //Variables para solucionar la pregunta concreta
+      //ÍNDICES de números terminados en 4
+  var seeker = filterOfZeros08.filter(x=>x%10==4||x%10==-4);
+  var snitch = [];
+
+  for (let j=0; j<seeker.length; j++){
+    for (let i=0; i<filterOfZeros08.length; i++){
+      if(filterOfZeros08[i]==seeker[j]){
+        snitch.push(i);
+      };
+    };
+  };
+
+  
+  var parallel = (snitch.length>1)? `<br>y se hallan en las posiciones ${snitch} UwU`:`y se halla en la posición n°${snitch} c:`;
+  var plural = (snitch.length>1)? `los números ${seeker} terminan en 4`:`el número ${seeker} termina en 4`;
+  var no4 = (seeker.length==0)? `Este vector no cuenta con números que terminen en 4 :c vaya suerte... <br> ¡Prueba con otra tanda de números, human@!`:`De este vector, ${plural} ${parallel}`;
+  var answer = no4;
+
+  //"Animación" de las flechas
+  function animation(){
+    var card = new Audio();
+    card.src = "music/arrows.mp3";
+    card.play();
+
+    if(xd08 == 2){ 
+      if (flash08==-1){
+        arrow08[0].innerHTML = imgOff08;
+        xd08 = 0;
+        flash08=0;
+      }
+      else if (flash08==0){
+        arrow08[1].innerHTML = imgOff08;
+        arrow08[0].innerHTML = img;
+        flash08=-1;
+      }
+      else{
+        if (flash08<=8){
+          arrow08[(flash08+1)].innerHTML = imgOff08;
+        };
+        arrow08[flash08].innerHTML = img;
+        flash08--;
+      }               
+    }
+    else if(xd08 == 1){             //¿A LAS CUÁNTAS VUELTAS QUIERES VOLTEAR?
+      flash08 = 9;
+      arrow08[flash08].innerHTML = img;
+      xd08 = 2;
+      flash08--;
+    }
+    else{
+      if (flash08==10){                       //VUELTA 2
+        arrow08[(flash08-1)].innerHTML = imgOff08;
+        xd08++;
+        flash08 = 0;
+      }
+      else{                                 //VUELTA 1
+        if (flash08>=1){
+          arrow08[(flash08-1)].innerHTML = imgOff08;
+        };
+        arrow08[flash08].innerHTML = img;
+        flash08++;
+      }
+    };
+      getE("a08e").innerHTML = `...`
+  };  
+
+  //SOLUCIÓN LÓGICA ESQUEMÁTICA DEL PROBLEMA 
+  function solution(){
+    clearInterval(freedom08);
+    [].forEach.call(arrow08,function(arrows){
+      arrows.innerHTML = imgOff08; 
+    });
+
+    for (let i=0; i<snitch.length; i++){
+      let miau = snitch[i]; 
+      arrow08[miau].innerHTML = imgOn;
+    };
+
+    win = new Audio();
+    win.src = "music/win.mp3";
+    win.play();
+    card = new Audio();
+    card.src = "music/arrows.mp3";
+    card.play();
+    
+    getE("a08e").innerHTML = `${answer}`;
+  }; 
+
+
+  //Diálogos al vaciar
+  if (filterOfZeros08.length == 10) {
+    cancelButton08 = 1;
+    freedom08 = setInterval(animation,250);
+    justice08 = setTimeout(solution, 2000);
+    love08 = setTimeout(limitSolution,3000);
+  }
+  else if (filterOfZeros08.length == 0){
+    flash08 = 0;
+    clearInterval(freedom08);
+    clearTimeout(justice08);
+    clearTimeout(love08);
+    getE("a08e").innerHTML = ``;
+    [].forEach.call(arrow08,function(arrows){
+      arrows.innerHTML = imgOff08; 
+    });
+  }
+  else{
+    getE("a08e").innerHTML = `${answer} <br> Te invito a llenar todo el vector, humano, y mira lo que pasa -guiño guiño-`;
+  };
+};
+};
+
+
+//FUNCIONES PARA EL INPUT
+inputArr08.addEventListener("keydown",arrayi08, false);
+var iOfBox08 = 0; 
+function arrayi08(e){
+    //DIÁLOGOS PARA EL BOTÓN
+    if (filterOfZeros08.length == 10 || filterOfZeros08.length == 0){
+      buttona08.innerHTML = `GENERAR 10 NÚMEROS ALEATORIOS`;
+    }
+    else{
+      if (filterOfZeros08.length == 9){
+        buttona08.innerHTML = `GENERAR 1 NÚMERO ALEATORIO`;
+      }
+      else{
+        buttona08.innerHTML = `GENERAR ${10-filterOfZeros08.length} NÚMEROS ALEATORIOS`;
+      }
+    };
+    //DIÁLOGOS PARA EL SPAN
+  var ngt = (inputArr08.value<0)? `-`:``;
+
+  if (isNaN(inputArr08.value)){
+    document.getElementById("a08").innerHTML = `¿A quién intentas trollear con esos valores imposibles, humano?`;
+  }else{
+ 
+  if (inputArr08.value == `` || inputArr08.value == '-' || inputArr08.value == '--' || inputArr08.value == '---' || inputArr08.value == '----'){
+    document.getElementById("a08").innerHTML = ``;
+  }
+  else{
+    if (inputArr08.value == 0){
+      if (filterOfZeros08.length > 0){
+        document.getElementById("a08").innerHTML = `¿Quieres reiniciar el vector, humano? ¡Tírame ese cero entonces! c:<`;
+      }
+      else{
+        document.getElementById("a08").innerHTML = `Oye, humano... Primero regístrame números con ENTER <br> antes de estar pensando en reiniciar el vector... ¿No? >:c`;
+      }
+    }
+    else{
+      document.getElementById("a08").innerHTML = `¡Cool, un ${ngt}${Math.abs(inputArr08.value)}! Regístralo oprimiendo ENTER c:`;
+    }
+  } 
+  };
+  //Ejecutar función cuando se oprima ENTER
+  if (e.keyCode === 13){ 
+    if (isNaN(inputArr08.value)){
+      inputArr08.value = ``;
+    }else{
+    if (inputArr08.value == `` || inputArr08.value == '-' || inputArr08.value == '--' || inputArr08.value == '---' || inputArr08.value == '----'){
+      inputArr08.value = ``;
+    }
+    else if (inputArr08.value == 0){
+      if(filterOfZeros08.length==0){
+        inputArr08.value = ``;
+      }
+      else{
+        let zero = new Audio();
+        zero.src = "music/hollow.mp3";
+        zero.play();
+        clearTimeout(justice08);
+        clearInterval(freedom08);
+        document.getElementById("a08b").innerHTML = ``;
+        document.getElementById("a08c").innerHTML = `Vector reiniciado con éxito.`;
+        setTimeout(fade,7000);
+        function fade(){
+          return document.getElementById("a08c").innerHTML = ``;
+        };
+        box08.aux = [];
+        filterOfZeros08.length = [];
+        box08.equalize();
+        solutiona08();
+        inputArr08.value = ``;
+        iOfBox08 = 0;
+
+        clearInterval(freedom08);
+        clearTimeout(justice08);
+        clearTimeout(love08);
+        getE("a08e").innerHTML = ``;
+        [].forEach.call(arrow08,function(arrows){
+          arrows.innerHTML = imgOff08; 
+        });
+      }
+    }
+    else{
+      if (filterOfZeros08.length == 10){
+        document.getElementById("a08c").innerHTML = `Puedes registrar el número 0 para reiniciar el vector uwu`;
+        box08.aux.shift();
+        box08.aux.push(Number(inputArr08.value));
+        box08.equalize();
+        solutiona08();
+        inputArr08.value = ``;
+      }
+      else{
+        let introduce = new Audio("./music/introduce.mp3");
+        introduce.play();
+        document.getElementById("a08c").innerHTML = `Puedes registrar el número 0 para reiniciar el vector uwu`;
+        for(iOfBox08 = 0; iOfBox08 < 10; iOfBox08++){
+          if(box08.box[iOfBox08].textContent == ``){
+            box08.box[iOfBox08].textContent = Number.parseInt(inputArr08.value);
+            iOfBox08 = 10;
+          };
+        };
+        solutiona08();
+        inputArr08.value = ``;
+      }
+    }
+  };
+}
+} 
+
+//FUNCIONES PARA EL BOTÓN
+function onMouseOverLight08(){
+  buttona08.style.border="3px solid #ffab22";
+  buttona08.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
+  buttona08.style.color="rgb(31, 11, 11)";
+};
+function onMouseOutLight08(){
+  buttona08.style.border='3px solid #f7b64e';
+  buttona08.style.color='#333333';
+  buttona08.style.background='linear-gradient(to bottom, #fff186 5%, #f7b64e 100%)';
+};
+
+function onMouseOverDark08(){
+  buttona08.style.border="3px solid #ffaa22";
+  buttona08.style.background="linear-gradient(to bottom, #ffe205 5%, #ffb71b 100%)";
+};
+function onMouseOutDark08(){
+  buttona08.style.border = '1px solid #ff9d00';
+  buttona08.style.color = 'rgb(31, 11, 11)';
+  buttona08.style.background = 'linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)';
+};
+
+function array08(){
+  //SOLUTION
+  box08.method(-999,10000);
+  document.getElementById("a08c").innerHTML = `Puedes registrar el número 0 para reiniciar el vector uwu`;
+  buttona08.innerHTML = `GENERAR 10 NÚMEROS ALEATORIOS`;
+  solutiona08();
+
+  //OH, STYLO
+  buttona08.onmouseover = function (){onMouseOverLight08()};
+  buttona08.onmouseout = function (){onMouseOutLight08()};
+  buttona08.onmousedown = function (){onMouseOutDark08()};
+  buttona08.onmouseup = function (){onMouseOverDark08()};
 }
 
 // 9. Leer 10 números enteros, almacenarlos en un vector y determinar cuántas veces está repetido el mayor.
-function array09(){
+var box09 = new get10Random("vector09");
+var buttona09 = document.getElementById("arrayb09");
+var inputArr09 = document.getElementById("arrayi09");
+var freedom09;
+var justice09;
+var love09;
+var flash09 = 0;
+var xd09 = 0;
+var cancelButton09 = 0;
+var filterOfZeros09 = [];
+var arrow09 = document.getElementsByClassName("arrow09");
+var imgOff09 = `<img class="arrowImg" src="./arrowOff.png" alt="Aquí había una flecha... Ya no está xd">`;
 
+
+  //DRAG AND DROP
+  var dnd09 = document.querySelectorAll('div#a09d > div');
+  [].forEach.call(dnd09,function(block){
+    block.addEventListener('dragend',solutiona09);
+  });
+
+//solución al problema
+function solutiona09(){
+  if (cancelButton09==1){}
+  else{
+    
+  function limitSolution(){
+    cancelButton09 = 0;
+  };
+  //Variables locales elementales
+  var imgOn   = '<img class="arrowImg" src="./arrowOn.png" alt="Aquí había una flecha... Ya no está xd">';
+  var img = `<img class="arrowImg" src="./arrow.png" alt="Aquí había una flecha... Ya no está xd">`;
+  //Un reinicio ligero al oprimir el vector
+  [].forEach.call(arrow09,function(arrows){
+    arrows.innerHTML = imgOff09; 
+  });
+  //EL CÓDIGO MÁGICO QUE PERMITE ACOPLAR FUNCIONALIDAD Y DRAG AND DROP
+  var arrVector09 = [];
+  for (let nums of box09.box){
+      if (nums.textContent == 0){
+        arrVector09.push(Number.parseInt(0));
+      }
+      else{
+        arrVector09.push(Number.parseInt(nums.textContent));
+      }
+  };
+  filterOfZeros09 = arrVector09.filter(x=>x!=0);
+  box09.aux = filterOfZeros09;
+
+  //ACÁ SOLUCIONAS TODO
+  //Variables para solucionar la pregunta concreta
+      //ÍNDICES del número más alto (identifica si se repite)
+  var seeker = Math.max(...filterOfZeros09);
+  var snitch = arrVector09.indexOf(seeker);
+  var basurero = [];
+
+  for (let i=0; i<arrVector09.length; i++){
+    if(seeker == arrVector09[i]){
+      basurero.push(i);
+    }
+  };
+
+  var parallel = (basurero.length>1)? `<br>y se halla repetido ${basurero.length} veces en las posiciones ${basurero} UwU`:`y se halla repetido ${basurero.length} única vez: en la posición n°${snitch} c:`;
+  var answer = `De este vector, el número más alto es el ${seeker} ${parallel}`;
+
+  //"Animación" de las flechas
+  function animation(){
+    var card = new Audio();
+    card.src = "music/arrows.mp3";
+    card.play();
+
+    if(xd09 == 2){ 
+      if (flash09==-1){
+        arrow09[0].innerHTML = imgOff09;
+        xd09 = 0;
+        flash09=0;
+      }
+      else if (flash09==0){
+        arrow09[1].innerHTML = imgOff09;
+        arrow09[0].innerHTML = img;
+        flash09=-1;
+      }
+      else{
+        if (flash09<=8){
+          arrow09[(flash09+1)].innerHTML = imgOff09;
+        };
+        arrow09[flash09].innerHTML = img;
+        flash09--;
+      }               
+    }
+    else if(xd09 == 1){             //¿A LAS CUÁNTAS VUELTAS QUIERES VOLTEAR?
+      flash09 = 9;
+      arrow09[flash09].innerHTML = img;
+      xd09 = 2;
+      flash09--;
+    }
+    else{
+      if (flash09==10){                       //VUELTA 2
+        arrow09[(flash09-1)].innerHTML = imgOff09;
+        xd09++;
+        flash09 = 0;
+      }
+      else{                                 //VUELTA 1
+        if (flash09>=1){
+          arrow09[(flash09-1)].innerHTML = imgOff09;
+        };
+        arrow09[flash09].innerHTML = img;
+        flash09++;
+      }
+    };
+      getE("a09e").innerHTML = `...`
+  };  
+
+  //SOLUCIÓN LÓGICA ESQUEMÁTICA DEL PROBLEMA 
+  function solution(){
+    clearInterval(freedom09);
+    [].forEach.call(arrow09,function(arrows){
+      arrows.innerHTML = imgOff09; 
+    });
+
+    for (let i=0; i<basurero.length; i++){
+      let miau = basurero[i]; 
+      arrow09[miau].innerHTML = imgOn;
+    };
+
+    win = new Audio();
+    win.src = "music/win.mp3";
+    win.play();
+    card = new Audio();
+    card.src = "music/arrows.mp3";
+    card.play();
+
+    getE("a09e").innerHTML = `${answer}`;
+  }; 
+
+
+  //Diálogos al vaciar
+  if (filterOfZeros09.length == 10) {
+    cancelButton09 = 1;
+    freedom09 = setInterval(animation,250);
+    justice09 = setTimeout(solution, 2000);
+    love09 = setTimeout(limitSolution,3000);
+  }
+  else if (filterOfZeros09.length == 0){
+    flash09 = 0;
+    clearInterval(freedom09);
+    clearTimeout(justice09);
+    clearTimeout(love09);
+    getE("a09e").innerHTML = ``;
+    [].forEach.call(arrow09,function(arrows){
+      arrows.innerHTML = imgOff09; 
+    });
+  }
+  else{
+    getE("a09e").innerHTML = `${answer} <br> Te invito a llenar todo el vector, humano, y mira lo que pasa -guiño guiño-`;
+  };
+};
+};
+
+
+//FUNCIONES PARA EL INPUT
+inputArr09.addEventListener("keydown",arrayi09, false);
+var iOfBox09 = 0; 
+function arrayi09(e){
+    //DIÁLOGOS PARA EL BOTÓN
+    if (filterOfZeros09.length == 10 || filterOfZeros09.length == 0){
+      buttona09.innerHTML = `GENERAR 10 NÚMEROS ALEATORIOS`;
+    }
+    else{
+      if (filterOfZeros09.length == 9){
+        buttona09.innerHTML = `GENERAR 1 NÚMERO ALEATORIO`;
+      }
+      else{
+        buttona09.innerHTML = `GENERAR ${10-filterOfZeros09.length} NÚMEROS ALEATORIOS`;
+      }
+    };
+    //DIÁLOGOS PARA EL SPAN
+  var ngt = (inputArr09.value<0)? `-`:``;
+
+  if (isNaN(inputArr09.value)){
+    document.getElementById("a09").innerHTML = `¿A quién intentas trollear con esos valores imposibles, humano?`;
+  }else{
+ 
+  if (inputArr09.value == `` || inputArr09.value == '-' || inputArr09.value == '--' || inputArr09.value == '---' || inputArr09.value == '----'){
+    document.getElementById("a09").innerHTML = ``;
+  }
+  else{
+    if (inputArr09.value == 0){
+      if (filterOfZeros09.length > 0){
+        document.getElementById("a09").innerHTML = `¿Quieres reiniciar el vector, humano? ¡Tírame ese cero entonces! c:<`;
+      }
+      else{
+        document.getElementById("a09").innerHTML = `Oye, humano... Primero regístrame números con ENTER <br> antes de estar pensando en reiniciar el vector... ¿No? >:c`;
+      }
+    }
+    else{
+      document.getElementById("a09").innerHTML = `¡Cool, un ${ngt}${Math.abs(inputArr09.value)}! Regístralo oprimiendo ENTER c:`;
+    }
+  } 
+  };
+  //Ejecutar función cuando se oprima ENTER
+  if (e.keyCode === 13){ 
+    if (isNaN(inputArr09.value)){
+      inputArr09.value = ``;
+    }else{
+    if (inputArr09.value == `` || inputArr09.value == '-' || inputArr09.value == '--' || inputArr09.value == '---' || inputArr09.value == '----'){
+      inputArr09.value = ``;
+    }
+    else if (inputArr09.value == 0){
+      if(filterOfZeros09.length==0){
+        inputArr09.value = ``;
+      }
+      else{
+        let zero = new Audio();
+        zero.src = "music/hollow.mp3";
+        zero.play();
+        clearTimeout(justice09);
+        clearInterval(freedom09);
+        document.getElementById("a09b").innerHTML = ``;
+        document.getElementById("a09c").innerHTML = `Vector reiniciado con éxito.`;
+        setTimeout(fade,7000);
+        function fade(){
+          return document.getElementById("a09c").innerHTML = ``;
+        };
+        box09.aux = [];
+        filterOfZeros09.length = [];
+        box09.equalize();
+        solutiona09();
+        inputArr09.value = ``;
+        iOfBox09 = 0;
+
+        clearInterval(freedom09);
+        clearTimeout(justice09);
+        clearTimeout(love09);
+        getE("a09e").innerHTML = ``;
+        [].forEach.call(arrow09,function(arrows){
+          arrows.innerHTML = imgOff09; 
+        });
+      }
+    }
+    else{
+      if (filterOfZeros09.length == 10){
+        document.getElementById("a09c").innerHTML = `Puedes registrar el número 0 para reiniciar el vector uwu`;
+        box09.aux.shift();
+        box09.aux.push(Number(inputArr09.value));
+        box09.equalize();
+        solutiona09();
+        inputArr09.value = ``;
+      }
+      else{
+        let introduce = new Audio("./music/introduce.mp3");
+        introduce.play();
+        document.getElementById("a09c").innerHTML = `Puedes registrar el número 0 para reiniciar el vector uwu`;
+        for(iOfBox09 = 0; iOfBox09 < 10; iOfBox09++){
+          if(box09.box[iOfBox09].textContent == ``){
+            box09.box[iOfBox09].textContent = Number.parseInt(inputArr09.value);
+            iOfBox09 = 10;
+          };
+        };
+        solutiona09();
+        inputArr09.value = ``;
+      }
+    }
+  };
+}
+} 
+
+//FUNCIONES PARA EL BOTÓN
+function onMouseOverLight09(){
+  buttona09.style.border="3px solid #ffab22";
+  buttona09.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
+  buttona09.style.color="rgb(31, 11, 11)";
+};
+function onMouseOutLight09(){
+  buttona09.style.border='3px solid #f7b64e';
+  buttona09.style.color='#333333';
+  buttona09.style.background='linear-gradient(to bottom, #fff186 5%, #f7b64e 100%)';
+};
+
+function onMouseOverDark09(){
+  buttona09.style.border="3px solid #ffaa22";
+  buttona09.style.background="linear-gradient(to bottom, #ffe205 5%, #ffb71b 100%)";
+};
+function onMouseOutDark09(){
+  buttona09.style.border = '1px solid #ff9d00';
+  buttona09.style.color = 'rgb(31, 11, 11)';
+  buttona09.style.background = 'linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)';
+};
+
+function array09(){
+  //SOLUTION
+  box09.method(-999,10000);
+  document.getElementById("a09c").innerHTML = `Puedes registrar el número 0 para reiniciar el vector uwu`;
+  buttona09.innerHTML = `GENERAR 10 NÚMEROS ALEATORIOS`;
+  solutiona09();
+
+  //OH, STYLO
+  buttona09.onmouseover = function (){onMouseOverLight09()};
+  buttona09.onmouseout = function (){onMouseOutLight09()};
+  buttona09.onmousedown = function (){onMouseOutDark09()};
+  buttona09.onmouseup = function (){onMouseOverDark09()};
 }
 
 // 10. Leer 10 números enteros, almacenarlos en un vector y determinar en qué posiciones se encuentran los números con mas de 3 dígitos.
-function array10(){
+var box10 = new get10Random("vector10");
+var buttona10 = document.getElementById("arrayb10");
+var inputArr10 = document.getElementById("arrayi10");
+var freedom10;
+var justice10;
+var love10;
+var flash10 = 0;
+var xd10 = 0;
+var cancelButton10 = 0;
+var filterOfZeros10 = [];
+var arrow10 = document.getElementsByClassName("arrow10");
+var imgOff10 = `<img class="arrowImg" src="./arrowOff.png" alt="Aquí había una flecha... Ya no está xd">`;
 
+
+  //DRAG AND DROP
+  var dnd10 = document.querySelectorAll('div#a10d > div');
+  [].forEach.call(dnd10,function(block){
+    block.addEventListener('dragend',solutiona10);
+  });
+
+//solución al problema
+function solutiona10(){
+  if (cancelButton10==1){}
+  else{
+    
+  function limitSolution(){
+    cancelButton10 = 0;
+  };
+  //Variables locales elementales
+  var imgOn   = '<img class="arrowImg" src="./arrowOn.png" alt="Aquí había una flecha... Ya no está xd">';
+  var img = `<img class="arrowImg" src="./arrow.png" alt="Aquí había una flecha... Ya no está xd">`;
+  //Un reinicio ligero al oprimir el vector
+  [].forEach.call(arrow10,function(arrows){
+    arrows.innerHTML = imgOff10; 
+  });
+  //EL CÓDIGO MÁGICO QUE PERMITE ACOPLAR FUNCIONALIDAD Y DRAG AND DROP
+  var arrVector10 = [];
+  for (let nums of box10.box){
+      if (nums.textContent == 0){
+        arrVector10.push(Number.parseInt(0));
+      }
+      else{
+        arrVector10.push(Number.parseInt(nums.textContent));
+      }
+  };
+  filterOfZeros10 = arrVector10.filter(x=>x!=0);
+  box10.aux = filterOfZeros10;
+
+  //ACÁ SOLUCIONAS TODO
+  //Variables para solucionar la pregunta concreta
+      //números con mas de 3 dígitos.
+  var seeker = filterOfZeros10.filter(x => x>=1000 || x<= -1000);
+  var snitch = [];
+  
+  for (let j=0; j<seeker.length; j++){
+    for (let i=0; i<arrVector10.length; i++){
+      if(seeker[j] == arrVector10[i]){
+        snitch.push(i);
+      };
+    }; 
+  };
+
+  let parallel = (snitch.length>1)? `En este vector, hay ${snitch.length} números de más de 3 dígitos: ${seeker} <br> y se hallan en las posiciones n°: ${snitch} UwU`:`En este vector, hay un solo número de más de 3 dígitos: el ${seeker} en la posición n°${snitch} c:`;
+  let ten = (snitch.length==10)? `¡¡¡HURRAA!!! Todo el vector está compuesto por números de más de 3 dígitos :DDDD awiwii`:`${parallel}`;  
+  let none = (snitch.length==0)? `En este vector, ninguno de sus números tiene más de 3 dígitos... Vaya suerte tienes, human@ :c <br> Por tu bien... Espero que nunca vayas a un casino, F. En fin... Intenta otros números c:`:`${ten}`;
+  var answer = `${none}`;
+
+  //"Animación" de las flechas
+  function animation(){
+    var card = new Audio();
+    card.src = "music/arrows.mp3";
+    card.play();
+
+    if(xd10 == 2){ 
+      if (flash10==-1){
+        arrow10[0].innerHTML = imgOff10;
+        xd10 = 0;
+        flash10=0;
+      }
+      else if (flash10==0){
+        arrow10[1].innerHTML = imgOff10;
+        arrow10[0].innerHTML = img;
+        flash10=-1;
+      }
+      else{
+        if (flash10<=8){
+          arrow10[(flash10+1)].innerHTML = imgOff10;
+        };
+        arrow10[flash10].innerHTML = img;
+        flash10--;
+      }               
+    }
+    else if(xd10 == 1){             //¿A LAS CUÁNTAS VUELTAS QUIERES VOLTEAR?
+      flash10 = 9;
+      arrow10[flash10].innerHTML = img;
+      xd10 = 2;
+      flash10--;
+    }
+    else{
+      if (flash10==10){                       //VUELTA 2
+        arrow10[(flash10-1)].innerHTML = imgOff10;
+        xd10++;
+        flash10 = 0;
+      }
+      else{                                 //VUELTA 1
+        if (flash10>=1){
+          arrow10[(flash10-1)].innerHTML = imgOff10;
+        };
+        arrow10[flash10].innerHTML = img;
+        flash10++;
+      }
+    };
+      getE("a10e").innerHTML = `...`
+  };  
+
+  //SOLUCIÓN LÓGICA ESQUEMÁTICA DEL PROBLEMA 
+  function solution(){
+    clearInterval(freedom10);
+    [].forEach.call(arrow10,function(arrows){
+      arrows.innerHTML = imgOff10; 
+    });
+
+    for (let i=0; i<snitch.length; i++){
+      let miau = snitch[i]; 
+      arrow10[miau].innerHTML = imgOn;
+    };
+
+    win = new Audio();
+    win.src = "music/win.mp3";
+    win.play();
+    card = new Audio();
+    card.src = "music/arrows.mp3";
+    card.play();
+
+    getE("a10e").innerHTML = `${answer}`;
+  }; 
+
+
+  //Diálogos al vaciar
+  if (filterOfZeros10.length == 10) {
+    cancelButton10 = 1;
+    freedom10 = setInterval(animation,250);
+    justice10 = setTimeout(solution, 2000);
+    love10 = setTimeout(limitSolution,3000);
+  }
+  else if (filterOfZeros10.length == 0){
+    flash10 = 0;
+    clearInterval(freedom10);
+    clearTimeout(justice10);
+    clearTimeout(love10);
+    getE("a10e").innerHTML = ``;
+    [].forEach.call(arrow10,function(arrows){
+      arrows.innerHTML = imgOff10; 
+    });
+  }
+  else{
+    getE("a10e").innerHTML = `${answer} <br> Te invito a llenar todo el vector, humano, y mira lo que pasa -guiño guiño-`;
+  };
+};
+};
+
+
+//FUNCIONES PARA EL INPUT
+inputArr10.addEventListener("keydown",arrayi10, false);
+var iOfBox10 = 0; 
+function arrayi10(e){
+    //DIÁLOGOS PARA EL BOTÓN
+    if (filterOfZeros10.length == 10 || filterOfZeros10.length == 0){
+      buttona10.innerHTML = `GENERAR 10 NÚMEROS ALEATORIOS`;
+    }
+    else{
+      if (filterOfZeros10.length == 9){
+        buttona10.innerHTML = `GENERAR 1 NÚMERO ALEATORIO`;
+      }
+      else{
+        buttona10.innerHTML = `GENERAR ${10-filterOfZeros10.length} NÚMEROS ALEATORIOS`;
+      }
+    };
+    //DIÁLOGOS PARA EL SPAN
+  var ngt = (inputArr10.value<0)? `-`:``;
+
+  if (isNaN(inputArr10.value)){
+    document.getElementById("a10").innerHTML = `¿A quién intentas trollear con esos valores imposibles, humano?`;
+  }else{
+ 
+  if (inputArr10.value == `` || inputArr10.value == '-' || inputArr10.value == '--' || inputArr10.value == '---' || inputArr10.value == '----'){
+    document.getElementById("a10").innerHTML = ``;
+  }
+  else{
+    if (inputArr10.value == 0){
+      if (filterOfZeros10.length > 0){
+        document.getElementById("a10").innerHTML = `¿Quieres reiniciar el vector, humano? ¡Tírame ese cero entonces! c:<`;
+      }
+      else{
+        document.getElementById("a10").innerHTML = `Oye, humano... Primero regístrame números con ENTER <br> antes de estar pensando en reiniciar el vector... ¿No? >:c`;
+      }
+    }
+    else{
+      document.getElementById("a10").innerHTML = `¡Cool, un ${ngt}${Math.abs(inputArr10.value)}! Regístralo oprimiendo ENTER c:`;
+    }
+  } 
+  };
+  //Ejecutar función cuando se oprima ENTER
+  if (e.keyCode === 13){ 
+    if (isNaN(inputArr10.value)){
+      inputArr10.value = ``;
+    }else{
+    if (inputArr10.value == `` || inputArr10.value == '-' || inputArr10.value == '--' || inputArr10.value == '---' || inputArr10.value == '----'){
+      inputArr10.value = ``;
+    }
+    else if (inputArr10.value == 0){
+      if(filterOfZeros10.length==0){
+        inputArr10.value = ``;
+      }
+      else{
+        let zero = new Audio();
+        zero.src = "music/hollow.mp3";
+        zero.play();
+        clearTimeout(justice10);
+        clearInterval(freedom10);
+        document.getElementById("a10b").innerHTML = ``;
+        document.getElementById("a10c").innerHTML = `Vector reiniciado con éxito.`;
+        setTimeout(fade,7000);
+        function fade(){
+          return document.getElementById("a10c").innerHTML = ``;
+        };
+        box10.aux = [];
+        filterOfZeros10.length = [];
+        box10.equalize();
+        solutiona10();
+        inputArr10.value = ``;
+        iOfBox10 = 0;
+
+        clearInterval(freedom10);
+        clearTimeout(justice10);
+        clearTimeout(love10);
+        getE("a10e").innerHTML = ``;
+        [].forEach.call(arrow10,function(arrows){
+          arrows.innerHTML = imgOff10; 
+        });
+      }
+    }
+    else{
+      if (filterOfZeros10.length == 10){
+        document.getElementById("a10c").innerHTML = `Puedes registrar el número 0 para reiniciar el vector uwu`;
+        box10.aux.shift();
+        box10.aux.push(Number(inputArr10.value));
+        box10.equalize();
+        solutiona10();
+        inputArr10.value = ``;
+      }
+      else{
+        let introduce = new Audio("./music/introduce.mp3");
+        introduce.play();
+        document.getElementById("a10c").innerHTML = `Puedes registrar el número 0 para reiniciar el vector uwu`;
+        for(iOfBox10 = 0; iOfBox10 < 10; iOfBox10++){
+          if(box10.box[iOfBox10].textContent == ``){
+            box10.box[iOfBox10].textContent = Number.parseInt(inputArr10.value);
+            iOfBox10 = 10;
+          };
+        };
+        solutiona10();
+        inputArr10.value = ``;
+      }
+    }
+  };
+}
+} 
+
+//FUNCIONES PARA EL BOTÓN
+function onMouseOverLight10(){
+  buttona10.style.border="3px solid #ffab22";
+  buttona10.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
+  buttona10.style.color="rgb(31, 11, 11)";
+};
+function onMouseOutLight10(){
+  buttona10.style.border='3px solid #f7b64e';
+  buttona10.style.color='#333333';
+  buttona10.style.background='linear-gradient(to bottom, #fff186 5%, #f7b64e 100%)';
+};
+
+function onMouseOverDark10(){
+  buttona10.style.border="3px solid #ffaa22";
+  buttona10.style.background="linear-gradient(to bottom, #ffe205 5%, #ffb71b 100%)";
+};
+function onMouseOutDark10(){
+  buttona10.style.border = '1px solid #ff9d00';
+  buttona10.style.color = 'rgb(31, 11, 11)';
+  buttona10.style.background = 'linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)';
+};
+
+function array10(){
+  //SOLUTION
+  box10.method(-999,10000);
+  document.getElementById("a10c").innerHTML = `Puedes registrar el número 0 para reiniciar el vector uwu`;
+  buttona10.innerHTML = `GENERAR 10 NÚMEROS ALEATORIOS`;
+  solutiona10();
+
+  //OH, STYLO
+  buttona10.onmouseover = function (){onMouseOverLight10()};
+  buttona10.onmouseout = function (){onMouseOutLight10()};
+  buttona10.onmousedown = function (){onMouseOutDark10()};
+  buttona10.onmouseup = function (){onMouseOverDark10()};
 }
