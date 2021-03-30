@@ -1503,6 +1503,7 @@ d = 0
 
 
 //Función para que sólo entren números en el input, carácteres diferentes arrojarán error
+var alrt = 0;
 function onlyNum(evt)
 {
     if(window.event){
@@ -1511,37 +1512,129 @@ function onlyNum(evt)
     else{
         keynum = evt.which;
     } 
-    if((keynum > 47 /*0*/ && keynum < 58 /*9*/) || keynum == 8 /* tecla borrar*/ || keynum == 13 /*enter*/  || keynum == 45 /*signo menos*/)
+    if((keynum > 47 /*0*/ && keynum < 58 /*9*/) || keynum == 8 /* tecla borrar*/ || keynum == 13 /*enter*/  )
     {
         return true;
     }else{
-        alert("Ingresar sólo números enteros");
-        return false;
-    }
-}
+      if(keynum!=45){
+        underAlrt = setTimeout(()=>{alrt=0},300000)
+        switch (alrt){
+          case 0:
+            alert("Ingresar sólo números enteros");
+            alrt++;
+            return false;
+            break;
 
-//Un pequeño código para omitir el signo "-" como dígito limitador del maxlength en inputs
-const allInputs = document.getElementsByTagName("input");
-[].forEach.call(allInputs, function(input){
-  let ngtv = 0;
-  let pstv = 1;
-  input.addEventListener('input', function(){
-    if (this.value<0){
-      if(ngtv == 0){
-        ngtv == 1;
-        pstv == 0;
-        this.maxLength++;
+          case 1:
+            alert("Oye... ¿Qué no lees? ¡Ingresar sólo números enteros!");
+            alrt++;
+            return false;
+            break;
+          
+          case 2:
+            alert("Okay, comienzo a perder la paciencia...INGRESAR SÓLO NÚMEROS ENTEROS");
+            alrt++;
+            return false;
+            break;
+          
+          case 3:
+            alert("¡¡¡INGRESAR SÓLO NÚMEROS ENTEROS!!! AAAAAA");
+            alrt++;
+            return false;
+            break;
+          
+          case 4:
+            alert("¡¡¡INGRESAR SÓLO NÚMEROS¡¡¡INGRESAR SÓLO NÚMEROS ¡¡¡INGRESAR SÓLO NÚMEROS ¡¡¡INGRESAR SÓLO NÚMEROS AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+            alrt++;
+            return false;
+            break;
+
+          case 5:
+            alert("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+            alrt++;
+            return false;
+            break;
+
+          case 6:
+            alert("$!#%/dfndndsofjPJSFDGOSDFG8J9JMLoiwjnsdf/(/!%$/(=)?¡))/!&&###HODSFH91!)&%nNSDF0!)&$#%nf0234708n!)(#$)fn#f=/%#1%#%oijfu$U4324T0J934'U9#MANCO09%#$=/()&¡?¡=))/SD*//-#$%@@@%$%%$°)/SDF");
+            alrt++;
+            return false;
+            break;
+
+          case 7:
+            alert("Reiniciando...");
+            alrt++;
+            return false;
+            break;
+          
+          case 8:
+            alert("Ajustando nivel de toleranciaConLaEstupidez: 9999");
+            alrt++;
+            return false;
+            break;
+
+          case 9:
+            alert("...");
+            alrt++;
+            return false;
+            break;
+
+          default:
+            alert("Por favor, ingresar sólo números enteros c:    Gracias.");
+            clearTimeout(underAlrt);
+            return false;
+            break;
+        };
       }
       else{
-        if(pstv == 0){
-          pstv == 1;
-          ngtv == 0;
-          this.maxLength--;
-        }
-      }
+      return false;
+      };
+    };
+};
+
+//Un pequeño código para alternar de positivo a negativo con (-) y optimizar el atributo maxLength
+const allInputs = document.getElementsByTagName("input");
+var nv = 0;
+var pstv = 1;
+var miau = 0;
+
+[].forEach.call(allInputs, function(input){
+  input.addEventListener('keydown',inputTest,false);  
+  input.addEventListener('input', function(){
+    console.log(this.value);
+    if (this.value<0){
+      if(nv == 0){
+        nv = 1;
+        pstv = 0;
+        this.maxLength++;
+      };
+    }
+    else{
+      if(pstv == 0){
+        pstv = 1;
+        nv = 0;
+        this.maxLength--;
+      };
     };
   });
+
 });
+
+function inputTest(e){
+  if (e.keyCode === 109 || e.keyCode === 189){
+    if (this.value != ``){
+      this.value = -this.value;
+    }
+    else{
+      this.value = '-';
+    };
+  };
+
+  if(isNaN(this.value)){
+    this.value = '-'
+  };
+};
+
 
  // 1. Leer un número entero y determinar si es un número terminado en 4.
  function result(){
