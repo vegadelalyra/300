@@ -766,18 +766,19 @@ document.oncontextmenu = () => {return false};
 //end.
 
 //To maintain fixed the audio player while dragging sliders
+const aPI = document.querySelectorAll(".aPi");
 seekSlider.addEventListener('mouseover',()=>{
-    draggableDiv.style.width = '4300px';
+  draggableDiv.style.width = '4300px';
 });
 seekSlider.addEventListener('mouseout',()=>{
-    draggableDiv.style.width = '430px';
+  draggableDiv.style.width = '430px';
 });
 
 volumeSlider.addEventListener('mouseover',()=>{
-    draggableDiv.style.width = '4300px';
+  draggableDiv.style.width = '4300px';
 });
 volumeSlider.addEventListener('mouseout',()=>{
-    draggableDiv.style.width = '430px';
+  draggableDiv.style.width = '430px';
 });
 //end.
 
@@ -7027,7 +7028,7 @@ var offArrows = document.querySelectorAll("div.arrow > div");
 });
 
 
-//OBJETO PARA GENERAR UN ARRAY Y 10 NÚMEROS ALEATORIOS DESDE -999 HASTA 999
+//OBJETO PARA GENERAR UN ARRAY Y 10 NÚMEROS ALEATORIOS DESDE -9999 HASTA 9999
 class get10Random {
   constructor(vectorClass) {
     this.nums = 0;
@@ -12586,7 +12587,7 @@ function onMouseOutDark21(){
 
 function array21(){
   //SOLUTION
-  box21.method(-999,10000);
+  box21.method(-9999,10000);
   document.getElementById("a21c").innerHTML = `Puedes registrar el número 0 para reiniciar el vector uwu`;
   buttona21.innerHTML = `GENERAR 10 NÚMEROS ALEATORIOS`;
   solutiona21();
@@ -13236,7 +13237,7 @@ function onMouseOutDark23(){
 
 function array23(){
   //SOLUTION
-  box23.method(-999,10000);
+  box23.method(-9999,10000);
   document.getElementById("a23c").innerHTML = `Puedes registrar el número 0 para reiniciar el vector uwu`;
   buttona23.innerHTML = `GENERAR 10 NÚMEROS ALEATORIOS`;
   solutiona23();
@@ -13573,7 +13574,7 @@ function onMouseOutDark24(){
 
 function array24(){
   //SOLUTION
-  box24.method(-999,10000);
+  box24.method(-9999,10000);
   document.getElementById("a24c").innerHTML = `Puedes registrar el número 0 para reiniciar el vector uwu`;
   buttona24.innerHTML = `GENERAR 10 NÚMEROS ALEATORIOS`;
   solutiona24();
@@ -13912,6 +13913,220 @@ function array25(){
 // 26. Leer 10 números enteros, almacenarlos en un vector y calcularle el factorial a cada uno de los números leídos almacenándolos en otro vector.
 // 27. Leer 10 números enteros, almacenarlos en un vector y determinar a cuánto es igual el promedio entero de los factoriales de cada uno de los números leídos.
 // 28. Leer 10 números enteros, almacenarlos en un vector y mostrar en pantalla todos los enteros comprendidos entre 1 y cada uno de los números almacenados en el vector.
+var box28 = new get10Random("vector28");
+var buttona28 = document.getElementById("arrayb28");
+var inputArr28 = document.getElementById("arrayi28");
+var freedom28;
+var justice28;
+var love28;
+var xd28 = 0;
+var filterOfZeros28 = [];
+
+
+  //DRAG AND DROP
+  var dnd28 = document.querySelectorAll('div#a28d > div');
+  [].forEach.call(dnd28,function(block){
+    block.addEventListener('dragend',solutiona28);
+  });
+
+//solución al problema
+function solutiona28(){
+  //EL CÓDIGO MÁGICO QUE PERMITE ACOPLAR FUNCIONALIDAD Y DRAG AND DROP
+  var arrVector28 = [];
+  for (let nums of box28.box){
+      if (nums.textContent == 0){
+        arrVector28.push(Number.parseInt(0));
+      }
+      else{
+        arrVector28.push(Number.parseInt(nums.textContent));
+      }
+  };
+  filterOfZeros28 = arrVector28.filter(x=>x!=0);
+  box28.aux = filterOfZeros28;
+
+  //ACÁ SOLUCIONAS TODO
+  //Variables para solucionar la pregunta concreta
+      //Todos los enteros entre 1 y el número
+  var seeker = ``;
+  for (let j = 0; j < arrVector28.length; j++){
+    let zero = (arrVector28[j]==0)? 0:arrVector28[j];
+    seeker += `<br> POSICIÓN ${j}, NÚMERO ${zero}<br>`;
+    if (arrVector28[j] <= 0){
+      for (let k = arrVector28[j]; k <= 1; k++){
+        seeker += `${k} `;
+      };
+    }
+    else{
+      for (let i = 1; i <= arrVector28[j]; i++){
+        seeker += `${i} `;
+      };
+    };
+    seeker += `<br>`;
+  };
+
+
+  var answer = `(Aquí discúlpame, human@, limité los números a un dígito, <br> porque si no... Me quedaba esto una mazamorra xd) <br> ${seeker}`;
+
+
+  //SOLUCIÓN LÓGICA ESQUEMÁTICA DEL PROBLEMA 
+  function solution(){
+    win = new Audio();
+    win.src = "music/win.mp3";
+    win.play();
+    card = new Audio();
+    card.src = "music/arrows.mp3";
+    card.play();
+
+    getE("a28e").innerHTML = `${answer}`;
+  }; 
+
+
+  //Diálogos al vaciar
+  if (filterOfZeros28.length == 10) {
+    solution();
+  }
+  else if (filterOfZeros28.length == 0){
+    getE("a28e").innerHTML = ``;
+
+  }
+  else{
+    getE("a28e").innerHTML = `${answer} <br> uwu`;
+  };
+};
+
+//FUNCIONES PARA EL INPUT
+inputArr28.addEventListener("keydown",arrayi28, false);
+var iOfBox28 = 0; 
+function arrayi28(e){
+    //DIÁLOGOS PARA EL BOTÓN
+    if (filterOfZeros28.length == 10 || filterOfZeros28.length == 0){
+      buttona28.innerHTML = `GENERAR 10 NÚMEROS ALEATORIOS`;
+    }
+    else{
+      if (filterOfZeros28.length == 9){
+        buttona28.innerHTML = `GENERAR 1 NÚMERO ALEATORIO`;
+      }
+      else{
+        buttona28.innerHTML = `GENERAR ${10-filterOfZeros28.length} NÚMEROS ALEATORIOS`;
+      }
+    };
+    //DIÁLOGOS PARA EL SPAN
+  var ngt = (inputArr28.value<0)? `-`:``;
+
+  if (isNaN(inputArr28.value)){
+    document.getElementById("a28").innerHTML = `¿A quién intentas trollear con esos valores imposibles, humano?`;
+  }else{
+ 
+  if (inputArr28.value == `` || inputArr28.value == '-' || inputArr28.value == '--' || inputArr28.value == '---' || inputArr28.value == '----'){
+    document.getElementById("a28").innerHTML = ``;
+  }
+  else{
+    if (inputArr28.value == 0){
+      if (filterOfZeros28.length > 0){
+        document.getElementById("a28").innerHTML = `¿Quieres reiniciar el vector, humano? ¡Tírame ese cero entonces! c:<`;
+      }
+      else{
+        document.getElementById("a28").innerHTML = `Oye, humano... Primero regístrame números con ENTER <br> antes de estar pensando en reiniciar el vector... ¿No? >:c`;
+      }
+    }
+    else{
+      document.getElementById("a28").innerHTML = `¡Cool, un ${ngt}${Math.abs(inputArr28.value)}! Regístralo oprimiendo ENTER c:`;
+    }
+  } 
+  };
+  //Ejecutar función cuando se oprima ENTER
+  if (e.keyCode === 13){ 
+    if (isNaN(inputArr28.value)){
+      inputArr28.value = ``;
+    }else{
+    if (inputArr28.value == `` || inputArr28.value == '-' || inputArr28.value == '--' || inputArr28.value == '---' || inputArr28.value == '----'){
+      inputArr28.value = ``;
+    }
+    else if (inputArr28.value == 0){
+      if(filterOfZeros28.length==0){
+        inputArr28.value = ``;
+      }
+      else{
+        let zero = new Audio();
+        zero.src = "music/hollow.mp3";
+        zero.play();
+        document.getElementById("a28b").innerHTML = ``;
+        document.getElementById("a28c").innerHTML = `Vector reiniciado con éxito.`;
+        setTimeout(fade,7000);
+        function fade(){
+          return document.getElementById("a28c").innerHTML = ``;
+        };
+        box28.aux = [];
+        filterOfZeros28.length = [];
+        box28.equalize();
+        solutiona28();
+        inputArr28.value = ``;
+        iOfBox28 = 0;
+      }
+    }
+    else{
+      if (filterOfZeros28.length == 10){
+        document.getElementById("a28c").innerHTML = `Puedes registrar el número 0 para reiniciar el vector uwu`;
+        box28.aux.shift();
+        box28.aux.push(Number(inputArr28.value));
+        box28.equalize();
+        solutiona28();
+        inputArr28.value = ``;
+      }
+      else{
+        let introduce = new Audio("./music/introduce.mp3");
+        introduce.play();
+        document.getElementById("a28c").innerHTML = `Puedes registrar el número 0 para reiniciar el vector uwu`;
+        for(iOfBox28 = 0; iOfBox28 < 10; iOfBox28++){
+          if(box28.box[iOfBox28].textContent == ``){
+            box28.box[iOfBox28].textContent = Number.parseInt(inputArr28.value);
+            iOfBox28 = 10;
+          };
+        };
+        solutiona28();
+        inputArr28.value = ``;
+      }
+    }
+  };
+}
+} 
+
+//FUNCIONES PARA EL BOTÓN
+function onMouseOverLight28(){
+  buttona28.style.border="3px solid #ffab22";
+  buttona28.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
+  buttona28.style.color="rgb(31, 11, 11)";
+};
+function onMouseOutLight28(){
+  buttona28.style.border='3px solid #f7b64e';
+  buttona28.style.color='#333333';
+  buttona28.style.background='linear-gradient(to bottom, #fff186 5%, #f7b64e 100%)';
+};
+
+function onMouseOverDark28(){
+  buttona28.style.border="3px solid #ffaa22";
+  buttona28.style.background="linear-gradient(to bottom, #ffe205 5%, #ffb71b 100%)";
+};
+function onMouseOutDark28(){
+  buttona28.style.border = '1px solid #ff9d00';
+  buttona28.style.color = 'rgb(31, 11, 11)';
+  buttona28.style.background = 'linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)';
+};
+
+function array28(){
+  //SOLUTION
+  box28.method(-9,10);
+  document.getElementById("a28c").innerHTML = `Puedes registrar el número 0 para reiniciar el vector uwu`;
+  buttona28.innerHTML = `GENERAR 10 NÚMEROS ALEATORIOS`;
+  solutiona28();
+
+  //OH, STYLO
+  buttona28.onmouseover = function (){onMouseOverLight28()};
+  buttona28.onmouseout = function (){onMouseOutLight28()};
+  buttona28.onmousedown = function (){onMouseOutDark28()};
+  buttona28.onmouseup = function (){onMouseOverDark28()};
+}
+
 // 29. Leer 10 números enteros, almacenarlos en un vector y mostrar en pantalla todos los enteros comprendidos entre 1 y cada uno de los dígitos de cada uno de los números almacenados en el vector.
 // 30. Leer 10 números enteros, almacenarlos en un vector. Luego leer un entero y determinar si este último entero se encuentra entre los 10 valores almacenados en el vector.
 // 31. Leer 10 números enteros, almacenarlos en un vector. Luego leer un entero y determinar cuantos divisores exactos tiene este último número entre los valores almacenados en el vector.
