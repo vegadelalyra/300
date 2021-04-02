@@ -486,6 +486,9 @@ input:valid:not(.aPi,.falseButton){
     border-right: none;
 }
 /*botones vivos*/
+.botonesSeccionArreglos{
+    width:368px;
+}
 button{
     outline: none;
 	box-shadow:inset 0px 0px 10px -50px #fffefa;
@@ -690,6 +693,48 @@ button:focus:not(.aPb){
     user-select: none;
     -webkit-user-drag: none;
 }
+.arraynferno04{
+    width:fit-content;
+    display: flex;
+    justify-content:center;
+}
+.detArr summary {
+    position:relative;
+    display:flex;
+    width:fit-content;
+}
+#arr666 {
+    display:flex;
+    justify-content: space-evenly;
+    align-items: flex-end;
+}
+    #arr6l {
+        order:0;
+    }
+    #arrSpan06l {
+        order:1;
+    }
+    #arrSpan06r {
+        order:2;
+    }
+    #arr6r {
+        order:3;
+    }
+        #arr666 button {
+            width:260px;
+        }
+        #arr666 input {
+            width:237px;
+    }
+    #arrSpan06l,
+    #arrSpan06r{
+        font-size:4em;
+        user-select:none;
+        weight:bold;
+    }
+        #arr06intro{
+            color:black;
+        }
 /*FIN DE DISEÑO DE VECTORES*/
 
 

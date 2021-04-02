@@ -1938,7 +1938,7 @@
             <span id="a01c"></span><br>
             <input class="falseButton"  type="text" id="arrayi01" placeholder='INGRESAR NÚMEROS' title="" maxlength="4" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return arrayi01();"  required><br>
             <div class="randBut">    
-                <button onclick="array01();" id="arrayb01"> GENERAR 10 NÚMEROS ALEATORIOS </button>
+                <button class="botonesSeccionArreglos" onclick="array01();" id="arrayb01"> GENERAR 10 NÚMEROS ALEATORIOS </button>
             </div>
             <br>
             <span id="a01"></span><br>
@@ -1973,7 +1973,7 @@
             <span id="a02c"></span><br>
             <input class="falseButton"  type="text" id="arrayi02" placeholder='INGRESAR NÚMEROS' title="" maxlength="4" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return arrayi02();"  required><br>
             <div class="randBut">    
-                <button onclick="array02();" id="arrayb02"> GENERAR 10 NÚMEROS ALEATORIOS </button>
+                <button class="botonesSeccionArreglos" onclick="array02();" id="arrayb02"> GENERAR 10 NÚMEROS ALEATORIOS </button>
             </div>
             <br>
             <span id="a02"></span><br>
@@ -2008,7 +2008,7 @@
             <span id="a03c"></span><br>
             <input class="falseButton"  type="text" id="arrayi03" placeholder='INGRESAR NÚMEROS' title="" maxlength="4" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return arrayi03();"  required><br>
             <div class="randBut">    
-                <button onclick="array03();" id="arrayb03"> GENERAR 10 NÚMEROS ALEATORIOS </button>
+                <button class="botonesSeccionArreglos" onclick="array03();" id="arrayb03"> GENERAR 10 NÚMEROS ALEATORIOS </button>
             </div>
             <br>
             <span id="a03"></span><br>
@@ -2039,19 +2039,90 @@
             </div><br><br>
             <span id="a03e"></span><br>
             <br><br><br><br> 
-        4. Cargar un vector de 10 posiciones con los 10 primeros elementos de la serie de Fibonacci y mostrarlo en pantalla.<br><br>
-        
-        5. Almacenar en un vector de 10 posiciones los 10 números primos comprendidos entre 100 y 300. Luego mostrarlos en pantalla.<br><br>
-        
-        6. Leer dos números enteros y almacenar en un vector los 10 primeros números primos comprendidos entre el menor y el mayor. Luego mostrarlos en pantalla.<br><br>
-            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="array06" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="3" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return array06();"  required><br>
-            <span id="a06"></span>
-            <br><br>  
+        4. Cargar un vector de 10 posiciones con los 10 primeros elementos de la serie de Fibonacci y mostrarlo en pantalla.<br><br><br>
+            <details id="detailsArr04" class="detArr">
+                <summary> 
+                    <div class="randBut" class="arraynferno">    
+                        <button id="arrayb04" onclick="arrayy04()"> LET'S GOOO >:C </button>
+                    </div>
+                </summary>
+                <br><br>
+                <div id="a04d" class="vector">
+                    <div class="vector04" data-id="0" draggable="true">1</div>
+                    <div class="vector04" data-id="1" draggable="true">1</div>
+                    <div class="vector04" data-id="2" draggable="true">2</div>
+                    <div class="vector04" data-id="3" draggable="true">3</div>
+                    <div class="vector04" data-id="4" draggable="true">5</div>
+                    <div class="vector04" data-id="5" draggable="true">8</div>
+                    <div class="vector04" data-id="6" draggable="true">13</div>
+                    <div class="vector04" data-id="7" draggable="true">21</div>
+                    <div class="vector04" data-id="8" draggable="true">34</div>
+                    <div class="vector04" data-id="9" draggable="true">55</div>
+                </div>
+            </details>
+            <br><br> 
+        5. Almacenar en un vector de 10 posiciones los 10 números primos comprendidos entre 100 y 300. Luego mostrarlos en pantalla.<br><br><br>
+            <details id="detailsArr05" class="detArr">
+                <summary> 
+                    <div class="randBut" class="arraynferno">    
+                        <button id="arrayb05" onclick="arrayy05()"> LET'S GOOO >:C </button>
+                    </div>
+                </summary>
+                <br><br>
+                <div id="a05d" class="vector">
+                    <div class="vector05" data-id="0" draggable="true">101</div>
+                    <div class="vector05" data-id="1" draggable="true">103</div>
+                    <div class="vector05" data-id="2" draggable="true">107</div>
+                    <div class="vector05" data-id="3" draggable="true">109</div>
+                    <div class="vector05" data-id="4" draggable="true">113</div>
+                    <div class="vector05" data-id="5" draggable="true">127</div>
+                    <div class="vector05" data-id="6" draggable="true">131</div>
+                    <div class="vector05" data-id="7" draggable="true">137</div>
+                    <div class="vector05" data-id="8" draggable="true">139</div>
+                    <div class="vector05" data-id="9" draggable="true">149</div>
+                </div>
+            </details>
+            <br><br>       <br><br>
+        6. Leer dos números enteros y almacenar en un vector los 10 primeros números primos comprendidos entre el menor y el mayor. Luego mostrarlos en pantalla.<br><br><br>
+            <span id="arr06intro"> oli <br> xd </span><br><br>
+
+            <div id="arr666">
+                <div id="arr6l">
+                    <input class="falseButton"  type="text" id="arrayi06" placeholder='INGRESAR NÚMERO I' title="" maxlength="2" onclick="javascript:select();" onkeypress="return onlyNum(event);" required><br>         
+                    <div class="randBut">    
+                        <button class="botonesSeccionArreglos" onclick="array06();" id="arrayb06"> GENERAR NÚMERO I </button>
+                    </div>
+                </div>
+
+                <span id="arrSpan06l">?</span>
+                <span id="arrSpan06r">?</span>
+
+                <div id="arr6r">
+                    <input class="falseButton"  type="text" id="arrayi06b" placeholder='INGRESAR NÚMERO II' title="" maxlength="4" onclick="javascript:select();" onkeypress="return onlyNum(event);" required><br>         
+                    <div class="randBut">    
+                        <button class="botonesSeccionArreglos" onclick="array06b();" id="arrayb06b"> GENERAR NÚMERO II </button>
+                    </div>
+                </div>
+            </div>
+            <br><br><br>
+            <div id="a06d" class="vector">
+                <div class="vector06" data-id="0" draggable="true"></div>
+                <div class="vector06" data-id="1" draggable="true"></div>
+                <div class="vector06" data-id="2" draggable="true"></div>
+                <div class="vector06" data-id="3" draggable="true"></div>
+                <div class="vector06" data-id="4" draggable="true"></div>
+                <div class="vector06" data-id="5" draggable="true"></div>
+                <div class="vector06" data-id="6" draggable="true"></div>
+                <div class="vector06" data-id="7" draggable="true"></div>
+                <div class="vector06" data-id="8" draggable="true"></div>
+                <div class="vector06" data-id="9" draggable="true"></div>
+            </div>
+            <br><br><br><br>
         7. Leer 10 números enteros, almacenarlos en un vector y determinar en qué posiciones se encuentra el número mayor.<br><br>
             <span id="a07c"></span><br>
             <input class="falseButton"  type="text" id="arrayi07" placeholder='INGRESAR NÚMEROS' title="" maxlength="4" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return arrayi07();"  required><br>
             <div class="randBut">    
-                <button onclick="array07();" id="arrayb07"> GENERAR 10 NÚMEROS ALEATORIOS </button>
+                <button class="botonesSeccionArreglos" onclick="array07();" id="arrayb07"> GENERAR 10 NÚMEROS ALEATORIOS </button>
             </div>
             <br>
             <span id="a07"></span><br>
@@ -2082,12 +2153,11 @@
             </div><br><br>
             <span id="a07e"></span><br>
             <br><br><br><br> 
-
         8. Leer 10 números enteros, almacenarlos en un vector y determinar en qué posiciones se encuentran los números terminados en 4.<br><br>
             <span id="a08c"></span><br>
             <input class="falseButton"  type="text" id="arrayi08" placeholder='INGRESAR NÚMEROS' title="" maxlength="4" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return arrayi08();"  required><br>
             <div class="randBut">    
-                <button onclick="array08();" id="arrayb08"> GENERAR 10 NÚMEROS ALEATORIOS </button>
+                <button class="botonesSeccionArreglos" onclick="array08();" id="arrayb08"> GENERAR 10 NÚMEROS ALEATORIOS </button>
             </div>
             <br>
             <span id="a08"></span><br>
@@ -2123,7 +2193,7 @@
             <span id="a09c"></span><br>
             <input class="falseButton"  type="text" id="arrayi09" placeholder='INGRESAR NÚMEROS' title="" maxlength="4" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return arrayi09();"  required><br>
             <div class="randBut">    
-                <button onclick="array09();" id="arrayb09"> GENERAR 10 NÚMEROS ALEATORIOS </button>
+                <button class="botonesSeccionArreglos" onclick="array09();" id="arrayb09"> GENERAR 10 NÚMEROS ALEATORIOS </button>
             </div>
             <br>
             <span id="a09"></span><br>
@@ -2159,7 +2229,7 @@
             <span id="a10c"></span><br>
             <input class="falseButton"  type="text" id="arrayi10" placeholder='INGRESAR NÚMEROS' title="" maxlength="4" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return arrayi10();"  required><br>
             <div class="randBut">    
-                <button onclick="array10();" id="arrayb10"> GENERAR 10 NÚMEROS ALEATORIOS </button>
+                <button class="botonesSeccionArreglos" onclick="array10();" id="arrayb10"> GENERAR 10 NÚMEROS ALEATORIOS </button>
             </div>
             <br>
             <span id="a10"></span><br>
@@ -2195,7 +2265,7 @@
             <span id="a11c"></span><br>
             <input class="falseButton"  type="text" id="arrayi11" placeholder='INGRESAR NÚMEROS' title="" maxlength="4" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return arrayi11();"  required><br>
             <div class="randBut">    
-                <button onclick="array11();" id="arrayb11"> GENERAR 10 NÚMEROS ALEATORIOS </button>
+                <button class="botonesSeccionArreglos" onclick="array11();" id="arrayb11"> GENERAR 10 NÚMEROS ALEATORIOS </button>
             </div>
             <br>
             <span id="a11"></span><br>
@@ -2231,7 +2301,7 @@
             <span id="a12c"></span><br>
             <input class="falseButton"  type="text" id="arrayi12" placeholder='INGRESAR NÚMEROS' title="" maxlength="4" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return arrayi12();"  required><br>
             <div class="randBut">    
-                <button onclick="array12();" id="arrayb12"> GENERAR 10 NÚMEROS ALEATORIOS </button>
+                <button class="botonesSeccionArreglos" onclick="array12();" id="arrayb12"> GENERAR 10 NÚMEROS ALEATORIOS </button>
             </div>
             <br>
             <span id="a12"></span><br>
@@ -2267,7 +2337,7 @@
             <span id="a13c"></span><br>
             <input class="falseButton"  type="text" id="arrayi13" placeholder='INGRESAR NÚMEROS' title="" maxlength="4" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return arrayi13();"  required><br>
             <div class="randBut">    
-                <button onclick="array13();" id="arrayb13"> GENERAR 10 NÚMEROS ALEATORIOS </button>
+                <button class="botonesSeccionArreglos" onclick="array13();" id="arrayb13"> GENERAR 10 NÚMEROS ALEATORIOS </button>
             </div>
             <br>
             <span id="a13"></span><br>
@@ -2303,7 +2373,7 @@
             <span id="a14c"></span><br>
             <input class="falseButton"  type="text" id="arrayi14" placeholder='INGRESAR NÚMEROS' title="" maxlength="4" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return arrayi14();"  required><br>
             <div class="randBut">    
-                <button onclick="array14();" id="arrayb14"> GENERAR 10 NÚMEROS ALEATORIOS </button>
+                <button class="botonesSeccionArreglos" onclick="array14();" id="arrayb14"> GENERAR 10 NÚMEROS ALEATORIOS </button>
             </div>
             <br>
             <span id="a14"></span><br>
@@ -2339,7 +2409,7 @@
             <span id="a15c"></span><br>
             <input class="falseButton"  type="text" id="arrayi15" placeholder='INGRESAR NÚMEROS' title="" maxlength="4" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return arrayi15();"  required><br>
             <div class="randBut">    
-                <button onclick="array15();" id="arrayb15"> GENERAR 10 NÚMEROS ALEATORIOS </button>
+                <button class="botonesSeccionArreglos" onclick="array15();" id="arrayb15"> GENERAR 10 NÚMEROS ALEATORIOS </button>
             </div>
             <br>
             <span id="a15"></span><br>
@@ -2375,7 +2445,7 @@
             <span id="a16c"></span><br>
             <input class="falseButton"  type="text" id="arrayi16" placeholder='INGRESAR NÚMEROS' title="" maxlength="4" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return arrayi16();"  required><br>
             <div class="randBut">    
-                <button onclick="array16();" id="arrayb16"> GENERAR 10 NÚMEROS ALEATORIOS </button>
+                <button class="botonesSeccionArreglos" onclick="array16();" id="arrayb16"> GENERAR 10 NÚMEROS ALEATORIOS </button>
             </div>
             <br>
             <span id="a16"></span><br>
@@ -2411,7 +2481,7 @@
             <span id="a17c"></span><br>
             <input class="falseButton"  type="text" id="arrayi17" placeholder='INGRESAR NÚMEROS' title="" maxlength="4" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return arrayi17();"  required><br>
             <div class="randBut">    
-                <button onclick="array17();" id="arrayb17"> GENERAR 10 NÚMEROS ALEATORIOS </button>
+                <button class="botonesSeccionArreglos" onclick="array17();" id="arrayb17"> GENERAR 10 NÚMEROS ALEATORIOS </button>
             </div>
             <br>
             <span id="a17"></span><br>
@@ -2447,7 +2517,7 @@
             <span id="a18c"></span><br>
             <input class="falseButton"  type="text" id="arrayi18" placeholder='INGRESAR NÚMEROS' title="" maxlength="4" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return arrayi18();"  required><br>
             <div class="randBut">    
-                <button onclick="array18();" id="arrayb18"> GENERAR 10 NÚMEROS ALEATORIOS </button>
+                <button class="botonesSeccionArreglos" onclick="array18();" id="arrayb18"> GENERAR 10 NÚMEROS ALEATORIOS </button>
             </div>
             <br>
             <span id="a18"></span><br>
@@ -2483,7 +2553,7 @@
             <span id="a19c"></span><br>
             <input class="falseButton"  type="text" id="arrayi19" placeholder='INGRESAR NÚMEROS' title="" maxlength="4" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return arrayi19();"  required><br>
             <div class="randBut">    
-                <button onclick="array19();" id="arrayb19"> GENERAR 10 NÚMEROS ALEATORIOS </button>
+                <button class="botonesSeccionArreglos" onclick="array19();" id="arrayb19"> GENERAR 10 NÚMEROS ALEATORIOS </button>
             </div>
             <br>
             <span id="a19"></span><br>
@@ -2519,7 +2589,7 @@
             <span id="a20c"></span><br>
             <input class="falseButton"  type="text" id="arrayi20" placeholder='INGRESAR NÚMEROS' title="" maxlength="4" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return arrayi20();"  required><br>
             <div class="randBut">    
-                <button onclick="array20();" id="arrayb20"> GENERAR 10 NÚMEROS ALEATORIOS </button>
+                <button class="botonesSeccionArreglos" onclick="array20();" id="arrayb20"> GENERAR 10 NÚMEROS ALEATORIOS </button>
             </div>
             <br>
             <span id="a20"></span><br>
@@ -2555,7 +2625,7 @@
             <span id="a21c"></span><br>
             <input class="falseButton"  type="text" id="arrayi21" placeholder='INGRESAR NÚMEROS' title="" maxlength="4" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return arrayi21();"  required><br>
             <div class="randBut">    
-                <button onclick="array21();" id="arrayb21"> GENERAR 10 NÚMEROS ALEATORIOS </button>
+                <button class="botonesSeccionArreglos" onclick="array21();" id="arrayb21"> GENERAR 10 NÚMEROS ALEATORIOS </button>
             </div>
             <br>
             <span id="a21"></span><br>
@@ -2591,7 +2661,7 @@
                 <span id="a22c"></span><br>
                 <input class="falseButton"  type="text" id="arrayi22" placeholder='INGRESAR NÚMEROS' title="" maxlength="4" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return arrayi22();"  required><br>
                 <div class="randBut">    
-                    <button onclick="array22();" id="arrayb22"> GENERAR 10 NÚMEROS ALEATORIOS </button>
+                    <button class="botonesSeccionArreglos" onclick="array22();" id="arrayb22"> GENERAR 10 NÚMEROS ALEATORIOS </button>
                 </div>
                 <br>
                 <span id="a22"></span><br>
@@ -2627,7 +2697,7 @@
             <span id="a23c"></span><br>
             <input class="falseButton"  type="text" id="arrayi23" placeholder='INGRESAR NÚMEROS' title="" maxlength="4" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return arrayi23();"  required><br>
             <div class="randBut">    
-                <button onclick="array23();" id="arrayb23"> GENERAR 10 NÚMEROS ALEATORIOS </button>
+                <button class="botonesSeccionArreglos" onclick="array23();" id="arrayb23"> GENERAR 10 NÚMEROS ALEATORIOS </button>
             </div>
             <br>
             <span id="a23"></span><br>
@@ -2663,7 +2733,7 @@
             <span id="a24c"></span><br>
             <input class="falseButton"  type="text" id="arrayi24" placeholder='INGRESAR NÚMEROS' title="" maxlength="4" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return arrayi24();"  required><br>
             <div class="randBut">    
-                <button onclick="array24();" id="arrayb24"> GENERAR 10 NÚMEROS ALEATORIOS </button>
+                <button class="botonesSeccionArreglos" onclick="array24();" id="arrayb24"> GENERAR 10 NÚMEROS ALEATORIOS </button>
             </div>
             <br>
             <span id="a24"></span><br>
@@ -2699,7 +2769,7 @@
         <span id="a25c"></span><br>
         <input class="falseButton"  type="text" id="arrayi25" placeholder='INGRESAR NÚMEROS' title="" maxlength="4" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return arrayi25();"  required><br>
         <div class="randBut">    
-            <button onclick="array25();" id="arrayb25"> GENERAR 10 NÚMEROS ALEATORIOS </button>
+            <button class="botonesSeccionArreglos" onclick="array25();" id="arrayb25"> GENERAR 10 NÚMEROS ALEATORIOS </button>
         </div>
         <br>
         <span id="a25"></span><br>
@@ -2732,14 +2802,58 @@
         <br><br> 
 
         26. Leer 10 números enteros, almacenarlos en un vector y calcularle el factorial a cada uno de los números leídos almacenándolos en otro vector.<br><br>
+            <span id="a26c"></span><br>
+            <input class="falseButton"  type="text" id="arrayi26" placeholder='INGRESAR NÚMEROS' title="" maxlength="1" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return arrayi26();"  required><br>
+            <div class="randBut">    
+                <button class="botonesSeccionArreglos" onclick="array26();" id="arrayb26"> GENERAR 10 NÚMEROS ALEATORIOS </button>
+            </div>
+            <br>
+            <span id="a26"></span><br>
+            <span id="a26b"></span><br>
+            <div id="a26d" class="vector">
+                <div class="vector26" data-id="0" draggable="true"></div>
+                <div class="vector26" data-id="1" draggable="true"></div>
+                <div class="vector26" data-id="2" draggable="true"></div>
+                <div class="vector26" data-id="3" draggable="true"></div>
+                <div class="vector26" data-id="4" draggable="true"></div>
+                <div class="vector26" data-id="5" draggable="true"></div>
+                <div class="vector26" data-id="6" draggable="true"></div>
+                <div class="vector26" data-id="7" draggable="true"></div>
+                <div class="vector26" data-id="8" draggable="true"></div>
+                <div class="vector26" data-id="9" draggable="true"></div>
+            </div>
+            <br><br>
+            <span id="a26e"></span><br>
+            <br><br>
         27. Leer 10 números enteros, almacenarlos en un vector y determinar a cuánto es igual el promedio entero de los factoriales de cada uno de los números leídos.<br><br>
-
-
+            <span id="a27c"></span><br>
+            <input class="falseButton"  type="text" id="arrayi27" placeholder='INGRESAR NÚMEROS' title="" maxlength="1" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return arrayi27();"  required><br>
+            <div class="randBut">    
+                <button class="botonesSeccionArreglos" onclick="array27();" id="arrayb27"> GENERAR 10 NÚMEROS ALEATORIOS </button>
+            </div>
+            <br>
+            <span id="a27"></span><br>
+            <span id="a27b"></span><br>
+            <div id="a27d" class="vector">
+                <div class="vector27" data-id="0" draggable="true"></div>
+                <div class="vector27" data-id="1" draggable="true"></div>
+                <div class="vector27" data-id="2" draggable="true"></div>
+                <div class="vector27" data-id="3" draggable="true"></div>
+                <div class="vector27" data-id="4" draggable="true"></div>
+                <div class="vector27" data-id="5" draggable="true"></div>
+                <div class="vector27" data-id="6" draggable="true"></div>
+                <div class="vector27" data-id="7" draggable="true"></div>
+                <div class="vector27" data-id="8" draggable="true"></div>
+                <div class="vector27" data-id="9" draggable="true"></div>
+            </div>
+            <br><br>
+            <span id="a27e"></span><br>
+            <br><br>
         28. Leer 10 números enteros, almacenarlos en un vector y mostrar en pantalla todos los enteros <br> comprendidos entre 1 y cada uno de los números almacenados en el vector.<br><br>
             <span id="a28c"></span><br>
             <input class="falseButton"  type="text" id="arrayi28" placeholder='INGRESAR NÚMEROS' title="" maxlength="1" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return arrayi28();"  required><br>
             <div class="randBut">    
-                <button onclick="array28();" id="arrayb28"> GENERAR 10 NÚMEROS ALEATORIOS </button>
+                <button class="botonesSeccionArreglos" onclick="array28();" id="arrayb28"> GENERAR 10 NÚMEROS ALEATORIOS </button>
             </div>
             <br>
             <span id="a28"></span><br>
@@ -2758,13 +2872,12 @@
             </div>
             <br><br>
             <span id="a28e"></span><br>
-            <br><br><br><br> 
-
+            <br><br>
         29. Leer 10 números enteros, almacenarlos en un vector y mostrar en pantalla todos los enteros comprendidos <br>  entre 1 y cada uno de los dígitos de cada uno de los números almacenados en el vector.<br><br>
             <span id="a29c"></span><br>
             <input class="falseButton"  type="text" id="arrayi29" placeholder='INGRESAR NÚMEROS' title="" maxlength="2" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return arrayi29();"  required><br>
             <div class="randBut">    
-                <button onclick="array29();" id="arrayb29"> GENERAR 10 NÚMEROS ALEATORIOS </button>
+                <button class="botonesSeccionArreglos" onclick="array29();" id="arrayb29"> GENERAR 10 NÚMEROS ALEATORIOS </button>
             </div>
             <br>
             <span id="a29"></span><br>
@@ -2784,18 +2897,122 @@
             <br><br>
             <span id="a29e"></span><br>
             <br><br>
-        
         30. Leer 10 números enteros, almacenarlos en un vector. Luego leer un entero y determinar si este último entero se encuentra entre los 10 valores almacenados en el vector.<br><br>
-
+            <span id="a30c"></span><br>
+            <input class="falseButton"  type="text" id="arrayi30" placeholder='INGRESAR NÚMEROS' title="" maxlength="1" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return arrayi30();"  required><br>
+            <div class="randBut">    
+                <button class="botonesSeccionArreglos" onclick="array30();" id="arrayb30"> GENERAR 10 NÚMEROS ALEATORIOS </button>
+            </div>
+            <br>
+            <span id="a30"></span><br>
+            <span id="a30b"></span><br>
+            <div id="a30d" class="vector">
+                <div class="vector30" data-id="0" draggable="true"></div>
+                <div class="vector30" data-id="1" draggable="true"></div>
+                <div class="vector30" data-id="2" draggable="true"></div>
+                <div class="vector30" data-id="3" draggable="true"></div>
+                <div class="vector30" data-id="4" draggable="true"></div>
+                <div class="vector30" data-id="5" draggable="true"></div>
+                <div class="vector30" data-id="6" draggable="true"></div>
+                <div class="vector30" data-id="7" draggable="true"></div>
+                <div class="vector30" data-id="8" draggable="true"></div>
+                <div class="vector30" data-id="9" draggable="true"></div>
+            </div>
+            <div class="arrow">
+                <div class="arrow30"></div>
+                <div class="arrow30"></div>
+                <div class="arrow30"></div>
+                <div class="arrow30"></div>
+                <div class="arrow30"></div>
+                <div class="arrow30"></div>
+                <div class="arrow30"></div>
+                <div class="arrow30"></div>
+                <div class="arrow30"></div>
+                <div class="arrow30"></div>
+            </div><br><br>
+            <span class="eleven" id="a30f"></span><br>
+            <span id="a30f" class="eleven"></span><br>
+            <span id="a30e"></span>
+            <br><br>
         31. Leer 10 números enteros, almacenarlos en un vector. Luego leer un entero y determinar cuantos divisores exactos tiene este último número entre los valores almacenados en el vector.<br><br>
-
+            <span id="a31c"></span><br>
+            <input class="falseButton"  type="text" id="arrayi31" placeholder='INGRESAR NÚMEROS' title="" maxlength="2" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return arrayi31();"  required><br>
+            <div class="randBut">    
+                <button class="botonesSeccionArreglos" onclick="array31();" id="arrayb31"> GENERAR 10 NÚMEROS ALEATORIOS </button>
+            </div>
+            <br>
+            <span id="a31"></span><br>
+            <span id="a31b"></span><br>
+            <div id="a31d" class="vector">
+                <div class="vector31" data-id="0" draggable="true"></div>
+                <div class="vector31" data-id="1" draggable="true"></div>
+                <div class="vector31" data-id="2" draggable="true"></div>
+                <div class="vector31" data-id="3" draggable="true"></div>
+                <div class="vector31" data-id="4" draggable="true"></div>
+                <div class="vector31" data-id="5" draggable="true"></div>
+                <div class="vector31" data-id="6" draggable="true"></div>
+                <div class="vector31" data-id="7" draggable="true"></div>
+                <div class="vector31" data-id="8" draggable="true"></div>
+                <div class="vector31" data-id="9" draggable="true"></div>
+            </div>
+            <div class="arrow">
+                <div class="arrow31"></div>
+                <div class="arrow31"></div>
+                <div class="arrow31"></div>
+                <div class="arrow31"></div>
+                <div class="arrow31"></div>
+                <div class="arrow31"></div>
+                <div class="arrow31"></div>
+                <div class="arrow31"></div>
+                <div class="arrow31"></div>
+                <div class="arrow31"></div>
+            </div><br><br>
+            <span class="eleven" id="a31f"></span><br>
+            <span id="a31f" class="eleven"></span><br>
+            <span id="a31e"></span>
+            <br><br><br><br> 
         32. Leer 10 números enteros, almacenarlos en un vector. Luego leer un entero y determinar cuántos números de los almacenados en el vector terminan en el mismo dígito que el último valor leído.<br><br>
-
+            <span id="a32c"></span><br>
+            <input class="falseButton"  type="text" id="arrayi32" placeholder='INGRESAR NÚMEROS' title="" maxlength="2" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return arrayi32();"  required><br>
+            <div class="randBut">    
+                <button class="botonesSeccionArreglos" onclick="array32();" id="arrayb32"> GENERAR 10 NÚMEROS ALEATORIOS </button>
+            </div>
+            <br>
+            <span id="a32"></span><br>
+            <span id="a32b"></span><br>
+            <div id="a32d" class="vector">
+                <div class="vector32" data-id="0" draggable="true"></div>
+                <div class="vector32" data-id="1" draggable="true"></div>
+                <div class="vector32" data-id="2" draggable="true"></div>
+                <div class="vector32" data-id="3" draggable="true"></div>
+                <div class="vector32" data-id="4" draggable="true"></div>
+                <div class="vector32" data-id="5" draggable="true"></div>
+                <div class="vector32" data-id="6" draggable="true"></div>
+                <div class="vector32" data-id="7" draggable="true"></div>
+                <div class="vector32" data-id="8" draggable="true"></div>
+                <div class="vector32" data-id="9" draggable="true"></div>
+            </div>
+            <div class="arrow">
+                <div class="arrow32"></div>
+                <div class="arrow32"></div>
+                <div class="arrow32"></div>
+                <div class="arrow32"></div>
+                <div class="arrow32"></div>
+                <div class="arrow32"></div>
+                <div class="arrow32"></div>
+                <div class="arrow32"></div>
+                <div class="arrow32"></div>
+                <div class="arrow32"></div>
+            </div><br><br>
+            <span class="eleven" id="a32f"></span><br>
+            <span id="a32f" class="eleven"></span><br>
+            <span id="a32e"></span>
+            <br><br><br><br> 
         33. Leer 10 números enteros, almacenarlos en un vector y determinar a cuánto es igual la suma de los dígitos pares de cada uno de los números leídos.<br><br>
             <span id="a33c"></span><br>
-            <input class="falseButton"  type="text" id="arrayi33" placeholder='INGRESAR NÚMEROS' title="" maxlength="2" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return arrayi33();"  required><br>
+            <input class="falseButton"  type="text" id="arrayi33" placeholder='INGRESAR NÚMEROS' title="" maxlength="4" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return arrayi33();"  required><br>
             <div class="randBut">    
-                <button onclick="array33();" id="arrayb33"> GENERAR 10 NÚMEROS ALEATORIOS </button>
+                <button class="botonesSeccionArreglos" onclick="array33();" id="arrayb33"> GENERAR 10 NÚMEROS ALEATORIOS </button>
             </div>
             <br>
             <span id="a33"></span><br>
@@ -2806,24 +3023,34 @@
                 <div class="vector33" data-id="2" draggable="true"></div>
                 <div class="vector33" data-id="3" draggable="true"></div>
                 <div class="vector33" data-id="4" draggable="true"></div>
-                <div class="vector33" data-id="5" draggable="true"></div> 
+                <div class="vector33" data-id="5" draggable="true"></div>
                 <div class="vector33" data-id="6" draggable="true"></div>
                 <div class="vector33" data-id="7" draggable="true"></div>
                 <div class="vector33" data-id="8" draggable="true"></div>
                 <div class="vector33" data-id="9" draggable="true"></div>
             </div>
-            <br><br>
+            <div class="arrow">
+                <div class="arrow33"></div>
+                <div class="arrow33"></div>
+                <div class="arrow33"></div>
+                <div class="arrow33"></div>
+                <div class="arrow33"></div>
+                <div class="arrow33"></div>
+                <div class="arrow33"></div>
+                <div class="arrow33"></div>
+                <div class="arrow33"></div>
+                <div class="arrow33"></div>
+            </div><br><br>
             <span id="a33e"></span><br>
-            <br><br><br><br>
-
+            <br><br><br><br> 
         34. Leer 10 números enteros, almacenarlos en un vector y determinar cuántas veces en el vector <br>
         se encuentra el dígito 2. No se olvide que el dígito 2 puede estar varias veces en un mismo
         número.<br><br>
             <span id="a34c"></span><br>
-            <input class="falseButton"  type="text" id="arrayi34" placeholder='INGRESAR NÚMEROS' title="" maxlength="2" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return arrayi34();"  required><br>
+            <input class="falseButton"  type="text" id="arrayi34" placeholder='INGRESAR NÚMEROS' title="" maxlength="4" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return arrayi34();"  required><br>
             <div class="randBut">    
-                <button onclick="array34();" id="arrayb34"> GENERAR 10 NÚMEROS ALEATORIOS </button>
-            </div>  
+                <button class="botonesSeccionArreglos" onclick="array34();" id="arrayb34"> GENERAR 10 NÚMEROS ALEATORIOS </button>
+            </div>
             <br>
             <span id="a34"></span><br>
             <span id="a34b"></span><br>
@@ -2839,15 +3066,25 @@
                 <div class="vector34" data-id="8" draggable="true"></div>
                 <div class="vector34" data-id="9" draggable="true"></div>
             </div>
-            <br><br>
+            <div class="arrow">
+                <div class="arrow34"></div>
+                <div class="arrow34"></div>
+                <div class="arrow34"></div>
+                <div class="arrow34"></div>
+                <div class="arrow34"></div>
+                <div class="arrow34"></div>
+                <div class="arrow34"></div>
+                <div class="arrow34"></div>
+                <div class="arrow34"></div>
+                <div class="arrow34"></div>
+            </div><br><br>
             <span id="a34e"></span><br>
-            <br><br><br><br>
-
+            <br><br><br><br> 
         35. Leer 10 números enteros, almacenarlos en un vector y determinar si el promedio entero de dichos números es un número primo.<br><br>
             <span id="a35c"></span><br>
             <input class="falseButton"  type="text" id="arrayi35" placeholder='INGRESAR NÚMEROS' title="" maxlength="4" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return arrayi35();"  required><br>
             <div class="randBut">    
-                <button onclick="array35();" id="arrayb35"> GENERAR 10 NÚMEROS ALEATORIOS </button>
+                <button class="botonesSeccionArreglos" onclick="array35();" id="arrayb35"> GENERAR 10 NÚMEROS ALEATORIOS </button>
             </div>
             <br>
             <span id="a35"></span><br>
@@ -2883,7 +3120,7 @@
             <span id="a36c"></span><br>
             <input class="falseButton"  type="text" id="arrayi36" placeholder='INGRESAR NÚMEROS' title="" maxlength="2" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return arrayi36();"  required><br>
             <div class="randBut">    
-                <button onclick="array36();" id="arrayb36"> GENERAR 10 NÚMEROS ALEATORIOS </button>
+                <button class="botonesSeccionArreglos" onclick="array36();" id="arrayb36"> GENERAR 10 NÚMEROS ALEATORIOS </button>
             </div>  
             <br>
             <span id="a36"></span><br>
@@ -2908,7 +3145,7 @@
             <span id="a37c"></span><br>
             <input class="falseButton"  type="text" id="arrayi37" placeholder='INGRESAR NÚMEROS' title="" maxlength="3" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return arrayi37();"  required><br>
             <div class="randBut">    
-                <button onclick="array37();" id="arrayb37"> GENERAR 10 NÚMEROS ALEATORIOS </button>
+                <button class="botonesSeccionArreglos" onclick="array37();" id="arrayb37"> GENERAR 10 NÚMEROS ALEATORIOS </button>
             </div>  
             <br>
             <span id="a37"></span><br>
@@ -2933,7 +3170,7 @@
             <span id="a38c"></span><br>
             <input class="falseButton"  type="text" id="arrayi38" placeholder='INGRESAR NÚMEROS' title="" maxlength="4" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return arrayi38();"  required><br>
             <div class="randBut">    
-                <button onclick="array38();" id="arrayb38"> GENERAR 10 NÚMEROS ALEATORIOS </button>
+                <button class="botonesSeccionArreglos" onclick="array38();" id="arrayb38"> GENERAR 10 NÚMEROS ALEATORIOS </button>
             </div>
             <br>
             <span id="a38"></span><br>
@@ -2968,7 +3205,7 @@
             <span id="a39c"></span><br>
             <input class="falseButton"  type="text" id="arrayi39" placeholder='INGRESAR NÚMEROS' title="" maxlength="4" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return arrayi39();"  required><br>
             <div class="randBut">    
-                <button onclick="array39();" id="arrayb39"> GENERAR 10 NÚMEROS ALEATORIOS </button>
+                <button class="botonesSeccionArreglos" onclick="array39();" id="arrayb39"> GENERAR 10 NÚMEROS ALEATORIOS </button>
             </div>
             <br>
             <span id="a39"></span><br>
@@ -3003,7 +3240,7 @@
             <span id="a40c"></span><br>
             <input class="falseButton"  type="text" id="arrayi40" placeholder='INGRESAR NÚMEROS' title="" maxlength="4" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return arrayi40();"  required><br>
             <div class="randBut">    
-                <button onclick="array40();" id="arrayb40"> GENERAR 10 NÚMEROS ALEATORIOS </button>
+                <button class="botonesSeccionArreglos" onclick="array40();" id="arrayb40"> GENERAR 10 NÚMEROS ALEATORIOS </button>
             </div>
             <br>
             <span id="a40"></span><br>
@@ -3038,7 +3275,7 @@
             <span id="a41c"></span><br>
             <input class="falseButton"  type="text" id="arrayi41" placeholder='INGRESAR NÚMEROS' title="" maxlength="4" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return arrayi41();"  required><br>
             <div class="randBut">    
-                <button onclick="array41();" id="arrayb41"> GENERAR 10 NÚMEROS ALEATORIOS </button>
+                <button class="botonesSeccionArreglos" onclick="array41();" id="arrayb41"> GENERAR 10 NÚMEROS ALEATORIOS </button>
             </div>
             <br>
             <span id="a41"></span><br>
@@ -3073,7 +3310,7 @@
             <span id="a42c"></span><br>
             <input class="falseButton"  type="text" id="arrayi42" placeholder='INGRESAR NÚMEROS' title="" maxlength="5" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return arrayi42();"  required><br>
             <div class="randBut">    
-                <button onclick="array42();" id="arrayb42"> GENERAR 10 NÚMEROS ALEATORIOS </button>
+                <button class="botonesSeccionArreglos" onclick="array42();" id="arrayb42"> GENERAR 10 NÚMEROS ALEATORIOS </button>
             </div>
             <br>
             <span id="a42"></span><br>
@@ -3108,7 +3345,7 @@
             <span id="a43c"></span><br>
             <input class="falseButton"  type="text" id="arrayi43" placeholder='INGRESAR NÚMEROS' title="" maxlength="4" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return arrayi43();"  required><br>
             <div class="randBut">    
-                <button onclick="array43();" id="arrayb43"> GENERAR 10 NÚMEROS ALEATORIOS </button>
+                <button class="botonesSeccionArreglos" onclick="array43();" id="arrayb43"> GENERAR 10 NÚMEROS ALEATORIOS </button>
             </div>
             <br>
             <span id="a43"></span><br>
@@ -3145,7 +3382,7 @@
             <span id="a45c"></span><br>
             <input class="falseButton"  type="text" id="arrayi45" placeholder='INGRESAR NÚMEROS' title="" maxlength="4" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return arrayi45();"  required><br>
             <div class="randBut">    
-                <button onclick="array45();" id="arrayb45"> GENERAR 10 NÚMEROS ALEATORIOS </button>
+                <button class="botonesSeccionArreglos" onclick="array45();" id="arrayb45"> GENERAR 10 NÚMEROS ALEATORIOS </button>
             </div>
             <br>
             <span id="a45"></span><br>
@@ -3180,7 +3417,7 @@
             <span id="a46c"></span><br>
             <input class="falseButton"  type="text" id="arrayi46" placeholder='INGRESAR NÚMEROS' title="" maxlength="4" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return arrayi46();"  required><br>
             <div class="randBut">    
-                <button onclick="array46();" id="arrayb46"> GENERAR 10 NÚMEROS ALEATORIOS </button>
+                <button class="botonesSeccionArreglos" onclick="array46();" id="arrayb46"> GENERAR 10 NÚMEROS ALEATORIOS </button>
             </div>
             <br>
             <span id="a46"></span><br>
@@ -3215,7 +3452,7 @@
             <span id="a47c"></span><br>
             <input class="falseButton"  type="text" id="arrayi47" placeholder='INGRESAR NÚMEROS' title="" maxlength="4" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return arrayi47();"  required><br>
             <div class="randBut">    
-                <button onclick="array47();" id="arrayb47"> GENERAR 10 NÚMEROS ALEATORIOS </button>
+                <button class="botonesSeccionArreglos" onclick="array47();" id="arrayb47"> GENERAR 10 NÚMEROS ALEATORIOS </button>
             </div>
             <br>
             <span id="a47"></span><br>
@@ -3250,7 +3487,7 @@
             <span id="a48c"></span><br>
             <input class="falseButton"  type="text" id="arrayi48" placeholder='INGRESAR NÚMEROS' title="" maxlength="4" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return arrayi48();"  required><br>
             <div class="randBut">    
-                <button onclick="array48();" id="arrayb48"> GENERAR 10 NÚMEROS ALEATORIOS </button>
+                <button class="botonesSeccionArreglos" onclick="array48();" id="arrayb48"> GENERAR 10 NÚMEROS ALEATORIOS </button>
             </div>
             <br>
             <span id="a48"></span><br>
@@ -3285,7 +3522,7 @@
             <span id="a49c"></span><br>
             <input class="falseButton"  type="text" id="arrayi49" placeholder='INGRESAR NÚMEROS' title="" maxlength="4" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return arrayi49();"  required><br>
             <div class="randBut">    
-                <button onclick="array49();" id="arrayb49"> GENERAR 10 NÚMEROS ALEATORIOS </button>
+                <button class="botonesSeccionArreglos" onclick="array49();" id="arrayb49"> GENERAR 10 NÚMEROS ALEATORIOS </button>
             </div>
             <br>
             <span id="a49"></span><br>
@@ -3320,7 +3557,7 @@
             <span id="a50c"></span><br>
             <input class="falseButton"  type="text" id="arrayi50" placeholder='INGRESAR NÚMEROS' title="" maxlength="4" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return arrayi50();"  required><br>
             <div class="randBut">    
-                <button onclick="array50();" id="arrayb50"> GENERAR 10 NÚMEROS ALEATORIOS </button>
+                <button class="botonesSeccionArreglos" onclick="array50();" id="arrayb50"> GENERAR 10 NÚMEROS ALEATORIOS </button>
             </div>
             <br>
             <span id="a50"></span><br>
