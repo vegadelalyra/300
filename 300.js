@@ -19550,6 +19550,324 @@ function array43(){
 }
 
 // 44. Leer 10 números enteros, almacenarlos en un vector y determinar cuántos de los números almacenados en dicho vector pertenecen a los 100 primeros elementos de la serie de Fibonacci.
+var box44 = new get10Random("vector44");
+var buttona44 = document.getElementById("arrayb44");
+var inputArr44 = document.getElementById("arrayi44");
+var freedom44;
+var justice44;
+var love44;
+var flash44 = 0;
+var xd44 = 0;
+var cancelButton44 = 0;
+var filterOfZeros44 = [];
+var arrow44 = document.getElementsByClassName("arrow44");
+var imgOff44 = `<img class="arrowImg" src="./arrowOff.png" alt="Aquí había una flecha... Ya no está xd">`;
+
+
+  //DRAG AND DROP
+  var dnd44 = document.querySelectorAll('div#a44d > div');
+  [].forEach.call(dnd44,function(block){
+    block.addEventListener('dragend',solutiona44);
+  });
+
+//solución al problema
+function solutiona44(){
+  if (cancelButton44==1){}
+  else{
+    
+  function limitSolution(){
+    cancelButton44 = 0;
+  };
+  //Variables locales elementales
+  var imgOn   = '<img class="arrowImg" src="./arrowOn.png" alt="Aquí había una flecha... Ya no está xd">';
+  var img = `<img class="arrowImg" src="./arrow.png" alt="Aquí había una flecha... Ya no está xd">`;
+  //Un reinicio ligero al oprimir el vector
+  [].forEach.call(arrow44,function(arrows){
+    arrows.innerHTML = imgOff44; 
+  });
+  //EL CÓDIGO MÁGICO QUE PERMITE ACOPLAR FUNCIONALIDAD Y DRAG AND DROP
+  var arrVector44 = [];
+  for (let nums of box44.box){
+      if (nums.textContent == 0){
+        arrVector44.push(Number.parseInt(0));
+      }
+      else{
+        arrVector44.push(Number.parseInt(nums.textContent));
+      }
+  };
+  filterOfZeros44 = arrVector44.filter(x=>x!=0);
+  box44.aux = filterOfZeros44;
+
+  //ACÁ SOLUCIONAS TODO
+  //Variables para solucionar la pregunta concreta
+      //cuántos pertenecen a los 100 primeros Fibonacci.
+  //new Fibo
+    arr = new Array(101).fill(1).reduce((arr, _ ,i) => {
+        arr.push((i <= 1) ? i : arr[i-2] + arr[i-1]);
+        return arr;
+    },[]);
+
+  let basurero = [];
+  let seeker = [];
+
+  for (let i = 0; i < filterOfZeros44.length; i++){
+    for (let j = 0; j < arr.length; j++){
+      if (filterOfZeros44[i] == arr[j]){
+        basurero.push(i);
+        seeker.push(filterOfZeros44[i]);
+      };
+    };
+  };
+
+  let list = `<br>`
+  for (let i = 0; i < basurero.length; i++){
+    list += `El ${seeker[i]} en la posición n°${basurero[i]} <br>`;
+    if(seeker[i]==1){
+      i++;
+    };
+  };
+
+  let aaa = (basurero.length == 1)? `Curiosamente, sólo el ${seeker} en la posición n°${basurero} <br> pertenece a los 100 primeros fibonacci uwu` : `alv hay varios números en este vector que pertenecen a la serie fibo: <br> ${list} uwu`;
+  let bbb = (filterOfZeros44.length == 1)? `El ${filterOfZeros44} no`: `Ningún número del vector`;
+  let answer = (basurero.length > 0)? aaa : `${bbb} pertenece a los 100 primeros fibonacci, humano :c`;
+
+  //"Animación" de las flechas
+  function animation(){
+    var card = new Audio();
+    card.src = "music/arrows.mp3";
+    card.play();
+
+    if(xd44 == 2){ 
+      if (flash44==-1){
+        arrow44[0].innerHTML = imgOff44;
+        xd44 = 0;
+        flash44=0;
+      }
+      else if (flash44==0){
+        arrow44[1].innerHTML = imgOff44;
+        arrow44[0].innerHTML = img;
+        flash44=-1;
+      }
+      else{
+        if (flash44<=8){
+          arrow44[(flash44+1)].innerHTML = imgOff44;
+        };
+        arrow44[flash44].innerHTML = img;
+        flash44--;
+      }               
+    }
+    else if(xd44 == 1){             //¿A LAS CUÁNTAS VUELTAS QUIERES VOLTEAR?
+      flash44 = 9;
+      arrow44[flash44].innerHTML = img;
+      xd44 = 2;
+      flash44--;
+    }
+    else{
+      if (flash44==10){                       //VUELTA 2
+        arrow44[(flash44-1)].innerHTML = imgOff44;
+        xd44++;
+        flash44 = 0;
+      }
+      else{                                 //VUELTA 1
+        if (flash44>=1){
+          arrow44[(flash44-1)].innerHTML = imgOff44;
+        };
+        arrow44[flash44].innerHTML = img;
+        flash44++;
+      }
+    };
+      getE("a44e").innerHTML = `...`
+  };  
+
+  //SOLUCIÓN LÓGICA ESQUEMÁTICA DEL PROBLEMA 
+  function solution(){
+    clearInterval(freedom44);
+    [].forEach.call(arrow44,function(arrows){
+      arrows.innerHTML = imgOff44; 
+    });
+
+    for (let i=0; i<basurero.length; i++){
+      let miau = basurero[i]; 
+      arrow44[miau].innerHTML = imgOn;
+    };
+
+    win = new Audio();
+    win.src = "music/win.mp3";
+    win.play();
+    card = new Audio();
+    card.src = "music/arrows.mp3";
+    card.play();
+
+    getE("a44e").innerHTML = `${answer}`;
+  }; 
+
+
+  //Diálogos al vaciar
+  if (filterOfZeros44.length == 10) {
+    cancelButton44 = 1;
+    freedom44 = setInterval(animation,250);
+    justice44 = setTimeout(solution, 2000);
+    love44 = setTimeout(limitSolution,3000);
+  }
+  else if (filterOfZeros44.length == 0){
+    flash44 = 0;
+    clearInterval(freedom44);
+    clearTimeout(justice44);
+    clearTimeout(love44);
+    getE("a44e").innerHTML = ``;
+    [].forEach.call(arrow44,function(arrows){
+      arrows.innerHTML = imgOff44; 
+    });
+  }
+  else{
+    getE("a44e").innerHTML = `${answer} <br> Te invito a llenar todo el vector, humano, y mira lo que pasa -guiño guiño-`;
+  };
+};
+};
+
+
+//FUNCIONES PARA EL INPUT
+inputArr44.addEventListener("keydown",arrayi44, false);
+var iOfBox44 = 0; 
+function arrayi44(e){
+    //DIÁLOGOS PARA EL BOTÓN
+    if (filterOfZeros44.length == 10 || filterOfZeros44.length == 0){
+      buttona44.innerHTML = `GENERAR 10 NÚMEROS ALEATORIOS`;
+    }
+    else{
+      if (filterOfZeros44.length == 9){
+        buttona44.innerHTML = `GENERAR 1 NÚMERO ALEATORIO`;
+      }
+      else{
+        buttona44.innerHTML = `GENERAR ${10-filterOfZeros44.length} NÚMEROS ALEATORIOS`;
+      }
+    };
+    //DIÁLOGOS PARA EL SPAN
+  var ngt = (inputArr44.value<0)? `-`:``;
+
+  if (isNaN(inputArr44.value)){
+    document.getElementById("a44").innerHTML = `¿A quién intentas trollear con esos valores imposibles, humano?`;
+  }else{
+ 
+  if (inputArr44.value == `` || inputArr44.value == '-' || inputArr44.value == '--' || inputArr44.value == '---' || inputArr44.value == '----'){
+    document.getElementById("a44").innerHTML = ``;
+  }
+  else{
+    if (inputArr44.value == 0){
+      if (filterOfZeros44.length > 0){
+        document.getElementById("a44").innerHTML = `¿Quieres reiniciar el vector, humano? ¡Tírame ese cero entonces! c:<`;
+      }
+      else{
+        document.getElementById("a44").innerHTML = `Oye, humano... Primero regístrame números con ENTER <br> antes de estar pensando en reiniciar el vector... ¿No? >:c`;
+      }
+    }
+    else{
+      document.getElementById("a44").innerHTML = `¡Cool, un ${ngt}${Math.abs(inputArr44.value)}! Regístralo oprimiendo ENTER c:`;
+    }
+  } 
+  };
+  //Ejecutar función cuando se oprima ENTER
+  if (e.keyCode === 13){ 
+    if (isNaN(inputArr44.value)){
+      inputArr44.value = ``;
+    }else{
+    if (inputArr44.value == `` || inputArr44.value == '-' || inputArr44.value == '--' || inputArr44.value == '---' || inputArr44.value == '----'){
+      inputArr44.value = ``;
+    }
+    else if (inputArr44.value == 0){
+      if(filterOfZeros44.length==0){
+        inputArr44.value = ``;
+      }
+      else{
+        let zero = new Audio();
+        zero.src = "music/hollow.mp3";
+        zero.play();
+        clearTimeout(justice44);
+        clearInterval(freedom44);
+        document.getElementById("a44b").innerHTML = ``;
+        document.getElementById("a44c").innerHTML = `Vector reiniciado con éxito.`;
+        setTimeout(fade,7000);
+        function fade(){
+          return document.getElementById("a44c").innerHTML = ``;
+        };
+        box44.aux = [];
+        filterOfZeros44.length = [];
+        box44.equalize();
+        solutiona44();
+        inputArr44.value = ``;
+        iOfBox44 = 0;
+
+        clearInterval(freedom44);
+        clearTimeout(justice44);
+        clearTimeout(love44);
+        getE("a44e").innerHTML = ``;
+        [].forEach.call(arrow44,function(arrows){
+          arrows.innerHTML = imgOff44; 
+        });
+      }
+    }
+    else{
+      if (filterOfZeros44.length == 10){
+        document.getElementById("a44c").innerHTML = `Puedes registrar el número 0 para reiniciar el vector uwu`;
+        box44.aux.shift();
+        box44.aux.push(Number(inputArr44.value));
+        box44.equalize();
+        solutiona44();
+        inputArr44.value = ``;
+      }
+      else{
+        let introduce = new Audio("./music/introduce.mp3");
+        introduce.play();
+        document.getElementById("a44c").innerHTML = `Puedes registrar el número 0 para reiniciar el vector uwu`;
+        for(iOfBox44 = 0; iOfBox44 < 10; iOfBox44++){
+          if(box44.box[iOfBox44].textContent == ``){
+            box44.box[iOfBox44].textContent = Number.parseInt(inputArr44.value);
+            iOfBox44 = 10;
+          };
+        };
+        solutiona44();
+        inputArr44.value = ``;
+      }
+    }
+  };
+}
+} 
+
+//FUNCIONES PARA EL BOTÓN
+function onMouseOverLight44(){
+  buttona44.style.border="3px solid #ffab22";
+  buttona44.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
+  buttona44.style.color="rgb(31, 11, 11)";
+};
+function onMouseOutLight44(){
+  buttona44.style.border='3px solid #f7b64e';
+  buttona44.style.color='#333333';
+  buttona44.style.background='linear-gradient(to bottom, #fff186 5%, #f7b64e 100%)';
+};
+
+function onMouseOverDark44(){
+  buttona44.style.border="3px solid #ffaa22";
+  buttona44.style.background="linear-gradient(to bottom, #ffe205 5%, #ffb71b 100%)";
+};
+function onMouseOutDark44(){
+  buttona44.style.border = '1px solid #ff9d00';
+  buttona44.style.color = 'rgb(31, 11, 11)';
+  buttona44.style.background = 'linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)';
+};
+
+function array44(){
+  //SOLUTION
+  box44.method(-9999,10000);
+  document.getElementById("a44c").innerHTML = `Puedes registrar el número 0 para reiniciar el vector uwu`;
+  buttona44.innerHTML = `GENERAR 10 NÚMEROS ALEATORIOS`;
+  solutiona44();
+
+  //OH, STYLO
+  buttona44.onmouseover = function (){onMouseOverLight44()};
+  buttona44.onmouseout = function (){onMouseOutLight44()};
+  buttona44.onmousedown = function (){onMouseOutDark44()};
+  buttona44.onmouseup = function (){onMouseOverDark44()};
+}
 
 // 45. Leer 10 números enteros, almacenarlos en un vector y determinar cuántos números de los almacenados en dicho vector comienzan por 34.
 var box45 = new get10Random("vector45");
@@ -21525,3 +21843,56 @@ function array50(){
   buttona50.onmousedown = function (){arrOnMouseOutDark50()};
   buttona50.onmouseup = function (){arrOnMouseOverDark50()};
 }
+//FINAL DE LA SECCIÓN ARREGLOS.
+
+//SECCIÓN MATRIX
+
+
+//DRAG AND DROP PARA MATRIX
+matrixCubes = document.querySelectorAll('');
+[].forEach.call(matrixCubes,function(block){
+  block.addEventListener('dragstart',handleDragStart);
+  block.addEventListener('dragover',handleDragOver);
+  block.addEventListener('dragenter',handleDragEnter);
+  block.addEventListener('dragleave',handleDragLeave);
+  block.addEventListener('drop',handleDrop);
+  block.addEventListener('dragend',handleDragEnd);
+});
+
+class matrix {
+  constructor (row,colums) {
+    //matrix
+
+    //exercise
+  };
+};
+
+// 1. Leer una matriz 4x4 entera y determinar en qué fila y en qué columna se encuentra el número mayor.<br><br>
+
+
+// 2. Leer una matriz 4x4 entera y determinar cuántas veces se repita en ella el número mayor.<br><br>
+
+
+// 3. Leer una matriz 3x4 entera y determinar en qué posiciones exactas se encuentran los números pares.<br><br>
+
+
+// 4. Leer una matriz 4x3 entera y determinar en qué posiciones exactas se encuentran los números primos.<br><br>
+
+
+// 5. Leer una matriz 4x3 entera, calcular la suma de los elementos de cada fila y determinar cuál es la fila que tiene la mayor suma.<br><br>
+
+
+// 6. Leer una matriz 4x4 entera y calcular el promedio de los números mayores de cada fila.<br><br>
+
+
+// 7. Leer una matriz 4x4 entera y determinar en qué posiciones están los enteros terminados en 0.<br><br>
+
+
+// 8. Leer una matriz 4x4 entera y determinar cuántos enteros terminados en 0 hay almacenados en ella.<br><br>
+
+
+// 9. Leer una matriz 3x4 entera y determinar cuántos de los números almacenados son primos y terminan en 3.<br><br>
+
+
+// 10. Leer una matriz 5x3 entera y determinar en qué fila está el mayor número primo.<br><br>
+

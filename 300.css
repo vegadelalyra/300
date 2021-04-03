@@ -744,7 +744,17 @@ button:focus:not(.aPb){
     font-size: 1.5em;
 }
 /*FIN DE DISEÑO DE VECTORES*/
-
+/*DISEÑO DE MATRIX*/
+#matrixCradle {
+    display:flex;
+}
+matrix {
+    width: 50%;
+}
+    .matrix:hover {
+        background:
+    }
+/*FIN DISEÑO DE MATRIX*/
 
 /* a las clases las llamas con (elemento)."elNombreDeLaClass" :D  */
 /* a los ID las llamas con #"elIDdelElemento" :D */
