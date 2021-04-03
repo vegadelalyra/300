@@ -362,7 +362,7 @@ summary:hover{
     background-color:black;
 }
 #h300{/*EL TÍTULO 300*/
-    font-size: 55px;
+    font-size: 40px;
     user-select: none;
     position:sticky;
     z-index: 666;
@@ -371,48 +371,52 @@ summary:hover{
     height: min-content;
     cursor:pointer;
     transition: 2s;
-    transition-delay: 2.3s;
+    transition-delay: 2.6s;
 }
 #h300:hover{
     color:rgb(255, 255, 255);
     font-size:72ch;
     transform: translateY(-777px);
-    transition:100s;
+    transition:200s;
 }
 /*SECCIÓN PARA LOS SUMMARIES (el título de cada sección y sus animaciones de cargarse en cascada)*/
-#section01,#section02,#section03,#section04,#section05,#section06,#section07{
+#section01,#section02,#section03,#section04,#section05,#section06,#section07,#section08{
     display:flex;
     justify-content: center;
     position:sticky;
 }
-#section01{
-    z-index: 7;
-    transition:transform 0.3s;
-}
-#section02{
-    z-index:6;
-    transition:transform 0.6s;
-}
-#section03{
-    z-index:5;
-    transition:transform 1s;
-}
-#section04{
-    z-index:4;
-    transition:transform 1.3s;
-}
-#section05{
-    z-index:3;
-    transition:transform 1.6s;
-}
-#section06{
-    z-index:2;
-    transition:transform 1.9s;
-}
-#section07{
-    z-index:1;
-    transition:transform 2.2s;
-}
+    #section01{
+        z-index: 8;
+        transition:transform 0.3s;
+    }
+    #section02{
+        z-index: 7;
+        transition:transform 0.6s;
+    }
+    #section03{
+        z-index: 6;
+        transition:transform 1s;
+    }
+    #section04{
+        z-index: 5;
+        transition:transform 1.3s;
+    }
+    #section05{
+        z-index: 4;
+        transition:transform 1.6s;
+    }
+    #section06{
+        z-index: 3;
+        transition:transform 1.9s;
+    }
+    #section07{
+        z-index: 2;
+        transition:transform 2.2s;
+    }
+    #section08{
+        z-index: 1;
+        transition: transform 2.5s;
+    }
 /*Aquí termina la sección dedicada a los títulos de las secciones (summaries) */
 
 td{
@@ -730,11 +734,15 @@ button:focus:not(.aPb){
     #arrSpan06r{
         font-size:4em;
         user-select:none;
-        weight:bold;
+        font-weight:bold;
     }
         #arr06intro{
             color:black;
         }
+.eleven {
+    font-weight: bold;
+    font-size: 1.5em;
+}
 /*FIN DE DISEÑO DE VECTORES*/
 
 

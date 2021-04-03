@@ -66,10 +66,6 @@ volumeSlider.addEventListener('input', (e) => {
     showRangeProgress(e.target);
 });
 
-
-
-
-
 /* Implementation of the functionality of the audio player */
 
 var audio = document.querySelector('audio');
@@ -139,9 +135,6 @@ volumeSlider.addEventListener('input', (e) => {
     outputContainer.textContent = value;
     audio.volume = value / 100;
 });
-
-
-
 
 /* Implementation of the Media Session API */
 if('mediaSession' in navigator) {
@@ -231,7 +224,6 @@ const randomSort = ()=>{
 var jack = randomSort();
 const redrum = Array.from(jack,Number);
 
-    
 //Function that iterates the array forwards
 function apfwd(arr) {
 
@@ -431,8 +423,6 @@ epic.oncontextmenu =epicPlayBackward=()=>{
     return false;
 };
 
-
-
 //Chill playlist (mind button)
 var mind = document.querySelector("#mind");
 const brain = (e)=>{e.target.src="./img/mindOn.png"};
@@ -534,7 +524,6 @@ mind.oncontextmenu = reflexPlayBackward = ()=>{
     audio.addEventListener('ended',reflexPlayBackward);
     return false;
 };
-
 
 //Cool playlist (sunglasses button)
 var cool = document.querySelector("#cool");
@@ -827,7 +816,6 @@ audio.addEventListener('ended',()=>{
 //end audioplayer.
 
 
-
 //10/03/2021 Le robé esta pequeña gran idea de función a alguien en los comentarios de soloLearn xd
 function getE(id){
   return document.getElementById(id);
@@ -888,7 +876,7 @@ function launcher(){
 }
 function wii(){
   timm++;
-  if (timm<7){
+  if (timm<8){
     var zuish = new Audio();
     zuish.src = "music/test.mp3";
     zuish.play();
@@ -1101,12 +1089,6 @@ function openClose(){
       bipBip--;
       break;
   }
-}
-//Intro
-function yugioh(){
-  var yugi = new Audio();
-  yugi.src = "music/test.mp3";
-  yugi.play();
 }
 
 //PARA BOTONES HASTA FINAL DE CICLOS
@@ -2117,7 +2099,7 @@ function result12(){
     
     var scanCommon = arr.filter(x=>arrB.includes(x));
     var deleteRepeated = scanCommon.filter((value, index, array)=>array.indexOf(value) === index);
-    var commonDigits = deleteRepeated.sort();
+    var commonDigits = deleteRepeated.sort((a,b)=>a-b);
     
 
     if ((n12 == 0 && n12b == 0)) {
@@ -2299,7 +2281,7 @@ function result16(){
       if (arr[i] === arr[j]) {
         box.push(arr[i]);
         clean = box.filter((value, index, array) => array.indexOf(value) === index);
-        sort = clean.sort();   
+        sort = clean.sort((a,b)=>a-b);   
       }
     }
   }
@@ -2775,7 +2757,7 @@ function result23(){
 //En este caso, solution es un filtro de números primos
   var solution = arr.filter(x=>x==2||x==3||x==5||x==7||x==9); 
 //sort organizará nuestro arreglo, mostrando la informacion de manera clara al usuario  
-  var sort = solution.sort().filter((value,index,array)=>(array.indexOf(value)==index));
+  var sort = solution.sort((a,b)=>a-b).filter((value,index,array)=>(array.indexOf(value)==index));
 //Personalización del problema
   var ngtv = (n23<0)? `<br>Por cierto... ¿Sabías que los números primos no pueden ser negativos? Ese menos (-) sobra e,e`:``;
   var xd = (sort.length==1)? `tiene al ${sort} que es primo ${ngtv}`:`tiene varios números primos: ${sort} ${ngtv}`;
@@ -2838,7 +2820,7 @@ function result24(){
   //En este caso, solution es un filtro de números pares
     var solution = arr.filter(x=>(x%2)==0); 
   //sort organizará nuestro arreglo, mostrando la informacion de manera clara al usuario  
-    var sort = solution.sort().filter((value,index,array)=>(array.indexOf(value)==index));
+    var sort = solution.sort((a,b)=>a-b).filter((value,index,array)=>(array.indexOf(value)==index));
   //Personalización del problema (singulares o plurales)
    var xd = (sort.length==1)? `tiene al ${sort} que es par`:`tiene varios números pares: ${sort}`;
     
@@ -2907,7 +2889,7 @@ function result25(){
     var solution = arr.filter(x=>left+right==x||left+mid==x||mid+right==x); 
     var partOf = arr.filter(x=>!(left+right==x||left+mid==x||mid+right==x)); 
   //sort organizará nuestro arreglo, mostrando la informacion de manera clara al usuario  
-    var sort = solution.sort().filter((value,index,array)=>(array.indexOf(value)==index));
+    var sort = solution.sort((a,b)=>a-b).filter((value,index,array)=>(array.indexOf(value)==index));
   //Personalización del problema (singulares o plurales)
    var xd = (sort.length==1)? `tiene al ${sort} que es la suma de ${partOf} UwU`:`Ninguno de sus números son el resultado de sumar los otros dos :C`;
     
@@ -2996,7 +2978,7 @@ function result27(){
 //En este caso, solution es un filtro de números pars
   var solution = arr.filter(x=>(x%2)==0); 
 //sort organizará nuestro arreglo, mostrando la informacion de manera clara al usuario  
-  var sort = solution.sort().filter((value,index,array)=>(array.indexOf(value)==index));
+  var sort = solution.sort((a,b)=>a-b).filter((value,index,array)=>(array.indexOf(value)==index));
 //Personalización del problema (singulares o plurales)
  var xd = (sort.length==1)? `tiene al ${sort} que es par`:`tiene varios números pares: ${sort}`;
   
@@ -3313,8 +3295,8 @@ function result36(){
     var odd = arr.filter(x=>!(x%2==0));
     var oneDigit = (aux%2==0)? `y no 4 :c y pues es un número par`:`y no 4 :c y pues es un número impar`;
   //sort organizará nuestro arreglo, mostrando la informacion de manera clara al usuario  
-    var sortEven = even.sort().filter((value,index,array)=>(array.indexOf(value)==index));
-    var sortOdd = odd.sort().filter((value,index,array)=>(array.indexOf(value)==index));
+    var sortEven = even.sort((a,b)=>a-b).filter((value,index,array)=>(array.indexOf(value)==index));
+    var sortOdd = odd.sort((a,b)=>a-b).filter((value,index,array)=>(array.indexOf(value)==index));
   //Personalización del problema (singulares o plurales)
     var evenResult = (sortEven.length==1)? `El ${n36} tiene un número par: el ${sortEven} `:`El ${n36} tiene varios números par: ${sortEven} `;
     var oddResult = (sortOdd.length==1)? `y tiene al ${sortOdd} que es impar`:`y tiene varios números impares: ${sortOdd}`;
@@ -3789,7 +3771,7 @@ function result44(){
     };
 
   //sort organizará nuestro arreglo, mostrando la informacion de manera clara al usuario  
-    var sort = box.sort().filter((value,index,array)=>(array.indexOf(value)==index));
+    var sort = box.sort((a,b)=>a-b).filter((value,index,array)=>(array.indexOf(value)==index));
   //Personalización del problema (singulares o plurales)
     var xd = (sort.length>=1)? `Tiene de primer número al ${solution}, el cual, curiosamente... <br> ¡ES MÚLTIPLO DEL ${box}! :D UwU`:`Comienza con el número ${solution}, el cual,<br>lamentablemente, no es múltiplo de ninguno de los otros números :c`;
 
@@ -5396,11 +5378,11 @@ function cycle28(){
   const primes = [2,3,5,7];
 
   var box = arr.filter(x=>primes.includes(x));
-  var sortbox = box.sort();
+  var sortbox = box.sort((a,b)=>a-b);
 
   //ALGORITHM FOR PRIME NUMBERS B >:c
   var boxb = arrb.filter(x=>primes.includes(x));
-  var sortboxb = boxb.sort();
+  var sortboxb = boxb.sort((a,b)=>a-b);
 
   //WHICH ONE KEEPS MORE PRIME DIGITS?
     var length = box.length;
@@ -5470,7 +5452,7 @@ function cycle30(){
       };
     };
     
-    var comp = boxx.sort().filter((value,index,array)=>array.indexOf(value)===index);
+    var comp = boxx.sort((a,b)=>a-b).filter((value,index,array)=>array.indexOf(value)===index);
     
     //ALGORITHM FOR PRIME NUMBERS >:c
   var box = [];
@@ -5525,7 +5507,7 @@ function cycle30(){
       //Esquema de casos
       if ( number>0 || number<0 ){
         arrCycle31.push(Number.parseInt(number));
-        sorCycle31 = arrCycle31.sort().filter((value,index,array)=>array.indexOf(value)===index);
+        sorCycle31 = arrCycle31.sort((a,b)=>a-b).filter((value,index,array)=>array.indexOf(value)===index);
         endCycle31 = sorCycle31.join(', ');
         c31.innerHTML = `Números registrados: ${endCycle31}`;
         fivesFilter = sorCycle31.filter(x=>(Math.abs(x%10))==5);
@@ -5652,7 +5634,7 @@ function cycle30(){
       //Esquema de casos
       if ( number>0 || number<0 ){
         arrCycle32.push(Number.parseInt(number));
-        sorCycle32 = arrCycle32.sort().filter((value,index,array)=>array.indexOf(value)===index);
+        sorCycle32 = arrCycle32.sort((a,b)=>a-b).filter((value,index,array)=>array.indexOf(value)===index);
         endCycle32 = sorCycle32.join(', ');
         c32.innerHTML = `Números registrados: ${endCycle32}`;
         element = eval(primesFilter.join("+"));
@@ -8114,35 +8096,46 @@ var arr06butR = getE('arrayb06b');
 //SPANS
 var arr06spnL = getE('arrSpan06l');
 var arr06spnR = getE('arrSpan06r');
+//end of global variables.
 
 //EVENTS FOR THE INITIAL SPAN TO POP UP AND GO OUT
+function arr06Blanchedalmond(){
+  return getE('arr06intro').style.color = 'blanchedalmond';
+};
+function arr06Black(){
+    getE('arr06intro').innerHTML = `oli <br> xd`;
+    getE('arr06intro').style.color = 'black';
+};
+
+//left input
 arr06inpL.addEventListener('focus',(e)=>{
   getE('arr06intro').innerHTML = `Escribe un número de máximo 2 dígitos. <br> Luego, regístralo oprimiendo ENTER c:`;
-  getE('arr06intro').style.color = 'blanchedalmond';
+  arr06Blanchedalmond();
 });
+arr06inpL.addEventListener('blur',arr06Black);
+//left button
+arr06butL.addEventListener('click',array06);
+arr06butL.addEventListener('focus',arr06Blanchedalmond);
+arr06butL.addEventListener('blur',arr06Black);
 
-arr06inpL.addEventListener('blur',(e)=>{
-  getE('arr06intro').innerHTML = `oli <br> xd`;
-  getE('arr06intro').style.color = 'black';
-});
-
+//right input
 arr06inpR.addEventListener('focus',(e)=>{
   getE('arr06intro').innerHTML = `Escribe un número de máximo 4 dígitos. <br> Luego, regístralo oprimiendo ENTER c:`;
-  getE('arr06intro').style.color = 'blanchedalmond';
+  arr06Blanchedalmond();
 });
-
-arr06inpR.addEventListener('blur',(e)=>{
-  getE('arr06intro').innerHTML = `oli <br> xd`;
-  getE('arr06intro').style.color = 'black';
-});
-//end
+arr06inpR.addEventListener('blur',arr06Black);
+//right button
+arr06butR.addEventListener('click',array06b);
+arr06butR.addEventListener('focus',arr06Blanchedalmond);
+arr06butR.addEventListener('blur',arr06Black);
+//end of events.
 
 //INPUT FUNCTION TO INTRODUCE THE VALUES
 var arrN06 = 0; //for trolling with the negative inputs xd
 var arrNL6 = 0; //xd
 var arrNR6 = 0; //xd
 
-//left 
+//left input
 arr06inpL.addEventListener('keydown',arrayi06);
 function arrayi06(e){
   //run this when press enter
@@ -8170,11 +8163,11 @@ function arrayi06(e){
         default:
           if (arrNR6 == 0){
             getE('arr06intro').innerHTML = `¿Por qué insistes tanto... <br> ...Con los negativos? xd`;
-            arrNL6 == 1;
+            arrNL6 = 1;
           }
           else{
             getE('arr06intro').innerHTML = `¡¡¡QUE NO SE PUEDEN NEGATIVOS!!! >:C <br> Ejem... Recuerda que los números primos son positivos c:`;
-            arrNL6 == 1;
+            arrNL6 = 1;
           };
           break;
       };
@@ -8197,7 +8190,7 @@ function arrayi06(e){
       arr06inpL.value = ``;  
       };
     }
-    //when same
+    //when same numbers
     else if(arr06inpL.value == arr06spnR.textContent){
       getE('arr06intro').innerHTML = `Hey, human@...¿Variemos un poco, no? <br> Introduce un valor diferente del segundo número`;
       arr06inpL.value = ``;  
@@ -8205,18 +8198,32 @@ function arrayi06(e){
     //any other valid number
     else{
       if (arr06spnR.textContent == `?`){
-        getE('arr06intro').innerHTML = `¡Cool! Un ${arr06inpL.value} uwu <br> Ahora genera el segundo número`;
+        if (arr06inpL.value == 69){
+          getE('arr06intro').innerHTML = `${arr06inpL.value}... ¡EXCELENTE ELECCIÓN! uwu <br> Ahora genera el segundo número`;
+        }
+        else{
+          getE('arr06intro').innerHTML = `¡Cool! Un ${arr06inpL.value} uwu <br> Ahora genera el segundo número`;
+        };
       }
       else {
-        getE('arr06intro').innerHTML = `¡Cool! Un ${arr06inpL.value} uwu Ahora a ver el resultado... <br> Y a jugar con el vector... Que para algo lo hice xd`;
+        if (arr06inpL.value == 69){
+          getE('arr06intro').innerHTML = `${arr06inpL.value}... ¡EXCELENTE ELECCIÓN! uwu Ahora a ver el resultado... <br> Y a jugar con el vector... Que para algo lo hice xd`;
+        }
+        else{
+          getE('arr06intro').innerHTML = `¡Cool! Un ${arr06inpL.value} uwu Ahora a ver el resultado... <br> Y a jugar con el vector... Que para algo lo hice xd`;
+        };
       };
       arr06spnL.textContent = Number(arr06inpL.value);
       arr06inpL.value = ``;
     };
+    //execution
+    if (arr06spnL.textContent != '?' && arr06spnR.textContent != '?'){
+      solveArr06(arr06spnL.textContent, arr06spnR.textContent);
+    };
   };
 };
 
-//right
+//right input
 arr06inpR.addEventListener('keydown',arrayi06b);
 function arrayi06b(e){
   //run this when press enter
@@ -8232,27 +8239,26 @@ function arrayi06b(e){
         case 0:  
           if(arrNL6 == 1){
             getE('arr06intro').innerHTML = `Aquí...<br> Tampoco xd`;
-            arrN06 == 1;
-            arrNL6 == 0;
+            arrN06 = 1;
+            arrNL6 = 0;
           }
           else{
             getE('arr06intro').innerHTML = `Ah, se me olvidó decirte... <br> Aquí no te valdré negativos xd`;
-            arrNR6 == 1;
+            arrNR6 = 1;
           };
           break;
         
         default:
           if (arrNL6 == 0){
             getE('arr06intro').innerHTML = `¿Por qué insistes tanto... <br> ...Con los negativos? xd`;
-            arrNR6 == 1;
+            arrNR6 = 1;
           }
           else{
             getE('arr06intro').innerHTML = `¡¡¡QUE NO SE PUEDEN NEGATIVOS!!! >:C <br> Ejem... Recuerda que los números primos son positivos c:`;
-            arrNR6 == 1;
+            arrNR6 = 1;
           }
           break;
       };      
-      getE('arr06intro').innerHTML = `Ah, se me olvidó decirte... <br> Aquí no te valdré negativos xd`;
       arr06inpR.value = ``;
     }
     //zeros
@@ -8272,7 +8278,7 @@ function arrayi06b(e){
       arr06inpR.value = ``;  
       };
     }
-    //when same
+    //when same numbers
     else if(arr06inpR.value == arr06spnL.textContent){
       getE('arr06intro').innerHTML = `Hey, human@...¿Variemos un poco, no? <br> Introduce un valor diferente del primer número`;
       arr06inpR.value = ``;
@@ -8280,16 +8286,199 @@ function arrayi06b(e){
     //any other valid number
     else{
       if (arr06spnL.value == `?`){
-        getE('arr06intro').innerHTML = `¡Cool! Un ${arr06inpR.value} uwu <br> Ahora genera el primer número`;
+        if(arr06inpR.value == 666){
+          getE('arr06intro').innerHTML = `${arr06inpR.value}... ¡EXCELENTE ELECCIÓN! uwu <br> Ahora genera el primer número`;
+        }
+        else{
+          getE('arr06intro').innerHTML = `¡Cool! Un ${arr06inpR.value} uwu <br> Ahora genera el primer número`;
+        }
       }
       else {
-        getE('arr06intro').innerHTML = `¡Cool! Un ${arr06inpR.value} uwu Ahora a ver el resultado... <br> Y a jugar con el vector... Que para algo lo hice xd`;
+        if(arr06inpR.value == 666){
+          getE('arr06intro').innerHTML = `${arr06inpR.value}... ¡EXCELENTE ELECCIÓN! uwu Ahora a ver el resultado... <br> Y a jugar con el vector... Que para algo lo hice xd`;
+
+        }
+        else{
+          getE('arr06intro').innerHTML = `¡Cool! Un ${arr06inpR.value} uwu Ahora a ver el resultado... <br> Y a jugar con el vector... Que para algo lo hice xd`;
+        }
       };
       arr06spnR.textContent = Number(arr06inpR.value);
       arr06inpR.value = ``;
     };
+    //execution
+    if (arr06spnL.textContent != '?' && arr06spnR.textContent != '?'){
+      solveArr06(arr06spnL.textContent, arr06spnR.textContent);
+    };
   };
 };
+//end of inputs.
+
+//BUTTONS FUNCTIONS to generate random nums
+//but first the styles xd
+//left button style
+function arrOnMouseOverLight06L(){
+  arr06butL.style.border="3px solid #ffab22";
+  arr06butL.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
+  arr06butL.style.color="rgb(31, 11, 11)";
+};
+function arrOnMouseOutLight06L(){
+  arr06butL.style.border='3px solid #f7b64e';
+  arr06butL.style.color='#333333';
+  arr06butL.style.background='linear-gradient(to bottom, #fff186 5%, #f7b64e 100%)';
+};
+
+function arrOnMouseOverDark06L(){
+  arr06butL.style.border="3px solid #ffaa22";
+  arr06butL.style.background="linear-gradient(to bottom, #ffe205 5%, #ffb71b 100%)";
+};
+function arrOnMouseOutDark06L(){
+  arr06butL.style.border = '1px solid #ff9d00';
+  arr06butL.style.color = 'rgb(31, 11, 11)';
+  arr06butL.style.background = 'linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)';
+};
+//right button style
+function arrOnMouseOverLight06R(){
+  arr06butR.style.border="3px solid #ffab22";
+  arr06butR.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
+  arr06butR.style.color="rgb(31, 11, 11)";
+};
+function arrOnMouseOutLight06R(){
+  arr06butR.style.border='3px solid #f7b64e';
+  arr06butR.style.color='#333333';
+  arr06butR.style.background='linear-gradient(to bottom, #fff186 5%, #f7b64e 100%)';
+};
+
+function arrOnMouseOverDark06R(){
+  arr06butR.style.border="3px solid #ffaa22";
+  arr06butR.style.background="linear-gradient(to bottom, #ffe205 5%, #ffb71b 100%)";
+};
+function arrOnMouseOutDark06R(){
+  arr06butR.style.border = '1px solid #ff9d00';
+  arr06butR.style.color = 'rgb(31, 11, 11)';
+  arr06butR.style.background = 'linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)';
+};
+
+//left button function
+function array06(){
+  //solution
+  arr06spnL.textContent = Math.round(Math.random() * 99);  
+  if (arr06spnR.textContent == `?`){
+    if(arr06spnL.textContent == 666){
+      getE('arr06intro').innerHTML = `${arr06spnL.textContent}... ¡PERO QUÉ SUERTE TIENES! uwu <br> Ahora genera el primer número`;
+    }
+    else{
+      getE('arr06intro').innerHTML = `¡Cool! Un ${arr06spnL.textContent} uwu <br> Ahora genera el primer número`;
+    };
+  }
+  else {
+    if(arr06spnL.textContent == 666){
+      getE('arr06intro').innerHTML = `${arr06spnL.textContent}... ¡PERO QUÉ SUERTE TIENES! uwu Ahora a ver el resultado... <br> Y a jugar con el vector... Que para algo lo hice xd`;
+    }
+    else{
+      getE('arr06intro').innerHTML = `¡Cool! Un ${arr06spnL.textContent} uwu Ahora a ver el resultado... <br> Y a jugar con el vector... Que para algo lo hice xd`;
+    };
+  };
+  //oh, stylo
+  arr06butL.onmouseover = function (){arrOnMouseOverLight06L()};
+  arr06butL.onmouseout = function (){arrOnMouseOutLight06L()};
+  arr06butL.onmousedown = function (){arrOnMouseOutDark06L()};
+  arr06butL.onmouseup = function (){arrOnMouseOverDark06L()};
+  //execution
+  if (arr06spnL.textContent != '?' && arr06spnR.textContent != '?'){
+    solveArr06(arr06spnL.textContent, arr06spnR.textContent);
+  };
+};
+
+//right button function
+function array06b(){
+  arr06spnR.textContent = Math.round(Math.random() * 999);
+  if (arr06spnL.textContent == `?`){
+    if(arr06spnR.textContent == 666){
+      getE('arr06intro').innerHTML = `${arr06spnR.textContent}... ¡PERO QUÉ SUERTE TIENES! uwu <br> Ahora genera el primer número`;
+    }
+    else{
+      getE('arr06intro').innerHTML = `¡Cool! Un ${arr06spnR.textContent} uwu <br> Ahora genera el primer número`;
+    };
+  }
+  else {
+    if(arr06spnR.textContent == 666){
+      getE('arr06intro').innerHTML = `${arr06spnR.textContent}... ¡PERO QUÉ SUERTE TIENES! uwu Ahora a ver el resultado... <br> Y a jugar con el vector... Que para algo lo hice xd`;
+    }
+    else{
+      getE('arr06intro').innerHTML = `¡Cool! Un ${arr06spnR.textContent} uwu Ahora a ver el resultado... <br> Y a jugar con el vector... Que para algo lo hice xd`;
+    };
+  };
+    //oh, stylo
+    arr06butR.onmouseover = function (){arrOnMouseOverLight06R()};
+    arr06butR.onmouseout = function (){arrOnMouseOutLight06R()};
+    arr06butR.onmousedown = function (){arrOnMouseOutDark06R()};
+    arr06butR.onmouseup = function (){arrOnMouseOverDark06R()};
+  //execution
+    if (arr06spnL.textContent != '?' && arr06spnR.textContent != '?'){
+      solveArr06(arr06spnL.textContent, arr06spnR.textContent);
+    };
+};
+//end of buttons.
+
+//vector function
+function solveArr06(left, right){
+  let bag = [];
+  for (let i = left; i <= right; i++){
+    bag.push(i);
+  };
+  //ALGORITHM FOR PRIME NUMBERS >:c
+  let primes = [];
+  for (let j = 0; j < bag.length; j++){
+    let box = [];
+    for (let numbers = 2; numbers <= bag[j]; numbers++) {
+      const prime = bag[j] % numbers;
+      if (prime == 0) {
+        box.push(numbers);  
+      };
+    };
+    if (box.length == 1){
+      primes.push(bag[j]);
+    };
+    if (primes.length == 10){
+      j = bag.length;
+    };
+  };
+  let result = primes.sort((a,b)=>a-b);
+  const vector06 = document.querySelectorAll('div#a06d > div');
+  for (let i = 0; i < vector06.length; i++){
+    vector06[i].textContent = result[i];
+  };
+  switch (result.length){
+    case 10:
+      getE('arr06intro').innerHTML = `UwU <br> Ahí 'tan tus 10 primos`;
+      break;
+
+    case 9:
+      getE('arr06intro').innerHTML = `Ufff casii casii 10 primos, <br> por un pelo de rana calva xd`;
+      break;
+    
+    case 8:
+      getE('arr06intro').innerHTML = `Aish... Faltaron <br> 2 primos no más F`;
+      break;
+
+    case 7:
+      getE('arr06intro').innerHTML = `Caaasi los 10 D: <br> intenta otra veez`;
+      break;
+
+    case 1:
+      getE('arr06intro').innerHTML = `Y HE AQUÍ A ${result} <br> EL ÚNICO SOBREVIVIENTE EN PIE DE LOS PRIMOS`;
+      break;
+    
+    case 0:
+      getE('arr06intro').innerHTML = `alv no hay primos <br> entre estos dos números D:`;
+      break;
+
+    default:
+      getE('arr06intro').innerHTML = `Hmm... :c No hay suficientes primos entre tus dos <br> números como para llenar el vector F`;
+      break;
+  };
+};
+//enddd of vector and everythiiiing.
 
 // 7. Leer 10 números enteros, almacenarlos en un vector y determinar en qué posiciones se encuentra el número mayor.
 var box07 = new get10Random("vector07");
