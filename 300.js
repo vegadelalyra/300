@@ -21848,16 +21848,14 @@ function array50(){
 //SECCIÓN MATRIX
 
 //grid with pos for the .cuad class
-var inUtero = document.querySelectorAll('div#cuad01');
+var inUtero = document.querySelector('div#cuad01');
 for (let row = 0; row < 4; row++){
   for (let col = 0; col < 4; col++){
     let matrixxx = document.createElement("div");
     let texxxt = document.createTextNode(`${row},${col}`);
     matrixxx.appendChild(texxxt);
-    for (let i = 0; i < inUtero.length; i++){
-      inUtero[i].appendChild(matrixxx);
-      inUtero[i].style.gridTemplateColumns = "repeat(4, 1fr)"; 
-    };
+    inUtero.appendChild(matrixxx);
+    inUtero.style.gridTemplateColumns = "repeat(4, 1fr)"; 
   };
 };
 
@@ -21869,6 +21867,9 @@ var neo;
 var matrixCubes;
 //double click to generate matrix
 function randMatrix(){
+  let gen = new Audio();
+  gen.src = 'music/introduce.mp3';
+  gen.play();
   smith.style.gridTemplateColumns = "repeat(4, 1fr)";
   if (twice == 0){
     twice++;
@@ -21877,7 +21878,7 @@ function randMatrix(){
     smith.style.background = `transparent`;
     for (let i = 0; i < 16; i++){
       let matrixxx = document.createElement("div");
-      let random = Math.round(Math.random()*(10000-(-9999))+(-9999));
+      let random = Math.round(Math.random()*(1000-(-999))+(-999));
       let texxxt = document.createTextNode(random);
       matrixxx.appendChild(texxxt);
       smith.appendChild(matrixxx);
@@ -21885,14 +21886,20 @@ function randMatrix(){
     neo = document.querySelectorAll('div#m01 > div');
   }
   else{
+    let morfeo = document.querySelectorAll('div#cuad01 > div');
     for (let i = 0; i < 16; i++){
-      let random = Math.round(Math.random()*(10000-(-9999))+(-9999));
+      let random = Math.round(Math.random()*(1000-(-999))+(-999));
       neo[i].textContent = random;
       neo[i].style.color = `blanchedalmond`;
       neo[i].style.background = `black`;
+      neo[i].style.fontWeight = 'normal';
+      morfeo[i].style.background = 'black';
+      morfeo[i].style.fontWeight = 'normal';
+      morfeo[i].style.color = 'lightgray';
     };
   };
   dragMatrix();
+  matrixSolve();
 
   function dragMatrix(){
     //DRAG AND DROP PARA LA MATRIX Y SUS CASILLAS
@@ -21918,7 +21925,8 @@ function randMatrix(){
 //DRAG AND DROP
 var dragSrcE = null;
 function handleDragStartM(e){
-  this.style.opacity = '0';
+  this.style.opacity = '0.01';
+  this.style.color = `blanchedalmond`;
   let ploop = new Audio("./music/drag.mp3");
   ploop.play();
   dragSrcE = this;
@@ -21943,12 +21951,18 @@ function handleDropM(e){
 }
 function handleDragEndM(e){
   this.style.opacity = '1';
+  this.style.background = 'black';
   [].forEach.call(matrixCubes,function(matrix){
     matrix.classList.remove('over');
+    matrix.addEventListener('contextmenu',swapPos);
+    matrix.addEventListener('mouseover',overM);
+    matrix.addEventListener('mouseout',outM);
   });
 }
 //swap to pos
 function swapPos(){
+  let win = new Audio('music/buttonUP.mp3');
+  win.play();
   this.style.color = 'transparent';
   this.style.background = 'transparent';
   this.removeEventListener('contextmenu',swapPos);
@@ -21956,21 +21970,47 @@ function swapPos(){
 }
 //swap to num
 function swapNum(){
+  let win = new Audio('music/win.mp3');
+  win.play();
   this.style.color = 'blanchedalmond';
-  this.style.background = 'black';
+  if(this.style.fontWeight == 'bold'){
+    this.style.background = `#403819`;
+  }
+  else{
+    this.style.background = 'black';
+  }
   this.removeEventListener('contextmenu',swapNum);
   this.addEventListener('contextmenu',swapPos);
 }
 //retrieving hover effect
 function overM(){
   if(this.style.color!=`transparent`){
-    this.style.color = `goldenrod`;
+    this.style.color = `white`;
   };
+  let flash = new Audio();
+  flash.src = 'music/flashes.mp3';
+  flash.play();
 }
 function outM(){
   if(this.style.color!=`transparent`){
     this.style.color = `blanchedalmond`;
   };
+}
+
+function matrixSolve() {
+  let box = [];
+  let pos = 0;
+  for (let i = 0; i < neo.length; i++){
+    box.push(Number(neo[i].textContent));
+  };
+  let r = Math.max(...box);
+  pos = box.indexOf(r);
+  let morfeo = document.querySelectorAll('div#cuad01 > div');
+  morfeo[pos].style.background = '#403819';
+  morfeo[pos].style.fontWeight = 'bold';
+  morfeo[pos].style.color = 'whitesmoke';
+  neo[pos].style.background = `#403819`;
+  neo[pos].style.fontWeight = 'bold';
 }
 
 class matrix {

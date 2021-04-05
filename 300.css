@@ -759,7 +759,7 @@ button:focus:not(.aPb){
 }
 .matrix {
     position:relative;
-    height:30em;
+    height:32em;
 }
     .matrix:hover{
         background:#0C0D10;
@@ -768,8 +768,9 @@ button:focus:not(.aPb){
         color:whitesmoke;
     }
         .cave {
+            cursor:pointer;
             width:90%;
-            height:72%;
+            height:73.5%;
             background:rgba(0, 0, 0, 0.815);
             position:absolute;
             display: grid;
@@ -784,14 +785,14 @@ button:focus:not(.aPb){
                 padding-top: 35px;
                 border-radius: 5px;
                 background-color: rgb(0, 0, 0);
-                border: 2px solid rgb(148, 148, 148);
+                border: 3px solid rgb(148, 148, 148);
             }
                 .cave > div:hover {
-                    color:gold;
-                    border: 2px solid #D9C345;
+                    color:white;
+                    border: 3px solid #ffc60b;
                 }
                     .cave > div.over {
-                        border:2px dashed rgb(241, 241, 241);
+                        border:3px dashed rgb(241, 241, 241);
                     }
                         .cave > em {
                             font-weight:lighter;
@@ -801,7 +802,7 @@ button:focus:not(.aPb){
                             cursor:pointer;
                         }
                             .cave > em:hover{
-                                color:whitesmoke;
+                                color:white;
                             }
                                 .cave:hover > em {
                                     opacity:1;
@@ -824,7 +825,7 @@ button:focus:not(.aPb){
                 padding-top: 35px;
                 border-radius: 5px;
                 background-color: rgb(0, 0, 0);
-                border: 2px solid rgb(148, 148, 148);
+                border: 3px solid rgb(148, 148, 148);
             }            
 /*FIN DISEÑO DE MATRIX*/
 
