@@ -21847,20 +21847,134 @@ function array50(){
 
 //SECCIÓN MATRIX
 
+//grid with pos for the .cuad class
+var inUtero = document.querySelectorAll('div#cuad01');
+for (let row = 0; row < 4; row++){
+  for (let col = 0; col < 4; col++){
+    let matrixxx = document.createElement("div");
+    let texxxt = document.createTextNode(`${row},${col}`);
+    matrixxx.appendChild(texxxt);
+    for (let i = 0; i < inUtero.length; i++){
+      inUtero[i].appendChild(matrixxx);
+      inUtero[i].style.gridTemplateColumns = "repeat(4, 1fr)"; 
+    };
+  };
+};
 
-//DRAG AND DROP PARA MATRIX
-matrixCubes = document.querySelectorAll('');
-[].forEach.call(matrixCubes,function(block){
-  block.addEventListener('dragstart',handleDragStart);
-  block.addEventListener('dragover',handleDragOver);
-  block.addEventListener('dragenter',handleDragEnter);
-  block.addEventListener('dragleave',handleDragLeave);
-  block.addEventListener('drop',handleDrop);
-  block.addEventListener('dragend',handleDragEnd);
-});
+//generate matrix when dblclick
+let smith = document.querySelector('div#m01');
+smith.addEventListener('dblclick',randMatrix);
+let twice = 0;
+var neo;
+var matrixCubes;
+//double click to generate matrix
+function randMatrix(){
+  smith.style.gridTemplateColumns = "repeat(4, 1fr)";
+  if (twice == 0){
+    twice++;
+    let em = document.querySelector('div#m01 > em');
+    smith.removeChild(em);
+    smith.style.background = `transparent`;
+    for (let i = 0; i < 16; i++){
+      let matrixxx = document.createElement("div");
+      let random = Math.round(Math.random()*(10000-(-9999))+(-9999));
+      let texxxt = document.createTextNode(random);
+      matrixxx.appendChild(texxxt);
+      smith.appendChild(matrixxx);
+    };
+    neo = document.querySelectorAll('div#m01 > div');
+  }
+  else{
+    for (let i = 0; i < 16; i++){
+      let random = Math.round(Math.random()*(10000-(-9999))+(-9999));
+      neo[i].textContent = random;
+      neo[i].style.color = `blanchedalmond`;
+      neo[i].style.background = `black`;
+    };
+  };
+  dragMatrix();
+
+  function dragMatrix(){
+    //DRAG AND DROP PARA LA MATRIX Y SUS CASILLAS
+    for (let i = 0; i < neo.length; i++){
+      neo[i].setAttribute('data-id',`"${i}"`);
+      neo[i].setAttribute('draggable',"true");
+    };
+    matrixCubes = document.querySelectorAll('div.cave > div');
+    [].forEach.call(matrixCubes,function(matrix){
+    matrix.addEventListener('dragstart',handleDragStartM);
+    matrix.addEventListener('dragover',handleDragOverM);
+    matrix.addEventListener('dragenter',handleDragEnterM);
+    matrix.addEventListener('dragleave',handleDragLeaveM);
+    matrix.addEventListener('drop',handleDropM);
+    matrix.addEventListener('dragend',handleDragEndM);
+    matrix.addEventListener('contextmenu',swapPos);
+    matrix.addEventListener('mouseover',overM);
+    matrix.addEventListener('mouseout',outM);
+    });
+  }
+}
+
+//DRAG AND DROP
+var dragSrcE = null;
+function handleDragStartM(e){
+  this.style.opacity = '0';
+  let ploop = new Audio("./music/drag.mp3");
+  ploop.play();
+  dragSrcE = this;
+  e.dataTransfer.effectAllowed = 'move';
+  e.dataTransfer.setData('text/html',this.innerHTML);}
+function handleDragOverM(e){
+  if (e.preventDefault){e.preventDefault();}
+  e.dataTransfer.dropEffect = 'move';
+  return false;
+}
+function handleDragEnterM(e){this.classList.add('over');}
+function handleDragLeaveM(e){this.classList.remove('over');}
+function handleDropM(e){
+  let droop = new Audio("./music/drop.mp3");
+  droop.play();
+  if(e.stopPropagation){e.stopPropagation();}
+  if (dragSrcE != this){
+    dragSrcE.innerHTML = this.innerHTML;
+    this.innerHTML = e.dataTransfer.getData('text/html');
+  }
+  return false; 
+}
+function handleDragEndM(e){
+  this.style.opacity = '1';
+  [].forEach.call(matrixCubes,function(matrix){
+    matrix.classList.remove('over');
+  });
+}
+//swap to pos
+function swapPos(){
+  this.style.color = 'transparent';
+  this.style.background = 'transparent';
+  this.removeEventListener('contextmenu',swapPos);
+  this.addEventListener('contextmenu',swapNum);
+}
+//swap to num
+function swapNum(){
+  this.style.color = 'blanchedalmond';
+  this.style.background = 'black';
+  this.removeEventListener('contextmenu',swapNum);
+  this.addEventListener('contextmenu',swapPos);
+}
+//retrieving hover effect
+function overM(){
+  if(this.style.color!=`transparent`){
+    this.style.color = `goldenrod`;
+  };
+}
+function outM(){
+  if(this.style.color!=`transparent`){
+    this.style.color = `blanchedalmond`;
+  };
+}
 
 class matrix {
-  constructor (row,colums) {
+  constructor (row,colums,id) {
     //matrix
 
     //exercise

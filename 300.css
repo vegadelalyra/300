@@ -567,11 +567,18 @@ button:focus:not(.aPb){
     background-color: rgb(207, 207, 207);
 }
 /*FINAL DE LA SCROLLBAR xd*/
-
-#divArr00:hover{
+.gates{display:block}
+.gates:hover {
     background-color:#333333;
     cursor:pointer;
+    color:whitesmoke;
 }
+    .gates:hover > em {
+        color:#f7b64e;
+    }
+        .gates > em {
+            font-weight:bold;
+        }
 
 /* Diseño de input/button */
 .falseButton{
@@ -746,14 +753,79 @@ button:focus:not(.aPb){
 /*FIN DE DISEÑO DE VECTORES*/
 /*DISEÑO DE MATRIX*/
 #matrixCradle {
-    display:flex;
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: auto;
 }
-matrix {
-    width: 50%;
+.matrix {
+    position:relative;
+    height:30em;
 }
-    .matrix:hover {
-        background:
+    .matrix:hover{
+        background:#0C0D10;
     }
+    .matrix:hover > span {
+        color:whitesmoke;
+    }
+        .cave {
+            width:90%;
+            height:72%;
+            background:rgba(0, 0, 0, 0.815);
+            position:absolute;
+            display: grid;
+            margin-left:4%;
+            margin-right:5%;
+            -moz-window-dragging: none;
+            user-select: none;
+        }
+            .cave > div {
+                font-size: 1.5em;
+                height:80px;
+                padding-top: 35px;
+                border-radius: 5px;
+                background-color: rgb(0, 0, 0);
+                border: 2px solid rgb(148, 148, 148);
+            }
+                .cave > div:hover {
+                    color:gold;
+                    border: 2px solid #D9C345;
+                }
+                    .cave > div.over {
+                        border:2px dashed rgb(241, 241, 241);
+                    }
+                        .cave > em {
+                            font-weight:lighter;
+                            margin:auto;
+                            font-size: 69px;
+                            opacity:0;
+                            cursor:pointer;
+                        }
+                            .cave > em:hover{
+                                color:whitesmoke;
+                            }
+                                .cave:hover > em {
+                                    opacity:1;
+                                }
+        .cuad {
+            position:absolute;
+            width:90%;
+            display: grid;
+            margin-left:4%;
+            margin-right:5%;
+            -moz-window-dragging: none;
+            user-select: none;
+        }
+            .cuad > div {
+                color:lightgray;
+                font-weight:lighter;
+                font-style:italic;
+                font-size: 1.5em;
+                height:80px;
+                padding-top: 35px;
+                border-radius: 5px;
+                background-color: rgb(0, 0, 0);
+                border: 2px solid rgb(148, 148, 148);
+            }            
 /*FIN DISEÑO DE MATRIX*/
 
 /* a las clases las llamas con (elemento)."elNombreDeLaClass" :D  */
