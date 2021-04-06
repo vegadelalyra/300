@@ -770,7 +770,7 @@ button:focus:not(.aPb){
         .cave {
             cursor:pointer;
             width:90%;
-            height:73.5%;
+            height:69%;
             background:rgba(0, 0, 0, 0.815);
             position:absolute;
             display: grid;
@@ -785,14 +785,14 @@ button:focus:not(.aPb){
                 padding-top: 35px;
                 border-radius: 5px;
                 background-color: rgb(0, 0, 0);
-                border: 3px solid rgb(148, 148, 148);
+                border: 3px solid rgb(98, 98, 98);
             }
                 .cave > div:hover {
                     color:white;
-                    border: 3px solid #ffc60b;
+                    border: 3px solid #ee9b00;
                 }
                     .cave > div.over {
-                        border:3px dashed rgb(241, 241, 241);
+                        border:3px dashed rgb(255, 255, 255);
                     }
                         .cave > em {
                             font-weight:lighter;

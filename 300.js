@@ -243,7 +243,6 @@ function apfwd(arr) {
 }
 //Function that iterates the array backwards
 function y(arr) {
-    
     if (first == 1){
         first = 0;
         count--;
@@ -11252,7 +11251,6 @@ var imgOff16 = `<img class="arrowImg" src="./arrowOff.png" alt="Aquí había una
 function solutiona16(){
   if (cancelButton16==1){}
   else{
-    
   function limitSolution(){
     cancelButton16 = 0;
   };
@@ -21846,82 +21844,6 @@ function array50(){
 //FINAL DE LA SECCIÓN ARREGLOS.
 
 //SECCIÓN MATRIX
-
-//grid with pos for the .cuad class
-var inUtero = document.querySelector('div#cuad01');
-for (let row = 0; row < 4; row++){
-  for (let col = 0; col < 4; col++){
-    let matrixxx = document.createElement("div");
-    let texxxt = document.createTextNode(`${row},${col}`);
-    matrixxx.appendChild(texxxt);
-    inUtero.appendChild(matrixxx);
-    inUtero.style.gridTemplateColumns = "repeat(4, 1fr)"; 
-  };
-};
-
-//generate matrix when dblclick
-let smith = document.querySelector('div#m01');
-smith.addEventListener('dblclick',randMatrix);
-let twice = 0;
-var neo;
-var matrixCubes;
-//double click to generate matrix
-function randMatrix(){
-  let gen = new Audio();
-  gen.src = 'music/introduce.mp3';
-  gen.play();
-  smith.style.gridTemplateColumns = "repeat(4, 1fr)";
-  if (twice == 0){
-    twice++;
-    let em = document.querySelector('div#m01 > em');
-    smith.removeChild(em);
-    smith.style.background = `transparent`;
-    for (let i = 0; i < 16; i++){
-      let matrixxx = document.createElement("div");
-      let random = Math.round(Math.random()*(1000-(-999))+(-999));
-      let texxxt = document.createTextNode(random);
-      matrixxx.appendChild(texxxt);
-      smith.appendChild(matrixxx);
-    };
-    neo = document.querySelectorAll('div#m01 > div');
-  }
-  else{
-    let morfeo = document.querySelectorAll('div#cuad01 > div');
-    for (let i = 0; i < 16; i++){
-      let random = Math.round(Math.random()*(1000-(-999))+(-999));
-      neo[i].textContent = random;
-      neo[i].style.color = `blanchedalmond`;
-      neo[i].style.background = `black`;
-      neo[i].style.fontWeight = 'normal';
-      morfeo[i].style.background = 'black';
-      morfeo[i].style.fontWeight = 'normal';
-      morfeo[i].style.color = 'lightgray';
-    };
-  };
-  dragMatrix();
-  matrixSolve();
-
-  function dragMatrix(){
-    //DRAG AND DROP PARA LA MATRIX Y SUS CASILLAS
-    for (let i = 0; i < neo.length; i++){
-      neo[i].setAttribute('data-id',`"${i}"`);
-      neo[i].setAttribute('draggable',"true");
-    };
-    matrixCubes = document.querySelectorAll('div.cave > div');
-    [].forEach.call(matrixCubes,function(matrix){
-    matrix.addEventListener('dragstart',handleDragStartM);
-    matrix.addEventListener('dragover',handleDragOverM);
-    matrix.addEventListener('dragenter',handleDragEnterM);
-    matrix.addEventListener('dragleave',handleDragLeaveM);
-    matrix.addEventListener('drop',handleDropM);
-    matrix.addEventListener('dragend',handleDragEndM);
-    matrix.addEventListener('contextmenu',swapPos);
-    matrix.addEventListener('mouseover',overM);
-    matrix.addEventListener('mouseout',outM);
-    });
-  }
-}
-
 //DRAG AND DROP
 var dragSrcE = null;
 function handleDragStartM(e){
@@ -21949,16 +21871,6 @@ function handleDropM(e){
   }
   return false; 
 }
-function handleDragEndM(e){
-  this.style.opacity = '1';
-  this.style.background = 'black';
-  [].forEach.call(matrixCubes,function(matrix){
-    matrix.classList.remove('over');
-    matrix.addEventListener('contextmenu',swapPos);
-    matrix.addEventListener('mouseover',overM);
-    matrix.addEventListener('mouseout',outM);
-  });
-}
 //swap to pos
 function swapPos(){
   let win = new Audio('music/buttonUP.mp3');
@@ -21974,7 +21886,7 @@ function swapNum(){
   win.play();
   this.style.color = 'blanchedalmond';
   if(this.style.fontWeight == 'bold'){
-    this.style.background = `#403819`;
+    this.style.background = `rgb(75, 41, 0)`;
   }
   else{
     this.style.background = 'black';
@@ -21997,35 +21909,184 @@ function outM(){
   };
 }
 
-function matrixSolve() {
-  let box = [];
-  let pos = 0;
-  for (let i = 0; i < neo.length; i++){
-    box.push(Number(neo[i].textContent));
-  };
-  let r = Math.max(...box);
-  pos = box.indexOf(r);
-  let morfeo = document.querySelectorAll('div#cuad01 > div');
-  morfeo[pos].style.background = '#403819';
-  morfeo[pos].style.fontWeight = 'bold';
-  morfeo[pos].style.color = 'whitesmoke';
-  neo[pos].style.background = `#403819`;
-  neo[pos].style.fontWeight = 'bold';
-}
-
 class matrix {
-  constructor (row,colums,id) {
-    //matrix
+  /*
+  MATRIX 
+    (matrix are placed into a x,2 grid called #matrixCradle) 
+      you create a matrix in 3 steps:
+    * step 1- Create a grid with defined rows and cols (thanks to parameters for exist) with the pos numbers
+    * step 2- Generate random nums and introduce them into a grid overlaping the pos numbers grid - this takes place each dblclick
+    * step 3- Add drag and drop & "swaping" functionalities
+  */
+  constructor (id,rows,cols) {
 
-    //exercise
-  };
-};
+    // step 1: Pos numbers Grid
+    this.numGrid = document.querySelector(`div#cuad${id}`)
+    this.numGrid.style.gridTemplateColumns = `repeat(${cols},1fr)`
+    for (let row = 0; row < rows; row++) {
+      for (let col = 0; col < cols; col++) {
+        const div = document.createElement('div')
+        const pos = document.createTextNode(`${row},${col}`)
+        div.appendChild(pos)
+        this.numGrid.appendChild(div)
+      }
+    }
+
+    // step 2: Matrix (and its dblclick event)
+    let secondTime = 0; let matrixDivs; let morfeo
+    this.matrix = document.querySelector(`div#m${id}`)
+    this.matrix.addEventListener('dblclick', (e) => {
+      this.matrix.style.gridTemplateColumns = `repeat(${cols}, 1fr)`
+      const gen = new Audio('music/introduce.mp3')
+      gen.play()
+      switch (secondTime){
+        case 0:
+          secondTime = 1
+          const em = document.querySelector(`div#m${id} > em`)
+          this.matrix.removeChild(em)
+          this.matrix.style.background = 'transparent'
+          for (let i = 0; i < (rows * cols); i++) {
+            const div = document.createElement('div')
+            const rand = Math.round(Math.random()*(1000-(-999))+(-999))
+            const num = document.createTextNode(rand)
+            div.appendChild(num)
+            this.matrix.appendChild(div)
+          }
+          break
+        
+        default:
+          morfeo = document.querySelectorAll(`div#cuad${id} > div`)
+          matrixDivs = document.querySelectorAll(`div#m${id} > div`)
+          for (let i = 0; i < (rows * cols); i++) {
+            const rand = Math.round(Math.random()*(1000-(-999))+(-999))
+            matrixDivs[i].textContent = rand
+            matrixDivs[i].style.color = `blanchedalmond`
+            matrixDivs[i].style.background = `black`
+            matrixDivs[i].style.fontWeight = 'normal'
+            morfeo[i].style.background = 'black'
+            morfeo[i].style.fontWeight = 'normal'
+            morfeo[i].style.color = 'lightgray'
+          }
+          break
+      }
+    // step 3: functionalities: drag and drop and contextmenu-swap
+    // DRAG AND DROP FOR MATRIX
+      matrixDivs = document.querySelectorAll(`div#m${id} > div`)
+      for (let i = 0; i < matrixDivs.length; i++){
+        matrixDivs[i].setAttribute('data-id',`"${i}"`)
+        matrixDivs[i].setAttribute('draggable',"true")
+      }
+      [].forEach.call(matrixDivs,function(matrix) {
+        matrix.addEventListener('dragstart',handleDragStartM)
+        matrix.addEventListener('dragover',handleDragOverM)
+        matrix.addEventListener('dragenter',handleDragEnterM)
+        matrix.addEventListener('dragleave',handleDragLeaveM)
+        matrix.addEventListener('drop',handleDropM)
+        matrix.addEventListener('dragend',handleDragEndM)
+        matrix.addEventListener('contextmenu',swapPos)
+        matrix.addEventListener('mouseover',overM)
+        matrix.addEventListener('mouseout',outM)
+      })
+      function handleDragEndM(e) {
+        this.style.opacity = '1'
+        this.style.background = 'black'
+        this.style.color = 'blanchedalmond';
+        [].forEach.call(matrixDivs,function(matrix) {
+          matrix.classList.remove('over')
+          matrix.addEventListener('contextmenu',swapPos)
+          matrix.addEventListener('mouseover',overM)
+          matrix.addEventListener('mouseout',outM)
+        })
+      } // END OF MATRIX.
+    // ATTRIBUTES AND METHODS TO SOLVE ANY EXERCISE
+      //This method bring us the matrix's numbers
+      this.renove = function (){
+      this.nums = []
+        matrixDivs = document.querySelectorAll(`div#m${id} > div`)
+        for (let i = 0;  i < matrixDivs.length; i++) {
+          this.nums.push(Number(matrixDivs[i].textContent))
+        }
+      }
+      this.renove()
+    })  // end of event.
+    // This method will "light" the asked numbers in the matrix
+    morfeo = document.querySelectorAll(`div#cuad${id} > div`)
+    matrixDivs = document.querySelectorAll(`div#m${id} > div`)
+    this.solution = (i) => {
+      for (let j = 0; j < ( rows * cols ); j++) {
+        morfeo[j].style.color = 'lightgray'
+        morfeo[j].style.background = 'black'
+        morfeo[j].style.fontWeight = 'normal'
+        matrixDivs[j].style.background = `black`
+        matrixDivs[j].style.fontWeight = `normal`
+        matrixDivs[j].style.color = `blanchedalmond`
+      }
+      for (let j = 0; j < i.length; j++) {
+        morfeo[i[j]].style.background = 'rgb(75, 41, 0)'
+        morfeo[i[j]].style.fontWeight = 'bold'
+        morfeo[i[j]].style.color = 'whitesmoke'
+        matrixDivs[i[j]].style.background = `rgb(75, 41, 0) `
+        matrixDivs[i[j]].style.fontWeight = 'bold'
+        matrixDivs[i[j]].style.color = 'blanchedalmond'
+      }
+    } // END OF EXERCISES' SOLUTIONS     
+  } // end of constructor. 
+} // end of class.
+
+//const smithxx   : an array with all the numbers of the matrix 
+//const neoxx     : an array with the index of the chosen numbers
+//const morfeoxx  : an array of the divs to add solution to dnd
+//here's a little function that would help us a lot to write less code
+function selectAll(selector){
+  return document.querySelectorAll(selector)
+}
+//START SOLVING THE MATRIX SECTION
 
 // 1. Leer una matriz 4x4 entera y determinar en qué fila y en qué columna se encuentra el número mayor.<br><br>
-
+const matrix01 = new matrix('01',4,4)
+function solveM01(e){
+  matrix01.renove()
+  const smith01 = matrix01.nums
+  const neo01 = []
+  //PUT HERE THE SOLUTION TO THE SPECIFIC PROBLEM
+  for ( let i = 0; i < smith01.length; i++ ) {
+    if ( Math.max(...smith01) == smith01[i] ) {
+      neo01.push(i)
+    }
+  }
+  //end of the solution of the problem.
+  matrix01.solution(neo01)
+}
+getE('m01').addEventListener('dblclick', solveM01) 
+getE('m01').addEventListener('dblclick',function(){ 
+  const morfeo01 = selectAll('div#m01 > div');
+  [].forEach.call(morfeo01, function(matrix) {
+    matrix.addEventListener('dragend', solveM01)
+    })
+  })
 
 // 2. Leer una matriz 4x4 entera y determinar cuántas veces se repita en ella el número mayor.<br><br>
-
+const matrix02 = new matrix('02',4,4)
+function solveM02(e){
+  matrix02.renove()
+  const smith02 = matrix02.nums
+  const neo02 = []
+  //PUT HERE THE SOLUTION TO THE SPECIFIC PROBLEM
+  for ( let i = 0; i < smith02.length; i++ ) {
+    if ( Math.max(...smith02) == smith02[i] ) {
+      neo02.push(i)
+    }
+  }
+  //end of the solution of the problem.
+  matrix02.solution(neo02)
+}
+getE('m02').addEventListener('dblclick', solveM02) 
+getE('m02').addEventListener('dblclick',function(){ 
+  const morfeo02 = selectAll('div#m02 > div');
+  [].forEach.call(morfeo02, function(matrix) {
+    matrix.addEventListener('dragend', solveM02)
+    })
+  })
 
 // 3. Leer una matriz 3x4 entera y determinar en qué posiciones exactas se encuentran los números pares.<br><br>
 
