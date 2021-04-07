@@ -6976,8 +6976,7 @@ function handleDragOver(e){
 function handleDragEnter(e){this.classList.add('over');}
 function handleDragLeave(e){this.classList.remove('over');}
 function handleDrop(e){
-  let droop = new Audio("./music/drop.mp3");
-  droop.play();
+  let droop = new Audio("./music/drop.mp3"); droop.play()
   if(e.stopPropagation){e.stopPropagation();}
   if (dragSrcEl != this){
     dragSrcEl.innerHTML = this.innerHTML;
@@ -21862,12 +21861,11 @@ function handleDragOverM(e){
 function handleDragEnterM(e){this.classList.add('over');}
 function handleDragLeaveM(e){this.classList.remove('over');}
 function handleDropM(e){
-  let droop = new Audio("./music/drop.mp3");
-  droop.play();
+  let droop = new Audio("./music/drop.mp3"); droop.play()
   if(e.stopPropagation){e.stopPropagation();}
   if (dragSrcE != this){
-    dragSrcE.innerHTML = this.innerHTML;
-    this.innerHTML = e.dataTransfer.getData('text/html');
+    dragSrcE.innerHTML = this.innerHTML
+    this.innerHTML = e.dataTransfer.getData('text/html')
   }
   return false; 
 }
@@ -21908,7 +21906,7 @@ function outM(){
     this.style.color = `blanchedalmond`;
   };
 }
-
+//matrix constructor
 class matrix {
   /*
   MATRIX 
@@ -21919,10 +21917,14 @@ class matrix {
     * step 3- Add drag and drop & "swaping" functionalities
   */
   constructor (id,rows,cols) {
+    //step 0: Declare what you can
+    this.matrix = document.querySelector(`div#m${id}`)
+    this.numGrid = document.querySelector(`div#cuad${id}`)
+    this.p = document.querySelector(`div#cuad${id} > p`)
+    this.secondTime = 0; this.matrixDivs; this.morfeo; this.nums
 
     // step 1: Pos numbers Grid
-    this.numGrid = document.querySelector(`div#cuad${id}`)
-    this.numGrid.style.gridTemplateColumns = `repeat(${cols},1fr)`
+    this.numGrid.style.gridTemplateColumns = `repeat(${cols}, 1fr)`
     for (let row = 0; row < rows; row++) {
       for (let col = 0; col < cols; col++) {
         const div = document.createElement('div')
@@ -21931,19 +21933,14 @@ class matrix {
         this.numGrid.appendChild(div)
       }
     }
+    this.morfeo = document.querySelectorAll(`div#cuad${id} > div`)
 
     // step 2: Matrix (and its dblclick event)
-    this.secondTime = 0; let matrixDivs; let morfeo
-    this.matrix = document.querySelector(`div#m${id}`)
-    this.p = document.querySelector(`div#cuad${id} > p`)
-    this.p.addEventListener('dblclick', (e) => {
-      this.matrix = document.querySelector(`div#m${id}`)
-      this.numGrid = document.querySelector(`div#cuad${id}`)
-      this.p = document.querySelector(`div#cuad${id} > p`)
-      this.numGrid.removeChild(this.p)
+    this.p.addEventListener('dblclick', this.smoke = (e) => {
+      const gen = new Audio('music/introduce.mp3'); gen.play()
       this.matrix.style.gridTemplateColumns = `repeat(${cols}, 1fr)`
-      const gen = new Audio('music/introduce.mp3')
-      gen.play()
+      this.numGrid.removeChild(this.p)
+
       for (let i = 0; i < (rows * cols); i++) {
         const div = document.createElement('div')
         const rand = Math.round(Math.random()*(1000-(-999))+(-999))
@@ -21951,42 +21948,55 @@ class matrix {
         div.appendChild(num)
         this.matrix.appendChild(div)
       }
-      this.miau()
-      matrixDivs = document.querySelectorAll(`div#m${id} > div`)
-      this.renove = function () {
-        this.nums = []
-        for (let i = 0;  i < matrixDivs.length; i++) {
-          this.nums.push(Number(matrixDivs[i].textContent))
-        }
+      this.matrixDivs = document.querySelectorAll(`div#m${id} > div`)
+      for (let i = 0; i < (rows * cols); i++) {
+        this.matrixDivs[i].style.color = `blanchedalmond`
+        this.matrixDivs[i].style.background = `black`
+        this.matrixDivs[i].style.fontWeight = 'normal'
+        this.morfeo[i].style.background = 'black'
+        this.morfeo[i].style.fontWeight = 'normal'
+        this.morfeo[i].style.color = 'lightgray'
       }
+      this.miau()
     })
+
     this.matrix.addEventListener('dblclick', this.miau = (e) => {
-      morfeo = document.querySelectorAll(`div#cuad${id} > div`)
-      matrixDivs = document.querySelectorAll(`div#m${id} > div`)
-      const gen = new Audio('music/introduce.mp3')
-      gen.play()
+      const gen = new Audio('music/introduce.mp3'); gen.play()
       if (this.secondTime == 1) {
-        morfeo = document.querySelectorAll(`div#cuad${id} > div`)
-        matrixDivs = document.querySelectorAll(`div#m${id} > div`)
         for (let i = 0; i < (rows * cols); i++) {
           const rand = Math.round(Math.random()*(1000-(-999))+(-999))
-          matrixDivs[i].textContent = rand
-          matrixDivs[i].style.color = `blanchedalmond`
-          matrixDivs[i].style.background = `black`
-          matrixDivs[i].style.fontWeight = 'normal'
-          morfeo[i].style.background = 'black'
-          morfeo[i].style.fontWeight = 'normal'
-          morfeo[i].style.color = 'lightgray'
+          this.matrixDivs[i].textContent = rand
+          this.matrixDivs[i].style.color = `blanchedalmond`
+          this.matrixDivs[i].style.background = `black`
+          this.matrixDivs[i].style.fontWeight = 'normal'
+          this.morfeo[i].style.background = 'black'
+          this.morfeo[i].style.fontWeight = 'normal'
+          this.morfeo[i].style.color = 'lightgray'
         }
       }
       this.secondTime = 1
     // step 3: functionalities: drag and drop and contextmenu-swap
     // DRAG AND DROP FOR MATRIX
-      for (let i = 0; i < matrixDivs.length; i++){
-        matrixDivs[i].setAttribute('data-id',`"${i}"`)
-        matrixDivs[i].setAttribute('draggable',"true")
+      for (let i = 0; i < this.matrixDivs.length; i++){
+        this.matrixDivs[i].setAttribute('data-id',`"${i}"`)
+        this.matrixDivs[i].setAttribute('draggable',"true")
       }
-      [].forEach.call(matrixDivs,function(matrix) {
+      function handleDragEndM(e) {
+        this.matrixDivs = document.querySelectorAll(`div#m${id} > div`)
+        this.style.opacity = '1'
+        if (this.style.fontWeight == 'normal') {
+          this.style.background = 'black'
+          this.style.color = 'blanchedalmond'
+        }
+        const allMDivs = selectAll('div.cave > div');
+        [].forEach.call(allMDivs,function(matrix) {
+          matrix.classList.remove('over')
+          matrix.addEventListener('contextmenu',swapPos)
+          matrix.addEventListener('mouseover',overM)
+          matrix.addEventListener('mouseout',outM)
+        })
+      }; // ASSIGN ALL THE DRAG AND DROP FUNCTIONS AND OTHERS
+      [].forEach.call(this.matrixDivs,function(matrix) {
         matrix.addEventListener('dragstart',handleDragStartM)
         matrix.addEventListener('dragover',handleDragOverM)
         matrix.addEventListener('dragenter',handleDragEnterM)
@@ -21996,47 +22006,41 @@ class matrix {
         matrix.addEventListener('contextmenu',swapPos)
         matrix.addEventListener('mouseover',overM)
         matrix.addEventListener('mouseout',outM)
-      })
-      function handleDragEndM(e) {
-        this.style.opacity = '1'
-        this.style.background = 'black'
-        this.style.color = 'blanchedalmond';
-        [].forEach.call(matrixDivs,function(matrix) {
-          matrix.classList.remove('over')
-          matrix.addEventListener('contextmenu',swapPos)
-          matrix.addEventListener('mouseover',overM)
-          matrix.addEventListener('mouseout',outM)
-        })
-      } // END OF MATRIX.
+      }) // END OF MATRIX.
+
     // ATTRIBUTES AND METHODS TO SOLVE ANY EXERCISE
-      //This method bring us the matrix's numbers
+      // This method bring us the matrix's numbers
       this.renove = function () {
-      this.nums = []
-        for (let i = 0;  i < matrixDivs.length; i++) {
-          this.nums.push(Number(matrixDivs[i].textContent))
+        this.nums = []
+        for (let i = 0;  i < this.matrixDivs.length; i++) {
+          this.nums.push(Number(this.matrixDivs[i].textContent))
         }
       }
       this.renove()
+
+      this.picture = []
+      for ( let i = 0; i < this.matrixDivs.length; i++ ) {
+        this.picture.push(this.matrixDivs[i].textContent)
+      }
+      console.log(this.picture)
     })  // end of event.
     // This method will "light" the asked numbers in the matrix
     this.solution = (i) => {
-      morfeo = document.querySelectorAll(`div#cuad${id} > div`)
-      matrixDivs = document.querySelectorAll(`div#m${id} > div`)
       for (let j = 0; j < ( rows * cols ); j++) {
-        morfeo[j].style.color = 'lightgray'
-        morfeo[j].style.background = 'black'
-        morfeo[j].style.fontWeight = 'normal'
-        matrixDivs[j].style.background = `black`
-        matrixDivs[j].style.fontWeight = `normal`
-        matrixDivs[j].style.color = `blanchedalmond`
+        this.morfeo[j].style.color = 'lightgray'
+        this.morfeo[j].style.background = 'black'
+        this.morfeo[j].style.fontWeight = 'normal'
+        this.matrixDivs[j].style.background = `black`
+        this.matrixDivs[j].style.fontWeight = `normal`
+        this.matrixDivs[j].style.color = `blanchedalmond`
       }
       for (let j = 0; j < i.length; j++) {
-        morfeo[i[j]].style.background = 'rgb(75, 41, 0)'
-        morfeo[i[j]].style.fontWeight = 'bold'
-        morfeo[i[j]].style.color = 'whitesmoke'
-        matrixDivs[i[j]].style.background = `rgb(75, 41, 0) `
-        matrixDivs[i[j]].style.fontWeight = 'bold'
-        matrixDivs[i[j]].style.color = 'blanchedalmond'
+        this.morfeo[i[j]].style.background = 'rgb(75, 41, 0)'
+        this.morfeo[i[j]].style.fontWeight = 'bold'
+        this.morfeo[i[j]].style.color = 'whitesmoke'
+        this.matrixDivs[i[j]].style.background = `rgb(75, 41, 0) `
+        this.matrixDivs[i[j]].style.fontWeight = 'bold'
+        this.matrixDivs[i[j]].style.color = 'blanchedalmond'
       }
     } // END OF EXERCISES' SOLUTIONS     
   } // end of constructor. 
@@ -22054,6 +22058,7 @@ function selectAll(selector) {
 function select(selector) {
   return document.querySelector(selector)
 }
+
 
 //START SOLVING THE MATRIX SECTION
 
@@ -22077,7 +22082,7 @@ function solveM01(e){
 getE('m01').addEventListener('dblclick', solveM01) 
 const trinity01 = select('div#cuad01 > p')
 trinity01.addEventListener('dblclick', solveM01)
-getE('m01').addEventListener('dblclick',function(){ 
+trinity01.addEventListener('dblclick',function(){ 
   const morfeo01 = selectAll('div#m01 > div');
   [].forEach.call(morfeo01, function(matrix) {
     matrix.addEventListener('dragend', solveM01)
@@ -22104,7 +22109,7 @@ function solveM02(e){
 getE('m02').addEventListener('dblclick', solveM02) 
 const trinity02 = select('div#cuad02 > p')
 trinity02.addEventListener('dblclick', solveM02)
-getE('m02').addEventListener('dblclick',function(){ 
+trinity02.addEventListener('dblclick',function(){ 
   const morfeo02 = selectAll('div#m02 > div');
   [].forEach.call(morfeo02, function(matrix) {
     matrix.addEventListener('dragend', solveM02)
@@ -22131,7 +22136,7 @@ function solveM03(e){
 getE('m03').addEventListener('dblclick', solveM03) 
 const trinity03 = select('div#cuad03 > p')
 trinity03.addEventListener('dblclick', solveM03)
-getE('m03').addEventListener('dblclick',function(){ 
+trinity03.addEventListener('dblclick',function(){ 
   const morfeo03 = selectAll('div#m03 > div');
   [].forEach.call(morfeo03, function(matrix) {
     matrix.addEventListener('dragend', solveM03)
