@@ -21933,45 +21933,55 @@ class matrix {
     }
 
     // step 2: Matrix (and its dblclick event)
-    let secondTime = 0; let matrixDivs; let morfeo
+    this.secondTime = 0; let matrixDivs; let morfeo
     this.matrix = document.querySelector(`div#m${id}`)
-    this.matrix.addEventListener('dblclick', (e) => {
+    this.p = document.querySelector(`div#cuad${id} > p`)
+    this.p.addEventListener('dblclick', (e) => {
+      this.matrix = document.querySelector(`div#m${id}`)
+      this.numGrid = document.querySelector(`div#cuad${id}`)
+      this.p = document.querySelector(`div#cuad${id} > p`)
+      this.numGrid.removeChild(this.p)
       this.matrix.style.gridTemplateColumns = `repeat(${cols}, 1fr)`
       const gen = new Audio('music/introduce.mp3')
       gen.play()
-      switch (secondTime){
-        case 0:
-          secondTime = 1
-          const em = document.querySelector(`div#m${id} > em`)
-          this.matrix.removeChild(em)
-          this.matrix.style.background = 'transparent'
-          for (let i = 0; i < (rows * cols); i++) {
-            const div = document.createElement('div')
-            const rand = Math.round(Math.random()*(1000-(-999))+(-999))
-            const num = document.createTextNode(rand)
-            div.appendChild(num)
-            this.matrix.appendChild(div)
-          }
-          break
-        
-        default:
-          morfeo = document.querySelectorAll(`div#cuad${id} > div`)
-          matrixDivs = document.querySelectorAll(`div#m${id} > div`)
-          for (let i = 0; i < (rows * cols); i++) {
-            const rand = Math.round(Math.random()*(1000-(-999))+(-999))
-            matrixDivs[i].textContent = rand
-            matrixDivs[i].style.color = `blanchedalmond`
-            matrixDivs[i].style.background = `black`
-            matrixDivs[i].style.fontWeight = 'normal'
-            morfeo[i].style.background = 'black'
-            morfeo[i].style.fontWeight = 'normal'
-            morfeo[i].style.color = 'lightgray'
-          }
-          break
+      for (let i = 0; i < (rows * cols); i++) {
+        const div = document.createElement('div')
+        const rand = Math.round(Math.random()*(1000-(-999))+(-999))
+        const num = document.createTextNode(rand)
+        div.appendChild(num)
+        this.matrix.appendChild(div)
       }
+      this.miau()
+      matrixDivs = document.querySelectorAll(`div#m${id} > div`)
+      this.renove = function () {
+        this.nums = []
+        for (let i = 0;  i < matrixDivs.length; i++) {
+          this.nums.push(Number(matrixDivs[i].textContent))
+        }
+      }
+    })
+    this.matrix.addEventListener('dblclick', this.miau = (e) => {
+      morfeo = document.querySelectorAll(`div#cuad${id} > div`)
+      matrixDivs = document.querySelectorAll(`div#m${id} > div`)
+      const gen = new Audio('music/introduce.mp3')
+      gen.play()
+      if (this.secondTime == 1) {
+        morfeo = document.querySelectorAll(`div#cuad${id} > div`)
+        matrixDivs = document.querySelectorAll(`div#m${id} > div`)
+        for (let i = 0; i < (rows * cols); i++) {
+          const rand = Math.round(Math.random()*(1000-(-999))+(-999))
+          matrixDivs[i].textContent = rand
+          matrixDivs[i].style.color = `blanchedalmond`
+          matrixDivs[i].style.background = `black`
+          matrixDivs[i].style.fontWeight = 'normal'
+          morfeo[i].style.background = 'black'
+          morfeo[i].style.fontWeight = 'normal'
+          morfeo[i].style.color = 'lightgray'
+        }
+      }
+      this.secondTime = 1
     // step 3: functionalities: drag and drop and contextmenu-swap
     // DRAG AND DROP FOR MATRIX
-      matrixDivs = document.querySelectorAll(`div#m${id} > div`)
       for (let i = 0; i < matrixDivs.length; i++){
         matrixDivs[i].setAttribute('data-id',`"${i}"`)
         matrixDivs[i].setAttribute('draggable',"true")
@@ -22000,9 +22010,8 @@ class matrix {
       } // END OF MATRIX.
     // ATTRIBUTES AND METHODS TO SOLVE ANY EXERCISE
       //This method bring us the matrix's numbers
-      this.renove = function (){
+      this.renove = function () {
       this.nums = []
-        matrixDivs = document.querySelectorAll(`div#m${id} > div`)
         for (let i = 0;  i < matrixDivs.length; i++) {
           this.nums.push(Number(matrixDivs[i].textContent))
         }
@@ -22010,9 +22019,9 @@ class matrix {
       this.renove()
     })  // end of event.
     // This method will "light" the asked numbers in the matrix
-    morfeo = document.querySelectorAll(`div#cuad${id} > div`)
-    matrixDivs = document.querySelectorAll(`div#m${id} > div`)
     this.solution = (i) => {
+      morfeo = document.querySelectorAll(`div#cuad${id} > div`)
+      matrixDivs = document.querySelectorAll(`div#m${id} > div`)
       for (let j = 0; j < ( rows * cols ); j++) {
         morfeo[j].style.color = 'lightgray'
         morfeo[j].style.background = 'black'
@@ -22032,14 +22041,20 @@ class matrix {
     } // END OF EXERCISES' SOLUTIONS     
   } // end of constructor. 
 } // end of class.
-
-//const smithxx   : an array with all the numbers of the matrix 
-//const neoxx     : an array with the index of the chosen numbers
-//const morfeoxx  : an array of the divs to add solution to dnd
-//here's a little function that would help us a lot to write less code
-function selectAll(selector){
+/*
+  * const smithxx   : an array with all the numbers of the matrix 
+  * const neoxx     : an array with the index of the chosen numbers
+  * const morfeoxx  : an array of the divs to add solution to dnd
+  * const trinity   : to add the function SOLVE to the dblick p event
+  * here's a little function that would help us a lot to write less code
+*/
+function selectAll(selector) {
   return document.querySelectorAll(selector)
 }
+function select(selector) {
+  return document.querySelector(selector)
+}
+
 //START SOLVING THE MATRIX SECTION
 
 // 1. Leer una matriz 4x4 entera y determinar en qué fila y en qué columna se encuentra el número mayor.<br><br>
@@ -22048,6 +22063,7 @@ function solveM01(e){
   matrix01.renove()
   const smith01 = matrix01.nums
   const neo01 = []
+
   //PUT HERE THE SOLUTION TO THE SPECIFIC PROBLEM
   for ( let i = 0; i < smith01.length; i++ ) {
     if ( Math.max(...smith01) == smith01[i] ) {
@@ -22055,9 +22071,12 @@ function solveM01(e){
     }
   }
   //end of the solution of the problem.
+
   matrix01.solution(neo01)
 }
 getE('m01').addEventListener('dblclick', solveM01) 
+const trinity01 = select('div#cuad01 > p')
+trinity01.addEventListener('dblclick', solveM01)
 getE('m01').addEventListener('dblclick',function(){ 
   const morfeo01 = selectAll('div#m01 > div');
   [].forEach.call(morfeo01, function(matrix) {
@@ -22071,6 +22090,7 @@ function solveM02(e){
   matrix02.renove()
   const smith02 = matrix02.nums
   const neo02 = []
+
   //PUT HERE THE SOLUTION TO THE SPECIFIC PROBLEM
   for ( let i = 0; i < smith02.length; i++ ) {
     if ( Math.max(...smith02) == smith02[i] ) {
@@ -22078,18 +22098,45 @@ function solveM02(e){
     }
   }
   //end of the solution of the problem.
+
   matrix02.solution(neo02)
 }
 getE('m02').addEventListener('dblclick', solveM02) 
+const trinity02 = select('div#cuad02 > p')
+trinity02.addEventListener('dblclick', solveM02)
 getE('m02').addEventListener('dblclick',function(){ 
   const morfeo02 = selectAll('div#m02 > div');
   [].forEach.call(morfeo02, function(matrix) {
     matrix.addEventListener('dragend', solveM02)
-    })
   })
+})
 
 // 3. Leer una matriz 3x4 entera y determinar en qué posiciones exactas se encuentran los números pares.<br><br>
+const matrix03 = new matrix('03',3,4)
+function solveM03(e){
+  matrix03.renove()
+  const smith03 = matrix03.nums
+  const neo03 = []
 
+  //PUT HERE THE SOLUTION TO THE SPECIFIC PROBLEM
+  for ( let i = 0; i < smith03.length; i++ ) {
+    if ( smith03[i] % 2 == 0 ) {
+      neo03.push(i)
+    }
+  }
+  //end of the solution of the problem.
+
+  matrix03.solution(neo03)
+}
+getE('m03').addEventListener('dblclick', solveM03) 
+const trinity03 = select('div#cuad03 > p')
+trinity03.addEventListener('dblclick', solveM03)
+getE('m03').addEventListener('dblclick',function(){ 
+  const morfeo03 = selectAll('div#m03 > div');
+  [].forEach.call(morfeo03, function(matrix) {
+    matrix.addEventListener('dragend', solveM03)
+  })
+})
 
 // 4. Leer una matriz 4x3 entera y determinar en qué posiciones exactas se encuentran los números primos.<br><br>
 
