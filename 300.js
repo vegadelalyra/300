@@ -21906,8 +21906,10 @@ function outM(){
     this.style.color = `blanchedalmond`;
   };
 }
+
+const album = []
 //matrix constructor
-class matrix {
+class Matrix {
   /*
   MATRIX 
     (matrix are placed into a x,2 grid called #matrixCradle) 
@@ -21988,6 +21990,13 @@ class matrix {
           this.style.background = 'black'
           this.style.color = 'blanchedalmond'
         }
+      // This attribute allows us to exchange divs between matrixes
+        this.picture = []
+        for ( let i = 0; i < this.matrixDivs.length; i++ ) {
+          this.picture.push(Number(this.matrixDivs[i].textContent))
+        }
+        album[Number(id)-1] = this.picture
+        //This algorithm gives the right click swap functionality
         const allMDivs = selectAll('div.cave > div');
         [].forEach.call(allMDivs,function(matrix) {
           matrix.classList.remove('over')
@@ -22017,12 +22026,12 @@ class matrix {
         }
       }
       this.renove()
-
+      // This method allows us to exchange divs between matrixes
       this.picture = []
       for ( let i = 0; i < this.matrixDivs.length; i++ ) {
         this.picture.push(this.matrixDivs[i].textContent)
       }
-      console.log(this.picture)
+      album[Number(id)-1] = this.picture
     })  // end of event.
     // This method will "light" the asked numbers in the matrix
     this.solution = (i) => {
@@ -22050,21 +22059,33 @@ class matrix {
   * const neoxx     : an array with the index of the chosen numbers
   * const morfeoxx  : an array of the divs to add solution to dnd
   * const trinity   : to add the function SOLVE to the dblick p event
-  * here's a little function that would help us a lot to write less code
 */
+// here's some little functions that would help us a lot to write less code
 function selectAll(selector) {
   return document.querySelectorAll(selector)
 }
 function select(selector) {
   return document.querySelector(selector)
-}
-
+} 
+function exchM() {
+  for ( let i = 0; i < album.length; i++ ) {
+    if ( typeof album[i] !== 'undefined' ) {  
+      const _ = ( i < 10 ) ? `0${ i + 1 }` : i + 1
+      const reality = selectAll(`div#m${ _ } > div`)
+      for ( let j = 0; j < album[i].length; j++ ) {
+        if ( album[i][j] != Number(reality[j].textContent) ) { 
+          eval(`solveM${ _ }()`)
+        } //  with this beautiful function 
+      } //  (that costed me a lot to think of)
+    } //  we can exchange divs between matrixes :D
+  } 
+} 
 
 //START SOLVING THE MATRIX SECTION
 
-// 1. Leer una matriz 4x4 entera y determinar en qué fila y en qué columna se encuentra el número mayor.<br><br>
-const matrix01 = new matrix('01',4,4)
-function solveM01(e){
+// 1. Leer una matriz 4x4 entera y determinar en qué fila y en qué columna se encuentra el número mayor.
+const matrix01 = new Matrix('01',4,4)
+function solveM01(e) {
   matrix01.renove()
   const smith01 = matrix01.nums
   const neo01 = []
@@ -22086,12 +22107,13 @@ trinity01.addEventListener('dblclick',function(){
   const morfeo01 = selectAll('div#m01 > div');
   [].forEach.call(morfeo01, function(matrix) {
     matrix.addEventListener('dragend', solveM01)
-    })
+    matrix.addEventListener('dragend', exchM)
   })
+})
 
-// 2. Leer una matriz 4x4 entera y determinar cuántas veces se repita en ella el número mayor.<br><br>
-const matrix02 = new matrix('02',4,4)
-function solveM02(e){
+// 2. Leer una matriz 4x4 entera y determinar cuántas veces se repita en ella el número mayor.
+const matrix02 = new Matrix('02',4,4)
+function solveM02(e) {
   matrix02.renove()
   const smith02 = matrix02.nums
   const neo02 = []
@@ -22113,12 +22135,13 @@ trinity02.addEventListener('dblclick',function(){
   const morfeo02 = selectAll('div#m02 > div');
   [].forEach.call(morfeo02, function(matrix) {
     matrix.addEventListener('dragend', solveM02)
+    matrix.addEventListener('dragend', exchM)
   })
 })
 
-// 3. Leer una matriz 3x4 entera y determinar en qué posiciones exactas se encuentran los números pares.<br><br>
-const matrix03 = new matrix('03',3,4)
-function solveM03(e){
+// 3. Leer una matriz 3x4 entera y determinar en qué posiciones exactas se encuentran los números pares.
+const matrix03 = new Matrix('03',3,4)
+function solveM03(e) {
   matrix03.renove()
   const smith03 = matrix03.nums
   const neo03 = []
@@ -22140,26 +22163,97 @@ trinity03.addEventListener('dblclick',function(){
   const morfeo03 = selectAll('div#m03 > div');
   [].forEach.call(morfeo03, function(matrix) {
     matrix.addEventListener('dragend', solveM03)
+    matrix.addEventListener('dragend', exchM)
   })
 })
 
-// 4. Leer una matriz 4x3 entera y determinar en qué posiciones exactas se encuentran los números primos.<br><br>
+// 4. Leer una matriz 4x3 entera y determinar en qué posiciones exactas se encuentran los números primos.
+const matrix04 = new Matrix('04',4,3)
+function solveM04(e) {
+  matrix04.renove()
+  const smith04 = matrix04.nums
+  const neo04 = []
+
+  //PUT HERE THE SOLUTION TO THE SPECIFIC PROBLEM
+    //ALGORITHM FOR PRIME NUMBERS >:c
+    for ( let i = 0; i < smith04.length; i++ ) {
+      const box = []
+      for ( let numbers = 2; numbers < Math.abs(smith04[i]); numbers++ ) {
+        const prime = smith04[i] % numbers
+        if (prime == 0) {
+          box.push(numbers)
+        }
+      }
+      if (box.length == 0) neo04.push(i)
+    }
+  //end of the solution of the problem.
+
+  matrix04.solution(neo04)
+}
+getE('m04').addEventListener('dblclick', solveM04) 
+const trinity04 = select('div#cuad04 > p')
+trinity04.addEventListener('dblclick', solveM04)
+trinity04.addEventListener('dblclick',function(){ 
+  const morfeo04 = selectAll('div#m04 > div');
+  [].forEach.call(morfeo04, function(matrix) {
+    matrix.addEventListener('dragend', solveM04)
+    matrix.addEventListener('dragend', exchM)
+  })
+})
+
+// 5. Leer una matriz 4x3 entera, calcular la suma de los elementos de cada fila y determinar cuál es la fila que tiene la mayor suma.
+const matrix05 = new Matrix('05',4,3)
+function solveM05(e) {
+  matrix05.renove()
+  const smith05 = matrix05.nums
+  const neo05 = []
+
+  //  PUT HERE THE SOLUTION TO THE SPECIFIC PROBLEM
+  var rows = 4, cols = 3, indxs = [], calcs = [], count = 0
+    // fulfill the empties array with x empty arrays (x = rows)
+  for ( let i =  0; i < rows; i++ ) {
+    indxs[i] = []
+  } // push each row's indexes to our indxs array and solve
+  for ( let r = 0; r < rows; r++ ) {
+    let bag = 0
+    for ( let c = count; c < (rows * cols); c++ ) {
+      if ( indxs[r].length == cols ) break
+      indxs[r].push( c ) 
+      bag += Number.parseInt( smith05[c] ) 
+      count++
+    }
+    calcs[r] = ( bag )
+  } //  Getting the winner
+  neo05.push(...indxs[calcs.indexOf(Math.max(...calcs))])
+  //  end of the solution of the problem.
+
+  matrix05.solution(neo05)}
+getE('m05').addEventListener('dblclick', solveM05) 
+const trinity05 = select('div#cuad05 > p')
+trinity05.addEventListener('dblclick', solveM05)
+trinity05.addEventListener('dblclick',function(){ 
+  const morfeo05 = selectAll('div#m05 > div');
+  [].forEach.call(morfeo05, function(matrix) {
+    matrix.addEventListener('dragend', solveM05)
+    matrix.addEventListener('dragend', exchM)
+  })
+})
 
 
-// 5. Leer una matriz 4x3 entera, calcular la suma de los elementos de cada fila y determinar cuál es la fila que tiene la mayor suma.<br><br>
+// 6. Leer una matriz 4x4 entera y calcular el promedio de los números mayores de cada fila.
 
 
-// 6. Leer una matriz 4x4 entera y calcular el promedio de los números mayores de cada fila.<br><br>
+// 7. Leer una matriz 4x4 entera y determinar en qué posiciones están los enteros terminados en 0.
 
 
-// 7. Leer una matriz 4x4 entera y determinar en qué posiciones están los enteros terminados en 0.<br><br>
+// 8. Leer una matriz 4x4 entera y determinar cuántos enteros terminados en 0 hay almacenados en ella.
 
 
-// 8. Leer una matriz 4x4 entera y determinar cuántos enteros terminados en 0 hay almacenados en ella.<br><br>
+// 9. Leer una matriz 3x4 entera y determinar cuántos de los números almacenados son primos y terminan en 3.
 
 
-// 9. Leer una matriz 3x4 entera y determinar cuántos de los números almacenados son primos y terminan en 3.<br><br>
+// 10. Leer una matriz 5x3 entera y determinar en qué fila está el mayor número primo.
 
 
-// 10. Leer una matriz 5x3 entera y determinar en qué fila está el mayor número primo.<br><br>
 
+//espero que todo esto de matrix logre ocultar el hecho de que las matrices son realmente barras de chocolate
