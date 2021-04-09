@@ -758,8 +758,18 @@ button:focus:not(.aPb){
     grid-auto-rows: auto;
 }
 .matrix {
-    position:relative;
-    height:32em;
+    position: relative;
+    height: 92vh;        /*32em*/ /*92vh*/
+    overflow: auto;
+}
+.matrix > span {
+    overflow-wrap: break-word;
+}
+.mSpan { /* div where the matrix's spans are contained */
+    font-size:3vh;
+    width: 69%;
+    height: 10vh;
+    overflow: auto;
 }
     .matrix:hover{
         background:#0C0D10;
@@ -779,11 +789,11 @@ button:focus:not(.aPb){
         }
             .cave > div {
                 font-size: 1.5em;
-                height:80px;
                 padding-top: 35px;
                 border-radius: 5px;
                 background-color: rgb(0, 0, 0);
                 border: 3px solid rgb(98, 98, 98);
+                height: 9vh;
             }
                 .cave > div:hover {
                     color:white;
@@ -802,11 +812,11 @@ button:focus:not(.aPb){
             user-select: none;
         }
             .cuad > div {
-                color:lightgray;
-                font-weight:lighter;
-                font-style:italic;
+                height: 9vh;
+                color: lightgray;
+                font-weight: lighter;
+                font-style: italic;
                 font-size: 1.5em;
-                height:80px;
                 padding-top: 35px;
                 border-radius: 5px;
                 background-color: rgb(0, 0, 0);
@@ -836,7 +846,11 @@ button:focus:not(.aPb){
             .cuad > p > em:hover {
                 color:whitesmoke;
             }          
-
+.mAns {
+    font-weight: bolder;
+    font-size: larger;
+    color: goldenrod;
+}
 /*FIN DISEÑO DE MATRIX*/
 
 /* a las clases las llamas con (elemento)."elNombreDeLaClass" :D  */
