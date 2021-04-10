@@ -1142,7 +1142,7 @@ function guauu(){
 //al pasar el mouse por encima
 var vectors = document.querySelectorAll(".vector");
 var vectorBoxes = document.querySelectorAll(".vector > div");
-[].forEach.call(vectors,function(vector){
+[].forEach.call(vectors,function(_vector){
   [].forEach.call(vectorBoxes,function(box){
     box.addEventListener("mouseover",flashes);
   });
@@ -6973,8 +6973,8 @@ function handleDragOver(e){
   e.dataTransfer.dropEffect = 'move';
   return false;
 }
-function handleDragEnter(e){this.classList.add('over');}
-function handleDragLeave(e){this.classList.remove('over');}
+function handleDragEnter(){this.classList.add('over');}
+function handleDragLeave(){this.classList.remove('over');}
 function handleDrop(e){
   let droop = new Audio("./music/drop.mp3"); droop.play()
   if(e.stopPropagation){e.stopPropagation();}
@@ -6984,7 +6984,7 @@ function handleDrop(e){
   }
   return false; 
 }
-function handleDragEnd(e){
+function handleDragEnd(){
   this.style.opacity = '1';
   [].forEach.call(vectorBlocks,function(block){
     block.classList.remove('over');
@@ -8106,7 +8106,7 @@ function arr06Black(){
 };
 
 //left input
-arr06inpL.addEventListener('focus',(e)=>{
+arr06inpL.addEventListener('focus',()=>{
   getE('arr06intro').innerHTML = `Escribe un número de máximo 2 dígitos. <br> Luego, regístralo oprimiendo ENTER c:`;
   arr06Blanchedalmond();
 });
@@ -8117,7 +8117,7 @@ arr06butL.addEventListener('focus',arr06Blanchedalmond);
 arr06butL.addEventListener('blur',arr06Black);
 
 //right input
-arr06inpR.addEventListener('focus',(e)=>{
+arr06inpR.addEventListener('focus',()=>{
   getE('arr06intro').innerHTML = `Escribe un número de máximo 4 dígitos. <br> Luego, regístralo oprimiendo ENTER c:`;
   arr06Blanchedalmond();
 });
@@ -21858,8 +21858,8 @@ function handleDragOverM(e){
   e.dataTransfer.dropEffect = 'move';
   return false;
 }
-function handleDragEnterM(e){this.classList.add('over');}
-function handleDragLeaveM(e){this.classList.remove('over');}
+function handleDragEnterM(){this.classList.add('over');}
+function handleDragLeaveM(){this.classList.remove('over');}
 function handleDropM(e){
   let droop = new Audio("./music/drop.mp3"); droop.play()
   if(e.stopPropagation){e.stopPropagation();}
@@ -21938,7 +21938,7 @@ class Matrix {
     this.morfeo = document.querySelectorAll(`div#cuad${id} > div`)
 
     // step 2: Matrix (and its dblclick event)
-    this.p.addEventListener('dblclick', this.smoke = (e) => {
+    this.p.addEventListener('dblclick', this.smoke = () => {
       const gen = new Audio('music/introduce.mp3'); gen.play()
       this.matrix.style.gridTemplateColumns = `repeat(${cols}, 1fr)`
       this.numGrid.removeChild(this.p)
@@ -21962,7 +21962,7 @@ class Matrix {
       this.miau()
     })
 
-    this.matrix.addEventListener('dblclick', this.miau = (e) => {
+    this.matrix.addEventListener('dblclick', this.miau = () => {
       const gen = new Audio('music/introduce.mp3'); gen.play()
       if (this.secondTime == 1) {
         for (let i = 0; i < (rows * cols); i++) {
@@ -21983,7 +21983,7 @@ class Matrix {
         this.matrixDivs[i].setAttribute('data-id',`"${i}"`)
         this.matrixDivs[i].setAttribute('draggable',"true")
       }
-      function handleDragEndM(e) {
+      function handleDragEndM() {
         this.matrixDivs = document.querySelectorAll(`div#m${id} > div`)
         this.style.opacity = '1'
         if (this.style.fontWeight == 'normal') {
@@ -22019,7 +22019,7 @@ class Matrix {
 
     // ATTRIBUTES AND METHODS TO SOLVE ANY EXERCISE
       // This method bring us the matrix's numbers
-      this.renove = function () {
+      this.renove = () => {
         this.nums = []
         for (let i = 0;  i < this.matrixDivs.length; i++) {
           this.nums.push(Number(this.matrixDivs[i].textContent))
@@ -22054,19 +22054,14 @@ class Matrix {
     } // END OF EXERCISES' SOLUTIONS     
   } // end of constructor. 
 } // end of class.
-/*
-  * const smithxx   : an array with all the numbers of the matrix 
-  * const neoxx     : an array with the index of the chosen numbers
-  * const morfeoxx  : an array of the divs to add solution to dnd
-  * const trinity   : to add the function SOLVE to the dblick p event
-*/
+
 // here's some little functions that would help us a lot to write less code
 function selectAll(selector) {
   return document.querySelectorAll(selector)
 }
 function select(selector) {
   return document.querySelector(selector)
-} 
+} // Exchangable matrix's numbers
 function exchM() {
   for ( let i = 0; i < album.length; i++ ) {
     if ( typeof album[i] !== 'undefined' ) {  
@@ -22080,12 +22075,101 @@ function exchM() {
     } //  we can exchange divs between matrixes :D
   } 
 } 
+/*
+  * const smithxx   : an array with all the numbers of the matrix 
+  * const neoxx     : an array with the index of the chosen numbers
+  * const morfeoxx  : an array of the divs to add solution to dnd
+  * const trinity   : to add the function SOLVE to the dblick p event
+*/
+function matrixEvts(id, id2) {
+  getE(`m${id}`).addEventListener('dblclick', eval( `solveM${id}`) ) 
+  const trinity = select( `div#cuad${id} > p` )
+  trinity.addEventListener('dblclick', eval( `solveM${id}`) )
+  trinity.addEventListener('dblclick', function() { 
+    const morfeo = selectAll( `div#m${id} > div` );
+    [].forEach.call(morfeo, function(matrix) {
+      matrix.addEventListener('dragend', eval( `solveM${id}`) )
+      matrix.addEventListener('dragend', exchM)
+    })  // all of the code below is ONLY for dual matrixes
+  });  if ( typeof id2 === 'undefined' ) return
+  matrixEvts(id2)
+ // MIRROR EFFECT
+  const trinity2 = select( `div#cuad${id2} > p` )
+  // Style
+  const em = trinity.querySelector('em'),
+        em2 = trinity2.querySelector('em')
+  trinity.addEventListener('mouseover', function(){
+    em.style.opacity = '1' 
+    em2.style.opacity = '1'
+    trinity.addEventListener('dblclick', killP)
+   })
+   trinity.addEventListener('mouseout', function(){ 
+     em.style.opacity = '0'
+     em2.style.opacity = '0'
+     trinity.removeEventListener('dblclick', killP)
+   })
+  trinity2.addEventListener('mouseover', function(){ 
+    em.style.opacity = '1'
+    em2.style.opacity = '1'
+    trinity2.addEventListener('dblclick', killP)
+   })
+  trinity2.addEventListener('mouseout', function(){ 
+    em.style.opacity = '0'
+    em2.style.opacity = '0'
+    trinity2.removeEventListener('dblclick', killP)
+  })
+  em.addEventListener('mouseover', function(){
+    em.style.color = `whitesmoke`
+    em2.style.color = `whitesmoke`
+  })
+  em.addEventListener('mouseout', function(){
+    em.style.color = `blanchedalmond`
+    em2.style.color = `blanchedalmond`
+  })
+  em2.addEventListener('mouseover', function(){
+    em.style.color = `whitesmoke`
+    em2.style.color = `whitesmoke`
+  })
+  em2.addEventListener('mouseout', function(){
+    em.style.color = `blanchedalmond`
+    em2.style.color = `blanchedalmond`
+  })
+  
+  // Functionality
+  function killP(e) { //p
+    const dbl = new Event('dblclick'),
+          tri = select( `div#cuad${id} > p`),
+          tri2 = select( `div#cuad${id2} > p`)
+    if ( e.target.className == `m1` ) return tri2.dispatchEvent(dbl)
+    tri.dispatchEvent(dbl)
+  }
 
+    // Matrix
+  getE(`m${id}`).addEventListener('mouseover', () => {
+    getE(`m${id}`).addEventListener('dblclick', dupMatrix)
+  })
+  getE(`m${id}`).addEventListener('mouseout', () => {
+    getE(`m${id}`).removeEventListener('dblclick', dupMatrix)
+  })
+
+  getE(`m${id2}`).addEventListener('mouseover', () => {
+    getE(`m${id2}`).addEventListener('dblclick', dupMatrix)
+  })
+  getE(`m${id2}`).addEventListener('mouseout', () => {
+    getE(`m${id2}`).removeEventListener('dblclick', dupMatrix)
+  })
+
+  function dupMatrix(e) {
+    const dbl = new Event('dblclick')
+    if ( e.target.parentNode.id == `m${id}` ) return getE(`m${id2}`).dispatchEvent(dbl)
+    getE(`m${id}`).dispatchEvent(dbl)
+  }
+} //end of necessary functions for the section.
 //START SOLVING THE MATRIX SECTION
 
 // 1. Leer una matriz 4x4 entera y determinar en qué fila y en qué columna se encuentra el número mayor.
 const matrix01 = new Matrix('01', 4, 4)
-function solveM01(e) {
+function solveM01() {
   matrix01.renove()
   const smith01 = matrix01.nums
   const neo01 = []
@@ -22095,25 +22179,14 @@ function solveM01(e) {
     if ( Math.max(...smith01) == smith01[i] ) {
       neo01.push(i)
     }
-  }
-  //end of the solution of the problem.
+  } //end of the solution of the problem.
 
-  matrix01.solution(neo01)
-}
-getE('m01').addEventListener('dblclick', solveM01) 
-const trinity01 = select('div#cuad01 > p')
-trinity01.addEventListener('dblclick', solveM01)
-trinity01.addEventListener('dblclick',function(){ 
-  const morfeo01 = selectAll('div#m01 > div');
-  [].forEach.call(morfeo01, function(matrix) {
-    matrix.addEventListener('dragend', solveM01)
-    matrix.addEventListener('dragend', exchM)
-  })
-})
+  matrix01.solution(neo01)}
+matrixEvts('01')
 
 // 2. Leer una matriz 4x4 entera y determinar cuántas veces se repita en ella el número mayor.
 const matrix02 = new Matrix('02', 4, 4)
-function solveM02(e) {
+function solveM02() {
   matrix02.renove()
   const smith02 = matrix02.nums
   const neo02 = []
@@ -22123,25 +22196,14 @@ function solveM02(e) {
     if ( Math.max(...smith02) == smith02[i] ) {
       neo02.push(i)
     }
-  }
-  //end of the solution of the problem.
+  } //end of the solution of the problem.
 
-  matrix02.solution(neo02)
-}
-getE('m02').addEventListener('dblclick', solveM02) 
-const trinity02 = select('div#cuad02 > p')
-trinity02.addEventListener('dblclick', solveM02)
-trinity02.addEventListener('dblclick',function(){ 
-  const morfeo02 = selectAll('div#m02 > div');
-  [].forEach.call(morfeo02, function(matrix) {
-    matrix.addEventListener('dragend', solveM02)
-    matrix.addEventListener('dragend', exchM)
-  })
-})
+  matrix02.solution(neo02)}
+matrixEvts('02')
 
 // 3. Leer una matriz 3x4 entera y determinar en qué posiciones exactas se encuentran los números pares.
 const matrix03 = new Matrix('03', 3, 4)
-function solveM03(e) {
+function solveM03() {
   matrix03.renove()
   const smith03 = matrix03.nums
   const neo03 = []
@@ -22151,25 +22213,14 @@ function solveM03(e) {
     if ( smith03[i] % 2 == 0 ) {
       neo03.push(i)
     }
-  }
-  //end of the solution of the problem.
+  } //end of the solution of the problem.
 
-  matrix03.solution(neo03)
-}
-getE('m03').addEventListener('dblclick', solveM03) 
-const trinity03 = select('div#cuad03 > p')
-trinity03.addEventListener('dblclick', solveM03)
-trinity03.addEventListener('dblclick',function(){ 
-  const morfeo03 = selectAll('div#m03 > div');
-  [].forEach.call(morfeo03, function(matrix) {
-    matrix.addEventListener('dragend', solveM03)
-    matrix.addEventListener('dragend', exchM)
-  })
-})
+  matrix03.solution(neo03)}
+matrixEvts('03')
 
 // 4. Leer una matriz 4x3 entera y determinar en qué posiciones exactas se encuentran los números primos.
 const matrix04 = new Matrix('04', 4, 3)
-function solveM04(e) {
+function solveM04() {
   matrix04.renove()
   const smith04 = matrix04.nums
   const neo04 = []
@@ -22184,26 +22235,15 @@ function solveM04(e) {
           box.push(numbers)
         }
       }
-      if (box.length == 0) neo04.push(i)
-    }
-  //end of the solution of the problem.
+      if (box.length == 0 && smith04[i] > 0) neo04.push(i)
+    } //end of the solution of the problem.
 
-  matrix04.solution(neo04)
-}
-getE('m04').addEventListener('dblclick', solveM04) 
-const trinity04 = select('div#cuad04 > p')
-trinity04.addEventListener('dblclick', solveM04)
-trinity04.addEventListener('dblclick',function(){ 
-  const morfeo04 = selectAll('div#m04 > div');
-  [].forEach.call(morfeo04, function(matrix) {
-    matrix.addEventListener('dragend', solveM04)
-    matrix.addEventListener('dragend', exchM)
-  })
-})
+  matrix04.solution(neo04)}
+matrixEvts('04')
 
 // 5. Leer una matriz 4x3 entera, calcular la suma de los elementos de cada fila y determinar cuál es la fila que tiene la mayor suma.
 const matrix05 = new Matrix('05', 4, 3)
-function solveM05(e) {
+function solveM05() {
   matrix05.renove()
   const smith05 = matrix05.nums
   const neo05 = []
@@ -22228,20 +22268,11 @@ function solveM05(e) {
   //  end of the solution of the problem.
 
   matrix05.solution(neo05)}
-getE('m05').addEventListener('dblclick', solveM05) 
-const trinity05 = select('div#cuad05 > p')
-trinity05.addEventListener('dblclick', solveM05)
-trinity05.addEventListener('dblclick',function(){ 
-  const morfeo05 = selectAll('div#m05 > div');
-  [].forEach.call(morfeo05, function(matrix) {
-    matrix.addEventListener('dragend', solveM05)
-    matrix.addEventListener('dragend', exchM)
-  })
-})
+  matrixEvts('05')
 
 // 6. Leer una matriz 4x4 entera y calcular el promedio de los números mayores de cada fila.
 const matrix06 = new Matrix('06', 4, 4)
-function solveM06(e) {
+function solveM06() {
   matrix06.renove()
   const smith06 = matrix06.nums
   const neo06 = []
@@ -22265,20 +22296,11 @@ function solveM06(e) {
   //  END OF THE PROBLEM'S SOLUTION
 
   matrix06.solution(neo06)}
-getE('m06').addEventListener('dblclick', solveM06) 
-const trinity06 = select('div#cuad06 > p')
-trinity06.addEventListener('dblclick', solveM06)
-trinity06.addEventListener('dblclick',function(){ 
-  const morfeo06 = selectAll('div#m06 > div');
-  [].forEach.call(morfeo06, function(matrix) {
-    matrix.addEventListener('dragend', solveM06)
-    matrix.addEventListener('dragend', exchM)
-  })
-})
+  matrixEvts('06')
 
 // 7. Leer una matriz 4x4 entera y determinar en qué posiciones están los enteros terminados en 0.
 const matrix07 = new Matrix('07', 4, 4)
-function solveM07(e){
+function solveM07(){
   matrix07.renove()
   const smith07 = matrix07.nums
   const neo07 = []
@@ -22288,25 +22310,14 @@ function solveM07(e){
     if ( smith07[i] % 10 == 0 ) {
       neo07.push(i)
     }
-  }
-  //end of the solution of the problem.
+  } //end of the solution of the problem.
 
-  matrix07.solution(neo07)
-}
-getE('m07').addEventListener('dblclick', solveM07) 
-const trinity07 = select('div#cuad07 > p')
-trinity07.addEventListener('dblclick', solveM07)
-trinity07.addEventListener('dblclick',function(){ 
-  const morfeo07 = selectAll('div#m07 > div');
-  [].forEach.call(morfeo07, function(matrix) {
-    matrix.addEventListener('dragend', solveM07)
-    matrix.addEventListener('dragend', exchM)
-  })
-})
+  matrix07.solution(neo07)}
+matrixEvts('07')
 
 // 8. Leer una matriz 4x4 entera y determinar cuántos enteros terminados en 0 hay almacenados en ella.
 const matrix08 = new Matrix('08', 4, 4)
-function solveM08(e){
+function solveM08(){
   matrix08.renove()
   const smith08 = matrix08.nums
   const neo08 = []
@@ -22316,25 +22327,14 @@ function solveM08(e){
     if ( smith08[i] % 10 == 0 ) {
       neo08.push(i)
     }
-  }
-  //end of the solution of the problem.
+  } //end of the solution of the problem.
 
-  matrix08.solution(neo08)
-}
-getE('m08').addEventListener('dblclick', solveM08) 
-const trinity08 = select('div#cuad08 > p')
-trinity08.addEventListener('dblclick', solveM08)
-trinity08.addEventListener('dblclick',function(){ 
-  const morfeo08 = selectAll('div#m08 > div');
-  [].forEach.call(morfeo08, function(matrix) {
-    matrix.addEventListener('dragend', solveM08)
-    matrix.addEventListener('dragend', exchM)
-  })
-})
+  matrix08.solution(neo08)}
+matrixEvts('08')
 
 // 9. Leer una matriz 3x4 entera y determinar cuántos de los números almacenados son primos y terminan en 3.
 const matrix09 = new Matrix('09', 3, 4)
-function solveM09(e) {
+function solveM09() {
   matrix09.renove()
   const smith09 = matrix09.nums
   const neo09 = []
@@ -22350,25 +22350,14 @@ function solveM09(e) {
         }
       }
       if ( box.length == 0 && Math.abs(smith09[i] % 10) == 3 ) neo09.push(i)
-    }
-  //end of the solution of the problem.
+    } //end of the solution of the problem.
 
-  matrix09.solution(neo09)
-}
-getE('m09').addEventListener('dblclick', solveM09) 
-const trinity09 = select('div#cuad09 > p')
-trinity09.addEventListener('dblclick', solveM09)
-trinity09.addEventListener('dblclick',function(){ 
-  const morfeo09 = selectAll('div#m09 > div');
-  [].forEach.call(morfeo09, function(matrix) {
-    matrix.addEventListener('dragend', solveM09)
-    matrix.addEventListener('dragend', exchM)
-  })
-})
+  matrix09.solution(neo09)}
+matrixEvts('09')
 
 // 10. Leer una matriz 5x3 entera y determinar en qué fila está el mayor número primo.
 const matrix10 = new Matrix('10', 5, 3)
-function solveM10(e) {
+function solveM10() {
   matrix10.renove()
   const smith10 = matrix10.nums
   const neo10 = []
@@ -22384,27 +22373,17 @@ function solveM10(e) {
           box.push(numbers)
         }
       }
-      if (box.length == 0) bag.push(smith10[i])
+      if (box.length == 0 && smith10[i] > 0) bag.push(smith10[i])
     }
     neo10.push( smith10.indexOf( Math.max(...bag) ) )
   //end of the solution of the problem.
 
-  matrix10.solution(neo10)
-}
-getE('m10').addEventListener('dblclick', solveM10) 
-const trinity10 = select('div#cuad10 > p')
-trinity10.addEventListener('dblclick', solveM10)
-trinity10.addEventListener('dblclick',function(){ 
-  const morfeo10 = selectAll('div#m10 > div');
-  [].forEach.call(morfeo10, function(matrix) {
-    matrix.addEventListener('dragend', solveM10)
-    matrix.addEventListener('dragend', exchM)
-  })
-})
+  matrix10.solution(neo10)}
+matrixEvts('10')
 
 // 11. Leer una matriz 5x3 entera y determinar en qué columna está el menor número par.
 const matrix11 = new Matrix('11', 5, 3)
-function solveM11(e) {
+function solveM11() {
   matrix11.renove()
   const smith11 = matrix11.nums
   var neo11 = [], bag = []
@@ -22419,20 +22398,11 @@ function solveM11(e) {
   //end of the solution of the problem.
 
   matrix11.solution(neo11)}
-getE('m11').addEventListener('dblclick', solveM11) 
-const trinity11 = select('div#cuad11 > p')
-trinity11.addEventListener('dblclick', solveM11)
-trinity11.addEventListener('dblclick',function(){ 
-  const morfeo11 = selectAll('div#m11 > div');
-  [].forEach.call(morfeo11, function(matrix) {
-    matrix.addEventListener('dragend', solveM11)
-    matrix.addEventListener('dragend', exchM)
-  })
-})
+  matrixEvts('11')
 
 // 12. Leer una matriz 5x5 entera y determinar en qué fila está el mayor número terminado en 6.
 const matrix12 = new Matrix('12', 5, 5)
-function solveM12(e) {
+function solveM12() {
   matrix12.renove()
   const smith12 = matrix12.nums
   var neo12 = [], bag = []
@@ -22447,20 +22417,11 @@ function solveM12(e) {
   //end of the solution of the problem.
 
   matrix12.solution(neo12)}
-getE('m12').addEventListener('dblclick', solveM12) 
-const trinity12 = select('div#cuad12 > p')
-trinity12.addEventListener('dblclick', solveM12)
-trinity12.addEventListener('dblclick',function(){ 
-  const morfeo12 = selectAll('div#m12 > div');
-  [].forEach.call(morfeo12, function(matrix) {
-    matrix.addEventListener('dragend', solveM12)
-    matrix.addEventListener('dragend', exchM)
-  })
-})
+  matrixEvts('12')
 
 // 13. Leer una matriz 5x3 entera y determinar en qué columna está el mayor número que comienza con el dígito 4.
 const matrix13 = new Matrix('13', 5, 3)
-function solveM13(e) {
+function solveM13() {
   matrix13.renove()
   const smith13 = matrix13.nums
   var neo13 = [], bag = []
@@ -22477,23 +22438,14 @@ function solveM13(e) {
   //end of the solution of the problem.
 
   matrix13.solution(neo13)}
-getE('m13').addEventListener('dblclick', solveM13) 
-const trinity13 = select('div#cuad13 > p')
-trinity13.addEventListener('dblclick', solveM13)
-trinity13.addEventListener('dblclick',function(){ 
-  const morfeo13 = selectAll('div#m13 > div');
-  [].forEach.call(morfeo13, function(matrix) {
-    matrix.addEventListener('dragend', solveM13)
-    matrix.addEventListener('dragend', exchM)
-  })
-})
+  matrixEvts('13')
 
 // 14. Leer una matriz 5x5 entera y determinar cuántos números almacenados en ella tienen mas de 3 dígitos.
 const matrix14 = new Matrix('14', 5, 5)
-function solveM14(e) {
+function solveM14() {
   matrix14.renove()
   const smith14 = matrix14.nums
-  var neo14 = [], bag = []
+  var neo14 = []
 
   //PUT HERE THE SOLUTION TO THE SPECIFIC PROBLEM
   for ( let i = 0; i < smith14.length; i++ ) {
@@ -22505,23 +22457,14 @@ function solveM14(e) {
   } //end of the solution of the problem.
 
   matrix14.solution(neo14)}
-getE('m14').addEventListener('dblclick', solveM14) 
-const trinity14 = select('div#cuad14 > p')
-trinity14.addEventListener('dblclick', solveM14)
-trinity14.addEventListener('dblclick',function(){ 
-  const morfeo14 = selectAll('div#m14 > div');
-  [].forEach.call(morfeo14, function(matrix) {
-    matrix.addEventListener('dragend', solveM14)
-    matrix.addEventListener('dragend', exchM)
-  })
-})
+  matrixEvts('14')
 
 // 15. Leer una matriz 5x4 entera y determinar cuántos números almacenados en ella terminan en 34.
 const matrix15 = new Matrix('15', 5, 4)
-function solveM15(e) {
+function solveM15() {
   matrix15.renove()
   const smith15 = matrix15.nums
-  var neo15 = [], bag = []
+  const neo15 = []
 
   //PUT HERE THE SOLUTION TO THE SPECIFIC PROBLEM
   for ( let i = 0; i < smith15.length; i++ ) {
@@ -22531,23 +22474,14 @@ function solveM15(e) {
   } //end of the solution of the problem.
 
   matrix15.solution(neo15)}
-getE('m15').addEventListener('dblclick', solveM15) 
-const trinity15 = select('div#cuad15 > p')
-trinity15.addEventListener('dblclick', solveM15)
-trinity15.addEventListener('dblclick',function(){ 
-  const morfeo15 = selectAll('div#m15 > div');
-  [].forEach.call(morfeo15, function(matrix) {
-    matrix.addEventListener('dragend', solveM15)
-    matrix.addEventListener('dragend', exchM)
-  })
-})
+  matrixEvts('15')
 
 // 16. Leer una matriz 5x4 entera y determinar cuántos números almacenados en ella tienen un solo dígito.
 const matrix16 = new Matrix('16', 5, 4)
-function solveM16(e) {
+function solveM16() {
   matrix16.renove()
   const smith16 = matrix16.nums
-  var neo16 = [], bag = []
+  var neo16 = []
 
   //PUT HERE THE SOLUTION TO THE SPECIFIC PROBLEM
   for ( let i = 0; i < smith16.length; i++ ) {
@@ -22559,23 +22493,14 @@ function solveM16(e) {
   } //end of the solution of the problem.
 
   matrix16.solution(neo16)}
-getE('m16').addEventListener('dblclick', solveM16) 
-const trinity16 = select('div#cuad16 > p')
-trinity16.addEventListener('dblclick', solveM16)
-trinity16.addEventListener('dblclick',function(){ 
-  const morfeo16 = selectAll('div#m16 > div');
-  [].forEach.call(morfeo16, function(matrix) {
-    matrix.addEventListener('dragend', solveM16)
-    matrix.addEventListener('dragend', exchM)
-  })
-})
+  matrixEvts('16')
 
 // 17. Leer una matriz 5x4 entera y determinar cuántos múltiplos de 5 hay almacenados en ella.
 const matrix17 = new Matrix('17', 5, 4)
-function solveM17(e) {
+function solveM17() {
   matrix17.renove()
   const smith17 = matrix17.nums
-  var neo17 = [], bag = []
+  const neo17 = []
 
   //PUT HERE THE SOLUTION TO THE SPECIFIC PROBLEM
   for ( let i = 0; i < smith17.length; i++ ) {
@@ -22585,20 +22510,11 @@ function solveM17(e) {
   } //end of the solution of the problem.
 
   matrix17.solution(neo17)}
-getE('m17').addEventListener('dblclick', solveM17) 
-const trinity17 = select('div#cuad17 > p')
-trinity17.addEventListener('dblclick', solveM17)
-trinity17.addEventListener('dblclick',function(){ 
-  const morfeo17 = selectAll('div#m17 > div');
-  [].forEach.call(morfeo17, function(matrix) {
-    matrix.addEventListener('dragend', solveM17)
-    matrix.addEventListener('dragend', exchM)
-  })
-})
+  matrixEvts('17')
 
 // 18. Leer una matriz 5x5 entera y determinar en qué posición exacta se encuentra el mayor múltiplo de 8.
 const matrix18 = new Matrix('18', 5, 5)
-function solveM18(e) {
+function solveM18() {
   matrix18.renove()
   const smith18 = matrix18.nums
   var neo18 = [], bag = []
@@ -22613,18 +22529,44 @@ function solveM18(e) {
   //end of the solution of the problem.
 
   matrix18.solution(neo18)}
-getE('m18').addEventListener('dblclick', solveM18) 
-const trinity18 = select('div#cuad18 > p')
-trinity18.addEventListener('dblclick', solveM18)
-trinity18.addEventListener('dblclick',function(){ 
-  const morfeo18 = selectAll('div#m18 > div');
-  [].forEach.call(morfeo18, function(matrix) {
-    matrix.addEventListener('dragend', solveM18)
-    matrix.addEventListener('dragend', exchM)
-  })
-})
+  matrixEvts('18')
 
 // 19. Leer dos matrices 4x5 entera y determinar si sus contenidos son exactamente iguales.
+const matrix19 = new Matrix('19', 4, 5)
+function solveM19() {
+  matrix19.renove()
+  const smith19 = matrix19.nums
+  var neo19 = [], bag = []
+
+  //PUT HERE THE SOLUTION TO THE SPECIFIC PROBLEM
+  for ( let i = 0; i < smith19.length; i++ ) {
+    if ( smith19[i] % 8 == 0 ) {
+      bag.push(smith19[i])
+    }
+  }
+  neo19.push( smith19.indexOf( Math.max(...bag) ) )
+  //end of the solution of the problem.
+
+  matrix19.solution(neo19)}
+//matrix a <---> b
+const matrix20 = new Matrix('20', 4, 5)
+function solveM20() {
+  matrix20.renove()
+  const smith20 = matrix20.nums
+  var neo20 = [], bag = []
+
+  //PUT HERE THE SOLUTION TO THE SPECIFIC PROBLEM
+  for ( let i = 0; i < smith20.length; i++ ) {
+    if ( smith20[i] % 8 == 0 ) {
+      bag.push(smith20[i])
+    }
+  }
+  neo20.push( smith20.indexOf( Math.max(...bag) ) )
+  //end of the solution of the problem.
+
+  matrix20.solution(neo20)}
+matrixEvts('19', '20')
+
 // 20. Leer dos matrices 4x5 entera, luego leer un entero y determinar si cada uno de los elementos de una de las matrices es igual a cada uno de los elementos de la otra matriz multiplicado por el entero leído.
 
 //Espero que todo esto de matrix logre ocultar el hecho de que las matrices son realmente barras de chocolate...
