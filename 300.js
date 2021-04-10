@@ -22034,7 +22034,8 @@ class Matrix {
       album[Number(id)-1] = this.picture
     })  // end of event.
     // This method will "light" the asked numbers in the matrix
-    this.solution = (i) => {
+    this.solution = ( i ) => {
+      if (i == -1)  return false
       for (let j = 0; j < ( rows * cols ); j++) {
         this.morfeo[j].style.color = 'lightgray'
         this.morfeo[j].style.background = 'black'
@@ -22064,16 +22065,15 @@ function select(selector) {
 } // Exchangable matrix's numbers
 function exchM() {
   for ( let i = 0; i < album.length; i++ ) {
-    if ( typeof album[i] !== 'undefined' ) {  
-      const _ = ( i < 10 ) ? `0${ i + 1 }` : i + 1
-      const reality = selectAll(`div#m${ _ } > div`)
-      for ( let j = 0; j < album[i].length; j++ ) {
-        if ( album[i][j] != Number(reality[j].textContent) ) { 
-          eval(`solveM${ _ }()`)
-        } //  with this beautiful function 
-      } //  (that costed me a lot to think of)
-    } //  we can exchange divs between matrixes :D
-  } 
+    if ( typeof album[i] == 'undefined' ) return  
+    const _ = ( i < 10 ) ? `0${ i + 1 }` : i + 1
+    const reality = selectAll(`div#m${ _ } > div`)
+    for ( let j = 0; j < album[i].length; j++ ) {
+      if ( album[i][j] != Number(reality[j].textContent) ) { 
+        eval(`solveM${ _ }()`)
+      } //  with this beautiful function 
+    } //  (that costed me a lot to think of)
+  } //  we can exchange divs between matrixes :D
 } 
 /*
   * const smithxx   : an array with all the numbers of the matrix 
@@ -22093,11 +22093,12 @@ function matrixEvts(id, id2) {
     })  // all of the code below is ONLY for dual matrixes
   });  if ( typeof id2 === 'undefined' ) return
   matrixEvts(id2)
- // MIRROR EFFECT
-  const trinity2 = select( `div#cuad${id2} > p` )
-  // Style
-  const em = trinity.querySelector('em'),
+ // MIRROR EFFECT -- DUAL MATRIXES
+  const trinity2 = select( `div#cuad${id2} > p` ),
+        em = trinity.querySelector('em'),
         em2 = trinity2.querySelector('em')
+
+  // Style
   trinity.addEventListener('mouseover', function(){
     em.style.opacity = '1' 
     em2.style.opacity = '1'
@@ -22163,9 +22164,8 @@ function matrixEvts(id, id2) {
     const dbl = new Event('dblclick')
     if ( e.target.parentNode.id == `m${id}` ) return getE(`m${id2}`).dispatchEvent(dbl)
     getE(`m${id}`).dispatchEvent(dbl)
-  }
-} //end of necessary functions for the section.
-//START SOLVING THE MATRIX SECTION
+  } //end of necessary functions for the section.
+} //START SOLVING THE MATRIX SECTION
 
 // 1. Leer una matriz 4x4 entera y determinar en qué fila y en qué columna se encuentra el número mayor.
 const matrix01 = new Matrix('01', 4, 4)
@@ -22527,8 +22527,8 @@ function solveM18() {
   }
   neo18.push( smith18.indexOf( Math.max(...bag) ) )
   //end of the solution of the problem.
-
-  matrix18.solution(neo18)}
+  console.log(neo18)
+  matrix18.solution(neo18) }
   matrixEvts('18')
 
 // 19. Leer dos matrices 4x5 entera y determinar si sus contenidos son exactamente iguales.
