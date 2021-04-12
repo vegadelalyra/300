@@ -22065,16 +22065,17 @@ function select(selector) {
 } // Exchangable matrix's numbers
 function exchM() {
   for ( let i = 0; i < album.length; i++ ) {
-    if ( typeof album[i] == 'undefined' ) return  
-    const _ = ( i < 10 ) ? `0${ i + 1 }` : i + 1
-    const reality = selectAll(`div#m${ _ } > div`)
-    for ( let j = 0; j < album[i].length; j++ ) {
-      if ( album[i][j] != Number(reality[j].textContent) ) { 
-        eval(`solveM${ _ }()`)
-      } //  with this beautiful function 
-    } //  (that costed me a lot to think of)
-  } //  we can exchange divs between matrixes :D
-} 
+    if ( typeof album[i] !== 'undefined' ) {
+      const _ = ( i < 10 ) ? `0${ i + 1 }` : i + 1
+      const reality = selectAll(`div#m${ _ } > div`)
+      for ( let j = 0; j < album[i].length; j++ ) {
+        if ( album[i][j] != Number(reality[j].textContent) ) { 
+          eval(`solveM${ _ }()`)
+        } //  with this beautiful function 
+      } //  (that costed me a lot to think of)
+    } //  we can exchange divs between matrixes :D
+  } 
+}
 /*
   * const smithxx   : an array with all the numbers of the matrix 
   * const neoxx     : an array with the index of the chosen numbers
@@ -22210,7 +22211,7 @@ function solveM03() {
 
   //PUT HERE THE SOLUTION TO THE SPECIFIC PROBLEM
   for ( let i = 0; i < smith03.length; i++ ) {
-    if ( smith03[i] % 2 == 0 ) {
+    if ( smith03[i] % 2 == 0 && smith03[i] != 0  ) {
       neo03.push(i)
     }
   } //end of the solution of the problem.
@@ -22390,7 +22391,7 @@ function solveM11() {
 
   //PUT HERE THE SOLUTION TO THE SPECIFIC PROBLEM
   for ( let i = 0; i < smith11.length; i++ ) {
-    if ( smith11[i] % 2 == 0 ) {
+    if ( smith11[i] % 2 == 0 && smith11[i] != 0 ) {
       bag.push(smith11[i])
     }
   }
@@ -22504,7 +22505,7 @@ function solveM17() {
 
   //PUT HERE THE SOLUTION TO THE SPECIFIC PROBLEM
   for ( let i = 0; i < smith17.length; i++ ) {
-    if ( smith17[i] % 5 == 0 ) {
+    if ( smith17[i] % 5 == 0 && smith17[i] != 0 ) {
       neo17.push(i)
     }
   } //end of the solution of the problem.
@@ -22521,52 +22522,550 @@ function solveM18() {
 
   //PUT HERE THE SOLUTION TO THE SPECIFIC PROBLEM
   for ( let i = 0; i < smith18.length; i++ ) {
-    if ( smith18[i] % 8 == 0 ) {
+    if ( smith18[i] % 8 == 0 && smith18[i] != 0 ) {
       bag.push(smith18[i])
     }
   }
   neo18.push( smith18.indexOf( Math.max(...bag) ) )
   //end of the solution of the problem.
-  console.log(neo18)
   matrix18.solution(neo18) }
   matrixEvts('18')
 
 // 19. Leer dos matrices 4x5 entera y determinar si sus contenidos son exactamente iguales.
-const matrix19 = new Matrix('19', 4, 5)
+const matrix19 = new Matrix('19', 4, 5),
+      matrix20 = new Matrix('20', 4, 5)
 function solveM19() {
   matrix19.renove()
   const smith19 = matrix19.nums
-  var neo19 = [], bag = []
-
+    
   //PUT HERE THE SOLUTION TO THE SPECIFIC PROBLEM
-  for ( let i = 0; i < smith19.length; i++ ) {
-    if ( smith19[i] % 8 == 0 ) {
-      bag.push(smith19[i])
-    }
-  }
-  neo19.push( smith19.indexOf( Math.max(...bag) ) )
+  fusion19(smith19, matrix20.nums)
   //end of the solution of the problem.
-
-  matrix19.solution(neo19)}
+}
 //matrix a <---> b
-const matrix20 = new Matrix('20', 4, 5)
 function solveM20() {
   matrix20.renove()
   const smith20 = matrix20.nums
-  var neo20 = [], bag = []
-
+  
   //PUT HERE THE SOLUTION TO THE SPECIFIC PROBLEM
-  for ( let i = 0; i < smith20.length; i++ ) {
-    if ( smith20[i] % 8 == 0 ) {
-      bag.push(smith20[i])
+  fusion19(matrix19.nums, smith20)
+  //end of the solution of the problem.
+}
+function fusion19(m1, m2) {
+  if (typeof m1 === 'undefined' || typeof m2 === 'undefined') return
+  const left = [], right = []
+  for (let i = 0; i < m1.length; i++) {
+    for (let j = 0; j < m2.length; j++) {
+      if ( m1[i] == m2[j] ) {
+        left.push(i)
+        right.push(j)
+      }
     }
   }
-  neo20.push( smith20.indexOf( Math.max(...bag) ) )
-  //end of the solution of the problem.
-
-  matrix20.solution(neo20)}
+  if (left.length == m1.length) getE('m19em').innerHTML = `IMPOSIBLEEEE LA PROBABILIDAD DE ESTO ES COMO DE 0.000124124131287 % D:`
+  else getE('m19em').innerHTML = ``
+  matrix19.solution(left)
+  matrix20.solution(right) 
+} // fusion allows us to work with both matrix's numbers 
 matrixEvts('19', '20')
 
 // 20. Leer dos matrices 4x5 entera, luego leer un entero y determinar si cada uno de los elementos de una de las matrices es igual a cada uno de los elementos de la otra matriz multiplicado por el entero leído.
+const matrix21 = new Matrix('21', 4, 5),
+      matrix22 = new Matrix('22', 4, 5)
+function solveM21() {
+  matrix21.renove()
+  const smith21 = matrix21.nums
+    
+  //PUT HERE THE SOLUTION TO THE SPECIFIC PROBLEM
+  fusion21(smith21, matrix22.nums)
+  //end of the solution of the problem.
+}
+//matrix a <---> b
+function solveM22() {
+  matrix22.renove()
+  const smith22 = matrix22.nums
+  
+  //PUT HERE THE SOLUTION TO THE SPECIFIC PROBLEM
+  fusion21(matrix21.nums, smith22)
+  //end of the solution of the problem.
+}
+function fusion21(m1, m2) {
+  if (typeof m1 === 'undefined' || typeof m2 === 'undefined') return
+  const left = [], right = []
+  for (let i = 0; i < m1.length; i++) {
+    for (let j = 0; j < m2.length; j++) {
+      if ( m1[i] == m2[j] ) {
+        left.push(i)
+        right.push(j)
+      }
+    }
+  }
+  matrix21.solution(left)
+  matrix22.solution(right) 
+} // fusion allows us to work with both matrix's numbers 
+matrixEvts('21', '22')
+
+// 21. Leer dos matrices 4x5 enteras y determinar cuántos datos tienen en común.
+const matrix23 = new Matrix('23', 4, 5),
+      matrix24 = new Matrix('24', 4, 5)
+function solveM23() {
+  matrix23.renove()
+  const smith23 = matrix23.nums
+    
+  //PUT HERE THE SOLUTION TO THE SPECIFIC PROBLEM
+  fusion23(smith23, matrix24.nums)
+  //end of the solution of the problem.
+}
+//matrix a <---> b
+function solveM24() {
+  matrix24.renove()
+  const smith24 = matrix24.nums
+  
+  //PUT HERE THE SOLUTION TO THE SPECIFIC PROBLEM
+  fusion23(matrix23.nums, smith24)
+  //end of the solution of the problem.
+}
+function fusion23(m1, m2) {
+  if (typeof m1 === 'undefined' || typeof m2 === 'undefined') return
+  const left = [], right = []
+  for (let i = 0; i < m1.length; i++) {
+    for (let j = 0; j < m2.length; j++) {
+      if ( m1[i] == m2[j] ) {
+        left.push(i)
+        right.push(j)
+      }
+    }
+  }
+  matrix23.solution(left)
+  matrix24.solution(right) 
+} // fusion allows us to work with both matrix's numbers 
+matrixEvts('23', '24')
+
+// 22. Leer dos matrices 4x5 enteras y determinar si el número mayor almacenado en la primera está en la segunda.
+const matrix25 = new Matrix('25', 4, 5),
+      matrix26 = new Matrix('26', 4, 5)
+function solveM25() {
+  matrix25.renove()
+  const smith25 = matrix25.nums
+    
+  //PUT HERE THE SOLUTION TO THE SPECIFIC PROBLEM
+  fusion25(smith25, matrix26.nums)
+  //end of the solution of the problem.
+}
+//matrix a <---> b
+function solveM26() {
+  matrix26.renove()
+  const smith26 = matrix26.nums
+  
+  //PUT HERE THE SOLUTION TO THE SPECIFIC PROBLEM
+  fusion25(matrix25.nums, smith26)
+  //end of the solution of the problem.
+}
+function fusion25(m1, m2) {
+  if (typeof m1 === 'undefined' || typeof m2 === 'undefined') return
+  const left = [], right = []
+  const arr = [ Math.max(...m1), Math.max(...m2) ]
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < m1.length; j++) {
+      if ( m1[j] == arr[i] ) left.push(j)
+      if ( m2[j] == arr[i] ) right.push(j)
+    }
+  }
+  if ( arr[0] == arr[1] ) getE('m25em').innerHTML = `Tienen el mismo máximo :D`
+  else getE('m25em').innerHTML = ``
+  matrix25.solution(left)
+  matrix26.solution(right) 
+} // fusion allows us to work with both matrix's numbers 
+matrixEvts('25', '26')
+
+// 23. Leer dos matrices 4x5 enteras y determinar si el número mayor de una de las matrices es igual al número mayor de la otra matriz.
+const matrix27 = new Matrix('27', 4, 5),
+      matrix28 = new Matrix('28', 4, 5)
+function solveM27() {
+  matrix27.renove()
+  const smith27 = matrix27.nums
+    
+  //PUT HERE THE SOLUTION TO THE SPECIFIC PROBLEM
+  fusion27(smith27, matrix28.nums)
+  //end of the solution of the problem.
+}
+//matrix a <---> b
+function solveM28() {
+  matrix28.renove()
+  const smith28 = matrix28.nums
+  
+  //PUT HERE THE SOLUTION TO THE SPECIFIC PROBLEM
+  fusion27(matrix27.nums, smith28)
+  //end of the solution of the problem.
+}
+function fusion27(m1, m2) {
+  if (typeof m1 === 'undefined' || typeof m2 === 'undefined') return
+  const left = [], right = []
+  const arr = [ Math.max(...m1), Math.max(...m2) ]
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < m1.length; j++) {
+      if ( m1[j] == arr[i] ) left.push(j)
+      if ( m2[j] == arr[i] ) right.push(j)
+    }
+  }
+  if ( arr[0] == arr[1] ) getE('m27em').innerHTML = `Tienen el mismo máximo :D`
+  else getE('m27em').innerHTML = ``
+  matrix27.solution(left)
+  matrix28.solution(right) 
+} // fusion allows us to work with both matrix's numbers 
+matrixEvts('27', '28')
+
+// 24. Leer dos matrices 4x5 enteras y determinar si el mayor número primo de una de las matrices también se encuentra en la otra matriz.
+const matrix29 = new Matrix('29', 4, 5),
+      matrix30 = new Matrix('30', 4, 5)
+function solveM29() {
+  matrix29.renove()
+  const smith29 = matrix29.nums
+    
+  //PUT HERE THE SOLUTION TO THE SPECIFIC PROBLEM
+  fusion29(smith29, matrix30.nums)
+  //end of the solution of the problem.
+}
+//matrix a <---> b
+function solveM30() {
+  matrix30.renove()
+  const smith30 = matrix30.nums
+  
+  //PUT HERE THE SOLUTION TO THE SPECIFIC PROBLEM
+  fusion29(matrix29.nums, smith30)
+  //end of the solution of the problem.
+}
+function fusion29(m1, m2) {
+  if (typeof m1 === 'undefined' || typeof m2 === 'undefined') return
+    //ALGORITHM FOR PRIME NUMBERS >:c
+  const p1 = [], p2 = [], left = [], right = []
+  for (let i = 0; i < m1.length; i++) {
+    const box = []
+    for (let numbers = 2; numbers <= m1[i]; numbers++) {
+      const prime = m1[i] % numbers
+      if (prime == 0) {
+        box.push(numbers)
+      }
+    }
+    if (box.length == 1 && m1[i] > 0) p1.push(m1[i])
+  }
+  for (let i = 0; i < m2.length; i++) {
+    const box = []
+    for (let numbers = 2; numbers <= m2[i]; numbers++) {
+      const prime = m2[i] % numbers
+      if (prime == 0) {
+        box.push(numbers)
+      }
+    }
+    if (box.length == 1 && m2[i] > 0) p2.push(m2[i])
+  }
+
+  const arr = [ Math.max(...p1), Math.max(...p2) ]
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < m1.length; j++) {
+      if ( m1[j] == arr[i] ) left.push(j)
+      if ( m2[j] == arr[i] ) right.push(j)
+    }
+  }
+  if ( arr[0] == arr[1] ) getE('m29em').innerHTML = `Tienen el mismo primo máximo :D`
+  else getE('m29em').innerHTML = ``
+  matrix29.solution(left)
+  matrix30.solution(right) 
+} // fusion allows us to work with both matrix's numbers 
+matrixEvts('29', '30')
+
+// 25. Leer dos matrices 4x5 enteras y determinar si el mayor número primo de una de las matrices es también el mayor número primo de la otra matriz.
+const matrix31 = new Matrix('31', 4, 5),
+      matrix32 = new Matrix('32', 4, 5)
+function solveM31() {
+  matrix31.renove()
+  const smith31 = matrix31.nums
+    
+  //PUT HERE THE SOLUTION TO THE SPECIFIC PROBLEM
+  fusion31(smith31, matrix32.nums)
+  //end of the solution of the problem.
+}
+//matrix a <---> b
+function solveM32() {
+  matrix32.renove()
+  const smith32 = matrix32.nums
+  
+  //PUT HERE THE SOLUTION TO THE SPECIFIC PROBLEM
+  fusion31(matrix31.nums, smith32)
+  //end of the solution of the problem.
+}
+function fusion31(m1, m2) {
+  if (typeof m1 === 'undefined' || typeof m2 === 'undefined') return
+    //ALGORITHM FOR PRIME NUMBERS >:c
+  const p1 = [], p2 = [], left = [], right = []
+  for (let i = 0; i < m1.length; i++) {
+    const box = []
+    for (let numbers = 2; numbers <= m1[i]; numbers++) {
+      const prime = m1[i] % numbers
+      if (prime == 0) {
+        box.push(numbers)
+      }
+    }
+    if (box.length == 1 && m1[i] > 0) p1.push(m1[i])
+  }
+  for (let i = 0; i < m2.length; i++) {
+    const box = []
+    for (let numbers = 2; numbers <= m2[i]; numbers++) {
+      const prime = m2[i] % numbers
+      if (prime == 0) {
+        box.push(numbers)
+      }
+    }
+    if (box.length == 1 && m2[i] > 0) p2.push(m2[i])
+  }
+
+  const arr = [ Math.max(...p1), Math.max(...p2) ]
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < m1.length; j++) {
+      if ( m1[j] == arr[i] ) left.push(j)
+      if ( m2[j] == arr[i] ) right.push(j)
+    }
+  }
+  if ( arr[0] == arr[1] ) getE('m31em').innerHTML = `Tienen el mismo primo máximo :D`
+  else getE('m31em').innerHTML = ``
+  matrix31.solution(left)
+  matrix32.solution(right) 
+} // fusion allows us to work with both matrix's numbers 
+matrixEvts('31', '32')
+
+// 26. Leer dos matrices 4x5 enteras y determinar si la cantidad de números pares almacenados en una matriz es igual a la cantidad de números pares almacenados en la otra matriz.
+const matrix33 = new Matrix('33', 4, 5),
+      matrix34 = new Matrix('34', 4, 5)
+function solveM33() {
+  matrix33.renove()
+  const smith33 = matrix33.nums
+    
+  //PUT HERE THE SOLUTION TO THE SPECIFIC PROBLEM
+  fusion33(smith33, matrix34.nums)
+  //end of the solution of the problem.
+}
+//matrix a <---> b
+function solveM34() {
+  matrix34.renove()
+  const smith34 = matrix34.nums
+  
+  //PUT HERE THE SOLUTION TO THE SPECIFIC PROBLEM
+  fusion33(matrix33.nums, smith34)
+  //end of the solution of the problem.
+}
+function fusion33(m1, m2) {
+  if (typeof m1 === 'undefined' || typeof m2 === 'undefined') return
+    //ALGORITHM FOR PRIME NUMBERS >:c
+  const left = [], right = []
+  for (let i = 0; i < m1.length; i++) {
+    if ( m1[i] % 2 == 0 && m1[i] != 0 ) left.push(i)
+  }
+  for (let i = 0; i < m2.length; i++) {
+    if ( m2[i] % 2 == 0 && m2[i] != 0 ) right.push(i)
+  }
+  if ( left.length == right.length ) getE('m33em').innerHTML = `Tienen la misma cantidad de pares :D`
+  else getE('m33em').innerHTML = ``
+  matrix33.solution(left)
+  matrix34.solution(right) 
+} // fusion allows us to work with both matrix's numbers 
+matrixEvts('33', '34')
+
+// 27. Leer dos matrices 4x5 enteras y determinar si la cantidad de números primos almacenados en una matriz es igual a la cantidad de números primos almacenados en la otra matriz.
+const matrix35 = new Matrix('35', 4, 5),
+      matrix36 = new Matrix('36', 4, 5)
+function solveM35() {
+  matrix35.renove()
+  const smith35 = matrix35.nums
+    
+  //PUT HERE THE SOLUTION TO THE SPECIFIC PROBLEM
+  fusion35(smith35, matrix36.nums)
+  //end of the solution of the problem.
+}
+//matrix a <---> b
+function solveM36() {
+  matrix36.renove()
+  const smith36 = matrix36.nums
+  
+  //PUT HERE THE SOLUTION TO THE SPECIFIC PROBLEM
+  fusion35(matrix35.nums, smith36)
+  //end of the solution of the problem.
+}
+function fusion35(m1, m2) {
+  if (typeof m1 === 'undefined' || typeof m2 === 'undefined') return
+    //ALGORITHM FOR PRIME NUMBERS >:c
+  const left = [], right = []
+  for (let i = 0; i < m1.length; i++) {
+    const box = []
+    for (let numbers = 2; numbers <= m1[i]; numbers++) {
+      const prime = m1[i] % numbers
+      if (prime == 0) {
+        box.push(numbers)
+      }
+    }
+    if (box.length == 1 && m1[i] > 0) left.push(i)
+  }
+  for (let i = 0; i < m2.length; i++) {
+    const box = []
+    for (let numbers = 2; numbers <= m2[i]; numbers++) {
+      const prime = m2[i] % numbers
+      if (prime == 0) {
+        box.push(numbers)
+      }
+    }
+    if (box.length == 1 && m2[i] > 0) right.push(i)
+  }
+
+  if ( left.length == right.length ) getE('m35em').innerHTML = `Tienen la misma cantidad de primos :D`
+  else getE('m35em').innerHTML = ``
+  matrix35.solution(left)
+  matrix36.solution(right) 
+} // fusion allows us to work with both matrix's numbers 
+matrixEvts('35', '36')
+
+// 28. Leer una matriz 4x6 entera y determinar en qué posiciones se encuentran los números cuyo penúltimo dígito sea el 5.
+const matrix37 = new Matrix('37', 4, 6)
+function solveM37() {
+  matrix37.renove()
+  const smith37 = matrix37.nums, neo37 = []
+
+  //PUT HERE THE SOLUTION TO THE SPECIFIC PROBLEM
+  for ( let i = 0; i < smith37.length; i++ ) {
+    let num = Math.abs(smith37[i])
+    let str = num.toString()
+    if ( str[str.length - 2] == 5 ) {
+      neo37.push(i)
+    }
+  }
+  //end of the solution of the problem.
+
+  matrix37.solution(neo37) }
+  matrixEvts('37')
+
+// 29. Leer una matriz 4x6 entera y determinar si alguno de sus números está repetido al menos 3 veces.
+const matrix38 = new Matrix('38', 4, 6)
+function solveM38() {
+  matrix38.renove()
+  const smith38 = matrix38.nums, neo38 = []
+
+  //PUT HERE THE SOLUTION TO THE SPECIFIC PROBLEM
+  for ( let i = 0; i < smith38.length; i++ ) {
+    const repeated = 0, box = []
+    for ( let j = 0; j < smith38.length; j++ ) {
+      if (smith38[i] == smith38[j]) {
+        box.push(j)
+        repeated++
+      }
+      if (repeated >= 3) neo38 = box
+    }
+  }
+  //end of the solution of the problem.
+
+  matrix38.solution(neo38) }
+  matrixEvts('38')
+
+// 30. Leer una matriz 4x6 entera y determinar cuántas veces está en ella el número menor.
+const matrix39 = new Matrix('39', 4, 6)
+function solveM39() {
+  matrix39.renove()
+  const smith39 = matrix39.nums, neo39 = []
+
+  //PUT HERE THE SOLUTION TO THE SPECIFIC PROBLEM
+  for ( let i = 0; i < smith39.length; i++ ) {
+    if ( Math.min(...smith39) == smith39[i] ) {
+      neo39.push(i)
+    }
+  } //end of the solution of the problem.
+
+  matrix39.solution(neo39) }
+matrixEvts('39')
+
+// 31. Leer una matriz 4x6 entera y determinar en qué posiciones están los menores por fila.
+const matrix40 = new Matrix('40', 4, 6)
+function solveM40() {
+  matrix40.renove()
+  const smith40 = matrix40.nums, neo40 = []
+
+  //  PUT HERE THE SOLUTION TO THE SPECIFIC PROBLEM
+  let rows = 4, cols = 6, count = 0
+   // push each row's indexes to our indxs array and solve
+  for ( let r = 0; r < rows; r++ ) {
+    let calcs = []
+    for ( let c = count; c < ( rows * cols ); c++ ) {
+      if ( calcs.length == cols ) break
+      calcs.push( Number.parseInt(smith40[c]) ) 
+      count++
+    } //  Getting the winner
+    neo40.push( smith40.indexOf( Math.min(...calcs) ) )
+  } //  END OF THE PROBLEM'S SOLUTION
+
+  matrix40.solution(neo40) }
+  matrixEvts('40')
+
+// 32. Leer una matriz 4x6 entera y determinar en qué posiciones están los menores primos por fila.
+const matrix41 = new Matrix('41', 4, 6)
+function solveM41() {
+  matrix41.renove()
+  const smith41 = matrix41.nums, neo41 = []
+
+  //  PUT HERE THE SOLUTION TO THE SPECIFIC PROBLEM
+  let rows = 4, cols = 6, count = 0
+   // push each row's indexes to our indxs array and solve
+  for ( let r = 0; r < rows; r++ ) {
+    let calcs = []
+    for ( let c = count; c < ( rows * cols ); c++ ) {
+      if ( calcs.length == cols ) break
+      calcs.push( Number.parseInt(smith41[c]) ) 
+      count++
+    } //  Getting the winner
+      //ALGORITHM FOR PRIME NUMBERS >:c
+    const box = [];
+    for (let i = 0; i < calcs.length; i++) {
+      for (let numbers = 2; numbers <= calcs[i]; numbers++) {
+        const prime = calcs[i] % numbers;
+        if (prime == 0) {
+          box.push(numbers);  
+        }
+      }
+      if (box.length == 1) neo41.push( smith41.indexOf( Math.min(...box) ) )
+    } 
+  } //  END OF THE PROBLEM'S SOLUTION
+
+  matrix41.solution(neo41) }
+  matrixEvts('41')
+
+// 33. Leer una matriz 4x6 entera y determinar en qué posiciones están los menores pares por fila.
+const matrix42 = new Matrix('42', 4, 6)
+function solveM42() {
+  matrix42.renove()
+  const smith42 = matrix42.nums, neo42 = []
+
+  //  PUT HERE THE SOLUTION TO THE SPECIFIC PROBLEM
+  let rows = 4, cols = 6, count = 0
+   // push each row's indexes to our indxs array and solve
+  for ( let r = 0; r < rows; r++ ) {
+    let calcs = [], bag = []
+    for ( let c = count; c < ( rows * cols ); c++ ) {
+      if ( calcs.length == cols ) break
+      calcs.push( Number.parseInt(smith42[c]) ) 
+      count++
+    } //  Getting the winner
+    for (let i = 0; i < calcs.length; i++) {
+      if ( calcs[i] % 2 == 0 && calcs[i] != 0) { 
+        bag.push(calcs[i])
+      }
+    }
+    neo42.push( smith42.indexOf( Math.min(...bag) ) )
+  } //  END OF THE PROBLEM'S SOLUTION
+
+  matrix42.solution(neo42) }
+  matrixEvts('42')
+
+// 34. Leer una matriz 4x6 entera y determinar cuántos de los números almacenados en ella pertenecen a los 100 primeros elementos de la serie de Fibonacci.
+// 35. Leer dos matrices 4x6 enteras y determinar cuál es el mayor dato almacenado en ella que pertenezca a la Serie de Fibonacci.
+// 36. Leer dos matrices 4x6 enteras y determinar si el mayor número almacenado en una de ellas que pertenezca a la Serie de Fibonacci es igual al mayor número almacenado en la otra matriz que pertenezca a la Serie de Fibonacci.
+// 37. Leer dos matrices 4x6 enteras y determinar si el número mayor de una matriz se encuentra en la misma posición exacta en la otra matriz.
+// 38. Leer dos matrices 4x6 enteras y determinar si el mayor número primo de una matriz está repetido en la otra matriz.
+// 39. Leer dos matrices 4x6 enteras y determinar si el promedio de las “esquinas” de una matriz es igual al promedio de las “esquinas” de la otra matriz.
+// 40. Leer dos matrices 5x5 enteras y determinar si el promedio entero de los elementos de la diagonal de una matriz es igual al promedio de los elementos de la diagonal de la otra matriz.
 
 //Espero que todo esto de matrix logre ocultar el hecho de que las matrices son realmente barras de chocolate...
