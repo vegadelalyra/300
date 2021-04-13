@@ -23061,11 +23061,676 @@ function solveM42() {
   matrixEvts('42')
 
 // 34. Leer una matriz 4x6 entera y determinar cuántos de los números almacenados en ella pertenecen a los 100 primeros elementos de la serie de Fibonacci.
-// 35. Leer dos matrices 4x6 enteras y determinar cuál es el mayor dato almacenado en ella que pertenezca a la Serie de Fibonacci.
+function fib(n){
+  return new Array(n).fill(1).reduce((arr, _ ,i) => {
+      arr.push((i <= 1) 
+        ? i 
+        : arr[i-2] + arr[i-1])
+      return arr
+  }, [])
+} // with this function parametered on 18, you get fibo 'til 1600
+const fibos = fib(18)
+
+const matrix43 = new Matrix('43', 4, 6)
+function solveM43() {
+  matrix43.renove()
+  const smith43 = matrix43.nums, neo43 = []
+
+  //  PUT HERE THE SOLUTION TO THE SPECIFIC PROBLEM
+  for (let i = 0; i < fibos.length; i++) {
+    for (let j = 0; j < smith43.length; j++) {
+      if ( smith43[j] == fibos[i] ) neo43.push(j)
+    }
+  } //  END OF THE PROBLEM'S SOLUTION
+
+  matrix43.solution(neo43) }
+  matrixEvts('43')
+
+// 35. Leer una matriz 4x6 enteras y determinar cuál es el mayor dato almacenado en ella que pertenezca a la Serie de Fibonacci.
+const matrix44 = new Matrix('44', 4, 6)
+function solveM44() {
+  matrix44.renove()
+  const smith44 = matrix44.nums, neo44 = [], bag = []
+
+  //  PUT HERE THE SOLUTION TO THE SPECIFIC PROBLEM
+  for (let i = 0; i < fibos.length; i++) {
+    for (let j = 0; j < smith44.length; j++) {
+      if ( smith44[j] == fibos[i] ) bag.push(smith44[j])
+    }
+  }
+  neo44.push( smith44.indexOf( Math.max(...bag) ) )
+  //  END OF THE PROBLEM'S SOLUTION
+
+  matrix44.solution(neo44) }
+  matrixEvts('44')
+
 // 36. Leer dos matrices 4x6 enteras y determinar si el mayor número almacenado en una de ellas que pertenezca a la Serie de Fibonacci es igual al mayor número almacenado en la otra matriz que pertenezca a la Serie de Fibonacci.
+const matrix45 = new Matrix('45', 4, 6),
+      matrix46 = new Matrix('46', 4, 6)
+function solveM45() {
+  matrix45.renove()
+  const smith45 = matrix45.nums
+  fusion45(smith45, matrix46.nums)
+} //matrix 1 <---> 2
+function solveM46() {
+  matrix46.renove()
+  const smith46 = matrix46.nums 
+  fusion45(matrix45.nums, smith46)
+} // Fusion function is the solution to the problem
+function fusion45(m1, m2) {
+  if (typeof m1 === 'undefined' || typeof m2 === 'undefined') return
+  //that if up there is our guard class... Down here, it's our solution
+  const left = [], right = [], first = [], second = []
+  for ( let i = 0; i < fibos.length; i++ ) {
+    for ( let j = 0; j < m1.length; j++ ) {
+      if ( m1[j] == fibos[i] ) first.push(m1[j]) 
+      if ( m2[j] == fibos[i] ) second.push(m2[j]) 
+    }
+  }
+  left.push( m1.indexOf( Math.max(...first) ) )
+  right.push( m2.indexOf( Math.max(...second) ) )
+  // answer for the span (in case the exercise asks for any specific info)
+  if ( left == right ) getE('m45em').innerHTML = `Tienen el mismo fibonacci más alto :D`
+  else getE('m45em').innerHTML = ``
+  matrix45.solution(left)
+  matrix46.solution(right) 
+} // fusion allows us to work with both matrix's numbers 
+matrixEvts('45', '46')
+
 // 37. Leer dos matrices 4x6 enteras y determinar si el número mayor de una matriz se encuentra en la misma posición exacta en la otra matriz.
+const matrix47 = new Matrix('47', 4, 6),
+      matrix48 = new Matrix('48', 4, 6)
+function solveM47() {
+  matrix47.renove()
+  const smith47 = matrix47.nums
+    
+  //PUT HERE THE SOLUTION TO THE SPECIFIC PROBLEM
+  fusion47(smith47, matrix48.nums)
+  //end of the solution of the problem.
+}
+//matrix a <---> b
+function solveM48() {
+  matrix48.renove()
+  const smith48 = matrix48.nums
+  
+  //PUT HERE THE SOLUTION TO THE SPECIFIC PROBLEM
+  fusion47(matrix47.nums, smith48)
+  //end of the solution of the problem.
+}
+function fusion47(m1, m2) {
+  if (typeof m1 === 'undefined' || typeof m2 === 'undefined') return
+  const left = [], right = []
+  const arr = [ Math.max(...m1), Math.max(...m2) ]
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < m1.length; j++) {
+      if ( m1[j] == arr[i] ) left.push(j)
+      if ( m2[j] == arr[i] ) right.push(j)
+    }
+  }
+  if ( left == right ) getE('m47em').innerHTML = `¡wow! Tienen el n° más alto en la misma posición D: JUÉGATE LA LOTERÍAAA`
+  else getE('m47em').innerHTML = ``
+  matrix47.solution(left)
+  matrix48.solution(right) 
+} // fusion allows us to work with both matrix's numbers 
+matrixEvts('47', '48')
+
 // 38. Leer dos matrices 4x6 enteras y determinar si el mayor número primo de una matriz está repetido en la otra matriz.
+const matrix49 = new Matrix('49', 4, 6),
+      matrix50 = new Matrix('50', 4, 6)
+function solveM49() {
+  matrix49.renove()
+  const smith49 = matrix49.nums
+    
+  //PUT HERE THE SOLUTION TO THE SPECIFIC PROBLEM
+  fusion49(smith49, matrix50.nums)
+  //end of the solution of the problem.
+}
+//matrix a <---> b
+function solveM50() {
+  matrix50.renove()
+  const smith50 = matrix50.nums
+  
+  //PUT HERE THE SOLUTION TO THE SPECIFIC PROBLEM
+  fusion49(matrix49.nums, smith50)
+  //end of the solution of the problem.
+}
+function fusion49(m1, m2) {
+  if (typeof m1 === 'undefined' || typeof m2 === 'undefined') return
+    //ALGORITHM FOR PRIME NUMBERS >:c
+  const p1 = [], p2 = [], left = [], right = []
+  for (let i = 0; i < m1.length; i++) {
+    const box = []
+    for (let numbers = 2; numbers <= m1[i]; numbers++) {
+      const prime = m1[i] % numbers
+      if (prime == 0) {
+        box.push(numbers)
+      }
+    }
+    if (box.length == 1 && m1[i] > 0) p1.push(m1[i])
+  }
+  for (let i = 0; i < m2.length; i++) {
+    const box = []
+    for (let numbers = 2; numbers <= m2[i]; numbers++) {
+      const prime = m2[i] % numbers
+      if (prime == 0) {
+        box.push(numbers)
+      }
+    }
+    if (box.length == 1 && m2[i] > 0) p2.push(m2[i])
+  }
+
+  const arr = [ Math.max(...p1), Math.max(...p2) ]
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = 0; j < m1.length; j++) {
+      if ( m1[j] == arr[i] ) left.push(j)
+      if ( m2[j] == arr[i] ) right.push(j)
+    }
+  }
+  if ( arr[0] == arr[1] ) getE('m49em').innerHTML = `Tienen el mismo primo máximo :D`
+  else getE('m49em').innerHTML = ``
+  matrix49.solution(left)
+  matrix50.solution(right) 
+} // fusion allows us to work with both matrix's numbers 
+matrixEvts('49', '50')
+
 // 39. Leer dos matrices 4x6 enteras y determinar si el promedio de las “esquinas” de una matriz es igual al promedio de las “esquinas” de la otra matriz.
+const matrix51 = new Matrix('51', 4, 6),
+      matrix52 = new Matrix('52', 4, 6)
+function solveM51() {
+  matrix51.renove()
+  const smith51 = matrix51.nums
+  fusion51(smith51, matrix52.nums)
+} //matrix 1 <---> 2
+function solveM52() {
+  matrix52.renove()
+  const smith52 = matrix52.nums 
+  fusion51(matrix51.nums, smith52)
+} // Fusion function is the solution to the problem
+function fusion51(m1, m2) {
+  if (typeof m1 === 'undefined' || typeof m2 === 'undefined') return
+
+  //  CORNERS and vars required for the exercise
+  let rows = 4, cols = 6, left = [], right = [], avg1 = 0, avg2 = 0
+  const corners = [0, cols - 1, (rows * cols) - cols, (rows * cols) - 1]
+  // cycle to go through the matrix
+  for ( let c = 0; c < ( rows * cols ); c++ ) {
+    for ( let i = 0; i < corners.length; i++ ) {
+      if ( c != corners[i] ) continue
+      left.push(c); right.push(c); avg1 += m1[c]; avg2 += m2[c]
+    }
+  } avg1 /= left.length; avg2 /= right.length
+  // END OF THE PROBLEM'S SOLUTION
+
+  // answer for the span (in case the exercise asks for any specific info)
+  if ( avg1 == avg2 ) getE('m51em').innerHTML = `Tienen el mismo promedio en sus esquinas :D`
+  else getE('m51em').innerHTML = ``
+  getE('m51ema').innerHTML = Math.round(avg1)
+  getE('m51emb').innerHTML = Math.round(avg2)
+  matrix51.solution(left)
+  matrix52.solution(right) 
+} // fusion allows us to work with both matrix's numbers 
+matrixEvts('51', '52')
+
 // 40. Leer dos matrices 5x5 enteras y determinar si el promedio entero de los elementos de la diagonal de una matriz es igual al promedio de los elementos de la diagonal de la otra matriz.
+const matrix53 = new Matrix('53', 5, 5),
+      matrix54 = new Matrix('54', 5, 5)
+function solveM53() {
+  matrix53.renove()
+  const smith53 = matrix53.nums
+  fusion53(smith53, matrix54.nums)
+} //matrix 1 <---> 2
+function solveM54() {
+  matrix54.renove()
+  const smith54 = matrix54.nums 
+  fusion53(matrix53.nums, smith54)
+} // Fusion function is the solution to the problem
+function fusion53(m1, m2) {
+  if (typeof m1 === 'undefined' || typeof m2 === 'undefined') return
+
+  //  DIAGON and vars required for the exercise
+  let rows = 5, cols = 5, left = [], right = [], avg1 = 0, avg2 = 0, h = 0, v = 0
+  // cycle to go through the matrix
+  for ( let c = 0; c < ( rows * cols ); c++ ) {
+    if ( h == cols ) { 
+      v++ 
+      h = 0
+    }
+    if ( h == v ) { 
+      left.push(c) 
+      right.push(c) 
+      avg1 += m1[c] 
+      avg2 += m2[c] 
+    }  
+    h++
+  } avg1 /= left.length; avg2 /= right.length
+  // END OF THE PROBLEM'S SOLUTION
+
+  // answer for the span (in case the exercise asks for any specific info)
+  if ( avg1 == avg2 ) getE('m53em').innerHTML = `Tienen el mismo promedio en sus diagonales :D`
+  else getE('m53em').innerHTML = ``
+  getE('m53ema').innerHTML = Math.round(avg1)
+  getE('m53emb').innerHTML = Math.round(avg2)
+  matrix53.solution(left)
+  matrix54.solution(right) 
+} // fusion allows us to work with both matrix's numbers 
+matrixEvts('53', '54')
+
+// 41. Leer dos matrices 5x5 enteras y determinar si el promedio entero de todos los elementos que no están en la diagonal de una matriz es igual al promedio entero de todos los elementos que no están en la diagonal de la otra matriz.
+const matrix55 = new Matrix('55', 5, 5),
+      matrix56 = new Matrix('56', 5, 5)
+function solveM55() {
+  matrix55.renove()
+  const smith55 = matrix55.nums
+  fusion55(smith55, matrix56.nums)
+} //matrix 1 <---> 2
+function solveM56() {
+  matrix56.renove()
+  const smith56 = matrix56.nums 
+  fusion55(matrix55.nums, smith56)
+} // Fusion function is the solution to the problem
+function fusion55(m1, m2) {
+  if (typeof m1 === 'undefined' || typeof m2 === 'undefined') return
+
+  //  DIAGON and vars required for the exercise
+  let rows = 5, cols = 5, left = [], right = [], avg1 = 0, avg2 = 0, h = 0, v = 0
+  // cycle to go through the matrix
+  for ( let c = 0; c < ( rows * cols ); c++ ) {
+    if ( h == cols ) { 
+      v++ 
+      h = 0
+    }
+    if ( h != v ) { 
+      left.push(c) 
+      right.push(c) 
+      avg1 += m1[c] 
+      avg2 += m2[c] 
+    }  
+    h++
+  } avg1 /= left.length; avg2 /= right.length
+  // END OF THE PROBLEM'S SOLUTION
+
+  // answer for the span (in case the exercise asks for any specific info)
+  if ( avg1 == avg2 ) getE('m55em').innerHTML = `Tienen el mismo promedio fuera de sus diagonales :D`
+  else getE('m55em').innerHTML = ``
+  getE('m55ema').innerHTML = Math.round(avg1)
+  getE('m55emb').innerHTML = Math.round(avg2)
+  matrix55.solution(left)
+  matrix56.solution(right) 
+} // fusion allows us to work with both matrix's numbers 
+matrixEvts('55', '56')
+
+// 42. Leer dos matrices 5x5 enteras y determinar si el promedio entero de los números primos de una matriz se encuentra almacenado en la otra matriz.
+const matrix57 = new Matrix('57', 5, 5),
+      matrix58 = new Matrix('58', 5, 5)
+function solveM57() {
+  matrix57.renove()
+  const smith57 = matrix57.nums
+  fusion57(smith57, matrix58.nums)
+} //matrix 1 <---> 2
+function solveM58() {
+  matrix58.renove()
+  const smith58 = matrix58.nums 
+  fusion57(matrix57.nums, smith58)
+} // Fusion function is the solution to the problem
+function fusion57(m1, m2) {
+  if (typeof m1 === 'undefined' || typeof m2 === 'undefined') return
+
+  //SOLUTION OF THE SPECIFIC PROBLEM 
+  let p1 = 0, p2 = 0, left = [], right = []
+  for (let i = 0; i < m1.length; i++) {
+    const box = []
+    for (let numbers = 2; numbers <= m1[i]; numbers++) {
+      const prime = m1[i] % numbers
+      if (prime == 0) {
+        box.push(numbers)
+      }
+    }
+    if (box.length == 1 && m1[i] > 0) {
+      p1 += m1[i]
+      left.push(i)
+    }
+  }
+  for (let i = 0; i < m2.length; i++) {
+    const box = []
+    for (let numbers = 2; numbers <= m2[i]; numbers++) {
+      const prime = m2[i] % numbers
+      if (prime == 0) {
+        box.push(numbers)
+      }
+    }
+    if (box.length == 1 && m2[i] > 0) {
+      p2 += m2[i]
+      right.push(i)
+    } 
+  }
+  p1 /= left.length
+  p2 /= right.length
+  // END OF THE PROBLEM'S SOLUTION
+
+  // answer for the span (in case the exercise asks for any specific info)
+  if ( Math.round(p1) == Math.round(p2) ) getE('m57em').innerHTML = `Tienen el mismo promedio de primos :D`
+  else getE('m57em').innerHTML = ``
+  getE('m57ema').innerHTML = Math.round(p1)
+  getE('m57emb').innerHTML = Math.round(p2)
+  matrix57.solution(left)
+  matrix58.solution(right) 
+} // fusion allows us to work with both matrix's numbers 
+matrixEvts('57', '58')
+
+// 43. Leer dos matrices 5x5 enteras y determinar si el promedio entero de los números pares de una matriz es igual al promedio de los números pares de la otra matriz.
+const matrix59 = new Matrix('59', 5, 5),
+      matrix60 = new Matrix('60', 5, 5)
+function solveM59() {
+  matrix59.renove()
+  const smith59 = matrix59.nums
+  fusion59(smith59, matrix60.nums)
+} //matrix 1 <---> 2
+function solveM60() {
+  matrix60.renove()
+  const smith60 = matrix60.nums 
+  fusion59(matrix59.nums, smith60)
+} // Fusion function is the solution to the problem
+function fusion59(m1, m2) {
+  if (typeof m1 === 'undefined' || typeof m2 === 'undefined') return
+
+  //SOLUTION OF THE SPECIFIC PROBLEM 
+  let avg1 = 0, avg2 = 0, left = [], right = []
+  for (let i = 0; i < m1.length; i++) {
+    if ( m1[i] % 2 == 0 && m1[i] != 0 ) {
+      avg1 += m1[i]
+      left.push(i)
+    }
+    if ( m2[i] % 2 == 0 && m2[i] != 0 ) {
+      avg2 += m2[i]
+      right.push(i)
+    }
+  }
+  avg1 /= left.length
+  avg2 /= right.length
+  // END OF THE PROBLEM'S SOLUTION
+
+  // answer for the span (in case the exercise asks for any specific info)
+  if ( Math.round(avg1) == Math.round(avg2) ) getE('m59em').innerHTML = `Tienen el mismo promedio de pares :D`
+  else getE('m59em').innerHTML = ``
+  getE('m59ema').innerHTML = Math.round(avg1)
+  getE('m59emb').innerHTML = Math.round(avg2)
+  matrix59.solution(left)
+  matrix60.solution(right) 
+} // fusion allows us to work with both matrix's numbers 
+matrixEvts('59', '60')
+
+// 44. Leer dos matrices 5x5 enteras y determinar si el promedio entero de los números terminados en 4 de una matriz se encuentra al menos 3 veces en la otra matriz.
+const matrix61 = new Matrix('61', 5, 5),
+      matrix62 = new Matrix('62', 5, 5)
+function solveM61() {
+  matrix61.renove()
+  const smith61 = matrix61.nums
+  fusion61(smith61, matrix62.nums)
+} //matrix 1 <---> 2
+function solveM62() {
+  matrix62.renove()
+  const smith62 = matrix62.nums 
+  fusion61(matrix61.nums, smith62)
+} // Fusion function is the solution to the problem
+function fusion61(m1, m2) {
+  if (typeof m1 === 'undefined' || typeof m2 === 'undefined') return
+
+  //SOLUTION OF THE SPECIFIC PROBLEM 
+  let avg1 = 0, avg2 = 0, left = [], right = []
+  for (let i = 0; i < m1.length; i++) {
+    if ( Math.abs(m1[i]) % 10 == 4 ) {
+      avg1 += m1[i]
+      left.push(i)
+    }
+    if ( Math.abs(m2[i]) % 10 == 4 ) {
+      avg2 += m2[i]
+      right.push(i)
+    }
+  }
+  avg1 /= left.length
+  avg2 /= right.length
+  // END OF THE PROBLEM'S SOLUTION
+
+  // answer for the span (in case the exercise asks for any specific info)
+  if ( m2.includes(Math.round(avg1)) || m1.includes(Math.round(avg2)) ) getE('m61em').innerHTML = `El promedio de los n° terminados en 4 están en la otra matriz :D`
+  else getE('m61em').innerHTML = ``
+  getE('m61ema').innerHTML = Math.round(avg1)
+  getE('m61emb').innerHTML = Math.round(avg2)
+  matrix61.solution(left)
+  matrix62.solution(right) 
+} // fusion allows us to work with both matrix's numbers 
+matrixEvts('61', '62')
+
+// 45. Leer dos matrices 5x5 enteras y determinar si el promedio entero de los números mayores de cada fila de una matriz es igual al promedio de los números mayores de cada fila de la otra matriz.
+const matrix63 = new Matrix('63', 5, 5),
+      matrix64 = new Matrix('64', 5, 5)
+function solveM63() {
+  matrix63.renove()
+  const smith63 = matrix63.nums
+  fusion63(smith63, matrix64.nums)
+} //matrix 1 <---> 2
+function solveM64() {
+  matrix64.renove()
+  const smith64 = matrix64.nums 
+  fusion63(matrix63.nums, smith64)
+} // Fusion function is the solution to the problem
+function fusion63(m1, m2) {
+  if (typeof m1 === 'undefined' || typeof m2 === 'undefined') return
+
+  //SOLUTION OF THE SPECIFIC PROBLEM 
+  let avg1 = 0, avg2 = 0, left = [], right = [],
+      rows = 5, cols = 5, count = 0
+   // push each row's indexes to our indxs array and solve
+  for ( let r = 0; r < rows; r++ ) {
+    let calc1 = [], calc2 = []
+    for ( let c = count; c < ( rows * cols ); c++ ) {
+      if ( calc1.length == cols ) break
+      calc1.push( Number.parseInt(m1[c]) ) 
+      calc2.push( Number.parseInt(m2[c]) ) 
+      count++
+    } //  Getting the winner
+    left.push( m1.indexOf( Math.max(...calc1) ) )
+    right.push( m2.indexOf( Math.max(...calc2) ) )
+    avg1 += Math.max(...calc1)
+    avg2 += Math.max(...calc2)
+  } 
+  avg1 /= left.length
+  avg2 /= right.length
+  // END OF THE PROBLEM'S SOLUTION
+
+  // answer for the span (in case the exercise asks for any specific info)
+  if ( Math.round(avg1) == Math.round(avg2) ) getE('m63em').innerHTML = `Tienen el mismo promedio de mayores por fila :D`
+  else getE('m63em').innerHTML = ``
+  getE('m63ema').innerHTML = Math.round(avg1)
+  getE('m63emb').innerHTML = Math.round(avg2)
+  matrix63.solution(left)
+  matrix64.solution(right) 
+} // fusion allows us to work with both matrix's numbers 
+matrixEvts('63', '64')
+
+// 46. Leer dos matrices 5x5 enteras y determinar si el promedio entero de los números menores cada fila de una matriz corresponde a alguno de los datos almacenados en las “esquinas” de la otra matriz.
+const matrix65 = new Matrix('65', 5, 5),
+      matrix66 = new Matrix('66', 5, 5)
+function solveM65() {
+  matrix65.renove()
+  const smith65 = matrix65.nums
+  fusion65(smith65, matrix66.nums)
+} //matrix 1 <---> 2
+function solveM66() {
+  matrix66.renove()
+  const smith66 = matrix66.nums 
+  fusion65(matrix65.nums, smith66)
+} // Fusion function is the solution to the problem
+function fusion65(m1, m2) {
+  if (typeof m1 === 'undefined' || typeof m2 === 'undefined') return
+
+  //SOLUTION OF THE SPECIFIC PROBLEM 
+  let avg1 = 0, avg2 = 0, left = [], right = [],
+      rows = 5, cols = 5, count = 0,
+      corners = [0, cols - 1, (rows * cols) - cols, (rows * cols) - 1]      
+   // push each row's indexes to our indxs array and solve
+  for ( let r = 0; r < rows; r++ ) {
+    let calc1 = [], calc2 = []
+    for ( let c = count; c < ( rows * cols ); c++ ) {
+      if ( calc1.length == cols ) break
+      calc1.push( Number.parseInt(m1[c]) ) 
+      calc2.push( Number.parseInt(m2[c]) ) 
+      count++
+    } //  Getting the winner
+    left.push( m1.indexOf( Math.min(...calc1) ) )
+    right.push( m2.indexOf( Math.min(...calc2) ) )
+    avg1 += Math.min(...calc1)
+    avg2 += Math.min(...calc2)
+  } 
+  avg1 /= left.length
+  avg2 /= right.length
+  // END OF THE PROBLEM'S SOLUTION
+
+  // answer for the span (in case the exercise asks for any specific info)
+  for (let i = 0; i < corners.length; i++) {
+    if ( m1[corners[i]] == Math.round(avg2) || m2[corners[i]] == Math.round(avg1) ) {
+      getE('m65em').innerHTML = `El promedio de menores por fila de una matriz está en las esquinas de la otra :D`
+    }
+    else getE('m65em').innerHTML = ``
+  }
+  getE('m65ema').innerHTML = Math.round(avg1)
+  getE('m65emb').innerHTML = Math.round(avg2)
+  matrix65.solution(left)
+  matrix66.solution(right) 
+} // fusion allows us to work with both matrix's numbers 
+matrixEvts('65', '66')
+
+// 47. Leer dos matrices 5x5 enteras y determinar si el promedio de los mayores números primos por cada fila de una matriz es igual al promedio de los mayores números primos por cada FILA de la otra matriz.
+const matrix67 = new Matrix('67', 5, 5),
+      matrix68 = new Matrix('68', 5, 5)
+function solveM67() {
+  matrix67.renove()
+  const smith67 = matrix67.nums
+  fusion67(smith67, matrix68.nums)
+} //matrix 1 <---> 2
+function solveM68() {
+  matrix68.renove()
+  const smith68 = matrix68.nums 
+  fusion67(matrix67.nums, smith68)
+} // Fusion function is the solution to the problem
+function fusion67(m1, m2) {
+  if (typeof m1 === 'undefined' || typeof m2 === 'undefined') return
+
+  //SOLUTION OF THE SPECIFIC PROBLEM 
+  let avg1 = 0, avg2 = 0, left = [], right = [],
+      rows = 5, cols = 5, count = 0
+   // push each row's indexes to our indxs array and solve
+  for ( let r = 0; r < rows; r++ ) {
+    let calc1 = [], calc2 = []
+    for ( let c = count; c < ( rows * cols ); c++ ) {
+      if ( calc1.length == cols ) break
+      calc1.push( Number.parseInt(m1[c]) ) 
+      calc2.push( Number.parseInt(m2[c]) ) 
+      count++
+    } //  Getting the winner
+        // m1      
+    for (let i = 0; i < calc1.length; i++) {
+      const box = []
+      for (let numbers = 2; numbers <= calc1[i]; numbers++) {
+        const prime = calc1[i] % numbers
+        if (prime == 0) box.push(numbers)
+      }
+      if (box.length == 1 && calc1[i] > 0) {
+        avg1 += calc1[i]
+        left.push(m1.indexOf(calc1[i]))
+      }
+    }
+        // m2
+    for (let i = 0; i < calc2.length; i++) {
+      const box = []
+      for (let numbers = 2; numbers <= calc2[i]; numbers++) {
+        const prime = calc2[i] % numbers
+        if (prime == 0) box.push(numbers)
+      }
+      if (box.length == 1 && calc2[i] > 0) {
+        avg2 += calc2[i]
+        right.push(m2.indexOf(calc2[i]))
+      }
+    } // end of adquisition of the highest primes    
+  } // of each row and its average value
+  avg1 /= left.length
+  avg2 /= right.length
+  // END OF THE PROBLEM'S SOLUTION
+
+  // answer for the span (in case the exercise asks for any specific info)
+  if ( Math.round(avg1) == Math.round(avg2) ) getE('m67em').innerHTML = `Tienen el mismo promedio de primos mayores por fila :D`
+  else getE('m67em').innerHTML = ``
+  getE('m67ema').innerHTML = Math.round(avg1)
+  getE('m67emb').innerHTML = Math.round(avg2)
+  matrix67.solution(left)
+  matrix68.solution(right) 
+} // fusion allows us to work with both matrix's numbers 
+matrixEvts('67', '68')
+
+// 48. Leer dos matrices 5x5 entera y determinar si el promedio de los mayores elementos que pertenecen a la serie de Fibonacci de cada fila de una matriz es igual al promedio de los mayores elementos que pertenecen a la serie de Fibonacci de cada fila de la otra matriz.
+const matrix69 = new Matrix('69', 5, 5),
+      matrix70 = new Matrix('70', 5, 5)
+function solveM69() {
+  matrix69.renove()
+  const smith69 = matrix69.nums
+  fusion69(smith69, matrix70.nums)
+} //matrix 1 <---> 2
+function solveM70() {
+  matrix70.renove()
+  const smith70 = matrix70.nums 
+  fusion69(matrix69.nums, smith70)
+} // Fusion function is the solution to the problem
+function fusion69(m1, m2) {
+  if (typeof m1 === 'undefined' || typeof m2 === 'undefined') return
+
+  //SOLUTION OF THE SPECIFIC PROBLEM 
+  let avg1 = 0, avg2 = 0, left = [], right = [],
+      rows = 5, cols = 5, count = 0
+   // push each row's indexes to our indxs array and solve
+  for ( let r = 0; r < rows; r++ ) {
+    let calc1 = [], calc2 = [], f1 = [], f2 = []
+    for ( let c = count; c < ( rows * cols ); c++ ) {
+      if ( calc1.length == cols ) break
+      calc1.push( Number.parseInt(m1[c]) ) 
+      calc2.push( Number.parseInt(m2[c]) ) 
+      count++
+    } //  Getting the winner
+    for (let i = 0; i < fibos.length; i++) { 
+      for (let j = 0; j < calc1.length; j++) {
+        if ( calc1[j] == fibos[i] ) f1.push(calc1[j])
+          left.push(m1.indexOf(calc1[j]))
+        }
+        if ( calc2[j] == fibos[i] ) {
+          avg2 += calc2[j]
+          right.push(m2.indexOf(calc2[j]))
+        }
+      }
+    }
+    avg1 += Math.max(...f1)
+    left.push()
+
+    left.push( m1.indexOf( Math.max(...calc1) ) )
+    right.push( m2.indexOf( Math.max(...calc2) ) )
+    avg1 += Math.max(...calc1)
+    avg2 += Math.max(...calc2)
+  } 
+  avg1 /= left.length
+  avg2 /= right.length
+  // END OF THE PROBLEM'S SOLUTION
+
+  // answer for the span (in case the exercise asks for any specific info)
+  if ( Math.round(avg1) == Math.round(avg2) ) getE('m69em').innerHTML = `Tienen el mismo promedio de mayores por fila :D`
+  else getE('m69em').innerHTML = ``
+  getE('m69ema').innerHTML = Math.round(avg1)
+  getE('m69emb').innerHTML = Math.round(avg2)
+  matrix69.solution(left)
+  matrix70.solution(right) 
+} // fusion allows us to work with both matrix's numbers 
+matrixEvts('69', '70')
+
+// 49. Leer una matriz 3x3 entera y determinar si el promedio de todos los datos almacenados en ella se encuentra también almacenado.
+
+
+// 50. Leer una matriz 5x5 y determinar si el promedio de los elementos que se encuentran en su diagonal está almacenado en ella. Mostrar en pantalla en qué posiciones exactas se encuentra dicho dato.
 
 //Espero que todo esto de matrix logre ocultar el hecho de que las matrices son realmente barras de chocolate...

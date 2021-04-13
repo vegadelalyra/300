@@ -767,7 +767,7 @@ button:focus:not(.aPb){
 .matrix,
 .duality {
     position: relative;
-    height: 92vh;        /*32em*/ /*92vh*/
+    height: 100vh;        /*32em*/ /*92vh*/
 }
     .matrix:hover,
     .duality:hover {
@@ -860,7 +860,7 @@ button:focus:not(.aPb){
     grid-row-end: span 3;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows:14vh 40vh 40vh;
+    grid-template-rows:12vh 40vh 40vh;
     grid-template-areas: 
     "spn spn"
     "one two"
@@ -868,7 +868,7 @@ button:focus:not(.aPb){
 }
     .duality .mSpan {
         grid-area: spn;
-        margin-top: 3%;
+        margin-top: 2%;
     }
         .origin {
             grid-area: one;
@@ -886,6 +886,11 @@ button:focus:not(.aPb){
                     .symmetry > div { 
                         margin-top:10%;
                     } 
+                        .origin > em,
+                        .symmetry > em {
+                            position:relative;
+                            top: 8%;
+                        }                    
 /*FIN DISEÑO DE MATRIX*/
 
 /* a las clases las llamas con (elemento)."elNombreDeLaClass" :D  */
