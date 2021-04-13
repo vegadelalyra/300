@@ -23289,7 +23289,7 @@ function fusion53(m1, m2) {
 
   //  DIAGON and vars required for the exercise
   let rows = 5, cols = 5, left = [], right = [], avg1 = 0, avg2 = 0, h = 0, v = 0
-  // cycle to go through the matrix
+  // cycle to go through the matrix and identify its diagonal
   for ( let c = 0; c < ( rows * cols ); c++ ) {
     if ( h == cols ) { 
       v++ 
@@ -23333,7 +23333,7 @@ function fusion55(m1, m2) {
 
   //  DIAGON and vars required for the exercise
   let rows = 5, cols = 5, left = [], right = [], avg1 = 0, avg2 = 0, h = 0, v = 0
-  // cycle to go through the matrix
+  // cycle to go through the matrix and identify its non diagonal els
   for ( let c = 0; c < ( rows * cols ); c++ ) {
     if ( h == cols ) { 
       v++ 
@@ -23698,28 +23698,24 @@ function fusion69(m1, m2) {
     for (let i = 0; i < fibos.length; i++) { 
       for (let j = 0; j < calc1.length; j++) {
         if ( calc1[j] == fibos[i] ) f1.push(calc1[j])
-          left.push(m1.indexOf(calc1[j]))
-        }
-        if ( calc2[j] == fibos[i] ) {
-          avg2 += calc2[j]
-          right.push(m2.indexOf(calc2[j]))
-        }
+        if ( calc2[j] == fibos[i] ) f2.push(calc2[j])
       }
     }
-    avg1 += Math.max(...f1)
-    left.push()
-
-    left.push( m1.indexOf( Math.max(...calc1) ) )
-    right.push( m2.indexOf( Math.max(...calc2) ) )
-    avg1 += Math.max(...calc1)
-    avg2 += Math.max(...calc2)
+    if ( f1.length > 0 ) {
+      avg1 += Math.max(...f1)
+      left.push(m1.indexOf(Math.max(...f1)))
+    }
+    if (f2.length > 0 ) {
+      avg2 += Math.max(...f2)
+      right.push(m2.indexOf(Math.max(...f2)))
+    }
   } 
   avg1 /= left.length
   avg2 /= right.length
   // END OF THE PROBLEM'S SOLUTION
 
   // answer for the span (in case the exercise asks for any specific info)
-  if ( Math.round(avg1) == Math.round(avg2) ) getE('m69em').innerHTML = `Tienen el mismo promedio de mayores por fila :D`
+  if ( Math.round(avg1) == Math.round(avg2) ) getE('m69em').innerHTML = `Tienen el mismo promedio de mayores fibos por fila :D`
   else getE('m69em').innerHTML = ``
   getE('m69ema').innerHTML = Math.round(avg1)
   getE('m69emb').innerHTML = Math.round(avg2)
@@ -23729,8 +23725,43 @@ function fusion69(m1, m2) {
 matrixEvts('69', '70')
 
 // 49. Leer una matriz 3x3 entera y determinar si el promedio de todos los datos almacenados en ella se encuentra también almacenado.
-
+const matrix71 = new Matrix('71', 3, 3)
+function solveM71() {
+  matrix71.renove()
+  let smith71 = matrix71.nums, neo71 = [], avg = 0,
+        rows = 3, cols = 3
+  //  PUT HERE THE SOLUTION TO THE SPECIFIC PROBLEM
+  for (nums of smith71) avg += nums
+  avg /= ( rows * cols )
+  getE('mAns71').innerHTML = Math.round(avg)
+  if ( smith71.includes( Math.round(avg) ) ) neo71.push( smith71.indexOf( Math.round(avg) ) )
+  //  END OF THE PROBLEM'S SOLUTION
+  matrix71.solution(neo71)}
+  matrixEvts('71')
 
 // 50. Leer una matriz 5x5 y determinar si el promedio de los elementos que se encuentran en su diagonal está almacenado en ella. Mostrar en pantalla en qué posiciones exactas se encuentra dicho dato.
+const matrix72 = new Matrix('72', 5, 5)
+function solveM72() {
+  matrix72.renove()
+  let smith72 = matrix72.nums, neo72 = [], avg = 0,
+        rows = 5, cols = 5, v = 0, h = 0
+  //  PUT HERE THE SOLUTION TO THE SPECIFIC PROBLEM
+  for ( let c = 0; c < ( rows * cols ); c++ ) {
+    if ( h == cols ) { 
+      v++ 
+      h = 0
+    }
+    if ( h == v ) { 
+      neo72.push(c) 
+      avg += smith72[c] 
+    }  
+    h++
+  } 
+  avg /= neo72.length
+  getE('mAns72').innerHTML = Math.round(avg)
+  if ( smith72.includes( Math.round(avg) ) ) neo72.push( smith72.indexOf( Math.round(avg) ) )
+  //  END OF THE PROBLEM'S SOLUTION
+  matrix72.solution(neo72)}
+  matrixEvts('72')
 
-//Espero que todo esto de matrix logre ocultar el hecho de que las matrices son realmente barras de chocolate...
+//
