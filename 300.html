@@ -47,7 +47,8 @@
 
     <!-- Intro al inicio -->
         <div id="containerIntro300">
-            <h1 id="intro300" onclick="
+            <!-- Animaciones de caída de los títulos de las secciones -->
+            <h1 id="intro300" onclick=" 
                     document.getElementById('plays').style.opacity='1';
                     document.getElementById('h300').style.opacity='1'; 
                     document.getElementById('section01').style.transform='translateY(0px)';  
@@ -58,6 +59,7 @@
                     document.getElementById('section06').style.transform='translateY(0px)';  
                     document.getElementById('section07').style.transform='translateY(0px)';
                     document.getElementById('section08').style.transform='translateY(0px)';
+                    document.getElementById('section09').style.transform='translateY(0px)';
                     setTimeout(launcher,200);
             ">0</h1>
         </div>
@@ -4281,6 +4283,145 @@
         </center>
     </details>
 
-    
+    <details id="50funciones">
+        <summary id="section09" style="transform:translateY(-2000000px)"><h3>50 algoritmos de funciones</h3></summary><br><br>
+        <center>
+            1. Construir una función que reciba como parámetro un entero y retorne su último dígito. <br><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="fi01" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return F01();" required> <br>
+            <span id="fs01"></span>
+            <br><br>
+
+            2. Construir una función que reciba como parámetro un entero y retorne sus dos últimos dígitos. <br><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="fi02" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return F02();" required> <br>
+            <span id="fs02"></span>
+            <br><br>
+
+            3. Construir una función que reciba como parámetro un entero y retorne la cantidad de dígitos. <br><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="fi03" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return F03();" required> <br>
+            <span id="fs03"></span>
+            <br><br>
+
+            4. Construir una función que reciba como parámetro un entero y retorne la cantidad de dígitos pares. <br><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="fi04" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return F04();" required> <br>
+            <span id="fs04"></span>
+            <br><br>
+
+            5. Construir una función que reciba como parámetro un entero y retorne la cantidad de dígitos primos. <br><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="fi05" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return F05();" required> <br>
+            <span id="fs05"></span>
+            <br><br>
+            
+            6. Construir una función que reciba como parámetro un entero y retorne el carácter al cual pertenece ese entero como código ASCII. <br><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="fi06" placeholder="Escribe un número aquí >:c" title="Escribe un número" maxlength="1" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return F06();" required> <br>
+            <span id="fs06"></span>
+            <br><br>
+
+            7. Construir una función que reciba como parámetro un carácter y retorne el código ASCII asociado a él. <br><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="fi07" placeholder="Escribe un carácter aquí >:c" title="Escribe cualquier carácter" maxlength="1" onclick="javascript:select();" onkeyup="return F07();" required> <br>
+            <span id="fs07"></span>
+            <br><br>
+
+            9. Construir una función que reciba un entero y le calcule su factorial. <br><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="fi09" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="2" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return F09();" required> <br>
+            <span id="fs09"></span>
+            <br><br>  
+
+            10. Construir una función que reciba como parámetro un entero y retorne el primer dígito de este entero. <br><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="fi10" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return F10();" required> <br>
+            <span id="fs10"></span>
+            <br><br>   
+
+
+
+            <br><br><br>
+            <h1 id="theEnd"> PRÓXIMAMENTE </h1>
+            <br><br><br><br>
+        </center>
+
+<!--
+8. Construir una función que reciba como parámetro un entero y retorne 1 si dicho entero está entre los 30 primeros elementos de la serie de Fibonacci. Deberá retornar 0 si no es así.
+
+11. Construir una función que reciba como parámetro un entero y un dígito y retorne 1 si dicho entero es múltiplo de dicho dígito y 0 si no es así.
+
+12. Construir una función que reciba como parámetro un entero y un dígito y retorne 1 si dicho dígito está en dicho entero y 0 si no es así.
+
+13. Construir una función que reciba como parámetro un entero y un dígito y retorne la cantidad de veces que se encuentra dicho dígito en dicho entero.
+
+14. Construir una función que reciba como parámetros dos números enteros y retorne el valor del mayor.
+
+15. Construir una función que reciba como parámetros dos números enteros y retorne 1 si el primer número es múltiplo del segundo y 0 si no.
+
+16. Construir una función que reciba como parámetro un entero y retorne 1 si corresponde al código ASCII de una letra minúscula (Los códigos ASCII de las letras minúsculas van desde 97 que el código de la letra a hasta 122 que es el código de la letra z). Deberá retornar 0 si no es así.
+
+17. Construir una función que reciba como parámetro un entero y retorne 1 si corresponde al código ASCII de un dígito (Los códigos ASCII de las letras minúsculas van desde 48 que es el código del dígito 0 hasta 57 que es el código del dígito 9). Deberá retornar 0 si no es así.
+
+18. Construir una función que reciba como parámetro un valor entero y retornar 1 si dicho valor es el factorial de alguno de los dígitos del número. Deberá retornar 0 si no es así.
+
+19. Construir una función que reciba como parámetro un entero y retorne 1 si dicho valor es un número de mínimo 3 dígitos. Deberá retornar 0 si no es así.
+
+20. Construir una función que reciba como parámetro un entero y retorne 1 si en dicho valor todos los dígitos son iguales. Deberá retornar 0 si no es así.
+
+21. Construir una función que reciba como parámetro un entero y retorne 1 si en dicho valor el primer dígito es igual al último. Deberá retornar 0 si no es así.
+
+22. Construir una función que reciba como parámetro un entero y retorne 1 si dicho valor esmúltiplo de 5. Deberá retornar 0 si no es así.
+
+23. Construir una función que reciba como parámetro dos enteros y retorne 1 si la diferencia entre los dos valores es un número primo. Deberá retornar 0 si no es así.
+
+24. Construir una función que reciba como parámetro dos enteros de dos dígitos cada uno y retorne 1 si son inversos. Ejemplo: 83 es inverso de 38. Deberá retornar 0 si no es así.
+
+25. Construir una función que reciba como parámetro un entero y un dígito menor o igual a 5 y retorne el dígito del número que se encuentre en la posición especificada por el dígito que llegó como parámetro.
+
+26. Construir una función que reciba como parámetro un vector de 10 posiciones enteras y retorne el mayor de los datos del vector.
+
+27. Construir una función que reciba como parámetro un vector de 10 posiciones enteras y retorne la posición en la cual se encuentra el mayor de los datos del vector.
+
+28. Construir una función que reciba como parámetro un vector de 10 posiciones enteras y retorne la cantidad de números primos almacenados en el vector.
+
+29. Construir una función que reciba como parámetro un vector de 10 posiciones enteras y retorne la cantidad de números que pertenecen a los 30 primeros elementos de la serie de Fibonacci.
+
+30. Construir una función que reciba como parámetro un vector de 10 posiciones enteras y retorne la posición del mayor número primo almacenado en el vector.
+
+31. Construir una función que reciba como parámetro un vector de 10 posiciones enteras y retorne el promedio entero del vector.
+
+32. Construir una función que reciba como parámetro un vector de 10 posiciones enteras y retorne el promedio real del vector.
+
+33. Construir una función que reciba como parámetros un vector de 10 posiciones enteras y un valor entero y retorne 1 si dicho valor entero se encuentra en el vector. Deberá retornar 0 si no es así.
+
+34. Construir una función que reciba como parámetro un vector de 10 posiciones enteras y retorne la posición del número entero que tenga mayor cantidad de dígitos.
+
+35. Construir una función que reciba como parámetro un vector de 10 posiciones enteras y retorne la posición en la que se encuentre el mayor número primo que termine en 3 almacenado en el vector.
+
+36. Construir una función que reciba como parámetro un entero y retorne ese elemento de la serie de Fibonacci.
+
+37. Construir una función que reciba como parámetros dos enteros, el primero actuará como base y el segundo como exponente y retorne el resultado de elevar dicha base a dicho exponente.
+
+38. Construir una función que reciba como parámetro un vector de 10 posiciones enteras y retorne la cantidad de números terminados en 3 que contiene el vector.
+
+39. Construir una función que reciba como parámetros un vector de 10 posiciones enteras y un dígito y que retorne la cantidad de veces que dicho dígito se encuentra en el vector. No se olvide que un mismo dígito puede estar varias veces en un solo número.
+
+40. Construir una función que reciba como parámetro un vector de 10 posiciones enteras y un dígito y que retorne la cantidad de números del vector que terminan en dicho dígito.
+
+41. Construir una función que reciba como parámetro un vector de 10 posiciones enteras y un dígito y que retorne la cantidad de números del vector en donde dicho dígito está de penúltimo.
+
+42. Construir una función que reciba como parámetro una matriz de 3x4 entera y retorne la cantidad de veces que se repite el mayor dato de la matriz.
+
+43. Construir una función que reciba como parámetro una matriz 3x4 entera y retorne la cantidad de números primos almacenados en la matriz.
+
+44. Construir una función que reciba como parámetro una matriz 3x4 entera y retorne la cantidad de veces que se repite el mayor número primo de la matriz.
+
+45. Construir una función que reciba como parámetros una matriz 4x4 entera y un valor entero y retorne la cantidad de veces que se repite dicho valor en la matriz.
+
+46. Construir una función que reciba como parámetro una matriz 4x4 entera y retorne el número de la fila en donde se encuentre por primera vez el número mayor de la matriz.
+
+47. Construir una función que reciba como parámetro una matriz 4x4 entera y retorne el número de la columna en donde se encuentre por primera vez el número mayor de la matriz.
+
+48. Construir una función que reciba como parámetro una matriz 4x4 entera y retorne la posición exacta en donde se encuentre almacenado el mayor número primo.
+
+49. Construir una función que reciba una matriz 5x5 y retorne el valor de su moda. La moda de un conjunto de datos es el dato que mas se repite.
+
+50. Construir una función que reciba una matriz 5x5 y retorne la cantidad de veces que se repite su moda.            
+         -->
+    </details>
+
 </body>
 </html>
