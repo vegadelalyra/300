@@ -22176,8 +22176,7 @@ function matrixEvts(id, id2) {
 const matrix01 = new Matrix('01', 4, 4)
 function solveM01() {
   matrix01.renove()
-  const smith01 = matrix01.nums
-  const neo01 = []
+  const smith01 = matrix01.nums, neo01 = []
 
   //PUT HERE THE SOLUTION TO THE SPECIFIC PROBLEM
   for ( let i = 0; i < smith01.length; i++ ) {
@@ -22227,8 +22226,7 @@ matrixEvts('03')
 const matrix04 = new Matrix('04', 4, 3)
 function solveM04() {
   matrix04.renove()
-  const smith04 = matrix04.nums
-  const neo04 = []
+  const smith04 = matrix04.nums, neo04 = []
 
   //PUT HERE THE SOLUTION TO THE SPECIFIC PROBLEM
     //ALGORITHM FOR PRIME NUMBERS >:c
@@ -22364,8 +22362,7 @@ matrixEvts('09')
 const matrix10 = new Matrix('10', 5, 3)
 function solveM10() {
   matrix10.renove()
-  const smith10 = matrix10.nums
-  const neo10 = []
+  const smith10 = matrix10.nums, neo10 = []
 
   //PUT HERE THE SOLUTION TO THE SPECIFIC PROBLEM
     //ALGORITHM FOR PRIME NUMBERS >:c
@@ -22595,10 +22592,11 @@ function solveM22() {
 }
 function fusion21(m1, m2) {
   if (typeof m1 === 'undefined' || typeof m2 === 'undefined') return
-  const left = [], right = []
+  const left = [], right = [], input = getE('mi21').value,
+        x = ( Number(input) == 0 ) ? 1 : Number(input) 
   for (let i = 0; i < m1.length; i++) {
     for (let j = 0; j < m2.length; j++) {
-      if ( m1[i] == m2[j] ) {
+      if ( m1[i] == ( m2[j] * x ) ) {
         left.push(i)
         right.push(j)
       }
@@ -23796,13 +23794,23 @@ function solveM72() {
     return primes
   }
 
+  // how many times is one number inside another and its positions
+  function matches( input, digit ) {
+    let match = []
+    for (let i = 0; i < input; i++) {
+      if ( input[i] == digit ) match.push(i)
+    }
+    return match
+  }
+
   // get Digits FUNCTION
 function getDigits( input, digit ) {
   const cases = {
     'pair' : getPairs(input),
     'prime' : getPrimes(input),
+    'def' : matches(input, digit)
   }
-  return cases[digit]
+  return cases[digit] || cases['def']
 }
 
 // get input numbers function
@@ -23825,10 +23833,66 @@ function calcFact(num) {
 }
 
 // clean the span when input is 0
-function cleanSpan(input, span) {
+function cleanSpan( input, span ) {
   if ( input == '' || input == '-' ) span.innerHTML = ``
 }
 
+// number format
+  function numFormat(num) {
+    n = new Intl.NumberFormat().format(num)
+    return n
+  }
+
+// clean for double input cases
+  function doubleCleanSpan( f1, f2 ) {
+    if ( f1.input == `` ) f1.span.innerHTML = `¡Cool! Un ${f2.num} :D Ahora ingresa un número en el otro campo`
+    if ( f2.input == `` ) f1.span.innerHTML = `¡Cool! Un ${f1.num} :D Ahora ingresa un número en el otro campo`
+    if ( f1.input == `` && f2.input == `` ) f1.clean()
+  }
+
+// identifies if a stringed number is only one number repeated
+  const allEqual = arr => arr.split('').every( val => val === arr[0] ) 
+
+// fact 
+const getFact = n => {
+  let fact = 1
+  for ( let i = 1; i <= n; i++ ) {
+    fact *= i
+  }
+  return fact
+}
+
+// is n equals to the fact of any of its digits?
+const isFact = n => {
+  if ( n < 0 ) return false
+  const num = n
+  n = n.toString()
+  return n.split('').some( x => getFact(x) == num )
+}
+
+// is prime
+const isPrime = n => {
+  if ( n <= 1 ) return false
+  for ( let i = 2; i < n; i++ ) {
+    const prime = n % i
+    if (prime == 0) return false
+  } return true
+}
+
+// mode
+const mode = arr => {
+  let box = [], save = []
+  for ( let i = 0; i < arr.length; i++ ) {
+      const bag = []
+      for ( let j = 0; j < arr.length; j++ ) {
+          if ( arr[i] == arr[j] ) bag.push(j)
+      } if ( bag.length > box.length ) box = bag
+      if (bag.length == box.length && bag.length != 1) save.push(...bag)
+  } box.push(...save)
+  return box
+}
+  
+// ABOVE THE FUNCTIONS ANTOLOGHY
 class Fn {
   constructor(id) {
     this.input = getValue(`fi${id}`)
@@ -23836,8 +23900,103 @@ class Fn {
     this.num = getE(`fi${id}`).value
     this.num = Number(this.num)
     this.clean = () => cleanSpan(this.input, this.span)
-  }
-}
+    this.doubleClean = (secondObject) => doubleCleanSpan(this, secondObject )
+  } // End of Fn constructor
+} // End of Fn class
+
+// Barometer section
+class Bar {
+  constructor(id) {
+    this.input = getValue(`fi${id}`)
+    this.num = getE(`fi${id}`).value
+    this.num = Number(this.num)
+    this.bar = select(`#bar${id}`)
+
+    this.one = (id) => {
+      const miau = `linear-gradient(to left, rgb(255, 230, 0), rgb(245, 218, 68), rgba(124, 103, 78, 0.992))`
+      if ( id.style.background != miau && this.input.length != 0) {
+        let tik = new Audio('music/barR.mp3') 
+        id.style.background = miau
+        tik.play()
+      }
+    }
+  
+    this.zero = (id) => {
+      const miau = 'linear-gradient(to left, rgb(255, 251, 195), rgb(255, 154, 39), rgb(255, 60, 0))'
+      if ( id.style.background != miau && this.input.length != 0) {
+        let tik = new Audio('music/barL.mp3') 
+        id.style.background = miau
+        tik.play()
+      }
+    }
+
+    this.choose = (boolean) => {
+      const miau = 'linear-gradient(to left, rgba(235, 207, 83, 0.635), rgba(207, 150, 45, 0.443), rgb(100, 71, 19))',
+            bar = this.bar.style.background
+      if ( ( bar == `` || bar == miau ) && this.input.length != 0 ) {
+        this.bar.style.boxShadow = '1px 1px 10px 3px rgba(117, 100, 24, 0.5), inset 5px 5px 8px rgb(255, 136, 0)'
+        let on = new Audio('music/pum.mp3')
+        on.play() }
+      if (boolean) return this.one(this.bar)
+      return this.zero(this.bar)
+    }
+
+    this.down = (content) => {
+      const miau = 'linear-gradient(to left, rgba(235, 207, 83, 0.635), rgba(207, 150, 45, 0.443), rgb(100, 71, 19))'
+      if (content == `` && this.bar.style.background != miau && this.bar.style.background != ``) {
+        this.bar.style.background = miau
+        this.bar.style.boxShadow = `inset 0px 15px 5px rgb(255, 255, 255)`
+        let off = new Audio('music/barOff.mp3')
+        let pum = new Audio('music/pum.mp3')
+        off.play(); pum.play()
+      }
+    }
+
+  } // end of bar constructor 
+} // end of bar class
+
+  // bar events for sounds and colors
+function midClinkBar() { let clink = new Audio('music/clinkBar.mp3'); clink.play() }
+
+const bars = getClass('bar');
+[].forEach.call(bars, function(bar) {
+  bar.addEventListener('click', midClinkBar) 
+})
+
+const barR = getClass('barR');
+[].forEach.call(barR, function(right){
+  right.addEventListener('mouseover', (e) => {
+    right.parentNode.style.background = 'linear-gradient(to left, rgba(231, 191, 14, 0.863), #815c18d5, #695c43)';
+    [].forEach.call(bars, function(bar) {
+      bar.removeEventListener('click', midClinkBar)
+    })
+  })
+  right.addEventListener('mouseout', (e) => {
+    right.parentNode.style.background = 'inherit';
+    [].forEach.call(bars, function(bar) {
+      bar.addEventListener('click', midClinkBar) 
+    })
+  })
+  right.addEventListener('click', (e) => { let clink = new Audio('music/clinkR.mp3'); clink.play() })
+})
+
+const barL = getClass('barL');
+[].forEach.call(barL, function(left){
+  left.addEventListener('mouseover', (e) => {
+    left.parentNode.style.background = 'linear-gradient(to left, rgb(177, 166, 119), #744b00df, #664711)';
+    [].forEach.call(bars, function(bar) {
+      bar.removeEventListener('click', midClinkBar)
+    })
+  })
+  left.addEventListener('mouseout', (e) => {
+    left.parentNode.style.background = 'inherit';
+    [].forEach.call(bars, function(bar) {
+      bar.addEventListener('click', midClinkBar) 
+    })
+  })
+  left.addEventListener('click', (e) => { let clink = new Audio('music/clinkL.mp3'); clink.play() })
+}) // end of barometer section
+
 // ABOVE THE FUNCTIONS ANTHOLOGY
 
 
@@ -23916,7 +24075,11 @@ function F07() {
 }
 
 // 8. Construir una función que reciba como parámetro un entero y retorne 1 si dicho entero está entre los 30 primeros elementos de la serie de Fibonacci. Deberá retornar 0 si no es así.
-
+function F08() {
+  const f08 = new Bar('08'), arr = fib(30)
+  f08.choose( arr.includes( f08.num ) )
+  f08.down( f08.input )
+}
 
 // 9. Construir una función que reciba un entero y le calcule su factorial sabiendo que el factorial de un número es el resultado de multiplicar sucesivamente todos los enteros comprendidos entre 1 y el número dado. El factorial de 0 es 1. No están definidos los factoriales de números negativos.
 function F09() {
@@ -23937,34 +24100,137 @@ function F10() {
 }
 
 // 11. Construir una función que reciba como parámetro un entero y un dígito y retorne 1 si dicho entero es múltiplo de dicho dígito y 0 si no es así.
+function F11() {
+  const f11 = new Bar('11'),
+        f11b = new Bar('11b')
+  f11.choose( f11.num % f11b.num == 0 )
+  f11.down( f11.input )
+}
 
 // 12. Construir una función que reciba como parámetro un entero y un dígito y retorne 1 si dicho dígito está en dicho entero y 0 si no es así.
+function F12() {
+  const f12 = new Bar('12'),
+        f12b = new Bar('12b')
+  f12.choose( f12.input.includes(f12b.input) )
+  f12.down( f12.input )
+}
 
 // 13. Construir una función que reciba como parámetro un entero y un dígito y retorne la cantidad de veces que se encuentra dicho dígito en dicho entero.
+function F13() {
+  const f13 = new Fn('13'), f13b = new Fn('13b'),
+        solv = matches(f13.input, f13b.input),
+        plural = (solv.length == 1) 
+          ? `El número ${f13b.num} se encuentra ${solv.length} vez en el número ${f13.num} en la posición n° ${solv.join(', ')} c:`
+          : `El número ${f13b.num} se encuentra ${solv.length} veces en el número ${f13.num} en las posiciones n°: ${solv.join(', ')} c:`,
+        exist = (solv.length == 0) 
+          ? `El número ${f13b.num} no se encuentra en el número ${f13.num} :c <br> ¡Intenta con otra combinación de números, human@!` 
+          : plural
+  f13.span.innerHTML = exist 
+  f13.doubleClean(f13b)
+}
 
 // 14. Construir una función que reciba como parámetros dos números enteros y retorne el valor del mayor.
+function F14() {
+  const f14 = new Fn('14'), f14b = new Fn('14b'), 
+        n1 = numFormat(f14.num),
+        n2 = numFormat(f14b.num),
+        max = numFormat( Math.max( f14.num, f14b.num ) ),
+        solv = `Entre los números ${n1} & ${n2}... El mayor es el ${max} :D`,
+        equal = ( f14.num == f14b.num  ) ? `Los dos números son el mismo: El ${f14.num} D:` : solv
+  f14.span.innerHTML = equal
+  f14.doubleClean(f14b)
+}
 
 // 15. Construir una función que reciba como parámetros dos números enteros y retorne 1 si el primer número es múltiplo del segundo y 0 si no.
+function F15() {
+  const f15 = new Bar('15'),
+        f15b = new Bar('15b')
+  f15.choose( f15.num % f15b.num == 0 )
+  f15.down( f15.input )
+}
 
 // 16. Construir una función que reciba como parámetro un entero y retorne 1 si corresponde al código ASCII de una letra minúscula (Los códigos ASCII de las letras minúsculas van desde 97 que el código de la letra a hasta 122 que es el código de la letra z). Deberá retornar 0 si no es así.
+function F16() {
+  const f16 = new Bar('16')
+  f16.choose( f16.num >= 97 && f16.num <= 122 )
+  f16.down( f16.input )
+}
 
-// 17. Construir una función que reciba como parámetro un entero y retorne 1 si corresponde al código ASCII de un dígito (Los códigos ASCII de las letras minúsculas van desde 48 que es el código del dígito 0 hasta 57 que es el código del dígito 9). Deberá retornar 0 si no es así.
+// 17. Construir una función que reciba como parámetro un entero y retorne 1 si corresponde al código ASCII de un dígito (Los códigos ASCII de los dígitos van desde 48 que es el código del dígito 0 hasta 57 que es el código del dígito 9). Deberá retornar 0 si no es así.
+function F17() {
+  const f17 = new Bar('17')
+  f17.choose( f17.num >= 48 && f17.num <= 57 )
+  f17.down( f17.input )
+}
 
 // 18. Construir una función que reciba como parámetro un valor entero y retornar 1 si dicho valor es el factorial de alguno de los dígitos del número. Deberá retornar 0 si no es así.
+function F18() {
+  const f18 = new Bar('18')
+  f18.choose( isFact(f18.num) )
+  f18.down( f18.input )
+}
 
 // 19. Construir una función que reciba como parámetro un entero y retorne 1 si dicho valor es un número de mínimo 3 dígitos. Deberá retornar 0 si no es así.
+function F19() {
+  const f19 = new Bar('19')
+  f19.choose( Math.abs(f19.num) / 100 >= 1 )
+  f19.down( f19.input )
+}
 
 // 20. Construir una función que reciba como parámetro un entero y retorne 1 si en dicho valor todos los dígitos son iguales. Deberá retornar 0 si no es así.
+function F20() {
+  const f20 = new Bar('20')
+  f20.choose( allEqual(f20.input) )
+  f20.down( f20.input )
+}
 
 // 21. Construir una función que reciba como parámetro un entero y retorne 1 si en dicho valor el primer dígito es igual al último. Deberá retornar 0 si no es así.
+function F21() {
+  const f21 = new Bar('21')
+  f21.choose( f21.input[0] == f21.input[f21.input.length-1] )
+  f21.down( f21.input )
+}
 
-// 22. Construir una función que reciba como parámetro un entero y retorne 1 si dicho valor esmúltiplo de 5. Deberá retornar 0 si no es así.
+// 22. Construir una función que reciba como parámetro un entero y retorne 1 si dicho valor es múltiplo de 5. Deberá retornar 0 si no es así.
+function F22() {
+  const f22 = new Bar('22')
+  f22.choose( f22.num % 5 == 0 )
+  f22.down( f22.input )
+}
 
 // 23. Construir una función que reciba como parámetro dos enteros y retorne 1 si la diferencia entre los dos valores es un número primo. Deberá retornar 0 si no es así.
+function F23() {
+  const f23 = new Bar('23'), f23b = new Bar('23b'), arr = [f23.num, f23b.num], 
+        dif = ( isNaN(f23b.num) ) ? 0 : Math.max(...arr) - Math.min(...arr)
+  f23.choose( isPrime(dif) )
+  f23.down( f23.input )
+}
 
 // 24. Construir una función que reciba como parámetro dos enteros de dos dígitos cada uno y retorne 1 si son inversos. Ejemplo: 83 es inverso de 38. Deberá retornar 0 si no es así.
+function F24() {
+  const f24 = new Bar('24'), f24b = new Bar('24b'), a1 = f24.input[0], 
+        a2 = f24.input[1], b1 = f24b.input[0], b2 = f24b.input[1],
+        oneDigit = ( f24.input.length == 1 && f24b.input.length == 1 && a1 == b1 ) 
+          ? true : false  
+  f24.choose( ( a1 == b2 && a2 == b1 ) || oneDigit )
+  f24.down( f24.input )
+}
 
 // 25. Construir una función que reciba como parámetro un entero y un dígito menor o igual a 5 y retorne el dígito del número que se encuentre en la posición especificada por el dígito que llegó como parámetro.
+function F25() {
+  const f25 = new Fn('25'),f25b = new Fn('25b'),
+        n1 = numFormat(f25.num),
+        solv = matches(f25.input, f25b.input),
+        plural = (solv.length == 1) 
+          ? `El número ${f25b.num} se encuentra ${solv.length} vez en el número ${n1} en la posición n° ${solv.join(', ')} c:`
+          : `El número ${f25b.num} se encuentra ${solv.length} veces en el número ${n1} en las posiciones n°: ${solv.join(', ')} c:`,
+        exist = (solv.length == 0) 
+          ? `El número ${f25b.num} no se encuentra en el número ${f25.num} :c <br> ¡Intenta con otra combinación de números, human@!` 
+          : plural
+  if ( getE('fi25b').value > 5 ) getE('fi25b').value = 5
+  f25.span.innerHTML = exist 
+  f25.doubleClean(f25b)
+}
 
 // 26. Construir una función que reciba como parámetro un vector de 10 posiciones enteras y retorne el mayor de los datos del vector.
 
@@ -23987,8 +24253,26 @@ function F10() {
 // 35. Construir una función que reciba como parámetro un vector de 10 posiciones enteras y retorne la posición en la que se encuentre el mayor número primo que termine en 3 almacenado en el vector.
 
 // 36. Construir una función que reciba como parámetro un entero y retorne ese elemento de la serie de Fibonacci.
+function F36() {
+  const f36 = new Fn('36'),
+        solv = fib( Math.abs(f36.num) ),
+        numFormat = new Intl.NumberFormat().format( solv[solv.length-1] )
+  f36.span.innerHTML = `El elemento ${solv} de la serie Fibonacci es el número ${numFormat} c:` 
+  if ( f36.num < 0 ) f36.span.innerHTML += `<br> Obviemos el hecho de que es negativo, ¿okey, human@? -guiño guiño- c;`
+  if ( f36.num == 0 ) f36.span.innerHTML = `Oshe... Tú no dices 'tengo 0 billetes'...O tienes 1 billete o no tienes nada >:c ¿capichi?`
+  f36.clean()
+}
 
 // 37. Construir una función que reciba como parámetros dos enteros, el primero actuará como base y el segundo como exponente y retorne el resultado de elevar dicha base a dicho exponente.
+function F37() {
+  const f37 = new Fn('37'),
+        f37b = new Fn('37b'),
+        solv = Math.pow( f37.num, f37b.num ),
+        numFormat = new Intl.NumberFormat().format( solv )
+  f37.span.innerHTML = `${f37.num} ^ ${f37b.num}  =  ${numFormat}  c:` 
+  if ( f37.input == `` ) f37.span.innerHTML = `¡Cool! Un ${f37b.num} de exponente :D Ahora ingresa una base`
+  if ( f37.input == `` && f37b.input == `` ) f37.clean()
+}
 
 // 38. Construir una función que reciba como parámetro un vector de 10 posiciones enteras y retorne la cantidad de números terminados en 3 que contiene el vector.
 
@@ -23999,22 +24283,161 @@ function F10() {
 // 41. Construir una función que reciba como parámetro un vector de 10 posiciones enteras y un dígito y que retorne la cantidad de números del vector en donde dicho dígito está de penúltimo.
 
 // 42. Construir una función que reciba como parámetro una matriz de 3x4 entera y retorne la cantidad de veces que se repite el mayor dato de la matriz.
+const matrix73 = new Matrix('73', 3, 4)
+function solveM73() {
+  matrix73.renove()
+  const smith73 = matrix73.nums, neo73 = []
+
+  //PUT HERE THE SOLUTION TO THE SPECIFIC PROBLEM
+  for ( let i = 0; i < smith73.length; i++ ) {
+    if ( Math.max(...smith73) == smith73[i] ) {
+      neo73.push(i)
+    }
+  } //end of the solution of the problem.
+
+  matrix73.solution(neo73)}
+matrixEvts('73')
 
 // 43. Construir una función que reciba como parámetro una matriz 3x4 entera y retorne la cantidad de números primos almacenados en la matriz.
+const matrix74 = new Matrix('74', 3, 4)
+function solveM74() {
+  matrix74.renove()
+  const smith74 = matrix74.nums, neo74 = []
+
+  //PUT HERE THE SOLUTION TO THE SPECIFIC PROBLEM
+    //ALGORITHM FOR PRIME NUMBERS >:c
+    for ( let i = 0; i < smith74.length; i++ ) {
+      const box = []
+      for ( let numbers = 2; numbers < Math.abs(smith74[i]); numbers++ ) {
+        const prime = smith74[i] % numbers
+        if (prime == 0) {
+          box.push(numbers)
+        }
+      }
+      if (box.length == 0 && smith74[i] > 0) neo74.push(i)
+    } //end of the solution of the problem.
+
+  matrix74.solution(neo74)}
+matrixEvts('74')
 
 // 44. Construir una función que reciba como parámetro una matriz 3x4 entera y retorne la cantidad de veces que se repite el mayor número primo de la matriz.
+const matrix75 = new Matrix('75', 3, 4)
+function solveM75() {
+  matrix75.renove()
+  const smith75 = matrix75.nums, neo75 = []
+
+  //PUT HERE THE SOLUTION TO THE SPECIFIC PROBLEM
+    //ALGORITHM FOR PRIME NUMBERS >:c
+    const bag = []
+    for ( let i = 0; i < smith75.length; i++ ) {
+      const box = []
+      for ( let numbers = 2; numbers < Math.abs(smith75[i]); numbers++ ) {
+        const prime = smith75[i] % numbers
+        if (prime == 0) {
+          box.push(numbers)
+        }
+      }
+      if (box.length == 0 && smith75[i] > 0) bag.push(smith75[i])
+    }
+    neo75.push( smith75.indexOf( Math.max(...bag) ) )
+  //end of the solution of the problem.
+
+  matrix75.solution(neo75)}
+matrixEvts('75')
 
 // 45. Construir una función que reciba como parámetros una matriz 4x4 entera y un valor entero y retorne la cantidad de veces que se repite dicho valor en la matriz.
+const matrix76 = new Matrix('76', 4, 4)
+function solveM76() {
+  matrix76.renove()
+  const smith76 = matrix76.nums, neo76 = [],
+        input = getE('mi76').value
+
+  //PUT HERE THE SOLUTION TO THE SPECIFIC PROBLEM
+  for ( let i = 0; i < smith76.length; i++ ) {
+    if ( smith76[i] == Number(input) ) {
+      neo76.push(i)
+    }
+  } //end of the solution of the problem.
+
+  matrix76.solution(neo76)}
+matrixEvts('76')
 
 // 46. Construir una función que reciba como parámetro una matriz 4x4 entera y retorne el número de la fila en donde se encuentre por primera vez el número mayor de la matriz.
+const matrix77 = new Matrix('77', 4, 4)
+function solveM77() {
+  matrix77.renove()
+  const smith77 = matrix77.nums, neo77 = []
+
+  //PUT HERE THE SOLUTION TO THE SPECIFIC PROBLEM
+  neo77.push( smith77.indexOf( Math.max(...smith77) ) )
+  //end of the solution of the problem.
+
+  matrix77.solution(neo77)}
+matrixEvts('77')
 
 // 47. Construir una función que reciba como parámetro una matriz 4x4 entera y retorne el número de la columna en donde se encuentre por primera vez el número mayor de la matriz.
+const matrix78 = new Matrix('78', 4, 4)
+function solveM78() {
+  matrix78.renove()
+  const smith78 = matrix78.nums, neo78 = []
+
+  //PUT HERE THE SOLUTION TO THE SPECIFIC PROBLEM
+  neo78.push( smith78.indexOf( Math.max(...smith78) ) )
+  //end of the solution of the problem.
+
+  matrix78.solution(neo78)}
+matrixEvts('78')
 
 // 48. Construir una función que reciba como parámetro una matriz 4x4 entera y retorne la posición exacta en donde se encuentre almacenado el mayor número primo.
+const matrix79 = new Matrix('79', 4, 4)
+function solveM79() {
+  matrix79.renove()
+  const smith79 = matrix79.nums, neo79 = []
+
+  //PUT HERE THE SOLUTION TO THE SPECIFIC PROBLEM
+    //ALGORITHM FOR PRIME NUMBERS >:c
+    const bag = []
+    for ( let i = 0; i < smith79.length; i++ ) {
+      const box = []
+      for ( let numbers = 2; numbers < Math.abs(smith79[i]); numbers++ ) {
+        const prime = smith79[i] % numbers
+        if (prime == 0) {
+          box.push(numbers)
+        }
+      }
+      if (box.length == 0 && smith79[i] > 0) bag.push(smith79[i])
+    }
+    neo79.push( smith79.indexOf( Math.max(...bag) ) )
+  //end of the solution of the problem.
+
+  matrix79.solution(neo79)}
+matrixEvts('79')
 
 // 49. Construir una función que reciba una matriz 5x5 y retorne el valor de su moda. La moda de un conjunto de datos es el dato que mas se repite.
+const matrix80 = new Matrix('80', 5, 5)
+function solveM80() {
+  matrix80.renove()
+  let smith80 = matrix80.nums, 
+      neo80 = [], m = mode( smith80 )
+  //PUT HERE THE SOLUTION TO THE SPECIFIC PROBLEM
+  neo80 = ( m.length == 1 ) ? [] : m 
+  //end of the solution of the problem.
+
+  matrix80.solution(neo80)}
+matrixEvts('80')
 
 // 50. Construir una función que reciba una matriz 5x5 y retorne la cantidad de veces que se repite su moda.     
+const matrix81 = new Matrix('81', 5, 5)
+function solveM81() {
+  matrix81.renove()
+  let smith81 = matrix81.nums, 
+      neo81 = [], m = mode( smith81 )
+  //PUT HERE THE SOLUTION TO THE SPECIFIC PROBLEM
+  neo81 = ( m.length == 1 ) ? [] : m 
+  //end of the solution of the problem.
+
+  matrix81.solution(neo81)}
+matrixEvts('81')
 
 //fin de SECCIÓN: FUNCIONES (ÚLTIMA SECCIÓN).
 // FINAAL FIIIN FIN DE TODOO AWOIERGHWEOIGH AEWG WA----------------------------------------- OMG QUÉ VIAJE -------------------------------------...

@@ -3636,7 +3636,7 @@
                 Genera matrices con doble click <br> Alterna entre valor y posición con click derecho <br> Primero se leen filas (verticales), luego columnas (horizontales) 
                 <br><br><br>
             </span>
-            <div id="matrixCradle">
+            <div class="matrixCradle">
                 <div class="matrix"><br>
                     <div class="mSpan">
                         <span> 1. Leer una matriz 4x4 entera y determinar en qué fila y en qué columna se encuentra el número mayor. </span>
@@ -3815,10 +3815,14 @@
                     </div>
                 </div>
 
-                <div class="duality">
+                <div class="duality" id="dualMatrixInput">
                     <div class="mSpan">
-                        <span> 20. Leer dos matrices 4x5 entera, luego leer un entero y determinar si cada uno de los elementos de una de las matrices es igual a cada uno de los elementos de la otra matriz multiplicado por el entero leído. </span>
+                        <span> 20. Leer dos matrices 4x5 entera, luego leer un entero y determinar si cada uno de los elementos de una de las matrices es igual a cada uno de los elementos de la otra matriz multiplicado por el entero leído.     
+                        </span>
                     </div>
+
+                    <input class='matrixInput' onfocus="this.placeholder=''" onblur="this.placeholder='Escribe un múltiplo aquí >:c'" type="text" id="mi21" placeholder="Escribe un múltiplo aquí >:c" title="Escribe un número" maxlength="1" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return fusion21(matrix21.nums, matrix22.nums);" required> 
+
                     <div class="origin">
                         <div class="cuad" id="cuad21"> <p> <em class='m1'> dame doble click c: </em> </p> </div>
                         <div class="cave" id="m21"></div>
@@ -3945,7 +3949,7 @@
                     </div>
                 </div>                   
                 
-                <div class="matrix"><br>
+                <div class="matrix"><br><br>
                     <div class="mSpan">
                         <span> 28. Leer una matriz 4x6 entera y determinar en qué posiciones se encuentran los números cuyo penúltimo dígito sea el 5. </span>
                     </div>
@@ -3954,7 +3958,7 @@
                     <div class="cave" id="m37"></div><br><br>
                 </div>      
                 
-                <div class="matrix"><br>
+                <div class="matrix"><br><br>
                     <div class="mSpan">
                         <span> 29. Leer una matriz 4x6 entera y determinar si alguno de sus números está repetido al menos 3 veces. </span>
                     </div>
@@ -3999,7 +4003,7 @@
                     <div class="cave" id="m42"></div><br><br>
                 </div>   
 
-                <div class="matrix"><br>
+                <div class="matrix"><br><br>
                     <div class="mSpan">
                         <span> 34. Leer una matriz 4x6 entera y determinar cuántos de los números almacenados en ella pertenecen a los 100 primeros elementos de la serie de Fibonacci. </span>
                     </div>
@@ -4008,7 +4012,7 @@
                     <div class="cave" id="m43"></div><br><br>
                 </div>   
 
-                <div class="matrix"><br>
+                <div class="matrix"><br><br>
                     <div class="mSpan">
                         <span> 35. Leer una matriz 4x6 enteras y determinar cuál es el mayor dato almacenado en ella que pertenezca a la Serie de Fibonacci. </span>
                     </div>
@@ -4021,7 +4025,7 @@
                     <div class="mSpan">
                         <span> 
                             36. Leer dos matrices 4x6 enteras y determinar si el mayor número almacenado en una de ellas que pertenezca a la Serie de Fibonacci es igual al mayor número almacenado en la otra matriz que pertenezca a la Serie de Fibonacci.
-                            <br> <em class="mAns" id="m45em"></em>
+                            <br> <em class="mAns" id="m45em"></em><br>
                         </span>
                     </div>
                     <div class="origin">
@@ -4072,7 +4076,7 @@
                     <div class="mSpan">
                         <span> 
                             39. Leer dos matrices 4x6 enteras y determinar si el promedio de las “esquinas” <br> de una matriz es igual al promedio de las “esquinas” de la otra matriz.
-                            <br> <em class="mAns" id="m51em"></em>
+                            <br> <em class="mAns" id="m51em"> </em>
                         </span>
                     </div>
                     <div class="origin">
@@ -4267,11 +4271,11 @@
                     <div class="cave" id="m71"></div><br><br>
                 </div>                
 
-                <div class="matrix" id="lastMatrix"><br><br>
+                <div class="matrix" id="lastMatrix"><br>
                     <div class="mSpan">
-                        <span> 50. Leer una matriz 5x5 y determinar si el promedio de los elementos que se encuentran en su diagonal está almacenado en ella. Mostrar en pantalla en qué posiciones exactas se encuentra dicho dato. </span><br><br>
+                        <span> 50. Leer una matriz 5x5 y determinar si el promedio de los elementos que se encuentran en su diagonal está almacenado en ella. Mostrar en pantalla en qué posiciones exactas se encuentra dicho dato. </span><br>
                     </div>
-                    <span id="mAns72" class="mAns"></span><br><br>
+                    <span id="mAns72" class="mAns"></span><br>
                     <div class="cuad" id="cuad72"> <p> <em> dame doble click c: </em> </p> </div>
                     <div class="cave" id="m72"></div><br><br>
                 </div>  
@@ -4312,14 +4316,25 @@
             <br><br>
             
             6. Construir una función que reciba como parámetro un entero y retorne el carácter al cual pertenece ese entero como código ASCII. <br><br>
-            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="fi06" placeholder="Escribe un número aquí >:c" title="Escribe un número" maxlength="1" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return F06();" required> <br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe un número aquí >:c'" type="text" id="fi06" placeholder="Escribe un número aquí >:c" title="Escribe un número" maxlength="1" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return F06();" required> <br>
             <span id="fs06"></span>
             <br><br>
 
             7. Construir una función que reciba como parámetro un carácter y retorne el código ASCII asociado a él. <br><br>
-            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="fi07" placeholder="Escribe un carácter aquí >:c" title="Escribe cualquier carácter" maxlength="1" onclick="javascript:select();" onkeyup="return F07();" required> <br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe un carácter aquí >:c'" type="text" id="fi07" placeholder="Escribe un carácter aquí >:c" title="Escribe cualquier carácter" maxlength="1" onclick="javascript:select();" onkeyup="return F07();" required> <br>
             <span id="fs07"></span>
             <br><br>
+
+            8. Construir una función que reciba como parámetro un entero y retorne 1 si dicho entero está entre <br> los 30 primeros elementos de la serie de Fibonacci. Deberá retornar 0 si no es así. <br><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="fi08" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="6" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return F08();" required> <br><br><br>
+            <div class='barBox' id="bar08">
+                <div class='bgBar'></div>
+                <div class='bar'>
+                    <div class='barL'> <em> 0 </em> </div>
+                    <div class='barR'> <em> 1 </em> </div>
+                </div>
+            </div>
+            <br><br><br>
 
             9. Construir una función que reciba un entero y le calcule su factorial. <br><br>
             <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="fi09" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="2" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return F09();" required> <br>
@@ -4329,47 +4344,265 @@
             10. Construir una función que reciba como parámetro un entero y retorne el primer dígito de este entero. <br><br>
             <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="fi10" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="7" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return F10();" required> <br>
             <span id="fs10"></span>
+            <br><br>  
+            
+            11. Construir una función que reciba como parámetro un entero y un dígito y retorne 1 si dicho entero es múltiplo de dicho dígito y 0 si no es así. <br><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="fi11" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="6" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return F11();" required> 
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe un múltiplo aquí >:c'" type="text" id="fi11b" placeholder="Escribe un múltiplo aquí >:c" title="Escribe un número" maxlength="1" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return F11();" required> <br><br><br>
+            <div class='barBox' id="bar11">
+                <div class='bgBar'></div>
+                <div class='bar'>
+                    <div class='barL'> <em> 0 </em> </div>
+                    <div class='barR'> <em> 1 </em> </div>
+                </div>
+            </div>
+            <br><br><br>
+
+            12. Construir una función que reciba como parámetro un entero y un dígito y retorne 1 si dicho dígito está en dicho entero y 0 si no es así. <br><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="fi12" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="6" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return F12();" required> 
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe un dígito aquí >:c'" type="text" id="fi12b" placeholder="Escribe un dígito aquí >:c" title="Escribe un número" maxlength="1" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return F12();" required> <br><br><br>
+            <div class='barBox' id="bar12">
+                <div class='bgBar'></div>
+                <div class='bar'>
+                    <div class='barL'> <em> 0 </em> </div>
+                    <div class='barR'> <em> 1 </em> </div>
+                </div>
+            </div>
+            <br><br><br>
+
+            13. Construir una función que reciba como parámetro un entero y un dígito y retorne la cantidad de veces que se encuentra dicho dígito en dicho entero. <br><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="fi13" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="6" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return F13();" required>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe un número aquí >:c'" type="text" id="fi13b" placeholder="Escribe un número aquí >:c" title="Escribe un número" maxlength="1" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return F13();" required> <br>
+            <span id="fs13"></span>
             <br><br>   
 
+            14. Construir una función que reciba como parámetros dos números enteros y retorne el valor del mayor. <br><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="fi14" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="6" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return F14();" required>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="fi14b" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="6" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return F14();" required> <br>
+            <span id="fs14"></span>
+            <br><br>   
+  
+            15. Construir una función que reciba como parámetros dos números enteros y retorne 1 si el primer número es múltiplo del segundo y 0 si no.<br><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="fi15" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="6" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return F15();" required> 
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe un múltiplo aquí >:c'" type="text" id="fi15b" placeholder="Escribe un múltiplo aquí >:c" title="Escribe un número" maxlength="6" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return F15();" required> <br><br><br>
+            <div class='barBox' id="bar15">
+                <div class='bgBar'></div>
+                <div class='bar'>
+                    <div class='barL'> <em> 0 </em> </div>
+                    <div class='barR'> <em> 1 </em> </div>
+                </div>
+            </div>
+            <br><br><br>
 
+            16. Construir una función que reciba como parámetro un entero y retorne 1 si corresponde al código ASCII de una letra minúscula. <br> Deberá retornar 0 si no es así. Los códigos ASCII de las letras minúsculas van desde 97 que es la a hasta 122 que es la z. <br><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="fi16" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="3" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return F16();" required> <br><br><br>
+            <div class='barBox' id="bar16">
+                <div class='bgBar'></div>
+                <div class='bar'>
+                    <div class='barL'> <em> 0 </em> </div>
+                    <div class='barR'> <em> 1 </em> </div>
+                </div>
+            </div>
+            <br><br><br>
 
+            17. Construir una función que reciba como parámetro un entero y retorne 1 si corresponde al código ASCII de un dígito. <br> (Los códigos ASCII de los dígitos van desde 48 que es el dígito 0 hasta 57 que es el dígito 9). Deberá retornar 0 si no es así.<br><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="fi17" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="2" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return F17();" required> <br><br><br>
+            <div class='barBox' id="bar17">
+                <div class='bgBar'></div>
+                <div class='bar'>
+                    <div class='barL'> <em> 0 </em> </div>
+                    <div class='barR'> <em> 1 </em> </div>
+                </div>
+            </div>
+            <br><br><br>
+
+            18. Construir una función que reciba como parámetro un valor entero y retornar 1 si dicho valor <br> es el factorial de alguno de los dígitos del número. Deberá retornar 0 si no es así. <br><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="fi18" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="6" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return F18();" required> <br><br><br>
+            <div class='barBox' id="bar18">
+                <div class='bgBar'></div>
+                <div class='bar'>
+                    <div class='barL'> <em> 0 </em> </div>
+                    <div class='barR'> <em> 1 </em> </div>
+                </div>
+            </div>
+            <br><br><br>
+
+            19. Construir una función que reciba como parámetro un entero y retorne 1 si dicho valor es un número de mínimo 3 dígitos. Deberá retornar 0 si no es así.<br><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="fi19" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="6" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return F19();" required> <br><br><br>
+            <div class='barBox' id="bar19">
+                <div class='bgBar'></div>
+                <div class='bar'>
+                    <div class='barL'> <em> 0 </em> </div>
+                    <div class='barR'> <em> 1 </em> </div>
+                </div>
+            </div>
+            <br><br><br>
+
+            20. Construir una función que reciba como parámetro un entero y retorne 1 si en dicho valor todos los dígitos son iguales. Deberá retornar 0 si no es así. <br><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="fi20" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="6" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return F20();" required> <br><br><br>
+            <div class='barBox' id="bar20">
+                <div class='bgBar'></div>
+                <div class='bar'>
+                    <div class='barL'> <em> 0 </em> </div>
+                    <div class='barR'> <em> 1 </em> </div>
+                </div>
+            </div>
+            <br><br><br>
+
+            21. Construir una función que reciba como parámetro un entero y retorne 1 si en dicho valor el primer dígito es igual al último. Deberá retornar 0 si no es así. <br><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="fi21" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="6" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return F21();" required> <br><br><br>
+            <div class='barBox' id="bar21">
+                <div class='bgBar'></div>
+                <div class='bar'>
+                    <div class='barL'> <em> 0 </em> </div>
+                    <div class='barR'> <em> 1 </em> </div>
+                </div>
+            </div>
+            <br><br><br>
+
+            22. Construir una función que reciba como parámetro un entero y retorne 1 si dicho valor es múltiplo de 5. Deberá retornar 0 si no es así.<br><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="fi22" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="6" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return F22();" required> <br><br><br>
+            <div class='barBox' id="bar22">
+                <div class='bgBar'></div>
+                <div class='bar'>
+                    <div class='barL'> <em> 0 </em> </div>
+                    <div class='barR'> <em> 1 </em> </div>
+                </div>
+            </div>
+            <br><br><br>
+
+            23. Construir una función que reciba como parámetro dos enteros y retorne 1 si la diferencia entre los dos valores es un número primo. Deberá retornar 0 si no es así. <br><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="fi23" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="6" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return F23();" required> 
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="fi23b" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="6" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return F23();" required> <br><br><br>
+            <div class='barBox' id="bar23">
+                <div class='bgBar'></div>
+                <div class='bar'>
+                    <div class='barL'> <em> 0 </em> </div>
+                    <div class='barR'> <em> 1 </em> </div>
+                </div>
+            </div>
+            <br><br><br> 
+
+            24. Construir una función que reciba como parámetro dos enteros de dos dígitos cada uno y retorne 1 si son inversos. <br> Ejemplo: 83 es inverso de 38. Deberá retornar 0 si no es así. <br><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="fi24" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="2" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return F24();" required> 
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="fi24b" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="2" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return F24();" required> <br><br><br>
+            <div class='barBox' id="bar24">
+                <div class='bgBar'></div>
+                <div class='bar'>
+                    <div class='barL'> <em> 0 </em> </div>
+                    <div class='barR'> <em> 1 </em> </div>
+                </div>
+            </div>
+            <br><br><br> 
+
+            25. Construir una función que reciba como parámetro un entero y un dígito menor o igual a 5  y retorne <br> el dígito del número que se encuentre en la posición especificada por el dígito que llegó como parámetro. <br><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="fi25" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="6" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return F25();" required>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe un número aquí >:c'" type="text" id="fi25b" placeholder="Escribe un número aquí >:c" title="Escribe un número" maxlength="1" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return F25();" required> <br>
+            <span id="fs25"></span>
+            <br><br>   
+
+            36. Construir una función que reciba como parámetro un entero y retorne ese elemento de la serie de Fibonacci. <br><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="fi36" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="2" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return F36();" required> <br>
+            <span id="fs36"></span>
+            <br><br>   
+
+            37. Construir una función que reciba como parámetros dos enteros, el primero actuará como base <br> y el segundo como exponente y retorne el resultado de elevar dicha base a dicho exponente. <br><br>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe una base aquí >:c'" type="text" id="fi37" placeholder="Escribe una base aquí >:c" title="Escribe un número base" maxlength="2" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return F37();" required>
+            <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe un exponente aquí >:c'" type="text" id="fi37b" placeholder="Escribe un exponente aquí >:c" title="Escribe un número exponente" maxlength="1" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return F37();" required> <br>
+            <span id="fs37"></span>
+            <br><br>   
+
+            <div class='matrixCradle'>
+                
+                <div class="matrix"><br><br>
+                    <div class="mSpan">
+                        <span> 42. Construir una función que reciba como parámetro una matriz de 3x4 entera y retorne la cantidad de veces que se repite el mayor dato de la matriz. </span>
+                    </div>
+                    <br><br><br>
+                    <div class="cuad" id="cuad73"> <p> <em> dame doble click c: </em> </p> </div>
+                    <div class="cave" id="m73"></div><br><br>
+                </div>
+
+                <div class="matrix"><br><br>
+                    <div class="mSpan">
+                        <span> 43. Construir una función que reciba como parámetro una matriz 3x4 entera y retorne la cantidad de números primos almacenados en la matriz. </span>
+                    </div>
+                    <br><br><br>
+                    <div class="cuad" id="cuad74"> <p> <em> dame doble click c: </em> </p> </div>
+                    <div class="cave" id="m74"></div><br><br>
+                </div>
+
+                <div class="matrix"><br><br>
+                    <div class="mSpan">
+                        <span> 44. Construir una función que reciba como parámetro una matriz 3x4 entera y retorne la cantidad de veces que se repite el mayor número primo de la matriz. </span>
+                    </div>
+                    <br><br><br>
+                    <div class="cuad" id="cuad75"> <p> <em> dame doble click c: </em> </p> </div>
+                    <div class="cave" id="m75"></div><br><br>
+                </div>
+
+                <div class="matrix"><br><br>
+                    <div class="mSpan">
+                        <span> 45. Construir una función que reciba como parámetros una matriz 4x4 entera y un valor entero y retorne la cantidad de veces que se repite dicho valor en la matriz.
+                         </span>
+                    </div>
+                    <input class="matrixInput" onfocus="this.placeholder=''" onblur="this.placeholder='Escribe un múltiplo aquí >:c'" type="text" id="mi76" placeholder="Escribe un múltiplo aquí >:c" title="Escribe un número" maxlength="3" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return solveM76();" required> 
+                    <div class="cuad" id="cuad76"> <p> <em> dame doble click c: </em> </p> </div>
+                    <div class="cave" id="m76"></div><br><br>
+                </div>
+
+                <div class="matrix"><br><br>
+                    <div class="mSpan">
+                        <span> 46. Construir una función que reciba como parámetro una matriz 4x4 entera y retorne el número de la fila en donde se encuentre por primera vez el número mayor de la matriz. </span>
+                    </div>
+                    <br><br><br>
+                    <div class="cuad" id="cuad77"> <p> <em> dame doble click c: </em> </p> </div>
+                    <div class="cave" id="m77"></div><br><br>
+                </div>
+
+                <div class="matrix"><br><br>
+                    <div class="mSpan">
+                        <span> 47. Construir una función que reciba como parámetro una matriz 4x4 entera y retorne el número de la columna en donde se encuentre por primera vez el número mayor de la matriz. </span>
+                    </div>
+                    <br><br><br>
+                    <div class="cuad" id="cuad78"> <p> <em> dame doble click c: </em> </p> </div>
+                    <div class="cave" id="m78"></div><br><br>
+                </div>
+
+                <div class="matrix"><br><br>
+                    <div class="mSpan">
+                        <span> 48. Construir una función que reciba como parámetro una matriz 4x4 entera y retorne la posición exacta en donde se encuentre almacenado el mayor número primo. </span>
+                    </div>
+                    <br><br><br>
+                    <div class="cuad" id="cuad79"> <p> <em> dame doble click c: </em> </p> </div>
+                    <div class="cave" id="m79"></div><br><br>
+                </div>
+
+                <div class="matrix"><br><br>
+                    <div class="mSpan">
+                        <span> 49. Construir una función que reciba una matriz 5x5 y retorne el valor de su moda. La moda de un conjunto de datos es el dato que más se repite. </span>
+                    </div>
+                    <div class="cuad" id="cuad80"> <p> <em> dame doble click c: </em> </p> </div>
+                    <div class="cave" id="m80"></div><br><br>
+                </div>
+
+                <div class="matrix"><br><br>
+                    <div class="mSpan">
+                        <span> 50. Construir una función que reciba una matriz 5x5 y retorne la cantidad de veces que se repite su moda. </span>
+                    </div>
+                    <div class="cuad" id="cuad81"> <p> <em> dame doble click c: </em> </p> </div>
+                    <div class="cave" id="m81"></div><br><br>
+                </div>
+
+                <div class='theEnd'> <em> <h1> The end. </h1> </em> </div>
+
+            </div> <!-- end of the cradle of Matrixes -->
             <br><br><br>
             <h1 id="theEnd"> PRÓXIMAMENTE </h1>
             <br><br><br><br>
         </center>
 
 <!--
-8. Construir una función que reciba como parámetro un entero y retorne 1 si dicho entero está entre los 30 primeros elementos de la serie de Fibonacci. Deberá retornar 0 si no es así.
-
-11. Construir una función que reciba como parámetro un entero y un dígito y retorne 1 si dicho entero es múltiplo de dicho dígito y 0 si no es así.
-
-12. Construir una función que reciba como parámetro un entero y un dígito y retorne 1 si dicho dígito está en dicho entero y 0 si no es así.
-
-13. Construir una función que reciba como parámetro un entero y un dígito y retorne la cantidad de veces que se encuentra dicho dígito en dicho entero.
-
-14. Construir una función que reciba como parámetros dos números enteros y retorne el valor del mayor.
-
-15. Construir una función que reciba como parámetros dos números enteros y retorne 1 si el primer número es múltiplo del segundo y 0 si no.
-
-16. Construir una función que reciba como parámetro un entero y retorne 1 si corresponde al código ASCII de una letra minúscula (Los códigos ASCII de las letras minúsculas van desde 97 que el código de la letra a hasta 122 que es el código de la letra z). Deberá retornar 0 si no es así.
-
-17. Construir una función que reciba como parámetro un entero y retorne 1 si corresponde al código ASCII de un dígito (Los códigos ASCII de las letras minúsculas van desde 48 que es el código del dígito 0 hasta 57 que es el código del dígito 9). Deberá retornar 0 si no es así.
-
-18. Construir una función que reciba como parámetro un valor entero y retornar 1 si dicho valor es el factorial de alguno de los dígitos del número. Deberá retornar 0 si no es así.
-
-19. Construir una función que reciba como parámetro un entero y retorne 1 si dicho valor es un número de mínimo 3 dígitos. Deberá retornar 0 si no es así.
-
-20. Construir una función que reciba como parámetro un entero y retorne 1 si en dicho valor todos los dígitos son iguales. Deberá retornar 0 si no es así.
-
-21. Construir una función que reciba como parámetro un entero y retorne 1 si en dicho valor el primer dígito es igual al último. Deberá retornar 0 si no es así.
-
-22. Construir una función que reciba como parámetro un entero y retorne 1 si dicho valor esmúltiplo de 5. Deberá retornar 0 si no es así.
-
-23. Construir una función que reciba como parámetro dos enteros y retorne 1 si la diferencia entre los dos valores es un número primo. Deberá retornar 0 si no es así.
-
-24. Construir una función que reciba como parámetro dos enteros de dos dígitos cada uno y retorne 1 si son inversos. Ejemplo: 83 es inverso de 38. Deberá retornar 0 si no es así.
-
-25. Construir una función que reciba como parámetro un entero y un dígito menor o igual a 5 y retorne el dígito del número que se encuentre en la posición especificada por el dígito que llegó como parámetro.
 
 26. Construir una función que reciba como parámetro un vector de 10 posiciones enteras y retorne el mayor de los datos del vector.
 
@@ -4391,35 +4624,13 @@
 
 35. Construir una función que reciba como parámetro un vector de 10 posiciones enteras y retorne la posición en la que se encuentre el mayor número primo que termine en 3 almacenado en el vector.
 
-36. Construir una función que reciba como parámetro un entero y retorne ese elemento de la serie de Fibonacci.
-
-37. Construir una función que reciba como parámetros dos enteros, el primero actuará como base y el segundo como exponente y retorne el resultado de elevar dicha base a dicho exponente.
-
 38. Construir una función que reciba como parámetro un vector de 10 posiciones enteras y retorne la cantidad de números terminados en 3 que contiene el vector.
 
 39. Construir una función que reciba como parámetros un vector de 10 posiciones enteras y un dígito y que retorne la cantidad de veces que dicho dígito se encuentra en el vector. No se olvide que un mismo dígito puede estar varias veces en un solo número.
 
 40. Construir una función que reciba como parámetro un vector de 10 posiciones enteras y un dígito y que retorne la cantidad de números del vector que terminan en dicho dígito.
 
-41. Construir una función que reciba como parámetro un vector de 10 posiciones enteras y un dígito y que retorne la cantidad de números del vector en donde dicho dígito está de penúltimo.
-
-42. Construir una función que reciba como parámetro una matriz de 3x4 entera y retorne la cantidad de veces que se repite el mayor dato de la matriz.
-
-43. Construir una función que reciba como parámetro una matriz 3x4 entera y retorne la cantidad de números primos almacenados en la matriz.
-
-44. Construir una función que reciba como parámetro una matriz 3x4 entera y retorne la cantidad de veces que se repite el mayor número primo de la matriz.
-
-45. Construir una función que reciba como parámetros una matriz 4x4 entera y un valor entero y retorne la cantidad de veces que se repite dicho valor en la matriz.
-
-46. Construir una función que reciba como parámetro una matriz 4x4 entera y retorne el número de la fila en donde se encuentre por primera vez el número mayor de la matriz.
-
-47. Construir una función que reciba como parámetro una matriz 4x4 entera y retorne el número de la columna en donde se encuentre por primera vez el número mayor de la matriz.
-
-48. Construir una función que reciba como parámetro una matriz 4x4 entera y retorne la posición exacta en donde se encuentre almacenado el mayor número primo.
-
-49. Construir una función que reciba una matriz 5x5 y retorne el valor de su moda. La moda de un conjunto de datos es el dato que mas se repite.
-
-50. Construir una función que reciba una matriz 5x5 y retorne la cantidad de veces que se repite su moda.            
+41. Construir una función que reciba como parámetro un vector de 10 posiciones enteras y un dígito y que retorne la cantidad de números del vector en donde dicho dígito está de penúltimo.   
          -->
     </details>
 

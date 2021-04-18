@@ -756,7 +756,7 @@ button:focus:not(.aPb){
 }
 /*FIN DE DISEÑO DE VECTORES*/
 /*DISEÑO DE MATRIX*/
-#matrixCradle {
+.matrixCradle {
     display:grid;
     grid-template-columns: repeat(2, 1fr);
     grid-auto-rows: auto;
@@ -765,7 +765,7 @@ button:focus:not(.aPb){
     justify-self:center;
     font-size:3vh;
     width: 69%;
-    height: 12vh;
+    height: 15vh;
     overflow: auto;
 }
 .matrix,
@@ -775,11 +775,15 @@ button:focus:not(.aPb){
 }
     .matrix:hover,
     .duality:hover {
-        background:#0C0D10;
+        background: #0C0D10;
     }
         .matrix:hover > .mSpan,
         .duality:hover > .mSpan {
             color:whitesmoke;
+        }
+        .matrix:hover > .matrixInput,
+        .duality:hover > .matrixInput {
+            background: #0C0D10;
         }
 .cave {
     cursor:pointer;
@@ -893,7 +897,7 @@ button:focus:not(.aPb){
                         .origin > em,
                         .symmetry > em {
                             position:relative;
-                            top: 8%;
+                            top: 13%;
                         }         
 #lastMatrix::after {
     content: 'UwU';
@@ -907,13 +911,88 @@ button:focus:not(.aPb){
 }   
     #lastMatrix:hover::after {
         cursor: pointer;
-        color: whitesmoke;
+        color:  #f7b64e;
     }                    
         #lastMatrix:active::after {
             cursor: pointer;
-            color: rgb(248, 205, 63);
+            color: whitesmoke;
         }           
-/*FIN DISEÑO DE MATRIX*/
+            #dualMatrixInput {
+                grid-template-rows:12vh 8vh 40vh 40vh;
+                grid-template-areas: 
+                "spn spn"
+                "inp inp"
+                "one two"
+                "one two";
+            }
+                #mi21 {
+                    grid-area: inp;
+                }
+/* FIN DISEÑO DE MATRIX*/
+/* INICIO DISEÑO DE FN -última sección- */
+.barBox { /* the rare barometer */
+    user-select: none;
+    position: relative;
+    width: 30vw;
+    height: 9vh;
+    background: linear-gradient(to left, 
+        rgba(235, 207, 83, 0.635),
+        rgba(207, 150, 45, 0.443), 
+        rgb(100, 71, 19) );
+    box-shadow: inset 0px 15px 5px rgb(255, 255, 255);
+    border-radius: 666px;
+    cursor: pointer;
+}
+.barBox::before { /* the rare barometer container */
+    left:-2vw;
+    top:-3vh;
+    content:'';
+    position: absolute;
+    width: 34vw;
+    height: 15vh;
+    border-radius: 10px;
+    background: rgb(15, 15, 15);
+    z-index:-1;
+    box-shadow: 2px 3px 5px 2px rgb(33, 41, 40);
+}
+    .bgBar {
+        position: absolute;
+        background: rgba(255, 255, 255, 0.329);
+        width: inherit;
+        height: inherit;
+        border-radius: inherit;
+    }
+        .bar {
+            position: absolute;
+            background: inherit;
+            width: inherit;
+            height: inherit;
+            border-radius: inherit;
+        }
+            .barL,
+            .barR {
+                font-size: larger;
+                font-weight: bolder;
+                line-height: 8.5vh;
+                position: absolute;
+                width: 33%;
+                height: 100%;
+                border-radius: inherit;
+                cursor: pointer;
+            }
+                .barR {
+                    left: 67%;
+                }
+/* FIN DISEÑO DE FN -última sección- */
+.theEnd {
+    height: 100vh;
+    width: 100%;
+    font-size: 10vh;
+    margin:auto;
+}
+    .theEnd:hover {
+        background: #0C0D10;
+    }
 
 /* a las clases las llamas con (elemento)."elNombreDeLaClass" :D  */
 /* a los ID las llamas con #"elIDdelElemento" :D */
