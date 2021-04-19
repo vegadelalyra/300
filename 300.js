@@ -1126,16 +1126,6 @@ const writeSounds = e => {
     return right.play()
   } // a pleasent sound when going forwards into the input
 
-  // when the user deleats out of limits
-  if ( e.keyCode == 8 /* del */ && e.target.selectionStart == 0 ) {
-    const trock = new Audio('music/truck.mp3')
-    return trock.play()
-  } // above trock sound when pressing del at the beginning
-  if ( e.keyCode == 46 /* supr */ && e.target.selectionStart == e.target.value.length ) {
-    const treck = new Audio('music/truck.mp3')
-    return treck.play()
-  } // above trock sound when pressing supr at the ending
-
   // when the user deleats
   if ( e.keyCode == 8 /* del */ || e.keyCode == 46 /* supr */ ) {
     if ( e.target.value.length == 0 ) {
@@ -1146,6 +1136,15 @@ const writeSounds = e => {
       const fullSupr = new Audio('music/fullSupr.mp3')
       return fullSupr.play() 
     } // above fullsupr sound if the input is fully cleanse
+    // when the user deleats out of limits
+    if ( e.keyCode == 8 /* del */ && e.target.selectionStart == 0 ) {
+      const trock = new Audio('music/truck.mp3')
+      return trock.play()
+    } // above trock sound when pressing del at the beginning
+    if ( e.keyCode == 46 /* supr */ && e.target.selectionStart == e.target.value.length ) {
+      const treck = new Audio('music/truck.mp3')
+      return treck.play()
+    } // above trock sound when pressing supr at the ending
     const supr = new Audio('music/supr.mp3')
     return supr.play()
   } // above when user deleats
@@ -25317,14 +25316,12 @@ function solutiona54(){
   for (let i = 0; i < seeker.length; i++ ) {
     snitch.push( arrVector54.indexOf(seeker[i]) );
   }
-  console.log(fib30)
-  console.log(seeker)
   let cousin = (seeker.length == 1)
     ? `¡El número ${seeker} es uno de los 30 primeros fibonacci!`
     :`¡Los números ${seeker.join(', ')} pertenecen a los 30 primeros fibonacci! :D`,
       noPrimes = (seeker.length == 0) 
     ? `Ningún número de este vector pertenece a los 30 primeros fibonacci :c mala suerte... <br> Intenta ingresando otra tanda de 10 números, human@`
-    :`${cousin} :D ${plural}`,
+    :`${cousin} :D`,
       answer = noPrimes;
 
   //"Animación" de las flechas
@@ -25566,16 +25563,1874 @@ function array54(){
 }
 
 // 30. Construir una función que reciba como parámetro un vector de 10 posiciones enteras y retorne la posición del mayor número primo almacenado en el vector.
+var box55 = new get10Random("vector55");
+var buttona55 = document.getElementById("arrayb55");
+var inputArr55 = document.getElementById("arrayi55");
+var freedom55;
+var justice55;
+var love55;
+var flash55 = 0;
+var xd55 = 0;
+var cancelButton55 = 0;
+var filterOfZeros55 = [];
+var arrow55 = document.getElementsByClassName("arrow55");
+var imgOff55 = `<img class="arrowImg" src="./arrowOff.png" alt="Aquí había una flecha... Ya no está xd">`;
+
+
+  //DRAG AND DROP
+  var dnd55 = document.querySelectorAll('div#a55d > div');
+  [].forEach.call(dnd55,function(block){
+    block.addEventListener('dragend',solutiona55);
+  });
+
+//solución al problema
+function solutiona55(){
+  if (cancelButton55==1){}
+  else{
+    
+  function limitSolution(){
+    cancelButton55 = 0;
+  };
+  //Variables locales elementales
+  var imgOn   = '<img class="arrowImg" src="./arrowOn.png" alt="Aquí había una flecha... Ya no está xd">';
+  var img = `<img class="arrowImg" src="./arrow.png" alt="Aquí había una flecha... Ya no está xd">`;
+  //Un reinicio ligero al oprimir el vector
+  [].forEach.call(arrow55,function(arrows){
+    arrows.innerHTML = imgOff55; 
+  });
+  //EL CÓDIGO MÁGICO QUE PERMITE ACOPLAR FUNCIONALIDAD Y DRAG AND DROP
+  var arrVector55 = [];
+  for (let nums of box55.box){
+      if (nums.textContent == 0){
+        arrVector55.push(Number.parseInt(0));
+      }
+      else{
+        arrVector55.push(Number.parseInt(nums.textContent));
+      }
+  };
+  filterOfZeros55 = arrVector55.filter(x=>x!=0);
+  box55.aux = filterOfZeros55;
+
+  //ACÁ SOLUCIONAS TODO
+  //Variables para solucionar la pregunta concreta
+      //mayor número primo leído
+
+    //ALGORITHM FOR PRIME NUMBERS >:c
+    var primes = [];
+
+    for (let i = 0; i < 10; i++){
+      let box = [];
+      
+      if(filterOfZeros55[i]>1){
+        for (let numbers = 2; numbers < filterOfZeros55[i]; numbers++) {
+          const prime = arrVector55[i]%numbers;
+          if (prime == 0) {
+            box.push(numbers);  
+          };
+        };
+        
+        if(box.length == 0){
+          primes.push(filterOfZeros55[i]);
+        };
+      };
+    };
+
+  let seeker = ((Math.max(...primes))==0)? theSecondHigher(primes):Math.max(...primes);
+  let snitch = arrVector55.indexOf(seeker);
+    
+  let plural = (primes.length == 1)? `solo el ${primes} en la posición n°${snitch} es primo... <br> Por ende, es el número primo más alto uwu`:`${primes} son números primos <br> y el más alto entre estos ${primes.length} es el ${seeker} en la posición ${snitch} c:`;
+
+  let noPrimes = (primes.length == 0)? `En este vector no hay ningún número primo :c mala suerte... <br> Intenta ingresando otra tanda de 10 números, humano`:`De este vector, ${plural}`;
+
+  var answer = `${noPrimes}`;
+
+  //"Animación" de las flechas
+  function animation(){
+    var card = new Audio();
+    card.src = "music/arrows.mp3";
+    card.play();
+
+    if(xd55 == 2){ 
+      if (flash55==-1){
+        arrow55[0].innerHTML = imgOff55;
+        xd55 = 0;
+        flash55=0;
+      }
+      else if (flash55==0){
+        arrow55[1].innerHTML = imgOff55;
+        arrow55[0].innerHTML = img;
+        flash55=-1;
+      }
+      else{
+        if (flash55<=8){
+          arrow55[(flash55+1)].innerHTML = imgOff55;
+        };
+        arrow55[flash55].innerHTML = img;
+        flash55--;
+      }               
+    }
+    else if(xd55 == 1){             //¿A LAS CUÁNTAS VUELTAS QUIERES VOLTEAR?
+      flash55 = 9;
+      arrow55[flash55].innerHTML = img;
+      xd55 = 2;
+      flash55--;
+    }
+    else{
+      if (flash55==10){                       //VUELTA 2
+        arrow55[(flash55-1)].innerHTML = imgOff55;
+        xd55++;
+        flash55 = 0;
+      }
+      else{                                 //VUELTA 1
+        if (flash55>=1){
+          arrow55[(flash55-1)].innerHTML = imgOff55;
+        };
+        arrow55[flash55].innerHTML = img;
+        flash55++;
+      }
+    };
+      getE("a55e").innerHTML = `...`
+  };  
+
+  //SOLUCIÓN LÓGICA ESQUEMÁTICA DEL PROBLEMA 
+  function solution(){
+    clearInterval(freedom55);
+    win = new Audio();
+    win.src = "music/win.mp3";
+    win.play();
+    card = new Audio();
+    card.src = "music/arrows.mp3";
+    card.play();
+
+    if(snitch!=-1){
+      flash55 = snitch;
+    }
+    else{
+      flash55 = 0;
+    };
+
+    for (let i = 0; i < 10; i++) {
+      if(i == snitch) {
+        arrow55[i].innerHTML = imgOn;
+      }
+      else{
+        arrow55[i].innerHTML = imgOff55;
+      }
+    };
+    getE("a55e").innerHTML = `${answer}`;
+  }; 
+
+
+  //Diálogos al vaciar
+  if (filterOfZeros55.length == 10) {
+    cancelButton55 = 1;
+    freedom55 = setInterval(animation,250);
+    justice55 = setTimeout(solution, 2000);
+    love55 = setTimeout(limitSolution,3000);
+  }
+  else if (filterOfZeros55.length == 0){
+    flash55 = 0;
+    clearInterval(freedom55);
+    clearTimeout(justice55);
+    clearTimeout(love55);
+    getE("a55e").innerHTML = ``;
+    [].forEach.call(arrow55,function(arrows){
+      arrows.innerHTML = imgOff55; 
+    });
+  }
+  else{
+    getE("a55e").innerHTML = `${answer} <br> Te invito a llenar todo el vector, humano, y mira lo que pasa -guiño guiño-`;
+  };
+};
+};
+
+
+//FUNCIONES PARA EL INPUT
+inputArr55.addEventListener("keydown",arrayi55, false);
+var iOfBox55 = 0; 
+function arrayi55(e){
+    //DIÁLOGOS PARA EL BOTÓN
+    if (filterOfZeros55.length == 10 || filterOfZeros55.length == 0){
+      buttona55.innerHTML = `GENERAR 10 NÚMEROS ALEATORIOS`;
+    }
+    else{
+      if (filterOfZeros55.length == 9){
+        buttona55.innerHTML = `GENERAR 1 NÚMERO ALEATORIO`;
+      }
+      else{
+        buttona55.innerHTML = `GENERAR ${10-filterOfZeros55.length} NÚMEROS ALEATORIOS`;
+      }
+    };
+    //DIÁLOGOS PARA EL SPAN
+  var ngt = (inputArr55.value<0)? `-`:``;
+
+  if (isNaN(inputArr55.value)){
+    document.getElementById("a55").innerHTML = `¿A quién intentas trollear con esos valores imposibles, humano?`;
+  }else{
+ 
+  if (inputArr55.value == `` || inputArr55.value == '-' || inputArr55.value == '--' || inputArr55.value == '---' || inputArr55.value == '----'){
+    document.getElementById("a55").innerHTML = ``;
+  }
+  else{
+    if (inputArr55.value == 0){
+      if (filterOfZeros55.length > 0){
+        document.getElementById("a55").innerHTML = `¿Quieres reiniciar el vector, humano? ¡Tírame ese cero entonces! c:<`;
+      }
+      else{
+        document.getElementById("a55").innerHTML = `Oye, humano... Primero regístrame números con ENTER <br> antes de estar pensando en reiniciar el vector... ¿No? >:c`;
+      }
+    }
+    else{
+      document.getElementById("a55").innerHTML = `¡Cool, un ${ngt}${Math.abs(inputArr55.value)}! Regístralo oprimiendo ENTER c:`;
+    }
+  } 
+  };
+  //Ejecutar función cuando se oprima ENTER
+  if (e.keyCode === 13){ 
+    if (isNaN(inputArr55.value)){
+      inputArr55.value = ``;
+    }else{
+    if (inputArr55.value == `` || inputArr55.value == '-' || inputArr55.value == '--' || inputArr55.value == '---' || inputArr55.value == '----'){
+      inputArr55.value = ``;
+    }
+    else if (inputArr55.value == 0){
+      if(filterOfZeros55.length==0){
+        inputArr55.value = ``;
+      }
+      else{
+        let zero = new Audio();
+        zero.src = "music/hollow.mp3";
+        zero.play();
+        clearTimeout(justice55);
+        clearInterval(freedom55);
+        document.getElementById("a55b").innerHTML = ``;
+        document.getElementById("a55c").innerHTML = `Vector reiniciado con éxito.`;
+        setTimeout(fade,7000);
+        function fade(){
+          return document.getElementById("a55c").innerHTML = ``;
+        };
+        box55.aux = [];
+        filterOfZeros55.length = [];
+        box55.equalize();
+        solutiona55();
+        inputArr55.value = ``;
+        iOfBox55 = 0;
+
+        clearInterval(freedom55);
+        clearTimeout(justice55);
+        clearTimeout(love55);
+        getE("a55e").innerHTML = ``;
+        [].forEach.call(arrow55,function(arrows){
+          arrows.innerHTML = imgOff55; 
+        });
+      }
+    }
+    else{
+      if (filterOfZeros55.length == 10){
+        let introduce = new Audio("./music/introduce.mp3"); introduce.play()
+        document.getElementById("a55c").innerHTML = `Puedes registrar el número 0 para reiniciar el vector uwu`;
+        box55.aux.shift();
+        box55.aux.push(Number(inputArr55.value));
+        box55.equalize();
+        solutiona55();
+        inputArr55.value = ``;
+      }
+      else{
+        let introduce = new Audio("./music/introduce.mp3"); introduce.play()
+        document.getElementById("a55c").innerHTML = `Puedes registrar el número 0 para reiniciar el vector uwu`;
+        for(iOfBox55 = 0; iOfBox55 < 10; iOfBox55++){
+          if(box55.box[iOfBox55].textContent == ``){
+            box55.box[iOfBox55].textContent = Number.parseInt(inputArr55.value);
+            iOfBox55 = 10;
+          };
+        };
+        solutiona55();
+        inputArr55.value = ``;
+      }
+    }
+  };
+}
+} 
+
+//FUNCIONES PARA EL BOTÓN
+function arrOnMouseOverLight55(){
+  buttona55.style.border="3px solid #ffab22";
+  buttona55.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
+  buttona55.style.color="rgb(31, 11, 11)";
+};
+function arrOnMouseOutLight55(){
+  buttona55.style.border='3px solid #f7b64e';
+  buttona55.style.color='#333333';
+  buttona55.style.background='linear-gradient(to bottom, #fff186 5%, #f7b64e 100%)';
+};
+
+function arrOnMouseOverDark55(){
+  buttona55.style.border="3px solid #ffaa22";
+  buttona55.style.background="linear-gradient(to bottom, #ffe205 5%, #ffb71b 100%)";
+};
+function arrOnMouseOutDark55(){
+  buttona55.style.border = '1px solid #ff9d00';
+  buttona55.style.color = 'rgb(31, 11, 11)';
+  buttona55.style.background = 'linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)';
+};
+
+function array55(){
+  //SOLUTION
+  box55.method(-9999,10000);
+  document.getElementById("a55c").innerHTML = `Puedes registrar el número 0 para reiniciar el vector uwu`;
+  buttona55.innerHTML = `GENERAR 10 NÚMEROS ALEATORIOS`;
+  solutiona55();
+
+  //OH, STYLO
+  buttona55.onmouseover = function (){arrOnMouseOverLight55()};
+  buttona55.onmouseout = function (){arrOnMouseOutLight55()};
+  buttona55.onmousedown = function (){arrOnMouseOutDark55()};
+  buttona55.onmouseup = function (){arrOnMouseOverDark55()};
+}
 
 // 31. Construir una función que reciba como parámetro un vector de 10 posiciones enteras y retorne el promedio entero del vector.
+var box56 = new get10Random("vector56");
+var buttona56 = document.getElementById("arrayb56");
+var inputArr56 = document.getElementById("arrayi56");
+var freedom56;
+var justice56;
+var love56;
+var flash56 = 0;
+var xd56 = 0;
+var cancelButton56 = 0;
+var filterOfZeros56 = [];
+var arrow56 = document.getElementsByClassName("arrow56");
+var imgOff56 = `<img class="arrowImg" src="./arrowOff.png" alt="Aquí había una flecha... Ya no está xd">`;
+
+
+  //DRAG AND DROP
+  var dnd56 = document.querySelectorAll('div#a56d > div');
+  [].forEach.call(dnd56,function(block){
+    block.addEventListener('dragend',solutiona56);
+  });
+
+//solución al problema
+function solutiona56(){
+  if (cancelButton56==1){}
+  else{
+    
+  function limitSolution(){
+    cancelButton56 = 0;
+  };
+  //Variables locales elementales
+  var imgOn   = '<img class="arrowImg" src="./arrowOn.png" alt="Aquí había una flecha... Ya no está xd">';
+  var img = `<img class="arrowImg" src="./arrow.png" alt="Aquí había una flecha... Ya no está xd">`;
+  //Un reinicio ligero al oprimir el vector
+  [].forEach.call(arrow56,function(arrows){
+    arrows.innerHTML = imgOff56; 
+  });
+  //EL CÓDIGO MÁGICO QUE PERMITE ACOPLAR FUNCIONALIDAD Y DRAG AND DROP
+  var arrVector56 = [];
+  for (let nums of box56.box){
+      if (nums.textContent == 0){
+        arrVector56.push(Number.parseInt(0));
+      }
+      else{
+        arrVector56.push(Number.parseInt(nums.textContent));
+      }
+  };
+  filterOfZeros56 = arrVector56.filter(x=>x!=0);
+  box56.aux = filterOfZeros56;
+
+  //ACÁ SOLUCIONAS TODO
+  //Variables para solucionar la pregunta concreta
+      //ÍNDICE del promedio del vector (si está)
+  var seeker = filterOfZeros56.reduce(function(acc,cur){return acc+cur;},0);
+  var avg = Math.round(seeker/filterOfZeros56.length); 
+  var snitch = arrVector56.indexOf(avg);
+  var basurero = [];
+
+  for (let i=0; i<arrVector56.length; i++){
+    if(avg == arrVector56[i]){
+      basurero.push(i);
+    }
+  };
+
+  var parallel = (basurero.length>1)? `<br> E INCLUSO SE HALLA REPETIDO ${basurero.length} VECES EN LAS POSICIONES N°: ${basurero} WTFF`:`<br> el pilluelo se halla en la posición n°${snitch} alv`;
+  let present = (snitch == -1)? `y pues... ese número no está en el vector... <br> Para serte franco, me sorprendería mucho que cayera en el vector con números aleatorios xd`:`y OMG EL PROMEDIO APARECE EN EL VECTOR DDD: ${parallel}`;
+  var answer = `De este vector, el promedio es ${avg} ${present}`;
+
+  //"Animación" de las flechas
+  function animation(){
+    var card = new Audio();
+    card.src = "music/arrows.mp3";
+    card.play();
+
+    if(xd56 == 2){ 
+      if (flash56==-1){
+        arrow56[0].innerHTML = imgOff56;
+        xd56 = 0;
+        flash56=0;
+      }
+      else if (flash56==0){
+        arrow56[1].innerHTML = imgOff56;
+        arrow56[0].innerHTML = img;
+        flash56=-1;
+      }
+      else{
+        if (flash56<=8){
+          arrow56[(flash56+1)].innerHTML = imgOff56;
+        };
+        arrow56[flash56].innerHTML = img;
+        flash56--;
+      }               
+    }
+    else if(xd56 == 1){             //¿A LAS CUÁNTAS VUELTAS QUIERES VOLTEAR?
+      flash56 = 9;
+      arrow56[flash56].innerHTML = img;
+      xd56 = 2;
+      flash56--;
+    }
+    else{
+      if (flash56==10){                       //VUELTA 2
+        arrow56[(flash56-1)].innerHTML = imgOff56;
+        xd56++;
+        flash56 = 0;
+      }
+      else{                                 //VUELTA 1
+        if (flash56>=1){
+          arrow56[(flash56-1)].innerHTML = imgOff56;
+        };
+        arrow56[flash56].innerHTML = img;
+        flash56++;
+      }
+    };
+      getE("a56e").innerHTML = `...`
+  };  
+
+  //SOLUCIÓN LÓGICA ESQUEMÁTICA DEL PROBLEMA 
+  function solution(){
+    clearInterval(freedom56);
+    [].forEach.call(arrow56,function(arrows){
+      arrows.innerHTML = imgOff56; 
+    });
+
+    for (let i=0; i<basurero.length; i++){
+      let miau = basurero[i]; 
+      arrow56[miau].innerHTML = imgOn;
+    };
+
+    win = new Audio();
+    win.src = "music/win.mp3";
+    win.play();
+    card = new Audio();
+    card.src = "music/arrows.mp3";
+    card.play();
+
+    getE("a56e").innerHTML = `${answer}`;
+  }; 
+
+
+  //Diálogos al vaciar
+  if (filterOfZeros56.length == 10) {
+    cancelButton56 = 1;
+    freedom56 = setInterval(animation,250);
+    justice56 = setTimeout(solution, 2000);
+    love56 = setTimeout(limitSolution,3000);
+  }
+  else if (filterOfZeros56.length == 0){
+    flash56 = 0;
+    clearInterval(freedom56);
+    clearTimeout(justice56);
+    clearTimeout(love56);
+    getE("a56e").innerHTML = ``;
+    [].forEach.call(arrow56,function(arrows){
+      arrows.innerHTML = imgOff56; 
+    });
+  }
+  else{
+    getE("a56e").innerHTML = `${answer} <br> Te invito a llenar todo el vector, humano, y mira lo que pasa -guiño guiño-`;
+  };
+};
+};
+
+
+//FUNCIONES PARA EL INPUT
+inputArr56.addEventListener("keydown",arrayi56, false);
+var iOfBox56 = 0; 
+function arrayi56(e){
+    //DIÁLOGOS PARA EL BOTÓN
+    if (filterOfZeros56.length == 10 || filterOfZeros56.length == 0){
+      buttona56.innerHTML = `GENERAR 10 NÚMEROS ALEATORIOS`;
+    }
+    else{
+      if (filterOfZeros56.length == 9){
+        buttona56.innerHTML = `GENERAR 1 NÚMERO ALEATORIO`;
+      }
+      else{
+        buttona56.innerHTML = `GENERAR ${10-filterOfZeros56.length} NÚMEROS ALEATORIOS`;
+      }
+    };
+    //DIÁLOGOS PARA EL SPAN
+  var ngt = (inputArr56.value<0)? `-`:``;
+
+  if (isNaN(inputArr56.value)){
+    document.getElementById("a56").innerHTML = `¿A quién intentas trollear con esos valores imposibles, humano?`;
+  }else{
+ 
+  if (inputArr56.value == `` || inputArr56.value == '-' || inputArr56.value == '--' || inputArr56.value == '---' || inputArr56.value == '----'){
+    document.getElementById("a56").innerHTML = ``;
+  }
+  else{
+    if (inputArr56.value == 0){
+      if (filterOfZeros56.length > 0){
+        document.getElementById("a56").innerHTML = `¿Quieres reiniciar el vector, humano? ¡Tírame ese cero entonces! c:<`;
+      }
+      else{
+        document.getElementById("a56").innerHTML = `Oye, humano... Primero regístrame números con ENTER <br> antes de estar pensando en reiniciar el vector... ¿No? >:c`;
+      }
+    }
+    else{
+      document.getElementById("a56").innerHTML = `¡Cool, un ${ngt}${Math.abs(inputArr56.value)}! Regístralo oprimiendo ENTER c:`;
+    }
+  } 
+  };
+  //Ejecutar función cuando se oprima ENTER
+  if (e.keyCode === 13){ 
+    if (isNaN(inputArr56.value)){
+      inputArr56.value = ``;
+    }else{
+    if (inputArr56.value == `` || inputArr56.value == '-' || inputArr56.value == '--' || inputArr56.value == '---' || inputArr56.value == '----'){
+      inputArr56.value = ``;
+    }
+    else if (inputArr56.value == 0){
+      if(filterOfZeros56.length==0){
+        inputArr56.value = ``;
+      }
+      else{
+        let zero = new Audio();
+        zero.src = "music/hollow.mp3";
+        zero.play();
+        clearTimeout(justice56);
+        clearInterval(freedom56);
+        document.getElementById("a56b").innerHTML = ``;
+        document.getElementById("a56c").innerHTML = `Vector reiniciado con éxito.`;
+        setTimeout(fade,7000);
+        function fade(){
+          return document.getElementById("a56c").innerHTML = ``;
+        };
+        box56.aux = [];
+        filterOfZeros56.length = [];
+        box56.equalize();
+        solutiona56();
+        inputArr56.value = ``;
+        iOfBox56 = 0;
+
+        clearInterval(freedom56);
+        clearTimeout(justice56);
+        clearTimeout(love56);
+        getE("a56e").innerHTML = ``;
+        [].forEach.call(arrow56,function(arrows){
+          arrows.innerHTML = imgOff56; 
+        });
+      }
+    }
+    else{
+      if (filterOfZeros56.length == 10){
+        let introduce = new Audio("./music/introduce.mp3"); introduce.play()
+        document.getElementById("a56c").innerHTML = `Puedes registrar el número 0 para reiniciar el vector uwu`;
+        box56.aux.shift();
+        box56.aux.push(Number(inputArr56.value));
+        box56.equalize();
+        solutiona56();
+        inputArr56.value = ``;
+      }
+      else{
+        let introduce = new Audio("./music/introduce.mp3"); introduce.play()
+        document.getElementById("a56c").innerHTML = `Puedes registrar el número 0 para reiniciar el vector uwu`;
+        for(iOfBox56 = 0; iOfBox56 < 10; iOfBox56++){
+          if(box56.box[iOfBox56].textContent == ``){
+            box56.box[iOfBox56].textContent = Number.parseInt(inputArr56.value);
+            iOfBox56 = 10;
+          };
+        };
+        solutiona56();
+        inputArr56.value = ``;
+      }
+    }
+  };
+}
+} 
+
+//FUNCIONES PARA EL BOTÓN
+function arrOnMouseOverLight56(){
+  buttona56.style.border="3px solid #ffab22";
+  buttona56.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
+  buttona56.style.color="rgb(31, 11, 11)";
+};
+function arrOnMouseOutLight56(){
+  buttona56.style.border='3px solid #f7b64e';
+  buttona56.style.color='#333333';
+  buttona56.style.background='linear-gradient(to bottom, #fff186 5%, #f7b64e 100%)';
+};
+
+function arrOnMouseOverDark56(){
+  buttona56.style.border="3px solid #ffaa22";
+  buttona56.style.background="linear-gradient(to bottom, #ffe205 5%, #ffb71b 100%)";
+};
+function arrOnMouseOutDark56(){
+  buttona56.style.border = '1px solid #ff9d00';
+  buttona56.style.color = 'rgb(31, 11, 11)';
+  buttona56.style.background = 'linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)';
+};
+
+function array56(){
+  //SOLUTION
+  box56.method(-9999,10000);
+  document.getElementById("a56c").innerHTML = `Puedes registrar el número 0 para reiniciar el vector uwu`;
+  buttona56.innerHTML = `GENERAR 10 NÚMEROS ALEATORIOS`;
+  solutiona56();
+
+  //OH, STYLO
+  buttona56.onmouseover = function (){arrOnMouseOverLight56()};
+  buttona56.onmouseout = function (){arrOnMouseOutLight56()};
+  buttona56.onmousedown = function (){arrOnMouseOutDark56()};
+  buttona56.onmouseup = function (){arrOnMouseOverDark56()};
+}
 
 // 32. Construir una función que reciba como parámetro un vector de 10 posiciones enteras y retorne el promedio real del vector.
+var box57 = new get10Random("vector57");
+var buttona57 = document.getElementById("arrayb57");
+var inputArr57 = document.getElementById("arrayi57");
+var freedom57;
+var justice57;
+var love57;
+var flash57 = 0;
+var xd57 = 0;
+var cancelButton57 = 0;
+var filterOfZeros57 = [];
+var arrow57 = document.getElementsByClassName("arrow57");
+var imgOff57 = `<img class="arrowImg" src="./arrowOff.png" alt="Aquí había una flecha... Ya no está xd">`;
 
-// 33. Construir una función que reciba como parámetros un vector de 10 posiciones enteras y un valor entero y retorne 1 si dicho valor entero se encuentra en el vector. Deberá retornar 0 si no es así.
 
-// 34. Construir una función que reciba como parámetro un vector de 10 posiciones enteras y retorne la posición del número entero que tenga mayor cantidad de dígitos.
+  //DRAG AND DROP
+  var dnd57 = document.querySelectorAll('div#a57d > div');
+  [].forEach.call(dnd57,function(block){
+    block.addEventListener('dragend',solutiona57);
+  });
+
+//solución al problema
+function solutiona57(){
+  if (cancelButton57==1){}
+  else{
+    
+  function limitSolution(){
+    cancelButton57 = 0;
+  };
+  //Variables locales elementales
+  var imgOn   = '<img class="arrowImg" src="./arrowOn.png" alt="Aquí había una flecha... Ya no está xd">';
+  var img = `<img class="arrowImg" src="./arrow.png" alt="Aquí había una flecha... Ya no está xd">`;
+  //Un reinicio ligero al oprimir el vector
+  [].forEach.call(arrow57,function(arrows){
+    arrows.innerHTML = imgOff57; 
+  });
+  //EL CÓDIGO MÁGICO QUE PERMITE ACOPLAR FUNCIONALIDAD Y DRAG AND DROP
+  var arrVector57 = [];
+  for (let nums of box57.box){
+      if (nums.textContent == 0){
+        arrVector57.push(Number.parseInt(0));
+      }
+      else{
+        arrVector57.push(Number.parseInt(nums.textContent));
+      }
+  };
+  filterOfZeros57 = arrVector57.filter(x=>x!=0);
+  box57.aux = filterOfZeros57;
+
+  //ACÁ SOLUCIONAS TODO
+  //Variables para solucionar la pregunta concreta
+      //ÍNDICE del promedio del vector (si está)
+  var seeker = filterOfZeros57.reduce(function(acc,cur){return acc+cur;},0);
+  var avg = Math.round(seeker/filterOfZeros57.length); 
+  var snitch = arrVector57.indexOf(avg);
+  var basurero = [];
+
+  for (let i=0; i<arrVector57.length; i++){
+    if(avg == arrVector57[i]){
+      basurero.push(i);
+    }
+  };
+
+  var parallel = (basurero.length>1)? `<br> E INCLUSO SE HALLA REPETIDO ${basurero.length} VECES EN LAS POSICIONES N°: ${basurero} WTFF`:`<br> el pilluelo se halla en la posición n°${snitch} alv`;
+  let present = (snitch == -1)? `y pues... ese número no está en el vector... <br> Para serte franco, me sorprendería mucho que cayera en el vector con números aleatorios xd`:`y OMG EL PROMEDIO APARECE EN EL VECTOR DDD: ${parallel}`;
+  var answer = `De este vector, el promedio es ${seeker/filterOfZeros57.length} ${present}`;
+
+  //"Animación" de las flechas
+  function animation(){
+    var card = new Audio();
+    card.src = "music/arrows.mp3";
+    card.play();
+
+    if(xd57 == 2){ 
+      if (flash57==-1){
+        arrow57[0].innerHTML = imgOff57;
+        xd57 = 0;
+        flash57=0;
+      }
+      else if (flash57==0){
+        arrow57[1].innerHTML = imgOff57;
+        arrow57[0].innerHTML = img;
+        flash57=-1;
+      }
+      else{
+        if (flash57<=8){
+          arrow57[(flash57+1)].innerHTML = imgOff57;
+        };
+        arrow57[flash57].innerHTML = img;
+        flash57--;
+      }               
+    }
+    else if(xd57 == 1){             //¿A LAS CUÁNTAS VUELTAS QUIERES VOLTEAR?
+      flash57 = 9;
+      arrow57[flash57].innerHTML = img;
+      xd57 = 2;
+      flash57--;
+    }
+    else{
+      if (flash57==10){                       //VUELTA 2
+        arrow57[(flash57-1)].innerHTML = imgOff57;
+        xd57++;
+        flash57 = 0;
+      }
+      else{                                 //VUELTA 1
+        if (flash57>=1){
+          arrow57[(flash57-1)].innerHTML = imgOff57;
+        };
+        arrow57[flash57].innerHTML = img;
+        flash57++;
+      }
+    };
+      getE("a57e").innerHTML = `...`
+  };  
+
+  //SOLUCIÓN LÓGICA ESQUEMÁTICA DEL PROBLEMA 
+  function solution(){
+    clearInterval(freedom57);
+    [].forEach.call(arrow57,function(arrows){
+      arrows.innerHTML = imgOff57; 
+    });
+
+    for (let i=0; i<basurero.length; i++){
+      let miau = basurero[i]; 
+      arrow57[miau].innerHTML = imgOn;
+    };
+
+    win = new Audio();
+    win.src = "music/win.mp3";
+    win.play();
+    card = new Audio();
+    card.src = "music/arrows.mp3";
+    card.play();
+
+    getE("a57e").innerHTML = `${answer}`;
+  }; 
+
+
+  //Diálogos al vaciar
+  if (filterOfZeros57.length == 10) {
+    cancelButton57 = 1;
+    freedom57 = setInterval(animation,250);
+    justice57 = setTimeout(solution, 2000);
+    love57 = setTimeout(limitSolution,3000);
+  }
+  else if (filterOfZeros57.length == 0){
+    flash57 = 0;
+    clearInterval(freedom57);
+    clearTimeout(justice57);
+    clearTimeout(love57);
+    getE("a57e").innerHTML = ``;
+    [].forEach.call(arrow57,function(arrows){
+      arrows.innerHTML = imgOff57; 
+    });
+  }
+  else{
+    getE("a57e").innerHTML = `${answer} <br> Te invito a llenar todo el vector, humano, y mira lo que pasa -guiño guiño-`;
+  };
+};
+};
+
+
+//FUNCIONES PARA EL INPUT
+inputArr57.addEventListener("keydown",arrayi57, false);
+var iOfBox57 = 0; 
+function arrayi57(e){
+    //DIÁLOGOS PARA EL BOTÓN
+    if (filterOfZeros57.length == 10 || filterOfZeros57.length == 0){
+      buttona57.innerHTML = `GENERAR 10 NÚMEROS ALEATORIOS`;
+    }
+    else{
+      if (filterOfZeros57.length == 9){
+        buttona57.innerHTML = `GENERAR 1 NÚMERO ALEATORIO`;
+      }
+      else{
+        buttona57.innerHTML = `GENERAR ${10-filterOfZeros57.length} NÚMEROS ALEATORIOS`;
+      }
+    };
+    //DIÁLOGOS PARA EL SPAN
+  var ngt = (inputArr57.value<0)? `-`:``;
+
+  if (isNaN(inputArr57.value)){
+    document.getElementById("a57").innerHTML = `¿A quién intentas trollear con esos valores imposibles, humano?`;
+  }else{
+ 
+  if (inputArr57.value == `` || inputArr57.value == '-' || inputArr57.value == '--' || inputArr57.value == '---' || inputArr57.value == '----'){
+    document.getElementById("a57").innerHTML = ``;
+  }
+  else{
+    if (inputArr57.value == 0){
+      if (filterOfZeros57.length > 0){
+        document.getElementById("a57").innerHTML = `¿Quieres reiniciar el vector, humano? ¡Tírame ese cero entonces! c:<`;
+      }
+      else{
+        document.getElementById("a57").innerHTML = `Oye, humano... Primero regístrame números con ENTER <br> antes de estar pensando en reiniciar el vector... ¿No? >:c`;
+      }
+    }
+    else{
+      document.getElementById("a57").innerHTML = `¡Cool, un ${ngt}${Math.abs(inputArr57.value)}! Regístralo oprimiendo ENTER c:`;
+    }
+  } 
+  };
+  //Ejecutar función cuando se oprima ENTER
+  if (e.keyCode === 13){ 
+    if (isNaN(inputArr57.value)){
+      inputArr57.value = ``;
+    }else{
+    if (inputArr57.value == `` || inputArr57.value == '-' || inputArr57.value == '--' || inputArr57.value == '---' || inputArr57.value == '----'){
+      inputArr57.value = ``;
+    }
+    else if (inputArr57.value == 0){
+      if(filterOfZeros57.length==0){
+        inputArr57.value = ``;
+      }
+      else{
+        let zero = new Audio();
+        zero.src = "music/hollow.mp3";
+        zero.play();
+        clearTimeout(justice57);
+        clearInterval(freedom57);
+        document.getElementById("a57b").innerHTML = ``;
+        document.getElementById("a57c").innerHTML = `Vector reiniciado con éxito.`;
+        setTimeout(fade,7000);
+        function fade(){
+          return document.getElementById("a57c").innerHTML = ``;
+        };
+        box57.aux = [];
+        filterOfZeros57.length = [];
+        box57.equalize();
+        solutiona57();
+        inputArr57.value = ``;
+        iOfBox57 = 0;
+
+        clearInterval(freedom57);
+        clearTimeout(justice57);
+        clearTimeout(love57);
+        getE("a57e").innerHTML = ``;
+        [].forEach.call(arrow57,function(arrows){
+          arrows.innerHTML = imgOff57; 
+        });
+      }
+    }
+    else{
+      if (filterOfZeros57.length == 10){
+        let introduce = new Audio("./music/introduce.mp3"); introduce.play()
+        document.getElementById("a57c").innerHTML = `Puedes registrar el número 0 para reiniciar el vector uwu`;
+        box57.aux.shift();
+        box57.aux.push(Number(inputArr57.value));
+        box57.equalize();
+        solutiona57();
+        inputArr57.value = ``;
+      }
+      else{
+        let introduce = new Audio("./music/introduce.mp3"); introduce.play()
+        document.getElementById("a57c").innerHTML = `Puedes registrar el número 0 para reiniciar el vector uwu`;
+        for(iOfBox57 = 0; iOfBox57 < 10; iOfBox57++){
+          if(box57.box[iOfBox57].textContent == ``){
+            box57.box[iOfBox57].textContent = Number.parseInt(inputArr57.value);
+            iOfBox57 = 10;
+          };
+        };
+        solutiona57();
+        inputArr57.value = ``;
+      }
+    }
+  };
+}
+} 
+
+//FUNCIONES PARA EL BOTÓN
+function arrOnMouseOverLight57(){
+  buttona57.style.border="3px solid #ffab22";
+  buttona57.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
+  buttona57.style.color="rgb(31, 11, 11)";
+};
+function arrOnMouseOutLight57(){
+  buttona57.style.border='3px solid #f7b64e';
+  buttona57.style.color='#333333';
+  buttona57.style.background='linear-gradient(to bottom, #fff186 5%, #f7b64e 100%)';
+};
+
+function arrOnMouseOverDark57(){
+  buttona57.style.border="3px solid #ffaa22";
+  buttona57.style.background="linear-gradient(to bottom, #ffe205 5%, #ffb71b 100%)";
+};
+function arrOnMouseOutDark57(){
+  buttona57.style.border = '1px solid #ff9d00';
+  buttona57.style.color = 'rgb(31, 11, 11)';
+  buttona57.style.background = 'linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)';
+};
+
+function array57(){
+  //SOLUTION
+  box57.method(-9999,10000);
+  document.getElementById("a57c").innerHTML = `Puedes registrar el número 0 para reiniciar el vector uwu`;
+  buttona57.innerHTML = `GENERAR 10 NÚMEROS ALEATORIOS`;
+  solutiona57();
+
+  //OH, STYLO
+  buttona57.onmouseover = function (){arrOnMouseOverLight57()};
+  buttona57.onmouseout = function (){arrOnMouseOutLight57()};
+  buttona57.onmousedown = function (){arrOnMouseOutDark57()};
+  buttona57.onmouseup = function (){arrOnMouseOverDark57()};
+}
+
+// 33. Construir una función que reciba como parámetros un vector de 10 posiciones enteras e identifique los números pares.
+var box58 = new get10Random("vector58");
+var buttona58 = document.getElementById("arrayb58");
+var inputArr58 = document.getElementById("arrayi58");
+var freedom58;
+var justice58;
+var love58;
+var flash58 = 0;
+var xd58 = 0;
+var cancelButton58 = 0;
+var filterOfZeros58 = [];
+var arrow58 = document.getElementsByClassName("arrow58");
+var imgOff58 = `<img class="arrowImg" src="./arrowOff.png" alt="Aquí había una flecha... Ya no está xd">`;
+
+
+  //DRAG AND DROP
+  var dnd58 = document.querySelectorAll('div#a58d > div');
+  [].forEach.call(dnd58,function(block){
+    block.addEventListener('dragend',solutiona58);
+  });
+
+//solución al problema
+function solutiona58(){
+  if (cancelButton58==1){}
+  else{
+    
+  function limitSolution(){
+    cancelButton58 = 0;
+  };
+  //Variables locales elementales
+  var imgOn   = '<img class="arrowImg" src="./arrowOn.png" alt="Aquí había una flecha... Ya no está xd">';
+  var img = `<img class="arrowImg" src="./arrow.png" alt="Aquí había una flecha... Ya no está xd">`;
+  //Un reinicio ligero al oprimir el vector
+  [].forEach.call(arrow58,function(arrows){
+    arrows.innerHTML = imgOff58; 
+  });
+  //EL CÓDIGO MÁGICO QUE PERMITE ACOPLAR FUNCIONALIDAD Y DRAG AND DROP
+  var arrVector58 = [];
+  for (let nums of box58.box){
+      if (nums.textContent == 0){
+        arrVector58.push(Number.parseInt(0));
+      }
+      else{
+        arrVector58.push(Number.parseInt(nums.textContent));
+      }
+  };
+  filterOfZeros58 = arrVector58.filter(x=>x!=0);
+  box58.aux = filterOfZeros58;
+
+  //ACÁ SOLUCIONAS TODO
+  //Variables para solucionar la pregunta concreta
+      //mayor número par leído
+  let pairs = filterOfZeros58.filter(x=>x%2==0),
+      snitch = []
+
+  for (let pair of pairs) {
+    if ( arrVector58.includes(pair) ) {
+      snitch.push( arrVector58.indexOf(pair) )
+    }
+  }
+  let plural = (pairs.length == 1) 
+    ? `Este vector tiene 1 número par: el ${pairs} UwU` 
+    : `Este vector tiene varios pares: los números ${pairs.join(', ')} :D`,
+      answer = (pairs.length == 0)
+    ? `Este vector no tiene ningún número par :c mala suerte... <br> Intenta con otra tanda de números, human@`
+    : plural;
+
+  //"Animación" de las flechas
+  function animation(){
+    var card = new Audio();
+    card.src = "music/arrows.mp3";
+    card.play();
+
+    if(xd58 == 2){ 
+      if (flash58==-1){
+        arrow58[0].innerHTML = imgOff58;
+        xd58 = 0;
+        flash58=0;
+      }
+      else if (flash58==0){
+        arrow58[1].innerHTML = imgOff58;
+        arrow58[0].innerHTML = img;
+        flash58=-1;
+      }
+      else{
+        if (flash58<=8){
+          arrow58[(flash58+1)].innerHTML = imgOff58;
+        };
+        arrow58[flash58].innerHTML = img;
+        flash58--;
+      }               
+    }
+    else if(xd58 == 1){             //¿A LAS CUÁNTAS VUELTAS QUIERES VOLTEAR?
+      flash58 = 9;
+      arrow58[flash58].innerHTML = img;
+      xd58 = 2;
+      flash58--;
+    }
+    else{
+      if (flash58==10){                       //VUELTA 2
+        arrow58[(flash58-1)].innerHTML = imgOff58;
+        xd58++;
+        flash58 = 0;
+      }
+      else{                                 //VUELTA 1
+        if (flash58>=1){
+          arrow58[(flash58-1)].innerHTML = imgOff58;
+        };
+        arrow58[flash58].innerHTML = img;
+        flash58++;
+      }
+    };
+      getE("a58e").innerHTML = `...`
+  };  
+
+  //SOLUCIÓN LÓGICA ESQUEMÁTICA DEL PROBLEMA 
+  function solution(){
+    clearInterval(freedom58);
+    [].forEach.call(arrow58,function(arrows){
+      arrows.innerHTML = imgOff58; 
+    });
+
+    for (let i=0; i<snitch.length; i++){
+      let miau = snitch[i]; 
+      arrow58[miau].innerHTML = imgOn;
+    };
+
+    win = new Audio();
+    win.src = "music/win.mp3";
+    win.play();
+    card = new Audio();
+    card.src = "music/arrows.mp3";
+    card.play();
+
+    getE("a58e").innerHTML = `${answer}`;
+  }; 
+
+
+  //Diálogos al vaciar
+  if (filterOfZeros58.length == 10) {
+    cancelButton58 = 1;
+    freedom58 = setInterval(animation,250);
+    justice58 = setTimeout(solution, 2000);
+    love58 = setTimeout(limitSolution,3000);
+  }
+  else if (filterOfZeros58.length == 0){
+    flash58 = 0;
+    clearInterval(freedom58);
+    clearTimeout(justice58);
+    clearTimeout(love58);
+    getE("a58e").innerHTML = ``;
+    [].forEach.call(arrow58,function(arrows){
+      arrows.innerHTML = imgOff58; 
+    });
+  }
+  else{
+    getE("a58e").innerHTML = `${answer} <br> Te invito a llenar todo el vector, humano, y mira lo que pasa -guiño guiño-`;
+  };
+};
+};
+
+
+//FUNCIONES PARA EL INPUT
+inputArr58.addEventListener("keydown",arrayi58, false);
+var iOfBox58 = 0; 
+function arrayi58(e){
+    //DIÁLOGOS PARA EL BOTÓN
+    if (filterOfZeros58.length == 10 || filterOfZeros58.length == 0){
+      buttona58.innerHTML = `GENERAR 10 NÚMEROS ALEATORIOS`;
+    }
+    else{
+      if (filterOfZeros58.length == 9){
+        buttona58.innerHTML = `GENERAR 1 NÚMERO ALEATORIO`;
+      }
+      else{
+        buttona58.innerHTML = `GENERAR ${10-filterOfZeros58.length} NÚMEROS ALEATORIOS`;
+      }
+    };
+    //DIÁLOGOS PARA EL SPAN
+  var ngt = (inputArr58.value<0)? `-`:``;
+
+  if (isNaN(inputArr58.value)){
+    document.getElementById("a58").innerHTML = `¿A quién intentas trollear con esos valores imposibles, humano?`;
+  }else{
+ 
+  if (inputArr58.value == `` || inputArr58.value == '-' || inputArr58.value == '--' || inputArr58.value == '---' || inputArr58.value == '----'){
+    document.getElementById("a58").innerHTML = ``;
+  }
+  else{
+    if (inputArr58.value == 0){
+      if (filterOfZeros58.length > 0){
+        document.getElementById("a58").innerHTML = `¿Quieres reiniciar el vector, humano? ¡Tírame ese cero entonces! c:<`;
+      }
+      else{
+        document.getElementById("a58").innerHTML = `Oye, humano... Primero regístrame números con ENTER <br> antes de estar pensando en reiniciar el vector... ¿No? >:c`;
+      }
+    }
+    else{
+      document.getElementById("a58").innerHTML = `¡Cool, un ${ngt}${Math.abs(inputArr58.value)}! Regístralo oprimiendo ENTER c:`;
+    }
+  } 
+  };
+  //Ejecutar función cuando se oprima ENTER
+  if (e.keyCode === 13){ 
+    if (isNaN(inputArr58.value)){
+      inputArr58.value = ``;
+    }else{
+    if (inputArr58.value == `` || inputArr58.value == '-' || inputArr58.value == '--' || inputArr58.value == '---' || inputArr58.value == '----'){
+      inputArr58.value = ``;
+    }
+    else if (inputArr58.value == 0){
+      if(filterOfZeros58.length==0){
+        inputArr58.value = ``;
+      }
+      else{
+        let zero = new Audio();
+        zero.src = "music/hollow.mp3";
+        zero.play();
+        clearTimeout(justice58);
+        clearInterval(freedom58);
+        document.getElementById("a58b").innerHTML = ``;
+        document.getElementById("a58c").innerHTML = `Vector reiniciado con éxito.`;
+        setTimeout(fade,7000);
+        function fade(){
+          return document.getElementById("a58c").innerHTML = ``;
+        };
+        box58.aux = [];
+        filterOfZeros58.length = [];
+        box58.equalize();
+        solutiona58();
+        inputArr58.value = ``;
+        iOfBox58 = 0;
+
+        clearInterval(freedom58);
+        clearTimeout(justice58);
+        clearTimeout(love58);
+        getE("a58e").innerHTML = ``;
+        [].forEach.call(arrow58,function(arrows){
+          arrows.innerHTML = imgOff58; 
+        });
+      }
+    }
+    else{
+      if (filterOfZeros58.length == 10){
+        let introduce = new Audio("./music/introduce.mp3"); introduce.play()
+        document.getElementById("a58c").innerHTML = `Puedes registrar el número 0 para reiniciar el vector uwu`;
+        box58.aux.shift();
+        box58.aux.push(Number(inputArr58.value));
+        box58.equalize();
+        solutiona58();
+        inputArr58.value = ``;
+      }
+      else{
+        let introduce = new Audio("./music/introduce.mp3"); introduce.play()
+        document.getElementById("a58c").innerHTML = `Puedes registrar el número 0 para reiniciar el vector uwu`;
+        for(iOfBox58 = 0; iOfBox58 < 10; iOfBox58++){
+          if(box58.box[iOfBox58].textContent == ``){
+            box58.box[iOfBox58].textContent = Number.parseInt(inputArr58.value);
+            iOfBox58 = 10;
+          };
+        };
+        solutiona58();
+        inputArr58.value = ``;
+      }
+    }
+  };
+}
+} 
+
+//FUNCIONES PARA EL BOTÓN
+function arrOnMouseOverLight58(){
+  buttona58.style.border="3px solid #ffab22";
+  buttona58.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
+  buttona58.style.color="rgb(31, 11, 11)";
+};
+function arrOnMouseOutLight58(){
+  buttona58.style.border='3px solid #f7b64e';
+  buttona58.style.color='#333333';
+  buttona58.style.background='linear-gradient(to bottom, #fff186 5%, #f7b64e 100%)';
+};
+
+function arrOnMouseOverDark58(){
+  buttona58.style.border="3px solid #ffaa22";
+  buttona58.style.background="linear-gradient(to bottom, #ffe205 5%, #ffb71b 100%)";
+};
+function arrOnMouseOutDark58(){
+  buttona58.style.border = '1px solid #ff9d00';
+  buttona58.style.color = 'rgb(31, 11, 11)';
+  buttona58.style.background = 'linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)';
+};
+
+function array58(){
+  //SOLUTION
+  box58.method(-9999,10000);
+  document.getElementById("a58c").innerHTML = `Puedes registrar el número 0 para reiniciar el vector uwu`;
+  buttona58.innerHTML = `GENERAR 10 NÚMEROS ALEATORIOS`;
+  solutiona58();
+
+  //OH, STYLO
+  buttona58.onmouseover = function (){arrOnMouseOverLight58()};
+  buttona58.onmouseout = function (){arrOnMouseOutLight58()};
+  buttona58.onmousedown = function (){arrOnMouseOutDark58()};
+  buttona58.onmouseup = function (){arrOnMouseOverDark58()};
+}
+
+// 34. Construir una función que reciba como parámetro un vector de 10 posiciones enteras y retorne la posición del número entero que tenga 3 o más dígitos.
+var box59 = new get10Random("vector59");
+var buttona59 = document.getElementById("arrayb59");
+var inputArr59 = document.getElementById("arrayi59");
+var freedom59;
+var justice59;
+var love59;
+var flash59 = 0;
+var xd59 = 0;
+var cancelButton59 = 0;
+var filterOfZeros59 = [];
+var arrow59 = document.getElementsByClassName("arrow59");
+var imgOff59 = `<img class="arrowImg" src="./arrowOff.png" alt="Aquí había una flecha... Ya no está xd">`;
+
+
+  //DRAG AND DROP
+  var dnd59 = document.querySelectorAll('div#a59d > div');
+  [].forEach.call(dnd59,function(block){
+    block.addEventListener('dragend',solutiona59);
+  });
+
+//solución al problema
+function solutiona59(){
+  if (cancelButton59==1){}
+  else{
+    
+  function limitSolution(){
+    cancelButton59 = 0;
+  };
+  //Variables locales elementales
+  var imgOn   = '<img class="arrowImg" src="./arrowOn.png" alt="Aquí había una flecha... Ya no está xd">';
+  var img = `<img class="arrowImg" src="./arrow.png" alt="Aquí había una flecha... Ya no está xd">`;
+  //Un reinicio ligero al oprimir el vector
+  [].forEach.call(arrow59,function(arrows){
+    arrows.innerHTML = imgOff59; 
+  });
+  //EL CÓDIGO MÁGICO QUE PERMITE ACOPLAR FUNCIONALIDAD Y DRAG AND DROP
+  var arrVector59 = [];
+  for (let nums of box59.box){
+      if (nums.textContent == 0){
+        arrVector59.push(Number.parseInt(0));
+      }
+      else{
+        arrVector59.push(Number.parseInt(nums.textContent));
+      }
+  };
+  filterOfZeros59 = arrVector59.filter(x=>x!=0);
+  box59.aux = filterOfZeros59;
+
+  //ACÁ SOLUCIONAS TODO
+  //Variables para solucionar la pregunta concreta
+      //números con mas de 3 dígitos.
+  var seeker = filterOfZeros59.filter(x => x>=5900 || x<= -5900);
+  var snitch = [];
+  
+  for (let j=0; j<seeker.length; j++){
+    for (let i=0; i<arrVector59.length; i++){
+      if(seeker[j] == arrVector59[i]){
+        snitch.push(i);
+      };
+    }; 
+  };
+
+  let parallel = (snitch.length>1)? `En este vector, hay ${snitch.length} números de más de 3 dígitos: ${seeker} <br> y se hallan en las posiciones n°: ${snitch} UwU`:`En este vector, hay un solo número de más de 3 dígitos: el ${seeker} en la posición n°${snitch} c:`;
+  let ten = (snitch.length==59)? `¡¡¡HURRAA!!! Todo el vector está compuesto por números de más de 3 dígitos :DDDD awiwii`:`${parallel}`;  
+  let none = (snitch.length==0)? `En este vector, ninguno de sus números tiene más de 3 dígitos... Vaya suerte tienes, human@ :c <br> Por tu bien... Espero que nunca vayas a un casino, F. En fin... Intenta otros números c:`:`${ten}`;
+  var answer = `${none}`;
+
+  //"Animación" de las flechas
+  function animation(){
+    var card = new Audio();
+    card.src = "music/arrows.mp3";
+    card.play();
+
+    if(xd59 == 2){ 
+      if (flash59==-1){
+        arrow59[0].innerHTML = imgOff59;
+        xd59 = 0;
+        flash59=0;
+      }
+      else if (flash59==0){
+        arrow59[1].innerHTML = imgOff59;
+        arrow59[0].innerHTML = img;
+        flash59=-1;
+      }
+      else{
+        if (flash59<=8){
+          arrow59[(flash59+1)].innerHTML = imgOff59;
+        };
+        arrow59[flash59].innerHTML = img;
+        flash59--;
+      }               
+    }
+    else if(xd59 == 1){             //¿A LAS CUÁNTAS VUELTAS QUIERES VOLTEAR?
+      flash59 = 9;
+      arrow59[flash59].innerHTML = img;
+      xd59 = 2;
+      flash59--;
+    }
+    else{
+      if (flash59==59){                       //VUELTA 2
+        arrow59[(flash59-1)].innerHTML = imgOff59;
+        xd59++;
+        flash59 = 0;
+      }
+      else{                                 //VUELTA 1
+        if (flash59>=1){
+          arrow59[(flash59-1)].innerHTML = imgOff59;
+        };
+        arrow59[flash59].innerHTML = img;
+        flash59++;
+      }
+    };
+      getE("a59e").innerHTML = `...`
+  };  
+
+  //SOLUCIÓN LÓGICA ESQUEMÁTICA DEL PROBLEMA 
+  function solution(){
+    clearInterval(freedom59);
+    [].forEach.call(arrow59,function(arrows){
+      arrows.innerHTML = imgOff59; 
+    });
+
+    for (let i=0; i<snitch.length; i++){
+      let miau = snitch[i]; 
+      arrow59[miau].innerHTML = imgOn;
+    };
+
+    win = new Audio();
+    win.src = "music/win.mp3";
+    win.play();
+    card = new Audio();
+    card.src = "music/arrows.mp3";
+    card.play();
+
+    getE("a59e").innerHTML = `${answer}`;
+  }; 
+
+
+  //Diálogos al vaciar
+  if (filterOfZeros59.length == 59) {
+    cancelButton59 = 1;
+    freedom59 = setInterval(animation,250);
+    justice59 = setTimeout(solution, 2000);
+    love59 = setTimeout(limitSolution,3000);
+  }
+  else if (filterOfZeros59.length == 0){
+    flash59 = 0;
+    clearInterval(freedom59);
+    clearTimeout(justice59);
+    clearTimeout(love59);
+    getE("a59e").innerHTML = ``;
+    [].forEach.call(arrow59,function(arrows){
+      arrows.innerHTML = imgOff59; 
+    });
+  }
+  else{
+    getE("a59e").innerHTML = `${answer} <br> Te invito a llenar todo el vector, humano, y mira lo que pasa -guiño guiño-`;
+  };
+};
+};
+
+//FUNCIONES PARA EL INPUT
+inputArr59.addEventListener("keydown",arrayi59, false);
+var iOfBox59 = 0; 
+function arrayi59(e){
+    //DIÁLOGOS PARA EL BOTÓN
+    if (filterOfZeros59.length == 59 || filterOfZeros59.length == 0){
+      buttona59.innerHTML = `GENERAR 59 NÚMEROS ALEATORIOS`;
+    }
+    else{
+      if (filterOfZeros59.length == 9){
+        buttona59.innerHTML = `GENERAR 1 NÚMERO ALEATORIO`;
+      }
+      else{
+        buttona59.innerHTML = `GENERAR ${59-filterOfZeros59.length} NÚMEROS ALEATORIOS`;
+      }
+    };
+    //DIÁLOGOS PARA EL SPAN
+  var ngt = (inputArr59.value<0)? `-`:``;
+
+  if (isNaN(inputArr59.value)){
+    document.getElementById("a59").innerHTML = `¿A quién intentas trollear con esos valores imposibles, humano?`;
+  }else{
+ 
+  if (inputArr59.value == `` || inputArr59.value == '-' || inputArr59.value == '--' || inputArr59.value == '---' || inputArr59.value == '----'){
+    document.getElementById("a59").innerHTML = ``;
+  }
+  else{
+    if (inputArr59.value == 0){
+      if (filterOfZeros59.length > 0){
+        document.getElementById("a59").innerHTML = `¿Quieres reiniciar el vector, humano? ¡Tírame ese cero entonces! c:<`;
+      }
+      else{
+        document.getElementById("a59").innerHTML = `Oye, humano... Primero regístrame números con ENTER <br> antes de estar pensando en reiniciar el vector... ¿No? >:c`;
+      }
+    }
+    else{
+      document.getElementById("a59").innerHTML = `¡Cool, un ${ngt}${Math.abs(inputArr59.value)}! Regístralo oprimiendo ENTER c:`;
+    }
+  } 
+  };
+  //Ejecutar función cuando se oprima ENTER
+  if (e.keyCode === 13){ 
+    if (isNaN(inputArr59.value)){
+      inputArr59.value = ``;
+    }else{
+    if (inputArr59.value == `` || inputArr59.value == '-' || inputArr59.value == '--' || inputArr59.value == '---' || inputArr59.value == '----'){
+      inputArr59.value = ``;
+    }
+    else if (inputArr59.value == 0){
+      if(filterOfZeros59.length==0){
+        inputArr59.value = ``;
+      }
+      else{
+        let zero = new Audio();
+        zero.src = "music/hollow.mp3";
+        zero.play();
+        clearTimeout(justice59);
+        clearInterval(freedom59);
+        document.getElementById("a59b").innerHTML = ``;
+        document.getElementById("a59c").innerHTML = `Vector reiniciado con éxito.`;
+        setTimeout(fade,7000);
+        function fade(){
+          return document.getElementById("a59c").innerHTML = ``;
+        };
+        box59.aux = [];
+        filterOfZeros59.length = [];
+        box59.equalize();
+        solutiona59();
+        inputArr59.value = ``;
+        iOfBox59 = 0;
+
+        clearInterval(freedom59);
+        clearTimeout(justice59);
+        clearTimeout(love59);
+        getE("a59e").innerHTML = ``;
+        [].forEach.call(arrow59,function(arrows){
+          arrows.innerHTML = imgOff59; 
+        });
+      }
+    }
+    else{
+      if (filterOfZeros59.length == 59){
+        let introduce = new Audio("./music/introduce.mp3"); introduce.play()
+        document.getElementById("a59c").innerHTML = `Puedes registrar el número 0 para reiniciar el vector uwu`;
+        box59.aux.shift();
+        box59.aux.push(Number(inputArr59.value));
+        box59.equalize();
+        solutiona59();
+        inputArr59.value = ``;
+      }
+      else{
+        let introduce = new Audio("./music/introduce.mp3"); introduce.play()
+        document.getElementById("a59c").innerHTML = `Puedes registrar el número 0 para reiniciar el vector uwu`;
+        for(iOfBox59 = 0; iOfBox59 < 59; iOfBox59++){
+          if(box59.box[iOfBox59].textContent == ``){
+            box59.box[iOfBox59].textContent = Number.parseInt(inputArr59.value);
+            iOfBox59 = 59;
+          };
+        };
+        solutiona59();
+        inputArr59.value = ``;
+      }
+    }
+  };
+}
+} 
+
+//FUNCIONES PARA EL BOTÓN
+function arrOnMouseOverLight59(){
+  buttona59.style.border="3px solid #ffab22";
+  buttona59.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
+  buttona59.style.color="rgb(31, 11, 11)";
+};
+function arrOnMouseOutLight59(){
+  buttona59.style.border='3px solid #f7b64e';
+  buttona59.style.color='#333333';
+  buttona59.style.background='linear-gradient(to bottom, #fff186 5%, #f7b64e 100%)';
+};
+
+function arrOnMouseOverDark59(){
+  buttona59.style.border="3px solid #ffaa22";
+  buttona59.style.background="linear-gradient(to bottom, #ffe205 5%, #ffb71b 100%)";
+};
+function arrOnMouseOutDark59(){
+  buttona59.style.border = '1px solid #ff9d00';
+  buttona59.style.color = 'rgb(31, 11, 11)';
+  buttona59.style.background = 'linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)';
+};
+
+function array59(){
+  //SOLUTION
+  box59.method(-9999,59000);
+  document.getElementById("a59c").innerHTML = `Puedes registrar el número 0 para reiniciar el vector uwu`;
+  buttona59.innerHTML = `GENERAR 59 NÚMEROS ALEATORIOS`;
+  solutiona59();
+
+  //OH, STYLO
+  buttona59.onmouseover = function (){arrOnMouseOverLight59()};
+  buttona59.onmouseout = function (){arrOnMouseOutLight59()};
+  buttona59.onmousedown = function (){arrOnMouseOutDark59()};
+  buttona59.onmouseup = function (){arrOnMouseOverDark59()};
+}
 
 // 35. Construir una función que reciba como parámetro un vector de 10 posiciones enteras y retorne la posición en la que se encuentre el mayor número primo que termine en 3 almacenado en el vector.
+var box60 = new get10Random("vector60");
+var buttona60 = document.getElementById("arrayb60");
+var inputArr60 = document.getElementById("arrayi60");
+var freedom60;
+var justice60;
+var love60;
+var flash60 = 0;
+var xd60 = 0;
+var cancelButton60 = 0;
+var filterOfZeros60 = [];
+var arrow60 = document.getElementsByClassName("arrow60");
+var imgOff60 = `<img class="arrowImg" src="./arrowOff.png" alt="Aquí había una flecha... Ya no está xd">`;
+
+
+  //DRAG AND DROP
+  var dnd60 = document.querySelectorAll('div#a60d > div');
+  [].forEach.call(dnd60,function(block){
+    block.addEventListener('dragend',solutiona60);
+  });
+
+//solución al problema
+function solutiona60(){
+  if (cancelButton60==1){}
+  else{
+    
+  function limitSolution(){
+    cancelButton60 = 0;
+  };
+  //Variables locales elementales
+  var imgOn   = '<img class="arrowImg" src="./arrowOn.png" alt="Aquí había una flecha... Ya no está xd">';
+  var img = `<img class="arrowImg" src="./arrow.png" alt="Aquí había una flecha... Ya no está xd">`;
+  //Un reinicio ligero al oprimir el vector
+  [].forEach.call(arrow60,function(arrows){
+    arrows.innerHTML = imgOff60; 
+  });
+  //EL CÓDIGO MÁGICO QUE PERMITE ACOPLAR FUNCIONALIDAD Y DRAG AND DROP
+  var arrVector60 = [];
+  for (let nums of box60.box){
+      if (nums.textContent == 0){
+        arrVector60.push(Number.parseInt(0));
+      }
+      else{
+        arrVector60.push(Number.parseInt(nums.textContent));
+      }
+  };
+  filterOfZeros60 = arrVector60.filter(x=>x!=0);
+  box60.aux = filterOfZeros60;
+
+  //ACÁ SOLUCIONAS TODO
+  //Variables para solucionar la pregunta concreta
+      //menor número primo leído
+
+    //ALGORITHM FOR PRIME NUMBERS >:c
+    var primes = [];
+
+    for (let i = 0; i < 10; i++){
+      let box = [];
+      
+      if(filterOfZeros60[i]>1){
+        for (let numbers = 2; numbers < filterOfZeros60[i]; numbers++) {
+          const prime = arrVector60[i]%numbers;
+          if (prime == 0) {
+            box.push(numbers);  
+          };
+        };
+        
+        if(box.length == 0){
+          primes.push(filterOfZeros60[i]);
+        };
+      };
+    };
+
+  let seeker = primes.filter(x=>(x%10)==3);
+  let snitch = [];
+  for (let i=0; i<seeker.length; i++){
+    snitch.push(arrVector60.indexOf(seeker[i]));
+  };
+  
+  let oneOrTwo = (seeker.length == 1)? `<br> y pues el ${seeker} termina en 3 c:`:`<br> e increíblemente, los números ${seeker.join(', ')} terminan en 3 :DD`
+  let plural = (seeker.length > 0)? oneOrTwo:`...Pero no hay primo alguno que termine en 3 :c`;
+  let cousin = (primes.length == 1)? `¡El número ${primes} es primo!`:`¡Los números ${primes.join(', ')} son primos! :D`;
+  let noPrimes = (primes.length == 0)? `En este vector no hay ningún número primo :c mala suerte... <br> Intenta ingresando otra tanda de 10 números, humano`:`${cousin} :D ${plural}`;
+
+  var answer = `${noPrimes}`;
+
+  //"Animación" de las flechas
+  function animation(){
+    var card = new Audio();
+    card.src = "music/arrows.mp3";
+    card.play();
+
+    if(xd60 == 2){ 
+      if (flash60==-1){
+        arrow60[0].innerHTML = imgOff60;
+        xd60 = 0;
+        flash60=0;
+      }
+      else if (flash60==0){
+        arrow60[1].innerHTML = imgOff60;
+        arrow60[0].innerHTML = img;
+        flash60=-1;
+      }
+      else{
+        if (flash60<=8){
+          arrow60[(flash60+1)].innerHTML = imgOff60;
+        };
+        arrow60[flash60].innerHTML = img;
+        flash60--;
+      }               
+    }
+    else if(xd60 == 1){             //¿A LAS CUÁNTAS VUELTAS QUIERES VOLTEAR?
+      flash60 = 9;
+      arrow60[flash60].innerHTML = img;
+      xd60 = 2;
+      flash60--;
+    }
+    else{
+      if (flash60==10){                       //VUELTA 2
+        arrow60[(flash60-1)].innerHTML = imgOff60;
+        xd60++;
+        flash60 = 0;
+      }
+      else{                                 //VUELTA 1
+        if (flash60>=1){
+          arrow60[(flash60-1)].innerHTML = imgOff60;
+        };
+        arrow60[flash60].innerHTML = img;
+        flash60++;
+      }
+    };
+      getE("a60e").innerHTML = `...`
+  };  
+
+  //SOLUCIÓN LÓGICA ESQUEMÁTICA DEL PROBLEMA 
+  function solution(){
+    clearInterval(freedom60);
+    [].forEach.call(arrow60,function(arrows){
+      arrows.innerHTML = imgOff60; 
+    });
+
+    for (let i=0; i<snitch.length; i++){
+      let miau = snitch[i]; 
+      arrow60[miau].innerHTML = imgOn;
+    };
+
+    win = new Audio();
+    win.src = "music/win.mp3";
+    win.play();
+    card = new Audio();
+    card.src = "music/arrows.mp3";
+    card.play();
+
+    getE("a60e").innerHTML = `${answer}`;
+  }; 
+
+
+  //Diálogos al vaciar
+  if (filterOfZeros60.length == 10) {
+    cancelButton60 = 1;
+    freedom60 = setInterval(animation,200);
+    justice60 = setTimeout(solution, 2000);
+    love60 = setTimeout(limitSolution,3000);
+  }
+  else if (filterOfZeros60.length == 0){
+    flash60 = 0;
+    clearInterval(freedom60);
+    clearTimeout(justice60);
+    clearTimeout(love60);
+    getE("a60e").innerHTML = ``;
+    [].forEach.call(arrow60,function(arrows){
+      arrows.innerHTML = imgOff60; 
+    });
+  }
+  else{
+    getE("a60e").innerHTML = `${answer} <br> Te invito a llenar todo el vector, humano, y mira lo que pasa -guiño guiño-`;
+  };
+};
+};
+
+
+//FUNCIONES PARA EL INPUT
+inputArr60.addEventListener("keydown",arrayi60, false);
+var iOfBox60 = 0; 
+function arrayi60(e){
+    //DIÁLOGOS PARA EL BOTÓN
+    if (filterOfZeros60.length == 10 || filterOfZeros60.length == 0){
+      buttona60.innerHTML = `GENERAR 10 NÚMEROS ALEATORIOS`;
+    }
+    else{
+      if (filterOfZeros60.length == 9){
+        buttona60.innerHTML = `GENERAR 1 NÚMERO ALEATORIO`;
+      }
+      else{
+        buttona60.innerHTML = `GENERAR ${10-filterOfZeros60.length} NÚMEROS ALEATORIOS`;
+      }
+    };
+    //DIÁLOGOS PARA EL SPAN
+  var ngt = (inputArr60.value<0)? `-`:``;
+
+  if (isNaN(inputArr60.value)){
+    document.getElementById("a60").innerHTML = `¿A quién intentas trollear con esos valores imposibles, humano?`;
+  }else{
+ 
+  if (inputArr60.value == `` || inputArr60.value == '-' || inputArr60.value == '--' || inputArr60.value == '---' || inputArr60.value == '----'){
+    document.getElementById("a60").innerHTML = ``;
+  }
+  else{
+    if (inputArr60.value == 0){
+      if (filterOfZeros60.length > 0){
+        document.getElementById("a60").innerHTML = `¿Quieres reiniciar el vector, humano? ¡Tírame ese cero entonces! c:<`;
+      }
+      else{
+        document.getElementById("a60").innerHTML = `Oye, humano... Primero regístrame números con ENTER <br> antes de estar pensando en reiniciar el vector... ¿No? >:c`;
+      }
+    }
+    else{
+      document.getElementById("a60").innerHTML = `¡Cool, un ${ngt}${Math.abs(inputArr60.value)}! Regístralo oprimiendo ENTER c:`;
+    }
+  } 
+  };
+  //Ejecutar función cuando se oprima ENTER
+  if (e.keyCode === 13){ 
+    if (isNaN(inputArr60.value)){
+      inputArr60.value = ``;
+    }else{
+    if (inputArr60.value == `` || inputArr60.value == '-' || inputArr60.value == '--' || inputArr60.value == '---' || inputArr60.value == '----'){
+      inputArr60.value = ``;
+    }
+    else if (inputArr60.value == 0){
+      if(filterOfZeros60.length==0){
+        inputArr60.value = ``;
+      }
+      else{
+        let zero = new Audio();
+        zero.src = "music/hollow.mp3";
+        zero.play();
+        clearTimeout(justice60);
+        clearInterval(freedom60);
+        document.getElementById("a60b").innerHTML = ``;
+        document.getElementById("a60c").innerHTML = `Vector reiniciado con éxito.`;
+        setTimeout(fade,7000);
+        function fade(){
+          return document.getElementById("a60c").innerHTML = ``;
+        };
+        box60.aux = [];
+        filterOfZeros60.length = [];
+        box60.equalize();
+        solutiona60();
+        inputArr60.value = ``;
+        iOfBox60 = 0;
+
+        clearInterval(freedom60);
+        clearTimeout(justice60);
+        clearTimeout(love60);
+        getE("a60e").innerHTML = ``;
+        [].forEach.call(arrow60,function(arrows){
+          arrows.innerHTML = imgOff60; 
+        });
+      }
+    }
+    else{
+      if (filterOfZeros60.length == 10){
+        let introduce = new Audio("./music/introduce.mp3"); introduce.play()
+        document.getElementById("a60c").innerHTML = `Puedes registrar el número 0 para reiniciar el vector uwu`;
+        box60.aux.shift();
+        box60.aux.push(Number(inputArr60.value));
+        box60.equalize();
+        solutiona60();
+        inputArr60.value = ``;
+      }
+      else{
+        let introduce = new Audio("./music/introduce.mp3"); introduce.play()
+        document.getElementById("a60c").innerHTML = `Puedes registrar el número 0 para reiniciar el vector uwu`;
+        for(iOfBox60 = 0; iOfBox60 < 10; iOfBox60++){
+          if(box60.box[iOfBox60].textContent == ``){
+            box60.box[iOfBox60].textContent = Number.parseInt(inputArr60.value);
+            iOfBox60 = 10;
+          };
+        };
+        solutiona60();
+        inputArr60.value = ``;
+      }
+    }
+  };
+}
+} 
+
+//FUNCIONES PARA EL BOTÓN
+function arrOnMouseOverLight60(){
+  buttona60.style.border="3px solid #ffab22";
+  buttona60.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
+  buttona60.style.color="rgb(31, 11, 11)";
+};
+function arrOnMouseOutLight60(){
+  buttona60.style.border='3px solid #f7b64e';
+  buttona60.style.color='#333333';
+  buttona60.style.background='linear-gradient(to bottom, #fff186 5%, #f7b64e 100%)';
+};
+
+function arrOnMouseOverDark60(){
+  buttona60.style.border="3px solid #ffaa22";
+  buttona60.style.background="linear-gradient(to bottom, #ffe205 5%, #ffb71b 100%)";
+};
+function arrOnMouseOutDark60(){
+  buttona60.style.border = '1px solid #ff9d00';
+  buttona60.style.color = 'rgb(31, 11, 11)';
+  buttona60.style.background = 'linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)';
+};
+
+function array60(){
+  //SOLUTION
+  box60.method(-9999,10000);
+  document.getElementById("a60c").innerHTML = `Puedes registrar el número 0 para reiniciar el vector uwu`;
+  buttona60.innerHTML = `GENERAR 10 NÚMEROS ALEATORIOS`;
+  solutiona60();
+
+  //OH, STYLO
+  buttona60.onmouseover = function (){arrOnMouseOverLight60()};
+  buttona60.onmouseout = function (){arrOnMouseOutLight60()};
+  buttona60.onmousedown = function (){arrOnMouseOutDark60()};
+  buttona60.onmouseup = function (){arrOnMouseOverDark60()};
+}
 
 // 36. Construir una función que reciba como parámetro un entero y retorne ese elemento de la serie de Fibonacci.
 function F36() {
@@ -25600,12 +27455,1320 @@ function F37() {
 }
 
 // 38. Construir una función que reciba como parámetro un vector de 10 posiciones enteras y retorne la cantidad de números terminados en 3 que contiene el vector.
+var box61 = new get10Random("vector61");
+var buttona61 = document.getElementById("arrayb61");
+var inputArr61 = document.getElementById("arrayi61");
+var freedom61;
+var justice61;
+var love61;
+var flash61 = 0;
+var xd61 = 0;
+var cancelButton61 = 0;
+var filterOfZeros61 = [];
+var arrow61 = document.getElementsByClassName("arrow61");
+var imgOff61 = `<img class="arrowImg" src="./arrowOff.png" alt="Aquí había una flecha... Ya no está xd">`;
 
-// 39. Construir una función que reciba como parámetros un vector de 10 posiciones enteras y un dígito y que retorne la cantidad de veces que dicho dígito se encuentra en el vector. No se olvide que un mismo dígito puede estar varias veces en un solo número.
+
+  //DRAG AND DROP
+  var dnd61 = document.querySelectorAll('div#a61d > div');
+  [].forEach.call(dnd61,function(block){
+    block.addEventListener('dragend',solutiona61);
+  });
+
+//solución al problema
+function solutiona61(){
+  if (cancelButton61==1){}
+  else{
+    
+  function limitSolution(){
+    cancelButton61 = 0;
+  };
+  //Variables locales elementales
+  var imgOn   = '<img class="arrowImg" src="./arrowOn.png" alt="Aquí había una flecha... Ya no está xd">';
+  var img = `<img class="arrowImg" src="./arrow.png" alt="Aquí había una flecha... Ya no está xd">`;
+  //Un reinicio ligero al oprimir el vector
+  [].forEach.call(arrow61,function(arrows){
+    arrows.innerHTML = imgOff61; 
+  });
+  //EL CÓDIGO MÁGICO QUE PERMITE ACOPLAR FUNCIONALIDAD Y DRAG AND DROP
+  var arrVector61 = [];
+  for (let nums of box61.box){
+      if (nums.textContent == 0){
+        arrVector61.push(Number.parseInt(0));
+      }
+      else{
+        arrVector61.push(Number.parseInt(nums.textContent));
+      }
+  };
+  filterOfZeros61 = arrVector61.filter(x=>x!=0);
+  box61.aux = filterOfZeros61;
+
+  //ACÁ SOLUCIONAS TODO
+  //Variables para solucionar la pregunta concreta
+      //ÍNDICES de números terminados en 4
+  var seeker = filterOfZeros61.filter(x=>x%10==3||x%10==-3);
+  var snitch = [];
+
+  for (let j=0; j<seeker.length; j++){
+    for (let i=0; i<filterOfZeros61.length; i++){
+      if(filterOfZeros61[i]==seeker[j]){
+        snitch.push(i);
+      };
+    };
+  };
+
+  
+  var parallel = (snitch.length>1)? `<br> y se hallan en las posiciones ${snitch} UwU`:`y se halla en la posición n°${snitch} c:`;
+  var plural = (snitch.length>1)? `los números ${seeker} terminan en 3`:`el número ${seeker} termina en 3`;
+  var no4 = (seeker.length==0)? `Este vector no cuenta con números que terminen en 3 :c vaya suerte... <br> ¡Prueba con otra tanda de números, human@!`:`De este vector, ${plural} ${parallel}`;
+  var answer = no4;
+
+  //"Animación" de las flechas
+  function animation(){
+    var card = new Audio();
+    card.src = "music/arrows.mp3";
+    card.play();
+
+    if(xd61 == 2){ 
+      if (flash61==-1){
+        arrow61[0].innerHTML = imgOff61;
+        xd61 = 0;
+        flash61=0;
+      }
+      else if (flash61==0){
+        arrow61[1].innerHTML = imgOff61;
+        arrow61[0].innerHTML = img;
+        flash61=-1;
+      }
+      else{
+        if (flash61<=8){
+          arrow61[(flash61+1)].innerHTML = imgOff61;
+        };
+        arrow61[flash61].innerHTML = img;
+        flash61--;
+      }               
+    }
+    else if(xd61 == 1){             //¿A LAS CUÁNTAS VUELTAS QUIERES VOLTEAR?
+      flash61 = 9;
+      arrow61[flash61].innerHTML = img;
+      xd61 = 2;
+      flash61--;
+    }
+    else{
+      if (flash61==10){                       //VUELTA 2
+        arrow61[(flash61-1)].innerHTML = imgOff61;
+        xd61++;
+        flash61 = 0;
+      }
+      else{                                 //VUELTA 1
+        if (flash61>=1){
+          arrow61[(flash61-1)].innerHTML = imgOff61;
+        };
+        arrow61[flash61].innerHTML = img;
+        flash61++;
+      }
+    };
+      getE("a61e").innerHTML = `...`
+  };  
+
+  //SOLUCIÓN LÓGICA ESQUEMÁTICA DEL PROBLEMA 
+  function solution(){
+    clearInterval(freedom61);
+    [].forEach.call(arrow61,function(arrows){
+      arrows.innerHTML = imgOff61; 
+    });
+
+    for (let i=0; i<snitch.length; i++){
+      let miau = snitch[i]; 
+      arrow61[miau].innerHTML = imgOn;
+    };
+
+    win = new Audio();
+    win.src = "music/win.mp3";
+    win.play();
+    card = new Audio();
+    card.src = "music/arrows.mp3";
+    card.play();
+    
+    getE("a61e").innerHTML = `${answer}`;
+  }; 
+
+
+  //Diálogos al vaciar
+  if (filterOfZeros61.length == 10) {
+    cancelButton61 = 1;
+    freedom61 = setInterval(animation,250);
+    justice61 = setTimeout(solution, 2000);
+    love61 = setTimeout(limitSolution,3000);
+  }
+  else if (filterOfZeros61.length == 0){
+    flash61 = 0;
+    clearInterval(freedom61);
+    clearTimeout(justice61);
+    clearTimeout(love61);
+    getE("a61e").innerHTML = ``;
+    [].forEach.call(arrow61,function(arrows){
+      arrows.innerHTML = imgOff61; 
+    });
+  }
+  else{
+    getE("a61e").innerHTML = `${answer} <br> Te invito a llenar todo el vector, humano, y mira lo que pasa -guiño guiño-`;
+  };
+};
+};
+
+
+//FUNCIONES PARA EL INPUT
+inputArr61.addEventListener("keydown",arrayi61, false);
+var iOfBox61 = 0; 
+function arrayi61(e){
+    //DIÁLOGOS PARA EL BOTÓN
+    if (filterOfZeros61.length == 10 || filterOfZeros61.length == 0){
+      buttona61.innerHTML = `GENERAR 10 NÚMEROS ALEATORIOS`;
+    }
+    else{
+      if (filterOfZeros61.length == 9){
+        buttona61.innerHTML = `GENERAR 1 NÚMERO ALEATORIO`;
+      }
+      else{
+        buttona61.innerHTML = `GENERAR ${10-filterOfZeros61.length} NÚMEROS ALEATORIOS`;
+      }
+    };
+    //DIÁLOGOS PARA EL SPAN
+  var ngt = (inputArr61.value<0)? `-`:``;
+
+  if (isNaN(inputArr61.value)){
+    document.getElementById("a61").innerHTML = `¿A quién intentas trollear con esos valores imposibles, humano?`;
+  }else{
+ 
+  if (inputArr61.value == `` || inputArr61.value == '-' || inputArr61.value == '--' || inputArr61.value == '---' || inputArr61.value == '----'){
+    document.getElementById("a61").innerHTML = ``;
+  }
+  else{
+    if (inputArr61.value == 0){
+      if (filterOfZeros61.length > 0){
+        document.getElementById("a61").innerHTML = `¿Quieres reiniciar el vector, humano? ¡Tírame ese cero entonces! c:<`;
+      }
+      else{
+        document.getElementById("a61").innerHTML = `Oye, humano... Primero regístrame números con ENTER <br> antes de estar pensando en reiniciar el vector... ¿No? >:c`;
+      }
+    }
+    else{
+      document.getElementById("a61").innerHTML = `¡Cool, un ${ngt}${Math.abs(inputArr61.value)}! Regístralo oprimiendo ENTER c:`;
+    }
+  } 
+  };
+  //Ejecutar función cuando se oprima ENTER
+  if (e.keyCode === 13){ 
+    if (isNaN(inputArr61.value)){
+      inputArr61.value = ``;
+    }else{
+    if (inputArr61.value == `` || inputArr61.value == '-' || inputArr61.value == '--' || inputArr61.value == '---' || inputArr61.value == '----'){
+      inputArr61.value = ``;
+    }
+    else if (inputArr61.value == 0){
+      if(filterOfZeros61.length==0){
+        inputArr61.value = ``;
+      }
+      else{
+        let zero = new Audio();
+        zero.src = "music/hollow.mp3";
+        zero.play();
+        clearTimeout(justice61);
+        clearInterval(freedom61);
+        document.getElementById("a61b").innerHTML = ``;
+        document.getElementById("a61c").innerHTML = `Vector reiniciado con éxito.`;
+        setTimeout(fade,7000);
+        function fade(){
+          return document.getElementById("a61c").innerHTML = ``;
+        };
+        box61.aux = [];
+        filterOfZeros61.length = [];
+        box61.equalize();
+        solutiona61();
+        inputArr61.value = ``;
+        iOfBox61 = 0;
+
+        clearInterval(freedom61);
+        clearTimeout(justice61);
+        clearTimeout(love61);
+        getE("a61e").innerHTML = ``;
+        [].forEach.call(arrow61,function(arrows){
+          arrows.innerHTML = imgOff61; 
+        });
+      }
+    }
+    else{
+      if (filterOfZeros61.length == 10){
+        let introduce = new Audio("./music/introduce.mp3"); introduce.play()
+        document.getElementById("a61c").innerHTML = `Puedes registrar el número 0 para reiniciar el vector uwu`;
+        box61.aux.shift();
+        box61.aux.push(Number(inputArr61.value));
+        box61.equalize();
+        solutiona61();
+        inputArr61.value = ``;
+      }
+      else{
+        let introduce = new Audio("./music/introduce.mp3"); introduce.play()
+        document.getElementById("a61c").innerHTML = `Puedes registrar el número 0 para reiniciar el vector uwu`;
+        for(iOfBox61 = 0; iOfBox61 < 10; iOfBox61++){
+          if(box61.box[iOfBox61].textContent == ``){
+            box61.box[iOfBox61].textContent = Number.parseInt(inputArr61.value);
+            iOfBox61 = 10;
+          };
+        };
+        solutiona61();
+        inputArr61.value = ``;
+      }
+    }
+  };
+}
+} 
+
+//FUNCIONES PARA EL BOTÓN
+function arrOnMouseOverLight61(){
+  buttona61.style.border="3px solid #ffab22";
+  buttona61.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
+  buttona61.style.color="rgb(31, 11, 11)";
+};
+function arrOnMouseOutLight61(){
+  buttona61.style.border='3px solid #f7b64e';
+  buttona61.style.color='#333333';
+  buttona61.style.background='linear-gradient(to bottom, #fff186 5%, #f7b64e 100%)';
+};
+
+function arrOnMouseOverDark61(){
+  buttona61.style.border="3px solid #ffaa22";
+  buttona61.style.background="linear-gradient(to bottom, #ffe205 5%, #ffb71b 100%)";
+};
+function arrOnMouseOutDark61(){
+  buttona61.style.border = '1px solid #ff9d00';
+  buttona61.style.color = 'rgb(31, 11, 11)';
+  buttona61.style.background = 'linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)';
+};
+
+function array61(){
+  //SOLUTION
+  box61.method(-9999,10000);
+  document.getElementById("a61c").innerHTML = `Puedes registrar el número 0 para reiniciar el vector uwu`;
+  buttona61.innerHTML = `GENERAR 10 NÚMEROS ALEATORIOS`;
+  solutiona61();
+
+  //OH, STYLO
+  buttona61.onmouseover = function (){arrOnMouseOverLight61()};
+  buttona61.onmouseout = function (){arrOnMouseOutLight61()};
+  buttona61.onmousedown = function (){arrOnMouseOutDark61()};
+  buttona61.onmouseup = function (){arrOnMouseOverDark61()};
+}
+
+// 39. Construir una función que reciba como parámetro un vector de 10 posiciones enteras y retorne la cantidad de múltiplos de 3. 
+var box62 = new get10Random("vector62");
+var buttona62 = document.getElementById("arrayb62");
+var inputArr62 = document.getElementById("arrayi62");
+var freedom62;
+var justice62;
+var love62;
+var flash62 = 0;
+var xd62 = 0;
+var cancelButton62 = 0;
+var filterOfZeros62 = [];
+var arrow62 = document.getElementsByClassName("arrow62");
+var imgOff62 = `<img class="arrowImg" src="./arrowOff.png" alt="Aquí había una flecha... Ya no está xd">`;
+
+
+  //DRAG AND DROP
+  var dnd62 = document.querySelectorAll('div#a62d > div');
+  [].forEach.call(dnd62,function(block){
+    block.addEventListener('dragend',solutiona62);
+  });
+
+//solución al problema
+function solutiona62(){
+  if (cancelButton62==1){}
+  else{
+    
+  function limitSolution(){
+    cancelButton62 = 0;
+  };
+  //Variables locales elementales
+  var imgOn   = '<img class="arrowImg" src="./arrowOn.png" alt="Aquí había una flecha... Ya no está xd">';
+  var img = `<img class="arrowImg" src="./arrow.png" alt="Aquí había una flecha... Ya no está xd">`;
+  //Un reinicio ligero al oprimir el vector
+  [].forEach.call(arrow62,function(arrows){
+    arrows.innerHTML = imgOff62; 
+  });
+  //EL CÓDIGO MÁGICO QUE PERMITE ACOPLAR FUNCIONALIDAD Y DRAG AND DROP
+  var arrVector62 = [];
+  for (let nums of box62.box){
+      if (nums.textContent == 0){
+        arrVector62.push(Number.parseInt(0));
+      }
+      else{
+        arrVector62.push(Number.parseInt(nums.textContent));
+      }
+  };
+  filterOfZeros62 = arrVector62.filter(x=>x!=0);
+  box62.aux = filterOfZeros62;
+
+  //ACÁ SOLUCIONAS TODO
+  //Variables para solucionar la pregunta concreta
+      //ÍNDICES de números múltiplos de 3
+  var seeker = filterOfZeros62.filter(x=>x%3==0);
+  var snitch = [];
+
+  for (let j=0; j<seeker.length; j++){
+    for (let i=0; i<filterOfZeros62.length; i++){
+      if(filterOfZeros62[i]==seeker[j]){
+        snitch.push(i);
+      };
+    };
+  };
+
+  
+  var parallel = (snitch.length>1)? `<br> y se hallan en las posiciones n°: ${snitch} UwU`:`y se halla en la posición n°${snitch} c:`;
+  var plural = (snitch.length>1)? `hay ${snitch.length} múltiplos de 3: ${seeker}`:`sólo hay un múltiplo del 3: el número ${seeker}`;
+  var no4 = (seeker.length==0)? `Este vector no cuenta con múltiplos de 3 :c vaya suerte... <br> ¡Prueba con otra tanda de números, human@!`:`En este vector, ${plural} ${parallel}`;
+  var answer = no4;
+
+  //"Animación" de las flechas
+  function animation(){
+    var card = new Audio();
+    card.src = "music/arrows.mp3";
+    card.play();
+
+    if(xd62 == 2){ 
+      if (flash62==-1){
+        arrow62[0].innerHTML = imgOff62;
+        xd62 = 0;
+        flash62=0;
+      }
+      else if (flash62==0){
+        arrow62[1].innerHTML = imgOff62;
+        arrow62[0].innerHTML = img;
+        flash62=-1;
+      }
+      else{
+        if (flash62<=8){
+          arrow62[(flash62+1)].innerHTML = imgOff62;
+        };
+        arrow62[flash62].innerHTML = img;
+        flash62--;
+      }               
+    }
+    else if(xd62 == 1){             //¿A LAS CUÁNTAS VUELTAS QUIERES VOLTEAR?
+      flash62 = 9;
+      arrow62[flash62].innerHTML = img;
+      xd62 = 2;
+      flash62--;
+    }
+    else{
+      if (flash62==10){                       //VUELTA 2
+        arrow62[(flash62-1)].innerHTML = imgOff62;
+        xd62++;
+        flash62 = 0;
+      }
+      else{                                 //VUELTA 1
+        if (flash62>=1){
+          arrow62[(flash62-1)].innerHTML = imgOff62;
+        };
+        arrow62[flash62].innerHTML = img;
+        flash62++;
+      }
+    };
+      getE("a62e").innerHTML = `...`
+  };  
+
+  //SOLUCIÓN LÓGICA ESQUEMÁTICA DEL PROBLEMA 
+  function solution(){
+    clearInterval(freedom62);
+    [].forEach.call(arrow62,function(arrows){
+      arrows.innerHTML = imgOff62; 
+    });
+
+    for (let i=0; i<snitch.length; i++){
+      let miau = snitch[i]; 
+      arrow62[miau].innerHTML = imgOn;
+    };
+
+    win = new Audio();
+    win.src = "music/win.mp3";
+    win.play();
+    card = new Audio();
+    card.src = "music/arrows.mp3";
+    card.play();
+    
+    getE("a62e").innerHTML = `${answer}`;
+  }; 
+
+
+  //Diálogos al vaciar
+  if (filterOfZeros62.length == 10) {
+    cancelButton62 = 1;
+    freedom62 = setInterval(animation,250);
+    justice62 = setTimeout(solution, 2000);
+    love62 = setTimeout(limitSolution,3000);
+  }
+  else if (filterOfZeros62.length == 0){
+    flash62 = 0;
+    clearInterval(freedom62);
+    clearTimeout(justice62);
+    clearTimeout(love62);
+    getE("a62e").innerHTML = ``;
+    [].forEach.call(arrow62,function(arrows){
+      arrows.innerHTML = imgOff62; 
+    });
+  }
+  else{
+    getE("a62e").innerHTML = `${answer} <br> Te invito a llenar todo el vector, humano, y mira lo que pasa -guiño guiño-`;
+  };
+};
+};
+
+
+//FUNCIONES PARA EL INPUT
+inputArr62.addEventListener("keydown",arrayi62, false);
+var iOfBox62 = 0; 
+function arrayi62(e){
+    //DIÁLOGOS PARA EL BOTÓN
+    if (filterOfZeros62.length == 10 || filterOfZeros62.length == 0){
+      buttona62.innerHTML = `GENERAR 10 NÚMEROS ALEATORIOS`;
+    }
+    else{
+      if (filterOfZeros62.length == 9){
+        buttona62.innerHTML = `GENERAR 1 NÚMERO ALEATORIO`;
+      }
+      else{
+        buttona62.innerHTML = `GENERAR ${10-filterOfZeros62.length} NÚMEROS ALEATORIOS`;
+      }
+    };
+    //DIÁLOGOS PARA EL SPAN
+  var ngt = (inputArr62.value<0)? `-`:``;
+
+  if (isNaN(inputArr62.value)){
+    document.getElementById("a62").innerHTML = `¿A quién intentas trollear con esos valores imposibles, humano?`;
+  }else{
+ 
+  if (inputArr62.value == `` || inputArr62.value == '-' || inputArr62.value == '--' || inputArr62.value == '---' || inputArr62.value == '----'){
+    document.getElementById("a62").innerHTML = ``;
+  }
+  else{
+    if (inputArr62.value == 0){
+      if (filterOfZeros62.length > 0){
+        document.getElementById("a62").innerHTML = `¿Quieres reiniciar el vector, humano? ¡Tírame ese cero entonces! c:<`;
+      }
+      else{
+        document.getElementById("a62").innerHTML = `Oye, humano... Primero regístrame números con ENTER <br> antes de estar pensando en reiniciar el vector... ¿No? >:c`;
+      }
+    }
+    else{
+      document.getElementById("a62").innerHTML = `¡Cool, un ${ngt}${Math.abs(inputArr62.value)}! Regístralo oprimiendo ENTER c:`;
+    }
+  } 
+  };
+  //Ejecutar función cuando se oprima ENTER
+  if (e.keyCode === 13){ 
+    if (isNaN(inputArr62.value)){
+      inputArr62.value = ``;
+    }else{
+    if (inputArr62.value == `` || inputArr62.value == '-' || inputArr62.value == '--' || inputArr62.value == '---' || inputArr62.value == '----'){
+      inputArr62.value = ``;
+    }
+    else if (inputArr62.value == 0){
+      if(filterOfZeros62.length==0){
+        inputArr62.value = ``;
+      }
+      else{
+        let zero = new Audio();
+        zero.src = "music/hollow.mp3";
+        zero.play();
+        clearTimeout(justice62);
+        clearInterval(freedom62);
+        document.getElementById("a62b").innerHTML = ``;
+        document.getElementById("a62c").innerHTML = `Vector reiniciado con éxito.`;
+        setTimeout(fade,7000);
+        function fade(){
+          return document.getElementById("a62c").innerHTML = ``;
+        };
+        box62.aux = [];
+        filterOfZeros62.length = [];
+        box62.equalize();
+        solutiona62();
+        inputArr62.value = ``;
+        iOfBox62 = 0;
+
+        clearInterval(freedom62);
+        clearTimeout(justice62);
+        clearTimeout(love62);
+        getE("a62e").innerHTML = ``;
+        [].forEach.call(arrow62,function(arrows){
+          arrows.innerHTML = imgOff62; 
+        });
+      }
+    }
+    else{
+      if (filterOfZeros62.length == 10){
+        let introduce = new Audio("./music/introduce.mp3"); introduce.play()
+        document.getElementById("a62c").innerHTML = `Puedes registrar el número 0 para reiniciar el vector uwu`;
+        box62.aux.shift();
+        box62.aux.push(Number(inputArr62.value));
+        box62.equalize();
+        solutiona62();
+        inputArr62.value = ``;
+      }
+      else{
+        let introduce = new Audio("./music/introduce.mp3"); introduce.play()
+        document.getElementById("a62c").innerHTML = `Puedes registrar el número 0 para reiniciar el vector uwu`;
+        for(iOfBox62 = 0; iOfBox62 < 10; iOfBox62++){
+          if(box62.box[iOfBox62].textContent == ``){
+            box62.box[iOfBox62].textContent = Number.parseInt(inputArr62.value);
+            iOfBox62 = 10;
+          };
+        };
+        solutiona62();
+        inputArr62.value = ``;
+      }
+    }
+  };
+}
+} 
+
+//FUNCIONES PARA EL BOTÓN
+function arrOnMouseOverLight62(){
+  buttona62.style.border="3px solid #ffab22";
+  buttona62.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
+  buttona62.style.color="rgb(31, 11, 11)";
+};
+function arrOnMouseOutLight62(){
+  buttona62.style.border='3px solid #f7b64e';
+  buttona62.style.color='#333333';
+  buttona62.style.background='linear-gradient(to bottom, #fff186 5%, #f7b64e 100%)';
+};
+
+function arrOnMouseOverDark62(){
+  buttona62.style.border="3px solid #ffaa22";
+  buttona62.style.background="linear-gradient(to bottom, #ffe205 5%, #ffb71b 100%)";
+};
+function arrOnMouseOutDark62(){
+  buttona62.style.border = '1px solid #ff9d00';
+  buttona62.style.color = 'rgb(31, 11, 11)';
+  buttona62.style.background = 'linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)';
+};
+
+function array62(){
+  //SOLUTION
+  box62.method(-9999,10000);
+  document.getElementById("a62c").innerHTML = `Puedes registrar el número 0 para reiniciar el vector uwu`;
+  buttona62.innerHTML = `GENERAR 10 NÚMEROS ALEATORIOS`;
+  solutiona62();
+
+  //OH, STYLO
+  buttona62.onmouseover = function (){arrOnMouseOverLight62()};
+  buttona62.onmouseout = function (){arrOnMouseOutLight62()};
+  buttona62.onmousedown = function (){arrOnMouseOutDark62()};
+  buttona62.onmouseup = function (){arrOnMouseOverDark62()};
+}
 
 // 40. Construir una función que reciba como parámetro un vector de 10 posiciones enteras y un dígito y que retorne la cantidad de números del vector que terminan en dicho dígito.
+var box63 = new get10Random("vector63");
+var buttona63 = document.getElementById("arrayb63");
+var inputArr63 = document.getElementById("arrayi63");
+var freedom63;
+var justice63;
+var love63;
+var flash63 = 0;
+var xd63 = 0;
+var cancelButton63 = 0;
+var filterOfZeros63 = [];
+var arrow63 = document.getElementsByClassName("arrow63");
+var imgOff63 = `<img class="arrowImg" src="./arrowOff.png" alt="Aquí había una flecha... Ya no está xd">`;
+var eleven63 = ``;
+var buttonPressed63 = 0;
+
+  //DRAG AND DROP
+  var dnd63 = document.querySelectorAll('div#a63d > div');
+  [].forEach.call(dnd63,function(block){
+    block.addEventListener('dragend',malditoExtra63);
+  });
+
+//solución al problema
+function malditoExtra63(){
+  if(buttonPressed63 == 0){
+    getE("a63e").innerHTML = `Termina de llenar el vector, luego ingresa un número más <br> y evaluemos juntos el resultado, human@ :D`;
+  }
+  else{
+    if(eleven63==``){
+      buttona63.innerHTML = `GENERAR 1 NÚMERO ALEATORIO`;
+      inputArr63.placeholder = "INGRESAR UN NÚMERO";
+      getE("a63e").innerHTML = `Registra el número adicional con el que quieres realizar el ejercicio uwu`;
+    }
+    else{
+      getE("a63f").innerHTML = eleven63;
+      solutiona63();
+    };
+  };
+}
+
+function solutiona63(){
+  if (cancelButton63==1){}
+  else{
+    
+  function limitSolution(){
+    cancelButton63 = 0;
+  };
+  //Variables locales elementales
+  var imgOn   = '<img class="arrowImg" src="./arrowOn.png" alt="Aquí había una flecha... Ya no está xd">';
+  var img = `<img class="arrowImg" src="./arrow.png" alt="Aquí había una flecha... Ya no está xd">`;
+  //Un reinicio ligero al oprimir el vector
+  [].forEach.call(arrow63,function(arrows){
+    arrows.innerHTML = imgOff63; 
+  });
+  //EL CÓDIGO MÁGICO QUE PERMITE ACOPLAR FUNCIONALIDAD Y DRAG AND DROP
+  var arrVector63 = [];
+  for (let nums of box63.box){
+      if (nums.textContent == 0){
+        arrVector63.push(Number.parseInt(0));
+      }
+      else{
+        arrVector63.push(Number.parseInt(nums.textContent));
+      }
+  };
+  filterOfZeros63 = arrVector63.filter(x=>x!=0);
+  box63.aux = filterOfZeros63;
+
+  //ACÁ SOLUCIONAS TODO
+  //Variables para solucionar la pregunta concreta
+      //cuántos números de los almacenados en el vector terminan en el mismo dígito que el último valor leído.
+      
+  var basurero = [];
+  for (let i = 0; i < filterOfZeros63.length; i++){
+    let numArr = Array.from(String(Math.abs(filterOfZeros63[i])),Number);
+      if (eleven63 == numArr[(numArr.length-1)]){
+        basurero.push(i);
+      };
+    };
+  let plural = (basurero.length == 1)? `NÚMERO`:`NÚMEROS`;
+  var answer = (basurero.length == 0)? `Tu número no está en el final de ningún número, human@ <br> Lo siento... :c Intenta con otro número`:`¡¡¡TÚ NÚMERO ESTÁ AL FINAL DE ${basurero.length} ${plural}, HUMAN@!!! :DD <br> AWIIWIIII uwuwUWuwuWUwU`;
+
+  //"Animación" de las flechas
+  function animation(){
+    var card = new Audio();
+    card.src = "music/arrows.mp3";
+    card.play();
+
+    if(xd63 == 2){ 
+      if (flash63==-1){
+        arrow63[0].innerHTML = imgOff63;
+        xd63 = 0;
+        flash63=0;
+      }
+      else if (flash63==0){
+        arrow63[1].innerHTML = imgOff63;
+        arrow63[0].innerHTML = img;
+        flash63=-1;
+      }
+      else{
+        if (flash63<=8){
+          arrow63[(flash63+1)].innerHTML = imgOff63;
+        };
+        arrow63[flash63].innerHTML = img;
+        flash63--;
+      }               
+    }
+    else if(xd63 == 1){             //¿A LAS CUÁNTAS VUELTAS QUIERES VOLTEAR?
+      flash63 = 9;
+      arrow63[flash63].innerHTML = img;
+      xd63 = 2;
+      flash63--;
+    }
+    else{
+      if (flash63==10){                       //VUELTA 2
+        arrow63[(flash63-1)].innerHTML = imgOff63;
+        xd63++;
+        flash63 = 0;
+      }
+      else{                                 //VUELTA 1
+        if (flash63>=1){
+          arrow63[(flash63-1)].innerHTML = imgOff63;
+        };
+        arrow63[flash63].innerHTML = img;
+        flash63++;
+      }
+    };
+      getE("a63e").innerHTML = `...`
+  };  
+
+  //SOLUCIÓN LÓGICA ESQUEMÁTICA DEL PROBLEMA 
+  function solution(){
+    clearInterval(freedom63);
+    [].forEach.call(arrow63,function(arrows){
+      arrows.innerHTML = imgOff63; 
+    });
+
+    for (let i=0; i<basurero.length; i++){
+      let miau = basurero[i]; 
+      arrow63[miau].innerHTML = imgOn;
+    };
+
+    win = new Audio();
+    win.src = "music/win.mp3";
+    win.play();
+    card = new Audio();
+    card.src = "music/arrows.mp3";
+    card.play();
+
+    getE("a63e").innerHTML = `${answer}`;
+  }; 
+
+
+  //Diálogos al vaciar
+  if (filterOfZeros63.length == 10) {
+    cancelButton63 = 1;
+    freedom63 = setInterval(animation,250);
+    justice63 = setTimeout(solution, 2000);
+    love63 = setTimeout(limitSolution,3200);
+  }
+  else if (filterOfZeros63.length == 0){
+    flash63 = 0;
+    clearInterval(freedom63);
+    clearTimeout(justice63);
+    clearTimeout(love63);
+    getE("a63e").innerHTML = ``;
+    [].forEach.call(arrow63,function(arrows){
+      arrows.innerHTML = imgOff63; 
+    });
+  }
+  else{
+    getE("a63e").innerHTML = `${answer} <br> Te invito a llenar todo el vector, humano, y mira lo que pasa -guiño guiño-`;
+  };
+};
+};
+
+
+//FUNCIONES PARA EL INPUT
+inputArr63.addEventListener("keydown",arrayi63, false);
+var iOfBox63 = 0; 
+var count63 = 0;
+function arrayi63(e){
+    //DIÁLOGOS PARA EL SPAN
+  var ngt = (inputArr63.value<0)? `-`:``;
+
+  if (isNaN(inputArr63.value)){
+    document.getElementById("a63").innerHTML = `¿A quién intentas trollear con esos valores imposibles, humano?`;
+  }else{
+ 
+  if (inputArr63.value == `` || inputArr63.value == '-' || inputArr63.value == '--' || inputArr63.value == '---' || inputArr63.value == '----'){
+    document.getElementById("a63").innerHTML = ``;
+  }
+  else{
+    if (inputArr63.value == 0){
+      if (count63 > 0){
+        document.getElementById("a63").innerHTML = `¿Quieres reiniciar el vector, humano? ¡Tírame ese cero entonces! c:<`;
+      }
+      else{
+        document.getElementById("a63").innerHTML = `Oye, humano... Primero regístrame números con ENTER <br> antes de estar pensando en reiniciar el vector... ¿No? >:c`;
+      }
+    }
+    else{
+      document.getElementById("a63").innerHTML = `¡Cool, un ${ngt}${Math.abs(inputArr63.value)}! Regístralo oprimiendo ENTER c:`;
+    }
+  } 
+  };
+  //Ejecutar función cuando se oprima ENTER
+  if (e.keyCode === 13){ 
+    if (isNaN(inputArr63.value)){
+      inputArr63.value = ``;
+    }else{
+    if (inputArr63.value == `` || inputArr63.value == '-' || inputArr63.value == '--' || inputArr63.value == '---' || inputArr63.value == '----'){
+      inputArr63.value = ``;
+    }
+    else if (inputArr63.value == 0){
+      if(count63==0){
+        inputArr63.value = ``;
+      }
+      else{
+        let zero = new Audio();
+        zero.src = "music/hollow.mp3";
+        zero.play();
+        clearTimeout(justice63);
+        clearInterval(freedom63);
+        document.getElementById("a63b").innerHTML = ``;
+        document.getElementById("a63c").innerHTML = `Vector reiniciado con éxito.`;
+        setTimeout(fade,7000);
+        function fade(){
+          return document.getElementById("a63c").innerHTML = ``;
+        };
+        buttonPressed63 = 0;
+        eleven63 = ``;
+        getE("a63f").innerHTML = ``;
+        box63.aux = [];
+        filterOfZeros63.length = [];
+        box63.equalize();
+        malditoExtra63();
+        inputArr63.value = ``;
+        iOfBox63 = 0;
+        count63 = 0;
+        clearInterval(freedom63);
+        clearTimeout(justice63);
+        clearTimeout(love63);
+        getE("a63e").innerHTML = ``;
+        [].forEach.call(arrow63,function(arrows){
+          arrows.innerHTML = imgOff63; 
+        });
+      }
+    }
+    else{
+      let introduce = new Audio("./music/introduce.mp3");
+      introduce.play();
+
+      if (count63 == 10){
+        buttonPressed63 = 1;
+        document.getElementById("a63c").innerHTML = `Puedes registrar el número 0 para reiniciar el vector uwu`;
+        eleven63 = inputArr63.value;
+        malditoExtra63();
+        inputArr63.value = ``;
+      }
+      else{
+        count63++;
+        document.getElementById("a63c").innerHTML = `Puedes registrar el número 0 para reiniciar el vector uwu`;
+        for(iOfBox63 = 0; iOfBox63 < 10; iOfBox63++){
+          if(box63.box[iOfBox63].textContent == ``){
+            box63.box[iOfBox63].textContent = Number.parseInt(inputArr63.value);
+            iOfBox63 = 10;
+          };
+        };
+        malditoExtra63();
+        inputArr63.value = ``;
+      }
+    }
+  };
+};
+    //DIÁLOGOS PARA EL BOTÓN
+    if (filterOfZeros63.length == 0){
+      inputArr63.placeholder = "INGRESAR NÚMEROS";
+      if(count63 != 0){
+        if(count63 == 10){
+          inputArr63.placeholder = "INGRESAR UN NÚMERO";
+          buttona63.innerHTML = `GENERAR 1 NÚMERO ALEATORIO`;
+        }
+        else if(count63 == 9){
+          buttona63.innerHTML = `GENERAR ${10 - count63} NÚMERO ALEATORIO`;
+        }
+        else{
+          buttona63.innerHTML = `GENERAR ${10 - count63} NÚMEROS ALEATORIOS`;
+        }
+      }
+      else{
+        buttona63.innerHTML = `GENERAR 10 NÚMEROS ALEATORIOS`;
+      }
+    }
+    else{
+      if (filterOfZeros63.length == 10){
+        buttona63.innerHTML = `GENERAR 1 NÚMERO ALEATORIO`;
+        inputArr63.placeholder = "INGRESAR UN NÚMERO";
+      }
+      else if(filterOfZeros63.length == 9){
+        buttona63.innerHTML = `GENERAR 1 NÚMERO ALEATORIO`;
+      };
+    };
+} 
+
+//FUNCIONES PARA EL BOTÓN
+function arrOnMouseOverLight63(){
+  buttona63.style.border="3px solid #ffab22";
+  buttona63.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
+  buttona63.style.color="rgb(31, 11, 11)";
+};
+function arrOnMouseOutLight63(){
+  buttona63.style.border='3px solid #f7b64e';
+  buttona63.style.color='#333333';
+  buttona63.style.background='linear-gradient(to bottom, #fff186 5%, #f7b64e 100%)';
+};
+
+function arrOnMouseOverDark63(){
+  buttona63.style.border="3px solid #ffaa22";
+  buttona63.style.background="linear-gradient(to bottom, #ffe205 5%, #ffb71b 100%)";
+};
+function arrOnMouseOutDark63(){
+  buttona63.style.border = '1px solid #ff9d00';
+  buttona63.style.color = 'rgb(31, 11, 11)';
+  buttona63.style.background = 'linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)';
+};
+
+function array63(){
+  //SOLUTION
+  if(buttonPressed63 == 0){
+    box63.method(-99,100);
+    buttonPressed63 = 1;
+  }
+  else{
+    eleven63 = Math.round(Math.random() * (99 - (-99)) + (-99));
+    if (eleven63 == 0){
+      eleven63++;
+    };
+  };
+  document.getElementById("a63c").innerHTML = `Puedes registrar el número 0 para reiniciar el vector uwu`;
+  buttona63.innerHTML = `GENERAR 1 NÚMERO ALEATORIO`;
+  inputArr63.placeholder = "INGRESAR UN NÚMERO";
+  count63 = 10;
+  malditoExtra63();
+
+  //OH, STYLO
+  buttona63.onmouseover = function (){arrOnMouseOverLight63()};
+  buttona63.onmouseout = function (){arrOnMouseOutLight63()};
+  buttona63.onmousedown = function (){arrOnMouseOutDark63()};
+  buttona63.onmouseup = function (){arrOnMouseOverDark63()};
+}
 
 // 41. Construir una función que reciba como parámetro un vector de 10 posiciones enteras y un dígito y que retorne la cantidad de números del vector en donde dicho dígito está de penúltimo.
+var box64 = new get10Random("vector64");
+var buttona64 = document.getElementById("arrayb64");
+var inputArr64 = document.getElementById("arrayi64");
+var freedom64;
+var justice64;
+var love64;
+var flash64 = 0;
+var xd64 = 0;
+var cancelButton64 = 0;
+var filterOfZeros64 = [];
+var arrow64 = document.getElementsByClassName("arrow64");
+var imgOff64 = `<img class="arrowImg" src="./arrowOff.png" alt="Aquí había una flecha... Ya no está xd">`;
+var eleven64 = ``;
+var buttonPressed64 = 0;
+
+  //DRAG AND DROP
+  var dnd64 = document.querySelectorAll('div#a64d > div');
+  [].forEach.call(dnd64,function(block){
+    block.addEventListener('dragend',malditoExtra64);
+  });
+
+//solución al problema
+function malditoExtra64(){
+  if(buttonPressed64 == 0){
+    getE("a64e").innerHTML = `Termina de llenar el vector, luego ingresa un número más <br> y evaluemos juntos el resultado, human@ :D`;
+  }
+  else{
+    if(eleven64==``){
+      buttona64.innerHTML = `GENERAR 1 NÚMERO ALEATORIO`;
+      inputArr64.placeholder = "INGRESAR UN NÚMERO";
+      getE("a64e").innerHTML = `Registra el número adicional con el que quieres realizar el ejercicio uwu`;
+    }
+    else{
+      getE("a64f").innerHTML = eleven64;
+      solutiona64();
+    };
+  };
+}
+
+function solutiona64(){
+  if (cancelButton64==1){}
+  else{
+    
+  function limitSolution(){
+    cancelButton64 = 0;
+  };
+  //Variables locales elementales
+  var imgOn   = '<img class="arrowImg" src="./arrowOn.png" alt="Aquí había una flecha... Ya no está xd">';
+  var img = `<img class="arrowImg" src="./arrow.png" alt="Aquí había una flecha... Ya no está xd">`;
+  //Un reinicio ligero al oprimir el vector
+  [].forEach.call(arrow64,function(arrows){
+    arrows.innerHTML = imgOff64; 
+  });
+  //EL CÓDIGO MÁGICO QUE PERMITE ACOPLAR FUNCIONALIDAD Y DRAG AND DROP
+  var arrVector64 = [];
+  for (let nums of box64.box){
+      if (nums.textContent == 0){
+        arrVector64.push(Number.parseInt(0));
+      }
+      else{
+        arrVector64.push(Number.parseInt(nums.textContent));
+      }
+  };
+  filterOfZeros64 = arrVector64.filter(x=>x!=0);
+  box64.aux = filterOfZeros64;
+
+  //ACÁ SOLUCIONAS TODO
+  //Variables para solucionar la pregunta concreta
+      //cuántos números de los almacenados en el vector terminan en el mismo dígito que el último valor leído.
+      
+  var basurero = [];
+  for (let i = 0; i < filterOfZeros64.length; i++){
+    let numArr = Array.from(String(Math.abs(filterOfZeros64[i])),Number);
+      if (eleven64 == numArr[(numArr.length-2)]){
+        basurero.push(i);
+      };
+    };
+  let plural = (basurero.length == 1)? `NÚMERO`:`NÚMEROS`;
+  var answer = (basurero.length == 0)? `Tu número no está en el penúltimo dígito de ningún número, human@ <br> Lo siento... :c Intenta con otro número`:`¡¡¡TÚ NÚMERO ESTÁ EN EL PENÚLTIMO DÍGITO DE ${basurero.length} ${plural}, HUMAN@!!! :DD <br> AWIIWIIII uwuwUWuwuWUwU`;
+
+  //"Animación" de las flechas
+  function animation(){
+    var card = new Audio();
+    card.src = "music/arrows.mp3";
+    card.play();
+
+    if(xd64 == 2){ 
+      if (flash64==-1){
+        arrow64[0].innerHTML = imgOff64;
+        xd64 = 0;
+        flash64=0;
+      }
+      else if (flash64==0){
+        arrow64[1].innerHTML = imgOff64;
+        arrow64[0].innerHTML = img;
+        flash64=-1;
+      }
+      else{
+        if (flash64<=8){
+          arrow64[(flash64+1)].innerHTML = imgOff64;
+        };
+        arrow64[flash64].innerHTML = img;
+        flash64--;
+      }               
+    }
+    else if(xd64 == 1){             //¿A LAS CUÁNTAS VUELTAS QUIERES VOLTEAR?
+      flash64 = 9;
+      arrow64[flash64].innerHTML = img;
+      xd64 = 2;
+      flash64--;
+    }
+    else{
+      if (flash64==10){                       //VUELTA 2
+        arrow64[(flash64-1)].innerHTML = imgOff64;
+        xd64++;
+        flash64 = 0;
+      }
+      else{                                 //VUELTA 1
+        if (flash64>=1){
+          arrow64[(flash64-1)].innerHTML = imgOff64;
+        };
+        arrow64[flash64].innerHTML = img;
+        flash64++;
+      }
+    };
+      getE("a64e").innerHTML = `...`
+  };  
+
+  //SOLUCIÓN LÓGICA ESQUEMÁTICA DEL PROBLEMA 
+  function solution(){
+    clearInterval(freedom64);
+    [].forEach.call(arrow64,function(arrows){
+      arrows.innerHTML = imgOff64; 
+    });
+
+    for (let i=0; i<basurero.length; i++){
+      let miau = basurero[i]; 
+      arrow64[miau].innerHTML = imgOn;
+    };
+
+    win = new Audio();
+    win.src = "music/win.mp3";
+    win.play();
+    card = new Audio();
+    card.src = "music/arrows.mp3";
+    card.play();
+
+    getE("a64e").innerHTML = `${answer}`;
+  }; 
+
+
+  //Diálogos al vaciar
+  if (filterOfZeros64.length == 10) {
+    cancelButton64 = 1;
+    freedom64 = setInterval(animation,250);
+    justice64 = setTimeout(solution, 2000);
+    love64 = setTimeout(limitSolution,3200);
+  }
+  else if (filterOfZeros64.length == 0){
+    flash64 = 0;
+    clearInterval(freedom64);
+    clearTimeout(justice64);
+    clearTimeout(love64);
+    getE("a64e").innerHTML = ``;
+    [].forEach.call(arrow64,function(arrows){
+      arrows.innerHTML = imgOff64; 
+    });
+  }
+  else{
+    getE("a64e").innerHTML = `${answer} <br> Te invito a llenar todo el vector, humano, y mira lo que pasa -guiño guiño-`;
+  };
+};
+};
+
+
+//FUNCIONES PARA EL INPUT
+inputArr64.addEventListener("keydown",arrayi64, false);
+var iOfBox64 = 0; 
+var count64 = 0;
+function arrayi64(e){
+    //DIÁLOGOS PARA EL SPAN
+  var ngt = (inputArr64.value<0)? `-`:``;
+
+  if (isNaN(inputArr64.value)){
+    document.getElementById("a64").innerHTML = `¿A quién intentas trollear con esos valores imposibles, humano?`;
+  }else{
+ 
+  if (inputArr64.value == `` || inputArr64.value == '-' || inputArr64.value == '--' || inputArr64.value == '---' || inputArr64.value == '----'){
+    document.getElementById("a64").innerHTML = ``;
+  }
+  else{
+    if (inputArr64.value == 0){
+      if (count64 > 0){
+        document.getElementById("a64").innerHTML = `¿Quieres reiniciar el vector, humano? ¡Tírame ese cero entonces! c:<`;
+      }
+      else{
+        document.getElementById("a64").innerHTML = `Oye, humano... Primero regístrame números con ENTER <br> antes de estar pensando en reiniciar el vector... ¿No? >:c`;
+      }
+    }
+    else{
+      document.getElementById("a64").innerHTML = `¡Cool, un ${ngt}${Math.abs(inputArr64.value)}! Regístralo oprimiendo ENTER c:`;
+    }
+  } 
+  };
+  //Ejecutar función cuando se oprima ENTER
+  if (e.keyCode === 13){ 
+    if (isNaN(inputArr64.value)){
+      inputArr64.value = ``;
+    }else{
+    if (inputArr64.value == `` || inputArr64.value == '-' || inputArr64.value == '--' || inputArr64.value == '---' || inputArr64.value == '----'){
+      inputArr64.value = ``;
+    }
+    else if (inputArr64.value == 0){
+      if(count64==0){
+        inputArr64.value = ``;
+      }
+      else{
+        let zero = new Audio();
+        zero.src = "music/hollow.mp3";
+        zero.play();
+        clearTimeout(justice64);
+        clearInterval(freedom64);
+        document.getElementById("a64b").innerHTML = ``;
+        document.getElementById("a64c").innerHTML = `Vector reiniciado con éxito.`;
+        setTimeout(fade,7000);
+        function fade(){
+          return document.getElementById("a64c").innerHTML = ``;
+        };
+        buttonPressed64 = 0;
+        eleven64 = ``;
+        getE("a64f").innerHTML = ``;
+        box64.aux = [];
+        filterOfZeros64.length = [];
+        box64.equalize();
+        malditoExtra64();
+        inputArr64.value = ``;
+        iOfBox64 = 0;
+        count64 = 0;
+        clearInterval(freedom64);
+        clearTimeout(justice64);
+        clearTimeout(love64);
+        getE("a64e").innerHTML = ``;
+        [].forEach.call(arrow64,function(arrows){
+          arrows.innerHTML = imgOff64; 
+        });
+      }
+    }
+    else{
+      let introduce = new Audio("./music/introduce.mp3");
+      introduce.play();
+
+      if (count64 == 10){
+        buttonPressed64 = 1;
+        document.getElementById("a64c").innerHTML = `Puedes registrar el número 0 para reiniciar el vector uwu`;
+        eleven64 = inputArr64.value;
+        malditoExtra64();
+        inputArr64.value = ``;
+      }
+      else{
+        count64++;
+        document.getElementById("a64c").innerHTML = `Puedes registrar el número 0 para reiniciar el vector uwu`;
+        for(iOfBox64 = 0; iOfBox64 < 10; iOfBox64++){
+          if(box64.box[iOfBox64].textContent == ``){
+            box64.box[iOfBox64].textContent = Number.parseInt(inputArr64.value);
+            iOfBox64 = 10;
+          };
+        };
+        malditoExtra64();
+        inputArr64.value = ``;
+      }
+    }
+  };
+};
+    //DIÁLOGOS PARA EL BOTÓN
+    if (filterOfZeros64.length == 0){
+      inputArr64.placeholder = "INGRESAR NÚMEROS";
+      if(count64 != 0){
+        if(count64 == 10){
+          inputArr64.placeholder = "INGRESAR UN NÚMERO";
+          buttona64.innerHTML = `GENERAR 1 NÚMERO ALEATORIO`;
+        }
+        else if(count64 == 9){
+          buttona64.innerHTML = `GENERAR ${10 - count64} NÚMERO ALEATORIO`;
+        }
+        else{
+          buttona64.innerHTML = `GENERAR ${10 - count64} NÚMEROS ALEATORIOS`;
+        }
+      }
+      else{
+        buttona64.innerHTML = `GENERAR 10 NÚMEROS ALEATORIOS`;
+      }
+    }
+    else{
+      if (filterOfZeros64.length == 10){
+        buttona64.innerHTML = `GENERAR 1 NÚMERO ALEATORIO`;
+        inputArr64.placeholder = "INGRESAR UN NÚMERO";
+      }
+      else if(filterOfZeros64.length == 9){
+        buttona64.innerHTML = `GENERAR 1 NÚMERO ALEATORIO`;
+      };
+    };
+} 
+
+//FUNCIONES PARA EL BOTÓN
+function arrOnMouseOverLight64(){
+  buttona64.style.border="3px solid #ffab22";
+  buttona64.style.background="linear-gradient(to bottom, #ffab23 5%, #ffec64 100%)";
+  buttona64.style.color="rgb(31, 11, 11)";
+};
+function arrOnMouseOutLight64(){
+  buttona64.style.border='3px solid #f7b64e';
+  buttona64.style.color='#333333';
+  buttona64.style.background='linear-gradient(to bottom, #fff186 5%, #f7b64e 100%)';
+};
+
+function arrOnMouseOverDark64(){
+  buttona64.style.border="3px solid #ffaa22";
+  buttona64.style.background="linear-gradient(to bottom, #ffe205 5%, #ffb71b 100%)";
+};
+function arrOnMouseOutDark64(){
+  buttona64.style.border = '1px solid #ff9d00';
+  buttona64.style.color = 'rgb(31, 11, 11)';
+  buttona64.style.background = 'linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)';
+};
+
+function array64(){
+  //SOLUTION
+  if(buttonPressed64 == 0){
+    box64.method(-99,100);
+    buttonPressed64 = 1;
+  }
+  else{
+    eleven64 = Math.round(Math.random() * (99 - (-99)) + (-99));
+    if (eleven64 == 0){
+      eleven64++;
+    };
+  };
+  document.getElementById("a64c").innerHTML = `Puedes registrar el número 0 para reiniciar el vector uwu`;
+  buttona64.innerHTML = `GENERAR 1 NÚMERO ALEATORIO`;
+  inputArr64.placeholder = "INGRESAR UN NÚMERO";
+  count64 = 10;
+  malditoExtra64();
+
+  //OH, STYLO
+  buttona64.onmouseover = function (){arrOnMouseOverLight64()};
+  buttona64.onmouseout = function (){arrOnMouseOutLight64()};
+  buttona64.onmousedown = function (){arrOnMouseOutDark64()};
+  buttona64.onmouseup = function (){arrOnMouseOverDark64()};
+}
 
 // 42. Construir una función que reciba como parámetro una matriz de 3x4 entera y retorne la cantidad de veces que se repite el mayor dato de la matriz.
 const matrix73 = new Matrix('73', 3, 4)
