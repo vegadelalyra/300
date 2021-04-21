@@ -372,7 +372,7 @@ summary:hover {
     height: 5vh;
     cursor:pointer;
     transition: 2s;
-    transition-delay: 2.6s;
+    transition-delay: 3s;
 }
  /* SECCIÓN PARA LOS SUMMARIES (el título de cada sección y sus animaciones de cargarse en cascada) */
 #section01, #section02, #section03, #section04, #section05, #section06, #section07, #section08, #section09 {
@@ -978,6 +978,7 @@ button:focus:not(.aPb) {
     margin-top: 2vh;
 }                
  /* FIN DISEÑO DE FN -última sección- */
+ /* THE END, DISEÑO DE LA DESPEDIDA DE 300 */
 .theEnd {
     height: 100vh;
     width: 100%;
@@ -992,6 +993,7 @@ button:focus:not(.aPb) {
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-style: italic;
     user-select: none;
+    overflow: hidden;
 }
     .theEnd:hover {
         background: #0C0D10;
@@ -1002,6 +1004,23 @@ button:focus:not(.aPb) {
             .theEnd h1:hover {
                 color:rgb(255, 145, 0);
             }   
+                .theEnd h1:active {
+                    transform: scale(1.2);
+                    color:  #f7b64e;
+                }
+                    #ripple {
+                        top: 0;
+                        right: 0;
+                        position: fixed;
+                        width: 50%;
+                        height: inherit;
+                        z-index: 3335780;
+                        border-radius:50%;
+                        border: #ffffff0a solid 100px;
+                        transform: scale(0.01);
+                        filter:blur(20px);
+                        transition: 1.5s;
+                    }
 #farewell {
     cursor: grabbing;
     overflow: auto;

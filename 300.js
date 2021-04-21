@@ -873,7 +873,7 @@ function launcher(){
   zuish.src = "music/test.mp3"
   faia.src = "music/fire.mp3"
   zuish.play()
-  faia.play()
+  setTimeout( () => { faia.play() }, 500 ) 
   launch = setInterval(wii,300)
 }
 function wii(){
@@ -1320,6 +1320,10 @@ function flashes(){
 } // end of vector sounds
 
 // THE END SOUND
+  // for the shock wave or ripple effect once THE END is clicked
+const ripple = getE('ripple')
+ripple.disabled = true
+
   // GUARD CLAUSE: when click on the end, ending is gonna return FALSE at the beginning of the function the NEXT TIME the user clicks on it
 let ending = 0
   // ending will return to 0 once slumber (song of the end) has ended
@@ -1334,6 +1338,11 @@ const slumber = new Audio('music/Return To Slumber - Demon Souls Remake.mp3'),
         // It's gonna run again only when the song has finshed
   if ( ending == 1 ) return
   ending = 1
+
+  // for the shock wave fast effect when clicking THE END
+  ripple.disabled = false
+  ripple.style.transform = 'scale(4)'
+  setTimeout( () => { ripple.disabled = true }, 1600)
 
   // create two false events for hover and click and put'em in variables to eval as parameter of dispatchEvent method
   const falseHover = new Event('mouseenter'),
@@ -1352,7 +1361,8 @@ const slumber = new Audio('music/Return To Slumber - Demon Souls Remake.mp3'),
     elevating = setInterval(eternalRise, 100)
     function eternalRise() { 
       return [].forEach.call( allElements, el => {
-        el.scrollTop -= 2 
+        if ( el.id == 'farewell' ) return
+        el.scrollTop -= 1 
       })
     }
   })
@@ -1426,6 +1436,9 @@ const slumber = new Audio('music/Return To Slumber - Demon Souls Remake.mp3'),
   })
   // Done. Add the event to THE END.
 }; theEnd.addEventListener( 'click', soundOfTheEnd )
+  // 
+
+
 
 // FINAL DE LOS SONIDOS DE INTERFAZ
 
