@@ -1337,8 +1337,8 @@ const slumber = new Audio('music/Return To Slumber - Demon Souls Remake.mp3'),
       soundOfTheEnd = () => { 
         // It's gonna run again only when the song has finshed
   if ( ending == 1 ) return
-  ending = 1
-
+  ending = 1 
+//uwu
   // for the shock wave fast effect when clicking THE END
   ripple.disabled = false
   ripple.style.transform = 'scale(4)'
