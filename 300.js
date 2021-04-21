@@ -206,11 +206,10 @@ if('mediaSession' in navigator) {
 //FROM HERE STARTS OUR CODE FOR OUR PLAYLISTS AND BUTTONS
 
 //Events and functionalities of the images
-let title = document.querySelector("#plays"); //This is the title of the audio player
+let title = document.querySelector("#plays") //This is the title of the audio player
 
 //Randomize the playlist with a random index
-var count = 0;
-var first = 1;
+var count = 0,  first = 1
 
 const randomSort = ()=>{
     let jukebox = [];
@@ -328,6 +327,7 @@ epic.addEventListener("mouseover",fire);
 epic.addEventListener("mouseout",fireOff);
 //To tune the playlist name and the lights up
 epic.addEventListener("click",(e)=>{ 
+    defaultEnded = 1
     e.target.src="./img/epicOn.png";
     mind.src="./img/mind.png";
     cool.src="./img/cool.png";
@@ -338,6 +338,7 @@ epic.addEventListener("click",(e)=>{
     document.querySelector("#h300").style.color = `blanchedalmond`;
 });
 epic.addEventListener("contextmenu",(e)=>{ 
+    defaultEnded = 1
     e.target.src="./img/epicOn.png";
     mind.src="./img/mind.png";
     cool.src="./img/cool.png";
@@ -430,6 +431,7 @@ mind.addEventListener("mouseover",brain);
 mind.addEventListener("mouseout",brainOff);
 //To tune the playlist name and the lights up
 mind.addEventListener("click",(e)=>{
+    defaultEnded = 1
     e.target.src="./img/mindOn.png";
     epic.src="./img/epic.png";
     cool.src="./img/cool.png";
@@ -440,6 +442,7 @@ mind.addEventListener("click",(e)=>{
     document.querySelector("#h300").style.color = `blanchedalmond`;
 });
 mind.addEventListener("contextmenu",(e)=>{
+    defaultEnded = 1
     e.target.src="./img/mindOn.png";
     epic.src="./img/epic.png";
     cool.src="./img/cool.png";
@@ -509,7 +512,7 @@ mind.oncontextmenu = reflexPlayBackward = ()=>{
     //acá usamos un hack para que siempre nos ejecute duración
     if (audio.readyState > 0) {
         displayDuration();
-        setSliderMax();apfwd
+        setSliderMax();
         displayBufferedAmount();
         audio.play();
     } else {
@@ -532,6 +535,7 @@ cool.addEventListener("mouseover",chill);
 cool.addEventListener("mouseout",chillOff);
 //To tune the playlist name and the lights up
 cool.addEventListener("click",(e)=>{
+    defaultEnded = 1
     e.target.src="./img/coolOn.png";
     mind.src="./img/mind.png";
     epic.src="./img/epic.png";
@@ -542,6 +546,7 @@ cool.addEventListener("click",(e)=>{
     document.querySelector("#h300").style.color = `blanchedalmond`;
 });
 cool.addEventListener("contextmenu",(e)=>{
+    defaultEnded = 1
     e.target.src="./img/coolOn.png";
     mind.src="./img/mind.png";
     epic.src="./img/epic.png";
@@ -771,24 +776,24 @@ volumeSlider.addEventListener('mouseout',()=>{
 //end.
 
 //choose a random playlist once the default song has ended
-const playlists = [epicPlayForward,reflexPlayForward,coolPlayForward];
-audio.addEventListener('ended',()=>{
-  defaultEnded = 1;
+const playlists = [epicPlayForward, reflexPlayForward, coolPlayForward]
+audio.addEventListener('ended', () => {
+  defaultEnded = 1
   if(toggleBug == 1){
-    draggableDiv.style.width = "150px";
-    audioPlayerContainer.style.width = "150px"; 
-  };
-    let z = Math.round(Math.random()*(2-0)+0);
-    playlists[z]();
-    switch (z){
+    draggableDiv.style.width = "150px"
+    audioPlayerContainer.style.width = "150px"
+  }
+    let z = Math.round(Math.random()*(2-0)+0)
+    playlists[z]()
+    switch (z) {
       case 0:
-        epic.src="./img/epicOn.png";
-        mind.src="./img/mind.png";
-        cool.src="./img/cool.png";
-        epic.removeEventListener("mouseout",fireOff);
-        mind.addEventListener("mouseout",brainOff);
-        cool.addEventListener("mouseout",chillOff);
-        title.textContent = `epic playlist`;
+        epic.src="./img/epicOn.png"
+        mind.src="./img/mind.png"
+        cool.src="./img/cool.png"
+        epic.removeEventListener("mouseout",fireOff)
+        mind.addEventListener("mouseout",brainOff)
+        cool.addEventListener("mouseout",chillOff)
+        title.textContent = `epic playlist`
         break;
         
       case 1:
@@ -887,22 +892,59 @@ function wii(){
 
 
 //PARA 300
-var tre = document.querySelector("#h300"); //300
-tre.addEventListener("mouseover",drama);
-tre.addEventListener("mouseout",noDrama);
-tre.onclick = function() {
+var tre = document.querySelector("#h300") //300
+tre.addEventListener('mouseenter', fuckHover)
+tre.addEventListener('mouseleave', offHover)
+tre.addEventListener("mouseover", drama)
+tre.addEventListener("mouseout", noDrama)
+tre.addEventListener('click', secretPlayListClick) 
+tre.addEventListener('contextmenu', secretPlayListContext) 
+
+function fuckHover() {
+  tre.style.color = 'white'
+  tre.style.fontSize = '99vh'
+  tre.style.transform = 'translateY(-80vh)'
+  tre.style.transition = '200s, color 2s'
+}
+
+function offHover() {
+  tre.style.color = 'blanchedalmond'
+  tre.style.fontSize = '5vh'
+  tre.style.transform = 'translateY(0vh)'
+  tre.style.transition = '2s'
+  tre.style.transitionDelay = '2.6s'
+}
+
+function secretPlayListClick() {
+  defaultEnded = 1
+  if(toggleBug == 1) {
+    draggableDiv.style.width = "150px"
+    audioPlayerContainer.style.width = "150px"
+  }
   nostalgia(); 
   title.textContent = `secret playlist`; 
   tre.style.color='white';
   tre.removeEventListener('mouseover',drama);
   tre.removeEventListener('mouseout',noDrama);
-};
-tre.oncontextmenu = function() {
+  epic.src="./img/epic.png"
+  mind.src="./img/mind.png"
+  cool.src="./img/cool.png"
+}
+
+function secretPlayListContext() {
+  defaultEnded = 1
+  if(toggleBug == 1) {
+    draggableDiv.style.width = "150px"
+    audioPlayerContainer.style.width = "150px"
+  }
   childhood(); 
   title.textContent = `secret playlist`; 
   tre.style.color='white';
   tre.removeEventListener('mouseover',drama);
   tre.removeEventListener('mouseout',noDrama);
+  epic.src="./img/epic.png"
+  mind.src="./img/mind.png"
+  cool.src="./img/cool.png"
 };
 
 var colossus = new Audio();
@@ -1107,7 +1149,12 @@ const randNum = (min, max) => {
 ]
 const writeSounds = e => {
   let selection = ( window.getSelection().toString() != '' ) ? window.getSelection().toString() : 'z'
-  
+  // minus sign
+  if (e.keyCode == 189 || e.keyCode == 109 ) {
+    const minus = new Audio('music/minus.mp3')
+    return minus.play()
+  } // sound when pressing - 
+
   // enter key
   if ( e.keyCode == 13 && e.target.value.length != 0 ) {
     const ent = new Audio('music/right.mp3')
@@ -1273,9 +1320,90 @@ function flashes(){
   flsh.play();
 }
 
+// THE END SOUND
+  // GUARD CLAUSE: when click on the end, ending is gonna return FALSE at the beginning of the function the NEXT TIME the user clicks on it
+let ending = 0
+  // ending will return to 0 once slumber (song of the end) has ended
+  // song of the end.
+const slumber = new Audio('music/Return To Slumber - Demon Souls Remake.mp3'), 
+  // boom sound before the song of the end
+      boom = new Audio('music/boom.mp3'),
+  // theEnd huge letter at the end of the page
+      theEnd = select('.theEnd'), 
+  // soundOfTheEnd is all the outro of the page. Will run once the user clicks on THE END at the end of 300 website.
+      soundOfTheEnd = () => { 
+        // It's gonna run again only when the song has finshed
+  if ( ending == 1 ) return
+  ending = 1
+        // a last dramatic message to the user
+  boom.play(); title.textContent = `Gracias...`
+  boom.addEventListener('ended', () => { slumber.play() } )
+        // music get muted
+  muteAnimation.playSegments([0, 15], true)
+  audio.muted = true
+        // music get paused
+  audio.pause()
+  playAnimation.playSegments([0, 14], true)
+  cancelAnimationFrame(raf)
+        // audio player will contain our FAREWELL to the user, all of these const are just for the last message 
+  const audioPlayerDiv = getE('audio-player-container'),
+        farewell = document.createElement('div'),
+        p = document.createElement('span'),
+        c = document.createElement('span'),
+        e = document.createElement('span'),
+        uwu = document.createElement('span'),
+        _p = document.createTextNode('Por...'),
+        _c = document.createTextNode('Creer...'),
+        _e = document.createTextNode('en mi'),
+        // getElementsByTagName('*') takes all the HTML children that the audio-player-container has (buttons, inputs, imgs, etc)
+        parent = audioPlayerDiv.getElementsByTagName('*');
+        // apply opacity 0 and disabled to all, so the main content on the audio player is gonna be, just during the song, our farewell to the user
+  [].forEach.call(parent, child => {
+    child.style.opacity = '0'
+    child.disabled = true
+  })
+    // required HTML elements created with JS to provide the vissual of the message
+  p.appendChild(_p)
+  c.appendChild(_c)
+  e.appendChild(_e)
+  farewell.appendChild(p)
+  farewell.appendChild(c)
+  farewell.appendChild(e)
+  farewell.appendChild(uwu)
+  audioPlayerDiv.appendChild(farewell)
+  p.setAttribute('id', 'por')
+  c.setAttribute('id', 'creer')
+  e.setAttribute('id', 'enmi')
+  uwu.setAttribute('id', 'uwu')
+  farewell.setAttribute('id', 'farewell')
 
+  // get the 300 title into a variable and create two false events for hover and click and put'em in variables as well
+  const falseHover = new Event('mouseenter'),
+        falseClick = new Event('click')
+  // while ending is playing, simulate a hover on 300, so the secret would be finally revealed BUT cannot be accessed 'til song's end.
+  tre.removeEventListener('click', secretPlayListClick) 
+  tre.removeEventListener('contextmenu', secretPlayListContext) 
+  tre.removeEventListener("mouseover", drama)
+  tre.removeEventListener("mouseout", noDrama)
+  tre.dispatchEvent(falseHover)
+  tre.style.cursor = 'auto'
 
-//INICIO DE LOS PROBLEMAS Y SOLUCIONES
+  // once the song of the end has ended, play the secret playlist dispatching a false click; remove guard class: ending = 0
+  slumber.addEventListener('ended', () => {
+    tre.addEventListener('click', secretPlayListClick) 
+    tre.addEventListener('contextmenu', secretPlayListContext) 
+    tre.addEventListener("mouseover", drama)
+    tre.addEventListener("mouseout", noDrama)
+    tre.dispatchEvent(falseClick)
+    tre.style.cursor = 'pointer'
+    ending = 0
+  })
+  // Done. Add the event to THE END.
+}; theEnd.addEventListener( 'click', soundOfTheEnd )
+
+// FINAL DE LOS SONIDOS DE INTERFAZ
+
+// INICIO DE LOS PROBLEMAS Y SOLUCIONES
 // 6 EJERCICIOS DE VARIABLES
 
 "1." 
@@ -2048,9 +2176,9 @@ function result7(){
 // 8. Leer un número entero de dos dígitos y determinar si sus dos dígitos son pares.
 function result8(){
 
-    let n8 = document.getElementById("input8").value;
-    let left = Number.parseInt( n8 / 10 );
-    let right = n8%10;
+    let n8 = document.getElementById("input8").value,
+        left = Number.parseInt( n8 / 10 ),
+        right = n8%10
 
   if ((n8 == 0)) {
     document.getElementById("r8").innerHTML = "";
@@ -21970,6 +22098,7 @@ function array50(){
 }
 //FINAL DE LA SECCIÓN ARREGLOS.
 
+
 //SECCIÓN MATRIX
 //DRAG AND DROP
 var dragSrcE = null;
@@ -22034,9 +22163,9 @@ function outM(){
     this.style.color = `blanchedalmond`;
   };
 }
-
+// album keeps the numbers of each matrix 
 const album = []
-//matrix constructor
+// matrix constructor
 class Matrix {
   /*
   MATRIX 
@@ -22046,7 +22175,7 @@ class Matrix {
     * step 2- Generate random nums and introduce them into a grid overlaping the pos numbers grid - this takes place each dblclick
     * step 3- Add drag and drop & "swaping" functionalities
   */
-  constructor (id,rows,cols) {
+  constructor (id, rows, cols) {
     //step 0: Declare what you can
     this.matrix = document.querySelector(`div#m${id}`)
     this.numGrid = document.querySelector(`div#cuad${id}`)
@@ -22274,7 +22403,7 @@ function matrixEvts(id, id2) {
     tri.dispatchEvent(dbl)
   }
 
-    // Matrix
+    // Matrix event listeners to avoid bugs
   getE(`m${id}`).addEventListener('mouseover', () => {
     getE(`m${id}`).addEventListener('dblclick', dupMatrix)
   })
@@ -22289,6 +22418,7 @@ function matrixEvts(id, id2) {
     getE(`m${id2}`).removeEventListener('dblclick', dupMatrix)
   })
 
+  // simulation of dblclick event 
   function dupMatrix(e) {
     const dbl = new Event('dblclick')
     if ( e.target.parentNode.id == `m${id}` ) return getE(`m${id2}`).dispatchEvent(dbl)
@@ -24080,8 +24210,15 @@ class Bar {
 } // end of bar class
 
   // bar events for sounds and colors
-function midClinkBar() { let clink = new Audio('music/clinkBar.mp3'); clink.play() }
-
+let clinkBubble = 0
+function midClinkBar() { 
+  let clink = new Audio('music/clinkBar.mp3')
+  clink.play(); clinkBubble++ 
+  if ( clinkBubble == 3 ) {
+    const bubble = new Audio('music/bubble.mp3')
+    bubble.play(); clinkBubble = 0
+  }
+}
 const bars = getClass('bar');
 [].forEach.call(bars, function(bar) {
   bar.addEventListener('click', midClinkBar) 
@@ -24127,8 +24264,8 @@ const barL = getClass('barL');
 function F01() { 
   const f01 = new Fn('01'),
         solv = (f01.input.length == 1)
-    ? `Eso es un ${Number(f01.num)} c:` 
-    : `El último dígito del número ${Number(f01.num)} es el ${f01.input.slice( f01.input.length - 1 )} UwU`
+          ? `Eso es un ${Number(f01.num)} c:` 
+          : `El último dígito del número ${Number(f01.num)} es el ${f01.input.slice( f01.input.length - 1 )} UwU`
   f01.span.innerHTML = solv
   f01.clean()
 }
@@ -28929,3 +29066,4 @@ matrixEvts('81')
 
 //fin de SECCIÓN: FUNCIONES (ÚLTIMA SECCIÓN).
 // FINAAL FIIIN FIN DE TODOO AWOIERGHWEOIGH AEWG WA----------------------------------------- OMG QUÉ VIAJE -------------------------------------...
+

@@ -1,4 +1,4 @@
-/*audio player*/
+ /* audio player */
   .aPb {
       padding: 0;
       border: 0;
@@ -9,7 +9,7 @@
       height: 40px;
       float: left;
   }
-  #draggableDiv{
+  #draggableDiv {
       position:fixed;
       z-index:668;
       top:65%;
@@ -47,7 +47,7 @@
       border-radius: 5px;
       transition:1s;
     }
-    #audio-player-container:hover::before{
+    #audio-player-container:hover::before {
         background: linear-gradient(to left, #c09c37, #0c0c0cfd);
     }
   #plays {
@@ -63,15 +63,15 @@
       opacity: 0;
       transition: opacity 3s 6s;
   }
-  .puta{
+  .puta {
       display:flex;
       outline:none;
       top:30px;
   }
-  #plays:hover{
+  #plays:hover {
       color:rgb(255, 255, 255);
   }
-  #plays:active{    
+  #plays:active {    
       cursor:move;
   }
   #play-icon {
@@ -80,7 +80,7 @@
   path {
       stroke: #806d45;
     }
-    path:hover{
+    path:hover {
       stroke: #cfce65;
   }
   .time {
@@ -152,10 +152,10 @@
       background-color: #c89a2d;
       cursor: pointer;
     }
-    .aPi[type="range"]:hover::before{
+    .aPi[type="range"]:hover::before {
       background-color: rgb(255, 210, 62);
   }
-  .aPi[type="range"]:active::before{
+  .aPi[type="range"]:active::before {
     background-color: rgb(255, 187, 0);
 }
   .aPi[type="range"]::-webkit-slider-thumb {
@@ -226,7 +226,7 @@
       transform: scale(1.2);
       background: #007db5;
   }
-  .imai{
+  .imai {
     position:relative;
     padding-top:15px;
     padding-right: 40px;
@@ -237,29 +237,29 @@
     -webkit-user-drag: none;
     user-select:none;
   }
-  *{
+  * {
     -webkit-user-drag: none;
     -moz-window-dragging: none;
   }
 
-/*---------------------------------------------------------------------*/
+ /* --------------------------------------------------------------------- */
 
 
-/*300*/
-html,body{
+ /* 300 */
+html,body {
     margin: 0;
     height:100%;
     padding:0;
 }
-body:not(.puta){
+body:not(.puta) {
     background-color: rgb(0, 0, 0); 
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     color:blanchedalmond;
     font-size:2.755341649ch;
     text-align: justify;
 }
-/* Intro 300 */
-#containerIntro300{
+ /* Intro 300 */
+#containerIntro300 {
     background:rgb(0, 0, 0);
     position:absolute;
     height:100%;
@@ -269,16 +269,16 @@ body:not(.puta){
     justify-content: center;
     align-items: center;
 }
-#intro300{
+#intro300 {
     user-select:none;
     transform: translate(1000%,-300%);
     position:fixed;
     transition:0.5s;
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     height:min-content;
-    font-size: 400px;
+    font-size: calc(400px + 30vh);
     z-index:999;
-    /*Gradient color animation*/
+     /* Gradient color animation */
     animation: fluidoOff 10s ease-in-out infinite;
     background: linear-gradient(
         -45deg,
@@ -296,13 +296,13 @@ body:not(.puta){
     50% {background-position: 100% 50%}
     100% {background-position: 0 50%}
 }
-#intro300::before{
+#intro300::before {
     content: "3";
 }
-#intro300::after{
+#intro300::after {
     content:"0";
 }
-#intro300:hover{
+#intro300:hover {
     cursor: pointer;
     animation: fluidoOn 15s ease-in-out infinite;
     background: linear-gradient(
@@ -321,39 +321,40 @@ body:not(.puta){
     50% { background-position: 100% 50% }
     100% { background-position: 0 50% }
 }
-/* Fin del intro 300 */
+ /* Fin del intro 300 */
 
-*::selection{
+*::selection {
     color:#f7b64e;
     background-color: #333333;
 }
-*::-moz-selection{
+*::-moz-selection {
     color:#f7b64e;
     background-color: #333333;
 }
-summary:not(.puta){
+summary:not(.puta) {
     position: sticky;
     top:0;
     cursor:pointer;
     background-color:rgb(0, 0, 0);
     outline: none;
     user-select: none;
+    height:9.6vh;
 }
-summary:hover{
+summary:hover {
     color:goldenrod;
 }
-#theEnd{
+#theEnd {
     width: fit-content;
     cursor:pointer;
     transition: 3.9s;
 }
-#theEnd:hover{
+#theEnd:hover {
     width:fit-content;
     color:rgb(255, 255, 255);
     font-size:6ch;
     transition: 1.23s;
 }
-#div300{
+#div300 {
     display:flex;
     justify-content: center;
     position:sticky;
@@ -361,73 +362,67 @@ summary:hover{
     height: fit-content;
     background-color:black;
 }
-#h300{/*EL TÍTULO 300*/
-    font-size: 40px;
+#h300 {  /* EL TÍTULO 300 */
+    font-size: 5vh;
     user-select: none;
     position:sticky;
     z-index: 666;
     opacity: 0;
     width:min-content;
-    height: min-content;
+    height: 5vh;
     cursor:pointer;
     transition: 2s;
     transition-delay: 2.6s;
 }
-#h300:hover{
-    color:rgb(255, 255, 255);
-    font-size:72ch;
-    transform: translateY(-777px);
-    transition:200s;
-}
-/*SECCIÓN PARA LOS SUMMARIES (el título de cada sección y sus animaciones de cargarse en cascada)*/
+ /* SECCIÓN PARA LOS SUMMARIES (el título de cada sección y sus animaciones de cargarse en cascada) */
 #section01, #section02, #section03, #section04, #section05, #section06, #section07, #section08, #section09 {
     display:flex;
     justify-content: center;
     position:sticky;
 }
-    #section01{
+    #section01 {
         z-index: 9;
         transition:transform 0.3s;
     }
-    #section02{
+    #section02 {
         z-index: 8;
         transition:transform 0.6s;
     }
-    #section03{
+    #section03 {
         z-index: 7;
         transition:transform 1s;
     }
-    #section04{
+    #section04 {
         z-index: 6;
         transition:transform 1.3s;
     }
-    #section05{
+    #section05 {
         z-index: 5;
         transition:transform 1.6s;
     }
-    #section06{
+    #section06 {
         z-index: 4;
         transition:transform 1.9s;
     }
-    #section07{
+    #section07 {
         z-index: 3;
         transition:transform 2.2s;
     }
-    #section08{
+    #section08 {
         z-index: 2;
         transition: transform 2.5s;
     }
-    #section09{
+    #section09 {
         z-index: 1;
         transition: transform 2.7s;
     }
-/*Aquí termina la sección dedicada a los títulos de las secciones (summaries) */
+ /* Aquí termina la sección dedicada a los títulos de las secciones (summaries) */
 
-td{
+td {
     white-space: pre-line;
 }
 
-textarea{
+textarea {
     resize:none;
     background-color: rgb(25, 53, 73);
     color:antiquewhite;
@@ -436,36 +431,31 @@ textarea{
     height:15em;
     width:15em;
 }
-iframe{
+iframe {
     background-color: rgb(25, 53, 73);
 }
-table{
+table {
     font-size: larger;
 }
 #title, #title1 {
     margin-top: 4%;
     margin-bottom: 3%;
 }
-tr,td{
+tr,td {
+    text-align:justify;
     padding: 25px;
-}
-#centrarTabla  {
-    margin-left: 23%;
-}
-#centrarTabla2 {
-    margin-left: 10%;
 }
 #seudoCode {
     font-size: large;
 }
 
-/*Diseño minimalista inputs*/
-input::placeholder{
+ /* Diseño minimalista inputs */
+input::placeholder {
     font-size: 0.8em;
     text-align: center;
     font-style: italic;
 }
-input:not(.aPi,.falseButton){
+input:not(.aPi,.falseButton) {
     color:blanchedalmond;
     margin: 15px 0;
     font-size: 20px;
@@ -487,17 +477,17 @@ input:hover:not(.aPi,.falseButton) {
     border-right: none;
 }
 input:focus:not(.aPi,.falseButton),
-input:valid:not(.aPi,.falseButton){
+input:valid:not(.aPi,.falseButton) {
     border: 1px solid rgb(255, 215, 39);
     border-top: none;
     border-left: none;
     border-right: none;
 }
-/*botones vivos*/
-.botonesSeccionArreglos{
+ /* botones vivos */
+.botonesSeccionArreglos {
     width:368px;
 }
-button{
+button {
     outline: none;
 	box-shadow:inset 0px 0px 10px -50px #fffefa;
 	background:linear-gradient(to bottom, #fff186 5%, #f7b64e 100%);
@@ -514,32 +504,32 @@ button{
 	text-shadow:0px 1px -50px #ffffff;
     user-select: none;
 }
-button:hover:not(.aPb){
+button:hover:not(.aPb) {
     border:3px solid #ffaa22;
     background:linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
     color:rgb(31, 11, 11);
 }
-button:focus:not(.aPb){
+button:focus:not(.aPb) {
     border:1px solid #ffaa22;
     background:linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%);
     color: rgb(31, 11, 11);
 	top:1px;
 }
-#c17,#c17b{ /*spans cortados a la mitad*/
+#c17,#c17b {  /* spans cortados a la mitad */
     display:inline-table;
     margin-inline: 6%;
 }
-#tr10 {/*tabla de multiplicar*/
+#tr10 { /* tabla de multiplicar */
     text-align: center;
     font-size:15.4274pt;
 }   
 
-/* Para la scrollbar UwU */
-::-webkit-scrollbar{
+ /* Para la scrollbar UwU */
+::-webkit-scrollbar {
     width: 16px;
     background-color: transparent;
 }
-::-webkit-scrollbar-track{
+::-webkit-scrollbar-track {
     -webkit-box: transparent;
     -Moz-border-radius-bottomRight: 100px;
     border-bottom-right-radius: 100px;
@@ -547,13 +537,13 @@ button:focus:not(.aPb){
     border-top-left-radius: 100px;
     background-color: #00000000;
 }
-::-webkit-scrollbar-track:hover{
+::-webkit-scrollbar-track:hover {
     background-color: transparent;
 }
-::-webkit-scrollbar-track:active{
+::-webkit-scrollbar-track:active {
     background-color: #555555;
 }
-::-webkit-scrollbar-thumb{
+::-webkit-scrollbar-thumb {
     background: #434343a9;
     -Moz-border-radius-bottomRight: 100px;
     border-bottom-right-radius: 100px;
@@ -561,17 +551,17 @@ button:focus:not(.aPb){
     border-top-left-radius: 100px;
     box-shadow:inset 2px 2px 2px hsl(0deg 0% 100% / 25%), inset -2px -2px 2px rgb(0 0 0 / 25%);
 }
-::-webkit-scrollbar-thumb:hover{
+::-webkit-scrollbar-thumb:hover {
     box-shadow:inset 2px 2px 2px hsl(0deg 0% 100% / 25%), inset -2px -2px 2px rgb(0 0 0 / 25%);
     background-color: rgba(138, 138, 138, 0.89);
 }
-::-webkit-scrollbar-thumb:active{
+::-webkit-scrollbar-thumb:active {
     box-shadow:inset 2px 2px 2px hsl(0deg 0% 100% / 25%), inset -2px -2px 2px rgb(0 0 0 / 25%);
     background-image: -webkit-linear-gradient(180deg,transparent,rgb(255, 255, 255) 100%, transparent);
     background-color: rgb(207, 207, 207);
 }
-/*FINAL DE LA SCROLLBAR xd*/
-.gates{display:block}
+ /* FINAL DE LA SCROLLBAR xd */
+.gates {display:block}
 .gates:hover {
     background-color:#333333;
     cursor:pointer;
@@ -584,8 +574,8 @@ button:focus:not(.aPb){
             font-weight:bold;
         }
 
-/* Diseño de input/button */
-.falseButton{
+ /* Diseño de input/button */
+.falseButton {
     user-select:none;
     color:whitesmoke;
     outline: none;
@@ -609,7 +599,7 @@ button:focus:not(.aPb){
     border-left: none;
     border-right: none;
 }
-.falseButton:hover{
+.falseButton:hover {
     box-shadow:inset 4px 4px 20px  #494d4d;
     background:#dadada;
     border: 2px solid dadada;
@@ -618,7 +608,7 @@ button:focus:not(.aPb){
     border-right: none;
 }
 .falseButton:focus,
-.falseButton:valid{
+.falseButton:valid {
     box-shadow:none;
     cursor:text;
     background:black;
@@ -632,32 +622,32 @@ button:focus:not(.aPb){
     border-right: none;
 }
 .falseButton:focus:hover,
-.falseButton:valid:hover{
+.falseButton:valid:hover {
     border: 2px solid rgb(255, 255, 255);
     border-top: none;
     border-left: none;
     border-right: none;
 }
-.falseButton::placeholder{
+.falseButton::placeholder {
     transition:3.5s;
     font-size:18px;
     color:rgb(255, 255, 255);
     font-style: normal;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
-.falseButton:hover::placeholder{
+.falseButton:hover::placeholder {
     color:rgba(0, 0, 0, 0.76);
 }
-/*FINAL DEL Diseño de input/button */
+ /* FINAL DEL Diseño de input/button */
 
-/*DISEÑO DE CUADRÍCULA PARA LOS VECTORES Y LA FLECHA DE LA SECCIÓN ARREGLOS*/
-/*DRAG AND DROP*/
+ /* DISEÑO DE CUADRÍCULA PARA LOS VECTORES Y LA FLECHA DE LA SECCIÓN ARREGLOS */
+ /* DRAG AND DROP */
 [draggable] {
     -moz-user-select: none;
     -khtml-user-select: none;
     -webkit-user-select: none;
     user-select: none;
-    /* Required to make elements draggable in old WebKit */
+     /* Required to make elements draggable in old WebKit */
     -khtml-user-drag: element;
     -webkit-user-drag: element;
     cursor:grab;
@@ -665,16 +655,16 @@ button:focus:not(.aPb){
     cursor: -webkit-grab;
     position:relative;
 }
-[draggable]:active{
+[draggable]:active {
     transform:scale(0.9);
     cursor:grabbing;
     cursor:-webkit-grabbing;
     cursor:-moz-grabbing;
 }
-/*FINAL DEL DRAG AND DROP*/
+ /* FINAL DEL DRAG AND DROP */
 
 .vector,
-.arrow{
+.arrow {
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     grid-auto-rows:minmax(50px,auto);
@@ -689,26 +679,26 @@ button:focus:not(.aPb){
     background-color: rgba(0, 0, 0, 0.431);
     border: 2px solid rgb(227, 180, 79);
 }
-.vector > div:hover{
+.vector > div:hover {
     border: 2px solid rgb(255, 255, 255);
 }
-.vector > div.over{
+.vector > div.over {
     border:2px dashed rgb(241, 241, 241);
 }
-.randBut{/* Un pequeño ajuste a los botones de generar números random */
+.randBut { /* Un pequeño ajuste a los botones de generar números random */
     block-size: 47px;
 }
-.arrow > div { /* Creamos bordes invisibles para la cuadrícula de la flecha, para que su tamaño sea responsive */
+.arrow > div {  /* Creamos bordes invisibles para la cuadrícula de la flecha, para que su tamaño sea responsive */
     border: solid black;
 }
-.arrowImg{ /* Dimensiones de las imágenes de las flechas */
+.arrowImg {  /* Dimensiones de las imágenes de las flechas */
     padding-top: 6.9px;
     width:  50%;
     height: 110%;
     user-select: none;
     -webkit-user-drag: none;
 }
-.arraynferno04{
+.arraynferno04 {
     width:fit-content;
     display: flex;
     justify-content:center;
@@ -742,26 +732,26 @@ button:focus:not(.aPb){
             width:237px;
     }
     #arrSpan06l,
-    #arrSpan06r{
+    #arrSpan06r {
         font-size:4em;
         user-select:none;
         font-weight:bold;
     }
-        #arr06intro{
+        #arr06intro {
             color:black;
         }
 .eleven {
     font-weight: bold;
     font-size: 1.5em;
 }
-/*FIN DE DISEÑO DE VECTORES*/
-/*DISEÑO DE MATRIX*/
+ /* FIN DE DISEÑO DE VECTORES */
+ /* DISEÑO DE MATRIX */
 .matrixCradle {
     display:grid;
     grid-template-columns: repeat(2, 1fr);
     grid-auto-rows: auto;
 }
-.mSpan { /* div where the matrix's spans are contained */
+.mSpan {  /* div where the matrix's spans are contained */
     justify-self:center;
     font-size:3vh;
     width: 69%;
@@ -771,7 +761,7 @@ button:focus:not(.aPb){
 .matrix,
 .duality {
     position: relative;
-    height: 100vh;        /*32em*/ /*92vh*/
+    height: 100vh;         /* 32em */  /* 92vh */
 }
     .matrix:hover,
     .duality:hover {
@@ -854,16 +844,17 @@ button:focus:not(.aPb){
                     .cuad > p > em:hover {
                         color:whitesmoke;
                     }          
-.mAns { /* matrix answer para los ejercicios que pidan un dato extro */
+.mAns {  /* matrix answer para los ejercicios que pidan un dato extro */
     font-weight: bolder;
     font-size: larger;
     color: goldenrod;
+    position:inherit;
 }
     .duality:hover .mAns,
     .matrix:hover > .mAns {
         color: #f7b64e;
     }
-.duality { /* esto posibilita tener dos matrix en un ejercicio */
+.duality {  /* esto posibilita tener dos matrix en un ejercicio */
     grid-column-end: span 2;
     grid-row-end: span 3;
     display: grid;
@@ -896,8 +887,7 @@ button:focus:not(.aPb){
                     } 
                         .origin > em,
                         .symmetry > em {
-                            position:relative;
-                            top: 13%;
+                            top: 69px;
                         }         
 #lastMatrix::after {
     content: 'UwU';
@@ -928,9 +918,9 @@ button:focus:not(.aPb){
                 #mi21 {
                     grid-area: inp;
                 }
-/* FIN DISEÑO DE MATRIX*/
-/* INICIO DISEÑO DE FN -última sección- */
-.barBox { /* the rare barometer */
+ /* FIN DISEÑO DE MATRIX */
+ /* INICIO DISEÑO DE FN -última sección- */
+.barBox {  /* the rare barometer */
     user-select: none;
     position: relative;
     width: 30vw;
@@ -943,7 +933,7 @@ button:focus:not(.aPb){
     border-radius: 666px;
     cursor: pointer;
 }
-.barBox::before { /* the rare barometer container */
+.barBox::before {  /* the rare barometer container */
     left:-2vw;
     top:-3vh;
     content:'';
@@ -984,7 +974,10 @@ button:focus:not(.aPb){
                 .barR {
                     left: 67%;
                 }
-/* FIN DISEÑO DE FN -última sección- */
+#matrixFn50 .mSpan {
+    margin-top: 2vh;
+}                
+ /* FIN DISEÑO DE FN -última sección- */
 .theEnd {
     height: 100vh;
     width: 100%;
@@ -998,6 +991,7 @@ button:focus:not(.aPb){
     letter-spacing: -15px;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-style: italic;
+    user-select: none;
 }
     .theEnd:hover {
         background: #0C0D10;
@@ -1008,6 +1002,43 @@ button:focus:not(.aPb){
             .theEnd h1:hover {
                 color:rgb(255, 145, 0);
             }   
-/* a las clases las llamas con (elemento)."elNombreDeLaClass" :D  */
-/* a los ID las llamas con #"elIDdelElemento" :D */
-/* también puedes llamar elementos HTML con su tag name sin símbolos */
+#farewell {
+    cursor: grabbing;
+    overflow: auto;
+    line-height: 2000%;
+    color: whitesmoke;
+    top: -90%;
+    position: relative;
+    height:94%;
+    width: 100%;
+    font-size:larger;
+}            
+    #farewell span {
+        display:block;
+    }
+        #uwu {
+            float: right;
+        }
+            #uwu:before {
+                content: 'c:';
+                position: absolute;
+                z-index: 13241241;
+                line-height: 50px;
+                bottom: -666%;
+                right: 10px;
+            }
+                #por:before {
+                    content: 'uwuw';
+                    color: black;
+                }
+                    #creer:before {
+                        content: 'uwuwuwuwu';
+                        color: black;
+                    }
+                        #enmi:before {
+                            content: 'uwuwuwuwuwuwuwu';
+                            color: black;
+                        }
+ /* a las clases las llamas con (elemento)."elNombreDeLaClass" :D  */
+ /* a los ID las llamas con #"elIDdelElemento" :D */
+ /* también puedes llamar elementos HTML con su tag name sin símbolos */
