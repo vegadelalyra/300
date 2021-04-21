@@ -718,9 +718,7 @@ function titleHover() {
         };
     };
 };
-let divKills = 0;
-let toggleBug = 1; 
-let defaultEnded = 0;
+let divKills = 0, toggleBug = 1, defaultEnded = 0
 function divKiller(){
   toggleBug = 0;
     if(divKills == 0){
@@ -1148,7 +1146,8 @@ const randNum = (min, max) => {
   'music/typewriter8.mp3',
 ]
 const writeSounds = e => {
-  let selection = ( window.getSelection().toString() != '' ) ? window.getSelection().toString() : 'z'
+  let selection = ( window.getSelection().toString() != '' ) ? window.getSelection().toString() : 'z',
+      inputOfBar = e.target.className == 'inputBar'
   // minus sign
   if (e.keyCode == 189 || e.keyCode == 109 ) {
     const minus = new Audio('music/minus.mp3')
@@ -1179,7 +1178,7 @@ const writeSounds = e => {
       const truck = new Audio('music/truck.mp3')
       return truck.play()
     } // above truck sound if the input is empty and user tries to delete
-    if ( e.target.value.length == 1 || e.target.value.includes(selection) ) { 
+    if ( ( e.target.value.length == 1 || e.target.value.includes(selection) ) && !inputOfBar ) { 
       const fullSupr = new Audio('music/fullSupr.mp3')
       return fullSupr.play() 
     } // above fullsupr sound if the input is fully cleanse
@@ -1201,12 +1200,12 @@ const writeSounds = e => {
     if ( e.target.value.length == e.target.maxLength ) {
       const fullInput = new Audio('music/fullInput.mp3')
       return fullInput.play()
-    } // above when input is full, choke sound
-    if ( e.target.value.length == e.target.maxLength - 1 ) {
+    } // above when input is full, choke sound 
+    if ( e.target.value.length == e.target.maxLength - 1 && !inputOfBar ) {
       if ( e.target.value.includes(selection) ) return
       const endOfLine = new Audio('music/lineBreak.mp3')
       return endOfLine.play()
-    } // above cliin sounds when input completes its maxlength
+    } // above cliin sounds when input completes its maxlength - CAMPANITA -
     const type = new Audio( writetyper[randNum(0, 7)] )
     return type.play()
   } // above writetyper sounds when writing valid numbers
@@ -1318,7 +1317,7 @@ function flashes(){
   var flsh = new Audio();
   flsh.src = "music/flashes.mp3";
   flsh.play();
-}
+} // end of vector sounds
 
 // THE END SOUND
   // GUARD CLAUSE: when click on the end, ending is gonna return FALSE at the beginning of the function the NEXT TIME the user clicks on it
@@ -1335,9 +1334,28 @@ const slumber = new Audio('music/Return To Slumber - Demon Souls Remake.mp3'),
         // It's gonna run again only when the song has finshed
   if ( ending == 1 ) return
   ending = 1
-        // a last dramatic message to the user
+
+  // create two false events for hover and click and put'em in variables to eval as parameter of dispatchEvent method
+  const falseHover = new Event('mouseenter'),
+  falseClick = new Event('click')
+  // a last dramatic message to the user
   boom.play(); title.textContent = `Gracias...`
-  boom.addEventListener('ended', () => { slumber.play() } )
+  // once the boom sounds, ascension to 300 title starts
+  boom.addEventListener('ended', () => { 
+    slumber.play() 
+  // going up and entering to the inner 300
+    // dispatch a fake hover event on 300 title each 0.3 seconds
+    inevitable = setInterval(theEndGates, 300) 
+    function theEndGates(){ return tre.dispatchEvent(falseHover) }
+    // dispatch a fake scrollTop event on every HTML element
+    const allElements = document.getElementsByTagName('*')
+    elevating = setInterval(eternalRise, 100)
+    function eternalRise() { 
+      return [].forEach.call( allElements, el => {
+        el.scrollTop -= 2 
+      })
+    }
+  })
         // music get muted
   muteAnimation.playSegments([0, 15], true)
   audio.muted = true
@@ -1345,7 +1363,17 @@ const slumber = new Audio('music/Return To Slumber - Demon Souls Remake.mp3'),
   audio.pause()
   playAnimation.playSegments([0, 14], true)
   cancelAnimationFrame(raf)
-        // audio player will contain our FAREWELL to the user, all of these const are just for the last message 
+
+      // if audio player is closed, we open it up simulating a toggle on audioplayer title
+  const tongo = new Event('toggle')
+  if (!details.open) {
+    details.dispatchEvent(tongo)
+    divKills = 0
+    toggleBug = 1
+    defaultEnded = 1
+  }
+
+    // audio player will contain our FAREWELL to the user, all of these const are just for the last message 
   const audioPlayerDiv = getE('audio-player-container'),
         farewell = document.createElement('div'),
         p = document.createElement('span'),
@@ -1377,15 +1405,11 @@ const slumber = new Audio('music/Return To Slumber - Demon Souls Remake.mp3'),
   uwu.setAttribute('id', 'uwu')
   farewell.setAttribute('id', 'farewell')
 
-  // get the 300 title into a variable and create two false events for hover and click and put'em in variables as well
-  const falseHover = new Event('mouseenter'),
-        falseClick = new Event('click')
   // while ending is playing, simulate a hover on 300, so the secret would be finally revealed BUT cannot be accessed 'til song's end.
   tre.removeEventListener('click', secretPlayListClick) 
   tre.removeEventListener('contextmenu', secretPlayListContext) 
   tre.removeEventListener("mouseover", drama)
   tre.removeEventListener("mouseout", noDrama)
-  tre.dispatchEvent(falseHover)
   tre.style.cursor = 'auto'
 
   // once the song of the end has ended, play the secret playlist dispatching a false click; remove guard class: ending = 0
@@ -1396,6 +1420,8 @@ const slumber = new Audio('music/Return To Slumber - Demon Souls Remake.mp3'),
     tre.addEventListener("mouseout", noDrama)
     tre.dispatchEvent(falseClick)
     tre.style.cursor = 'pointer'
+    clearInterval(inevitable)
+    clearInterval(elevating)
     ending = 0
   })
   // Done. Add the event to THE END.
