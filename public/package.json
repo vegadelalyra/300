@@ -1,0 +1,24 @@
+{
+  "name": "300",
+  "version": "1.0.0",
+  "description": "Los documentos llamados \"300\" son los principales: <br>\r 300.html es la página web <br>\r 300.js es el código <br>\r 300.css es el diseño de la página web <br>",
+  "main": "300.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node 300.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vegadelalyra/300.git"
+  },
+  "keywords": [],
+  "author": "VegaDeLaLyra",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vegadelalyra/300/issues"
+  },
+  "homepage": "https://github.com/vegadelalyra/300#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
