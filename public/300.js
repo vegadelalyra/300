@@ -90,7 +90,7 @@ const setSliderMax = () => {
 }
 
  const displayBufferedAmount = () => {
-    var bufferedAmount = Math.floor(audio.buffered.end(audio.buffered.length - 1));
+    if(audio.readyState === 4) var bufferedAmount = Math.floor(audio.buffered.end(audio.buffered.length - 1));
     audioPlayerContainer.style.setProperty('--buffered-width', `${(bufferedAmount / seekSlider.max) * 100}%`);
 }
 
@@ -104,12 +104,12 @@ const whilePlaying = () => {
 if (audio.readyState > 0) {
     displayDuration();
     setSliderMax();
-    displayBufferedAmount();
+    if (audio.readyState === 4) displayBufferedAmount();
 } else {
     audio.addEventListener('loadedmetadata', () => {
         displayDuration();
         setSliderMax();
-        displayBufferedAmount();
+        if (audio.readyState === 4) displayBufferedAmount();
     });
 }
 
