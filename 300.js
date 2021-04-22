@@ -1,4 +1,10 @@
 //SERVER
+const http = require('http')
+
+http.createServer(function (request, response) {
+  response.writeHead(200, {"Content-Type":"text/plain"})
+  response.end("awiwii oli primoxd")
+}).listen(process.env.PORT)
 
 //26/03/2021 Implementación del reproductor de audio
 /* Implementation of the presentation of the audio player */
@@ -1333,17 +1339,21 @@ let ending = 0
 const slumber = new Audio('music/Return To Slumber - Demon Souls Remake.mp3'), 
   // boom sound before the song of the end
       boom = new Audio('music/boom.mp3'),
+  // howling wind when hover    
+      wind = new Audio('music/wind.wav'),
   // theEnd huge letter at the end of the page
-      theEnd = select('.theEnd'), 
+      theEnd = select('.theEnd > em'), 
   // soundOfTheEnd is all the outro of the page. Will run once the user clicks on THE END at the end of 300 website.
       soundOfTheEnd = () => { 
         // It's gonna run again only when the song has finshed
   if ( ending == 1 ) return
   ending = 1 
+    // eliminate the wind sound forever
+  theEnd.removeEventListener( 'mouseover', humblin )  
   // for the shock wave fast effect when clicking THE END
   ripple.disabled = false
   ripple.style.transform = 'scale(4)'
-  setTimeout( () => { ripple.disabled = true }, 1600)
+  setTimeout( () => { ripple.remove() }, 1500)
 
   // create two false events for hover and click and put'em in variables to eval as parameter of dispatchEvent method
   const falseHover = new Event('mouseenter'),
@@ -1436,12 +1446,13 @@ const slumber = new Audio('music/Return To Slumber - Demon Souls Remake.mp3'),
     ending = 0
   })
   // Done. Add the event to THE END.
-}; theEnd.addEventListener( 'click', soundOfTheEnd )
-  // 
-
-
-
+};  theEnd.addEventListener( 'mouseover', humblin )  
+    theEnd.addEventListener( 'mouseout', () => { wind.pause() } )
+    theEnd.addEventListener( 'click', soundOfTheEnd )
+    function humblin() { return wind.play() }
+// event listeners for sounds of the end
 // FINAL DE LOS SONIDOS DE INTERFAZ
+
 
 // INICIO DE LOS PROBLEMAS Y SOLUCIONES
 // 6 EJERCICIOS DE VARIABLES
@@ -29106,4 +29117,3 @@ matrixEvts('81')
 
 //fin de SECCIÓN: FUNCIONES (ÚLTIMA SECCIÓN).
 // FINAAL FIIIN FIN DE TODOO AWOIERGHWEOIGH AEWG WA----------------------------------------- OMG QUÉ VIAJE -------------------------------------...
-
