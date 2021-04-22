@@ -1,11 +1,3 @@
-//SERVER
-const http = require('http')
-
-http.createServer(function (request, response) {
-  response.writeHead(200, {"Content-Type":"text/plain"})
-  response.end("awiwii oli primoxd")
-}).listen(process.env.PORT)
-
 //26/03/2021 Implementación del reproductor de audio
 /* Implementation of the presentation of the audio player */
 const playIconContainer = document.getElementById('play-icon');
