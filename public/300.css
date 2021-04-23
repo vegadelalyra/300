@@ -296,6 +296,11 @@ body:not(.puta) {
         font-size: 60vw;
     }        
 }
+@media screen and (max-width: 450px) {
+    #section01, #section02, #section03, #section04, #section05, #section06, #section07, #section08, #section09 {
+        font-size: 6vw;
+    }
+}
 @keyframes fluidoOff {
     0% {background-position: 0 50%}
     50% {background-position: 100% 50%}
