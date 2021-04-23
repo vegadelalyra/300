@@ -1,3 +1,5 @@
+// SERVER.
+
 // import express node for server methods
 const express = require('express'),
 // save the express node object in a const

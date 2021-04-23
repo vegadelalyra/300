@@ -1900,8 +1900,10 @@ var pstv = 1;
 var miau = 0;
 
 [].forEach.call(allInputs, function(input){
-  input.addEventListener('keydown',inputTest);  
-  input.addEventListener('input', function(){
+  input.addEventListener('keydown', writeNegNumThenDelNum)
+  input.addEventListener('keydown', inputLeftNumberRightMinus)
+  input.addEventListener('keydown', inputTest)  
+  input.addEventListener('keydown', function() {
     if (this.value<0){
       if(nv == 0){
         nv = 1;
@@ -1920,20 +1922,51 @@ var miau = 0;
 
 });
 
-function inputTest(e){
-  if (e.keyCode === 109 || e.keyCode === 189){
-    if (this.value != ``){
-      this.value = -this.value;
-    }
-    else{
-        this.value = '-';
-    };
-  };
+function fixInputMaxLengthOne(e) {
+  e.target.maxLength--
+  e.target.removeEventListener('input', fixInputMaxLengthOne)
+}
 
-  if(isNaN(this.value)){
-    this.value = '-'
-  };
-};
+function inputLeftNumberRightMinus(e) {
+  if ( ( e.keyCode > 47 /*0*/ && e.keyCode < 58 /*9*/ ) || ( e.keyCode > 95 /*numpad*/ && e.keyCode < 106 ) ) {
+    if ( isNaN(this.value) ) {
+      this.value = -this.value[0]
+    }
+  }
+}
+
+function writeNegNumThenDelNum(e) {
+  if ( ( e.keyCode == 8 || e.keyCode == 46 ) && this.value.length == 2 && this.value[0] == '-' ) {
+      // fixing the maxlength 1 input lefting with "-" bug
+      if (this.maxLength == 2) {
+        this.maxLength++
+        this.addEventListener('input', fixInputMaxLengthOne)
+      }
+      this.value = '-'
+  }
+}
+
+function inputTest(e) {
+
+  if (e.keyCode === 109 || e.keyCode === 189) {
+    if (this.value != ``) { 
+      this.value = -this.value 
+    }
+    else {
+      // fixing the maxlength 1 input starting with "-" bug
+      if (this.maxLength == 1) {
+        this.maxLength++
+        this.addEventListener('input', fixInputMaxLengthOne)
+      }
+      this.value = '-'
+    }
+  }
+
+  if( isNaN(this.value) ) { 
+    this.value = '-' 
+  }
+
+}
 
 getE('fi07').removeEventListener('keydown', inputTest)
 
