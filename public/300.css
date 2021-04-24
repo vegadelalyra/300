@@ -1106,19 +1106,21 @@ button:focus:not(.aPb) {
 
             /* audio player container HEIGHT */
     @media screen and (max-height: 450px) {
-        /* title responsive */
-        #h300 {
-            font-size: 1.2em; 
-            line-height: 1%;
-        } /* title responsive */
         /* MENU RESPONSIVE */
         #section01, #section02, #section03, #section04, #section05, #section06, #section07, #section08, #section09 {
             font-size: 2.5vw;
         } /* end of MENU RESPONSIVE */
-
     } 
      /* end of AUDIO PLAYER RESPONSIVE */
     
+     @media screen and (max-width: 480px) {
+                 /* title responsive */
+        #h300 {
+            font-size: 2em; 
+            line-height: 1%;
+        } /* title responsive */
+     }
+
     /* end of RESPONSIVE section*/
 
 
