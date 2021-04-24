@@ -715,39 +715,42 @@ function titleHover() {
         };
         title.onmouseout = function(){
             title.style.opacity= '0.3';
-        };
-    };
-};
-let divKills = 0, toggleBug = 1, defaultEnded = 0
-function divKiller(){
-  toggleBug = 0;
-    if(divKills == 0){
-        details.appendChild(audioPlayerContainer);
-        draggableDiv.style.width = "430px";
-        audioPlayerContainer.style.width = "430px"; 
-        title.style.transitionDelay = '0s';
-        title.style.transition = 'opacity 3s';
-        title.style.opacity = '1';
-        title.onmouseover = '';
-        title.onmouseout = '';
-        divKills++;
+        }
+    }
+}
+let divKills = 0, toggleBug = 1, defaultEnded = 0,
+    defaultWidth = '380px', responsiveWidth = '97%'
+function divKiller() {
+  toggleBug = 0
+    if(divKills == 0) {
+        details.appendChild(audioPlayerContainer)
+
+        // the condition handle the audioplayer responsive
+        draggableDiv.style.width = (innerWidth <= 430) ? responsiveWidth : defaultWidth
+        audioPlayerContainer.style.width = (innerWidth <= 430) ? responsiveWidth : defaultWidth
+        title.style.transitionDelay = '0s'
+        title.style.transition = 'opacity 3s'
+        title.style.opacity = '1'
+        title.onmouseover = ''
+        title.onmouseout = ''
+        divKills++
     }
     else{
-      if(defaultEnded == 1){
-        audioPlayerContainer.remove();
-        draggableDiv.style.width = "150px";
-        title.style.transition = 'opacity 3s 1s';
-        title.style.opacity = '0.3';
-        setTimeout(titleHover,1000);
-        divKills--;
+      if(defaultEnded == 1) {
+        audioPlayerContainer.remove()
+        draggableDiv.style.width = "150px"
+        title.style.transition = 'opacity 3s 1s'
+        title.style.opacity = '0.3'
+        setTimeout(titleHover,1000)
+        divKills--
       }
       else{
-        audioPlayerContainer.remove();
-        draggableDiv.style.width = "100px";
-        title.style.transition = 'opacity 3s 1s';
-        title.style.opacity = '0.3';
-        setTimeout(titleHover,1000);
-        divKills--;
+        audioPlayerContainer.remove()
+        draggableDiv.style.width = "100px"
+        title.style.transition = 'opacity 3s 1s'
+        title.style.opacity = '0.3'
+        setTimeout(titleHover,1000)
+        divKills--
       }
     }
 }
@@ -759,17 +762,17 @@ document.oncontextmenu = () => {return false};
 //To maintain fixed the audio player while dragging sliders
 const aPI = document.querySelectorAll(".aPi");
 seekSlider.addEventListener('mouseover',()=>{
-  draggableDiv.style.width = '4300px';
+  draggableDiv.style.width = '100%';
 });
 seekSlider.addEventListener('mouseout',()=>{
-  draggableDiv.style.width = '430px';
+  draggableDiv.style.width = (innerWidth <= 430) ? responsiveWidth : defaultWidth
 });
 
 volumeSlider.addEventListener('mouseover',()=>{
-  draggableDiv.style.width = '4300px';
+  draggableDiv.style.width = '100%';
 });
 volumeSlider.addEventListener('mouseout',()=>{
-  draggableDiv.style.width = '430px';
+  draggableDiv.style.width = (innerWidth <= 430) ? responsiveWidth : defaultWidth
 });
 //end.
 
@@ -945,6 +948,12 @@ function secretPlayListContext() {
   mind.src="./img/mind.png"
   cool.src="./img/cool.png"
 };
+
+intro300.addEventListener('click', () => {
+  if (innerHeight <= 480) return draggableDiv.style.top = '20%'
+  if (innerHeight <= 700) return draggableDiv.style.top = '52%'
+  return draggableDiv.style.top = '65%'
+})
 
 document.addEventListener('mouseover', () => {
   if ( title.textContent == `secret playlist` ) return 

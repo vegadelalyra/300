@@ -12,7 +12,6 @@
   #draggableDiv {
       position:fixed;
       z-index:668;
-      top:65%;
       outline:none;
       left:1%;
       cursor: default;
@@ -20,7 +19,7 @@
       height: min-content;
       width: 100px;
       user-select:none;
-    }
+  }
     #audio-player-container {
       position:absolute;
       cursor: move;
@@ -48,6 +47,9 @@
       transition:1s;
     }
     #audio-player-container:hover::before {
+        background: linear-gradient(to left, #c09c37, #0c0c0cfd);
+    }
+    #audio-player-container:focus:before {
         background: linear-gradient(to left, #c09c37, #0c0c0cfd);
     }
   #plays {
@@ -227,11 +229,13 @@
       background: #007db5;
   }
   .imai {
-    position:relative;
-    padding-top:15px;
-    padding-right: 40px;
-    left:15px;
-    display:inline-block;
+    --responsiveImg: 4.5416em;
+    width: var(--responsiveImg);
+    height: var(--responsiveImg);
+    position: relative;
+    padding-top: 3%;
+    padding-right: 6%;
+    display: inline-block;
     cursor: pointer;
     -moz-window-dragging: none;
     -webkit-user-drag: none;
@@ -290,16 +294,6 @@ body:not(.puta) {
     -webkit-background-clip: text;
             background-clip: text;
     -webkit-text-fill-color: transparent;
-}
-@media screen and (max-width: 630px) {
-    #intro300 {
-        font-size: 60vw;
-    }        
-}
-@media screen and (max-width: 450px) {
-    #section01, #section02, #section03, #section04, #section05, #section06, #section07, #section08, #section09 {
-        font-size: 6vw;
-    }
 }
 @keyframes fluidoOff {
     0% {background-position: 0 50%}
@@ -369,19 +363,18 @@ summary:hover {
     justify-content: center;
     position:sticky;
     z-index: 666;
-    height: fit-content;
+    height: min-content;
     background-color:black;
 }
 #h300 {  /* EL TÍTULO 300 */
-    font-size: 5vh;
     user-select: none;
     position:sticky;
     z-index: 666;
     opacity: 0;
     width:min-content;
-    height: 5vh;
     cursor:pointer;
     transition: 2s;
+    line-height:5vh;
     transition-delay: 3s;
 }
  /* SECCIÓN PARA LOS SUMMARIES (el título de cada sección y sus animaciones de cargarse en cascada) */
@@ -1068,6 +1061,67 @@ button:focus:not(.aPb) {
                             content: 'uwuwuwuwuwuwuwu';
                             color: black;
                         }
+/* end of the end */
+
+/* RESPONSIVE */
+    /* INTRO 300 RESPONSIVE */
+    @media screen and (max-width: 630px) {
+        #intro300 {
+            font-size: 60vw;
+        }        
+    } /* end of INTRO 300 RESPONSIVE */
+    
+        /* MENU RESPONSIVE */
+    @media screen and (max-width: 450px) {
+
+        /* MENU RESPONSIVE */
+        #section01, #section02, #section03, #section04, #section05, #section06, #section07, #section08, #section09 {
+            font-size: 3vh;
+        } /* end of MENU RESPONSIVE */
+    
+        .imai {
+            --responsiveImg: 3.74em;
+            width: var(--responsiveImg);
+            height: var(--responsiveImg);
+            padding-right: 2.4rem;
+        } /* end of audio player button/images RESPONSIVE */
+    
+    }
+        /* AUDIO PLAYER RESPONSIVE */
+    
+    /* audio player button/imgs "dynamic" padding on stretch width */
+    @media screen and (max-width: 390px) {
+        .imai {
+            padding-right: 1.6rem;
+            top: 1rem;
+            left: 0.9rem;
+        }
+    }
+    @media screen and (max-width: 355px) {
+        .imai {
+            padding-right: 0.91rem;
+            left:0.4rem;
+        }
+    }
+
+            /* audio player container HEIGHT */
+    @media screen and (max-height: 450px) {
+        /* title responsive */
+        #h300 {
+            font-size: 1.2em; 
+            line-height: 1%;
+        } /* title responsive */
+        /* MENU RESPONSIVE */
+        #section01, #section02, #section03, #section04, #section05, #section06, #section07, #section08, #section09 {
+            font-size: 2.5vw;
+        } /* end of MENU RESPONSIVE */
+
+    } 
+     /* end of AUDIO PLAYER RESPONSIVE */
+    
+    /* end of RESPONSIVE section*/
+
+
  /* a las clases las llamas con (elemento)."elNombreDeLaClass" :D  */
  /* a los ID las llamas con #"elIDdelElemento" :D */
  /* también puedes llamar elementos HTML con su tag name sin símbolos */
