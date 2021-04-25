@@ -180,26 +180,35 @@
       width: 100%;
       height: 3px;
       cursor: pointer;
-      background: linear-gradient(to right, rgba(21, 181, 0, 0.6) var(--buffered-width), rgba(0, 125, 181, 0.2) var(--buffered-width));
+      background: linear-gradient(to right, rgba(0, 0, 0, 0.6) var(--buffered-width), rgba(0, 0, 0, 0.2) var(--buffered-width));
   }
   .aPi[type="range"]::-moz-range-progress {
-      background-color: #007db5;
+      background-color:#c89a2d;
   }
+  .aPi[type="range"]::-moz-range-progress:hover {
+    background-color: rgb(255, 210, 62);
+}
+.aPi[type="range"]::-moz-range-progress:active {
+    background-color:rgb(255, 187, 0);
+}
+.aPi[type="range"]:active::before {
+  background-color: rgb(255, 187, 0);
+}
   .aPi[type="range"]::-moz-focus-outer {
       border: 0;
   }
   .aPi[type="range"]::-moz-range-thumb {
       box-sizing: content-box;
-      border: 1px solid #007db5;
+      border: 1px solid #000000;
       height: 15px;
       width: 15px;
       border-radius: 50%;
-      background-color: #fff;
+      background-color: rgb(0, 0, 0);
       cursor: pointer;
   }
   .aPi[type="range"]:active::-moz-range-thumb {
       transform: scale(1.2);
-      background: #007db5;
+      background:#4b4b4b;
   }
   .aPi[type="range"]::-ms-track {
       width: 100%;
@@ -210,24 +219,30 @@
       color: transparent;
   }
   .aPi[type="range"]::-ms-fill-lower {
-      background-color: #007db5;
+      background-color: #c89a2d;;
   }
   .aPi[type="range"]::-ms-fill-upper {
-      background: linear-gradient(to right, rgba(0, 125, 181, 0.6) var(--buffered-width), rgba(0, 125, 181, 0.2) var(--buffered-width));
+      background: linear-gradient(to right, rgba(0, 0, 0, 0.6) var(--buffered-width), rgba(0, 0, 0, 0.2) var(--buffered-width));
   }
   .aPi[type="range"]::-ms-thumb {
       box-sizing: content-box;
-      border: 1px solid #007db5;
+      border: 1px solid #000000;
       height: 15px;
       width: 15px;
       border-radius: 50%;
-      background-color: #fff;
+      background-color: rgb(0, 0, 0);
       cursor: pointer;
   }
   .aPi[type="range"]:active::-ms-thumb {
       transform: scale(1.2);
-      background: #007db5;
+      background: #4b4b4b;
   }
+  .aPi[type="range"]::-ms-fill-lower:hover {
+    background-color: rgb(255, 210, 62);
+}
+.aPi[type="range"]::-ms-fill-lower:active {
+    background-color:rgb(255, 187, 0);
+}
   .imai {
     --responsiveImg: 4.5416em;
     width: var(--responsiveImg);
@@ -528,6 +543,42 @@ button:focus:not(.aPb) {
 }   
 
  /* Para la scrollbar UwU */
+ ::-moz-scrollbar {
+    width: 16px;
+    background-color: transparent;
+}
+::-moz-scrollbar-track {
+    -webkit-box: transparent;
+    -Moz-border-radius-bottomRight: 100px;
+    border-bottom-right-radius: 100px;
+    -Moz-border-radius-topLeft: 100px;
+    border-top-left-radius: 100px;
+    background-color: #00000000;
+}
+::-moz-scrollbar-track:hover {
+    background-color: transparent;
+}
+::-moz-scrollbar-track:active {
+    background-color: #555555;
+}
+::-moz-scrollbar-thumb {
+    background: #434343a9;
+    -Moz-border-radius-bottomRight: 100px;
+    border-bottom-right-radius: 100px;
+    -Moz-border-radius-topLeft: 100px;
+    border-top-left-radius: 100px;
+    box-shadow:inset 2px 2px 2px hsl(0deg 0% 100% / 25%), inset -2px -2px 2px rgb(0 0 0 / 25%);
+}
+::-moz-scrollbar-thumb:hover {
+    box-shadow:inset 2px 2px 2px hsl(0deg 0% 100% / 25%), inset -2px -2px 2px rgb(0 0 0 / 25%);
+    background-color: rgba(138, 138, 138, 0.89);
+}
+::-moz-scrollbar-thumb:active {
+    box-shadow:inset 2px 2px 2px hsl(0deg 0% 100% / 25%), inset -2px -2px 2px rgb(0 0 0 / 25%);
+    background-image: -webkit-linear-gradient(180deg,transparent,rgb(255, 255, 255) 100%, transparent);
+    background-color: rgb(207, 207, 207);
+}
+
 ::-webkit-scrollbar {
     width: 16px;
     background-color: transparent;
