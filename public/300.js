@@ -904,7 +904,7 @@ tre.addEventListener('contextmenu', secretPlayListContext)
 function fuckHover() {
   tre.style.color = 'white'
   tre.style.fontSize = '99vh'
-  tre.style.transform = 'translateY(-80vh)'
+  tre.style.transform = 'translateY(-18vh)'
   tre.style.transition = '200s, color 2s'
 }
 
