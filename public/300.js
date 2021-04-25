@@ -1381,7 +1381,7 @@ const slumber = new Audio('music/Return To Slumber - Demon Souls Remake.mp3'),
     function eternalRise() { 
       return [].forEach.call( allElements, el => {
         if ( el.id == 'farewell' ) return
-        el.scrollTop -= 1 
+        el.scrollTop -= 10 
       })
     }
   })

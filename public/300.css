@@ -528,10 +528,14 @@ button:focus:not(.aPb) {
 }   
 
  /* Para la scrollbar UwU */
+::-ms-scrollbar, 
+::-moz-scrollbar, 
 ::-webkit-scrollbar {
     width: 16px;
     background-color: transparent;
 }
+::-ms-scrollbar-track,
+::-moz-scrollbar-track,
 ::-webkit-scrollbar-track {
     -webkit-box: transparent;
     -Moz-border-radius-bottomRight: 100px;
@@ -540,12 +544,18 @@ button:focus:not(.aPb) {
     border-top-left-radius: 100px;
     background-color: #00000000;
 }
+::-ms-scrollbar-track:hover,
+::-moz-scrollbar-track:hover,
 ::-webkit-scrollbar-track:hover {
     background-color: transparent;
 }
+::-ms-scrollbar-track:active,
+::-moz-scrollbar-track:active,
 ::-webkit-scrollbar-track:active {
     background-color: #555555;
 }
+::-ms-scrollbar-thumb,
+::-moz-scrollbar-thumb,
 ::-webkit-scrollbar-thumb {
     background: #434343a9;
     -Moz-border-radius-bottomRight: 100px;
@@ -554,10 +564,14 @@ button:focus:not(.aPb) {
     border-top-left-radius: 100px;
     box-shadow:inset 2px 2px 2px hsl(0deg 0% 100% / 25%), inset -2px -2px 2px rgb(0 0 0 / 25%);
 }
+::-ms-scrollbar-thumb:hover, 
+::-moz-scrollbar-thumb:hover, 
 ::-webkit-scrollbar-thumb:hover {
     box-shadow:inset 2px 2px 2px hsl(0deg 0% 100% / 25%), inset -2px -2px 2px rgb(0 0 0 / 25%);
     background-color: rgba(138, 138, 138, 0.89);
 }
+::-ms-scrollbar-thumb:active,
+::-moz-scrollbar-thumb:active,
 ::-webkit-scrollbar-thumb:active {
     box-shadow:inset 2px 2px 2px hsl(0deg 0% 100% / 25%), inset -2px -2px 2px rgb(0 0 0 / 25%);
     background-image: -webkit-linear-gradient(180deg,transparent,rgb(255, 255, 255) 100%, transparent);
