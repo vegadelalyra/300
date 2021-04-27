@@ -13,6 +13,14 @@
 <!-- Animaciones para el menú -->
 <body onload= "return pre();" onfocus= "return pre()" onblur= "return pree()">
 
+    <!-- Botones de navegación -->
+    <div id="navBut">
+        <button class="nav" id="rePag" >↟</button>
+        <button class="nav" id="avPag" >↡</button>
+        <button class="nav" id="Fin" >⇩</button>
+        <button class="nav" id="Inicio" >⇧</button>
+    </div>   
+                
     <!-- Reproductor de audio -->
     <!-- The default song played -->
     <audio src="./playlists/reflex/Floating Museum - Ghost In The Shell.mp3" preload="auto"></audio>
@@ -77,6 +85,12 @@
        <summary id="section01" style="transform:translateY(-3000px)">
         <h3>50 algoritmos informales</h3>
     </summary>
+
+        <!-- gif background -->
+        <div class='gifContainer' id="gifCont1">
+            <div class="gif" id="gif1"></div>
+        </div>
+
         <pre>
             
         1. Desarrollar un algoritmo que permita adquirir una revista.
@@ -930,6 +944,12 @@
         <summary id="section02" style="transform:translateY(-12000px)">
             <h3 >6 ejercicios de variables</h3>
         </summary>
+
+        <!-- gif background -->
+        <div class='gifContainer'>
+            <div class="gif" id="gif2"></div>
+        </div>
+
         <center>
     <table><!--tr fila / td columna-->
         <tr> 
@@ -1109,7 +1129,7 @@
             </td>
         </tr>
     </table>
-    </center>
+        </center>
     </details>
 
     <details id="20operadores">
@@ -1117,6 +1137,14 @@
         <summary id="section03" style="transform:translateY(-30000px)">
             <h3 >20 ejercicios de operadores</h3>
         </summary>
+
+        <!-- gif background -->
+        <div class='gifContainer' id="gifCont3">
+            <div class="gif" id="gif3"></div>
+            <div class="gif" id="gif4"></div>
+            <div class="gif" id="gif5"></div>
+        </div>
+
         <center>
         <div id="title">
             <center>Todos los siguientes ejercicios deberán desarrollarse utilizando las reglas de la aritmética entera.</center>
@@ -1847,7 +1875,7 @@
             <input  onfocus="this.placeholder=''" onblur="this.placeholder='Escribe números aquí >:c'" type="text" id="cycle38" placeholder="Escribe números aquí >:c" title="Escribe un número" maxlength="4" onclick="javascript:select();" onkeypress="return onlyNum(event);" onkeyup="return cycle38();"  required><br>
             <span id="c38"></span>
             <br><br>  
-        39. Se define la serie de Fibonacci como la serie que comienza con los dígitos 1 y 0 y va sumando progresivamente los dos últimos elementos de la serie, así:<br>
+        39. Se define la serie de Fibonacci como la serie que comienza con los dígitos 1 y 0 <br> y va sumando progresivamente los dos últimos elementos de la serie, así:<br>
             0 1 1 2 3 5 8 13 21 34.......
             Utilizando el concepto de ciclo, generar la serie de Fibonacci hasta llegar o sobrepasar al número 10.000.<br><br>
             <button  onclick="cycle39()" id="cycle39" title="Clickéame, bebé UwU"> LETS GOOO >:C </button> <br><br>
@@ -5109,7 +5137,7 @@
 
             </div> <!-- end of the cradle of Matrixes -->
         </center>
-    </details>
+    </details> 
 
 </body>
 </html>

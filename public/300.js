@@ -643,9 +643,13 @@ var viewport = {
   right:0,
 }
 
-//Make the DIV element draggagle:
+// Make the DIV element draggagle:
+  // audio player
 dragElement(draggableDiv);
 dragElement(title);
+  // nav buttons
+const navButDiv = getE('navBut')
+dragElement(navButDiv)
 
 function dragElement(elmnt) {
     var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
@@ -701,6 +705,70 @@ function dragElement(elmnt) {
     document.onmousemove = null;
   };
 }
+
+// NAV BUTTONS
+document.addEventListener('mouseover', () => {
+  if (document.body.scrollHeight > innerHeight) return navButDiv.style.display = 'block'
+  return navButDiv.style.display = 'none'
+})
+
+
+const navButRePg = select('button#rePag'), 
+      navButAvPg = select('button#avPag'),
+      navButFin = select('button#Fin'), 
+      navButIni = select('button#Inicio'),
+      _allEl = document.getElementsByTagName('*')
+
+// NAV BUTT EVENTS 
+  // RE_PAG BUTTON EVENT
+function rePagB() {
+  // height of the screen and divided into 10 parts
+  const h10 = innerHeight / 10;
+  [].forEach.call( _allEl, el => { el.scrollTop -= h10 })
+}
+navButRePg.addEventListener('click', () => {
+  RePag = setInterval(rePagB, 20) 
+  setTimeout( () => clearInterval(RePag) , 260 )
+}) // END OF RE_PAG BUTTON EVENT
+
+  // AV_PAG BUTTON EVENT
+function avPagB() {
+  // height of the screen and divided into 10 parts
+  const h10 = innerHeight / 10;
+  [].forEach.call( _allEl, el => { el.scrollTop += h10 })
+}
+navButAvPg.addEventListener('click', () => {
+  avPag = setInterval(avPagB, 20) 
+  setTimeout( () => clearInterval(avPag) , 260 )
+}) // END OF AV_PAG BUTTON EVENT
+
+// FIN BUTTON EVENT
+function finB() {
+const wholeScroll10 = document.body.scrollHeight / 2;
+[].forEach.call( _allEl, el => { 
+  // height of the whole scrollable page  divided into 10 parts
+  el.scrollTop += wholeScroll10 
+})
+}
+navButFin.addEventListener('click', () => {
+fin = setInterval(finB, 10) 
+setTimeout( () => clearInterval(fin) , 600 )
+}) // END OF FIN BUTTON EVENT
+
+// INI BUTTON EVENT
+function iniB() {
+  const wholeScroll10 = document.body.scrollHeight / 2;
+  [].forEach.call( _allEl, el => { 
+    // height of the whole scrollable page  divided into 10 parts
+    el.scrollTop -= wholeScroll10 
+  })
+}
+navButIni.addEventListener('click', () => {
+  ini = setInterval(iniB, 10) 
+  setTimeout( () => clearInterval(ini) , 600 )
+}) // END OF ini BUTTON EVENT
+
+// end of NAV BUTTONS
 
 
 //Erase/recreate div
@@ -780,7 +848,7 @@ volumeSlider.addEventListener('mouseout',()=>{
 const playlists = [epicPlayForward, reflexPlayForward, coolPlayForward]
 audio.addEventListener('ended', () => {
   defaultEnded = 1
-  if(toggleBug == 1){
+  if(toggleBug == 1 || divKills == 0 ) {
     draggableDiv.style.width = "150px"
     audioPlayerContainer.style.width = "150px"
   }
@@ -1243,7 +1311,7 @@ for (both of buttons5n6 ) {
   both.addEventListener( 'mouseup', downUp ) 
   both.addEventListener( 'keydown', downUp ) 
 }
-for (let i = 0; i < 18; i++){ 
+for (let i = 4; i < 22; i++){ 
   getTag("button")[i].addEventListener("mouseup", downUp) 
   getTag("button")[i].addEventListener("keydown", downUp) 
 }
@@ -1288,18 +1356,18 @@ function guauu(){
 }
 // MANTENER LOS BOTONES 'OPRIMIDOS' MIENTRAS SON SELECCIONADOS CON TAB
 const allButtons = getTag('button')
-for (let i = 2; i < allButtons.length; i++) { 
+for (let i = 6; i < allButtons.length; i++) { 
   allButtons[i].addEventListener('focus', buttonDarkMood)
   allButtons[i].addEventListener('blur', buttonBackToReality)
   allButtons[i].addEventListener('blur', guauu)
 }
 
 const putota = getTag('button')
-for (let i = 2; i < 18; i++) { 
+for (let i = 6; i < 22; i++) { 
   putota[i].addEventListener('click', blurFixB)
 }
-putota[21].addEventListener('click', blurFixB)
-putota[22].addEventListener('click', blurFixB)
+putota[25].addEventListener('click', blurFixB)
+putota[26].addEventListener('click', blurFixB)
 
 function blurFixB(e) {
   if ( e.target.innerText == "UwU" ) {
@@ -1318,7 +1386,7 @@ function buttonDarkMood(e) {
   e.target.style.border = '1px solid #ff9d00'
   e.target.style.color = 'rgb(31, 11, 11)'
   e.target.style.background = 'linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%)'
-}
+} 
 
 //2 SONIDOS DE LOS VECTORES
 //al pasar el mouse por encima
@@ -1381,7 +1449,7 @@ const slumber = new Audio('music/Return To Slumber - Demon Souls Remake.mp3'),
     function eternalRise() { 
       return [].forEach.call( allElements, el => {
         if ( el.id == 'farewell' ) return
-        el.scrollTop -= 10 
+        el.scrollTop -= document.body.scrollHeight / 1000
       })
     }
   })
@@ -1842,19 +1910,19 @@ function onlyNum(evt)
             break;
           
           case 3:
-            alert("¡¡¡INGRESAR SÓLO NÚMEROS ENTEROS!!! AAAAAA");
+            alert("¡¡¡INGRESAR SÓLO NÚMEROS ENTEROS!!! AAAAAAH");
             alrt++;
             return false;
             break;
           
           case 4:
-            alert("¡¡¡INGRESAR SÓLO NÚMEROS¡¡¡INGRESAR SÓLO NÚMEROS ¡¡¡INGRESAR SÓLO NÚMEROS ¡¡¡INGRESAR SÓLO NÚMEROS AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+            alert("¡¡¡INGRESAR SÓLO NÚMEROS¡¡¡INGRESAR SÓLO NÚMEROS ¡¡¡INGRESAR SÓLO NÚMEROS ¡¡¡INGRESAR SÓLO NÚMEROS AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH");
             alrt++;
             return false;
             break;
 
           case 5:
-            alert("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
+            alert("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAH");
             alrt++;
             return false;
             break;
@@ -1889,8 +1957,14 @@ function onlyNum(evt)
             return false;
             break;
 
-          default:
+          case 11:
             alert("Por favor, ingresar sólo números enteros c:    Gracias.");
+            alrt++;
+            return false;
+            break;
+
+          default:
+            alert("Por favor, ingresar sólo números enteros c:  Gracias.\r\n( ¡Su nivel de tolerancia es de más de 9000! )");
             clearTimeout(underAlrt);
             return false;
             break;
@@ -3869,7 +3943,7 @@ function result39(){
   var penltThree = arrc[(arrc.length-2)];
   
   //LETS GO
-
+  
   if ((n39 == 0 && n39b == 0 && n39c == 0)) {
     document.getElementById("r39").innerHTML = ``;
   }

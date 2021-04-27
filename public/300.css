@@ -522,12 +522,12 @@ button {
 	text-shadow:0px 1px -50px #ffffff;
     user-select: none;
 }
-button:hover:not(.aPb) {
+button:hover:not(.aPb, .nav) {
     border:3px solid #ffaa22;
     background:linear-gradient(to bottom, #ffab23 5%, #ffec64 100%);
     color:rgb(31, 11, 11);
 }
-button:focus:not(.aPb) {
+button:focus:not(.aPb, .nav) {
     border:1px solid #ffaa22;
     background:linear-gradient(to bottom, #ff9d00 5%, #ffe205 100%);
     color: rgb(31, 11, 11);
@@ -1174,6 +1174,75 @@ button:focus:not(.aPb) {
      }
 
     /* end of RESPONSIVE section*/
+/* NAV BUTTONS */
+#navBut {
+    display: none;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    z-index: 99999999;
+}
+.nav {
+    border-radius: 50%;
+    background:rgba(0, 0, 0, 0.815);
+    border-color: rgba(0, 0, 0, 0);
+}
+    .nav:hover {
+        background:#0C0D10;
+        color:#889292;
+    }
+        .nav:active {
+            color:whitesmoke;
+        }
+/* end of NAV BUTTONS */
+/* gif background */
+.gifContainer {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index:-1;
+}
+    #gifCont1 {
+        left:150vh;
+    }
+        .gif {
+            height:100%;
+            width:100%;
+        }
+            #gif1 {
+                background:url(/public/gh.gif);
+                background-size:100% 100%;
+                height: 500px;
+                width: 500px;
+            }
+            #gif2 { 
+                background:url(/public/sea.gif);
+                background-size:100% 100%;
+            }
+            #gif3 { 
+                background:url(/public/lg.gif);
+                height: 100%;
+                width: 33%;
+            }
+            #gif4 { 
+                background:url(/public/mg.gif);
+                height: 50%;
+                width: 36%;
+                position: fixed;
+                left: 59vh;
+            }
+            #gif5 { 
+                background:url(/public/rg.gif);
+                height: 40%;
+                width: 29%;
+                position: fixed;
+                left: 150vh;
+            }
+                #gifCont3 {
+                    display: flex;
+                    justify-content: flex-start;
+                }
+/* end of gif background */
 
 
  /* a las clases las llamas con (elemento)."elNombreDeLaClass" :D  */
