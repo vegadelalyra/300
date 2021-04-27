@@ -1189,8 +1189,11 @@ button:focus:not(.aPb, .nav) {
     right: 0;
     bottom: 0;
     z-index: 99999999;
+    width:fit-content;
+    height: auto;
 }
 .nav {
+    font-size:2rem;
     border-radius: 50%;
     background:rgba(0, 0, 0, 0.815);
     border-color: rgba(0, 0, 0, 0);
