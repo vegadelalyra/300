@@ -1203,7 +1203,7 @@ button:focus:not(.aPb, .nav) {
     z-index:-1;
 }
     #gifCont1 {
-        left:150vh;
+        left:69%;
     }
         .gif {
             height:100%;
@@ -1212,8 +1212,8 @@ button:focus:not(.aPb, .nav) {
             #gif1 {
                 background:url(/public/gh.gif);
                 background-size:100% 100%;
-                height: 500px;
-                width: 500px;
+                height: 80%;
+                width: 30%;
             }
             #gif2 { 
                 background:url(/public/sea.gif);
@@ -1237,7 +1237,7 @@ button:focus:not(.aPb, .nav) {
                 width: 29%;
                 position: fixed;
                 left: 150vh;
-            }
+            } 
                 #gifCont3 {
                     display: flex;
                     justify-content: flex-start;
