@@ -1210,29 +1210,29 @@ button:focus:not(.aPb, .nav) {
             width:100%;
         }
             #gif1 {
-                background:url(/public/gh.gif);
+                background:url(gh.gif);
                 background-size:100% 100%;
                 height: 80%;
                 width: 30%;
             }
             #gif2 { 
-                background:url(/public/sea.gif);
+                background:url(sea.gif);
                 background-size:100% 100%;
             }
             #gif3 { 
-                background:url(/public/lg.gif);
+                background:url(lg.gif);
                 height: 100%;
                 width: 33%;
             }
             #gif4 { 
-                background:url(/public/mg.gif);
+                background:url(mg.gif);
                 height: 50%;
                 width: 36%;
                 position: fixed;
                 left: 59vh;
             }
             #gif5 { 
-                background:url(/public/rg.gif);
+                background:url(rg.gif);
                 height: 40%;
                 width: 29%;
                 position: fixed;
