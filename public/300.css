@@ -439,7 +439,10 @@ summary:hover {
 td {
     white-space: pre-line;
 }
-
+pre {
+    word-wrap: break-word;
+    font-size:1.5vw;
+}
 textarea {
     resize:none;
     background-color: rgb(25, 53, 73);
@@ -1150,8 +1153,13 @@ button:focus:not(.aPb, .nav) {
     }
     @media screen and (max-width: 355px) {
         .imai {
-            padding-right: 0.91rem;
+            padding-right: 0.78rem;
             left:0.4rem;
+        }
+    }
+    @media screen and (max-width: 313px) {
+        .imai {
+            left:0.1rem;
         }
     }
 
