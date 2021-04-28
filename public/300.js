@@ -908,40 +908,47 @@ function getTag(tagName){
 }
 
 //ANIMACIÓN INTRO 300
+// <!-- Animaciones para el menú -->
+document.body.onload = function() { return pre() }
+document.body.onfocus = function() { return pre() }
+document.body.onblur = function() { return pree() }
+
 var intro300 = document.querySelector("#containerIntro300"),
     aaa = document.querySelector("#intro300"),
     guardClause = 0
-aaa.addEventListener("click", kil);
-function pre(){
-  aaa.style.transform = 'translate(0%,0%)';
-  setTimeout(pe,600);
+aaa.addEventListener("click", kil)
+aaa.addEventListener("dblclick", function(){ return false })
+function pre() {
+  aaa.style.transform = 'translate(0%,0%)'
+  setTimeout(pe,600)
 }
-function pe(){
-  aaa.style.transform = 'scale(0.6)';
+function pe() {
+  aaa.style.transform = 'scale(0.6)'
 }
-function pree(){
-  aaa.style.transform = 'scale(1.2)';  
-  setTimeout(pee,400);
+function pree() {
+  aaa.style.transform = 'scale(1.2)'
+  setTimeout(pee,400)
 }
-function pee(){
-  aaa.style.transform = 'translate(1000%,-300%)';
+function pee() {
+  aaa.style.transform = 'translate(1000%,-300%)'
 }
-function kil(){
+function kil() {
   if( guardClause != 0 ) return
+  aaa.removeEventListener("click", kil)
   guardClause = 1
-  let whooosh = new Audio('./music/whooosh.mp3');
-  whooosh.play();
-  aaa.style.transform = 'scale(2)';
-  aaa.style.opacity="0";
-  setTimeout(kill,200);
+  let whooosh = new Audio('./music/whooosh.mp3')
+  whooosh.play()
+  aaa.style.transform = 'scale(2)'
+  aaa.style.opacity="0"
+  setTimeout(kill,200)
 }
-function kill(){
-  document.body.removeChild(intro300);
-  audio.play();
-  playAnimation.playSegments([14, 27], true);
-  requestAnimationFrame(whilePlaying);
-  playState = 'pause';
-  cancelAnimationFrame(raf);
+function kill() {
+  document.body.removeChild(intro300)
+  audio.play()
+  playAnimation.playSegments([14, 27], true)
+  requestAnimationFrame(whilePlaying)
+  playState = 'pause'
+  cancelAnimationFrame(raf)
 }
 
 //MÚSICA Y SONIDOS
