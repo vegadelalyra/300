@@ -1,3 +1,10 @@
+// 27/04/2021 trying to turn 300 into a PWA xd
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./sw.js')
+  .then( reg => console.log('Service Workers registered sucessfully', reg) )
+  .catch( err => console.warn('Error trying to register Service Workers', err) )
+}
+
 //26/03/2021 Implementación del reproductor de audio
 /* Implementation of the presentation of the audio player */
 const playIconContainer = document.getElementById('play-icon');
@@ -901,9 +908,10 @@ function getTag(tagName){
 }
 
 //ANIMACIÓN INTRO 300
-var intro300 = document.querySelector("#containerIntro300");
-var aaa = document.querySelector("#intro300");
-aaa.addEventListener("click",kil);
+var intro300 = document.querySelector("#containerIntro300"),
+    aaa = document.querySelector("#intro300"),
+    guardClause = 0
+aaa.addEventListener("click", kil);
 function pre(){
   aaa.style.transform = 'translate(0%,0%)';
   setTimeout(pe,600);
@@ -919,6 +927,8 @@ function pee(){
   aaa.style.transform = 'translate(1000%,-300%)';
 }
 function kil(){
+  if( guardClause != 0 ) return
+  guardClause = 1
   let whooosh = new Audio('./music/whooosh.mp3');
   whooosh.play();
   aaa.style.transform = 'scale(2)';

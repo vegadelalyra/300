@@ -1,0 +1,29 @@
+{
+    "name": "#300",
+    "short_name": "#300",
+    "description": "300 ejercicios de lógica de la programación escritos por el profesor de la Universidad Tecnológica de Pereira, Omar Iván Trejos Buriticá, resueltos y desarrollados por Daniel Vega. (Este es mi debut a la programación).",
+    "background_color": "black",
+    "theme_color": "black",
+    "orientation": "portrait",
+    "display": "standalone", 
+    "start_url": "./?utm_source=web_app_manifest",
+    "scope": "./",
+    "lang": "es-MX",
+    "icons": [
+        {
+            "src": "./favicon.png",
+            "sizes": "500x500",
+            "type": "image/png"
+        },
+        {
+            "src": "./favicon512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "./favicon192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        }
+    ]
+}
