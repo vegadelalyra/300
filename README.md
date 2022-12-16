@@ -1,4 +1,4 @@
-# 300 
+# 300  https://three00-k3uu.onrender.com/
 # Ejercicios para el desarrollo y la comprensión de la lógica 
 
 Los documentos llamados "300" son los principales: <br>
@@ -14,5 +14,4 @@ Para la programación y la vida.<br>
 Agradezco a Lheo Vega por confiar en mi<br>
 & al maestro Omar Iván Trejos Buriticá por su pasión para enseñar,<br>
 su legado permanece.
-https://three00-k3uu.onrender.com/
 https://github.com/closedaccemil2/Fundamentos-de-Programacion/blob/master/1.%20Algoritmos/-La%20esencia%20de%20la%20logica%20de%20programaci%C3%B3n%20-%20Omar%20Trejos%20Buritic%C3%A1.pdf
